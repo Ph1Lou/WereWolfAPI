@@ -1,3 +1,5 @@
+package io.github.ph1lou.pluginlgapi;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +20,6 @@ public interface WereWolfAPI {
      * Adds a player to the whitelist
      * @param gameUUID UUID of the concerned game
      * @param playerName Name of the player
-     * @return void
      */
 
     void addPlayerOnWhiteList(UUID gameUUID,String playerName);
@@ -27,7 +28,6 @@ public interface WereWolfAPI {
      * Removes a player to the whitelist
      * @param gameUUID UUID of the concerned game
      * @param playerName Name of the player
-     * @return void
      */
 
     void removePlayerOnWhiteList(UUID gameUUID,String playerName);
@@ -36,7 +36,6 @@ public interface WereWolfAPI {
      * Adds a host to the game
      * @param gameUUID UUID of the concerned game
      * @param hostUUID UUID of the host
-     * @return void
      */
 
     void addHost(UUID gameUUID,UUID hostUUID);
@@ -45,7 +44,6 @@ public interface WereWolfAPI {
      * Removes a host to the game
      * @param gameUUID UUID of the concerned game
      * @param hostUUID UUID of the host
-     * @return void
      */
 
     void removeHost(UUID gameUUID,UUID hostUUID);
@@ -54,7 +52,6 @@ public interface WereWolfAPI {
      * Adds a moderator to the game
      * @param gameUUID UUID of the concerned game
      * @param moderatorUUID UUID of the moderator
-     * @return void
      */
 
     void addModerator(UUID gameUUID,UUID moderatorUUID);
@@ -63,7 +60,6 @@ public interface WereWolfAPI {
      * Removes a moderator to the game
      * @param gameUUID UUID of the concerned game
      * @param moderatorUUID UUID of the moderator
-     * @return void
      */
 
     void removeModerator(UUID gameUUID,UUID moderatorUUID);
@@ -72,7 +68,6 @@ public interface WereWolfAPI {
      * Generate the map of the concerned game
      * @param gameUUID UUID of the concerned game
      * @param mapRadius radius of the map to be generated
-     * @return void
      */
 
     void generateMap(UUID gameUUID,int mapRadius);
