@@ -7,6 +7,7 @@ public interface WereWolfAPI {
 
     /**
      * Launch a game
+     * @param name Name of the game
      * @param hostsUUIDs The list of hosts'UUIDs
      * @param moderatorsUUIDs The list of moderators'UUIDs
      * @param whiteListedPlayers The list of whitListed players'names
@@ -14,7 +15,7 @@ public interface WereWolfAPI {
      * @return UUID of the create game
      */
 
-    UUID launchGame(List<UUID> hostsUUIDs, List<UUID> moderatorsUUIDs, List<String> whiteListedPlayers, int playerMax);
+    UUID launchGame(String name, List<UUID> hostsUUIDs, List<UUID> moderatorsUUIDs, List<String> whiteListedPlayers, int playerMax);
 
     /**
      * Adds a player to the whitelist
@@ -71,4 +72,11 @@ public interface WereWolfAPI {
      */
 
     void generateMap(UUID gameUUID,int mapRadius);
+
+    /**
+     * Stop the Game
+     * @param gameUUID UUID of the concerned game
+     */
+
+    void stopGame(UUID gameUUID);
 }
