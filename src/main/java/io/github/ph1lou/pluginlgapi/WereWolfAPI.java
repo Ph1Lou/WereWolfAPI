@@ -6,77 +6,96 @@ import java.util.UUID;
 public interface WereWolfAPI {
 
     /**
-     * Launch a game
+     * Set the name of the game
      * @param name Name of the game
+     */
+
+    void setGameName(String name);
+
+    /**
+     * Set the hosts of the game
      * @param hostsUUIDs The list of hosts'UUIDs
+     */
+
+    void setHosts(List<UUID> hostsUUIDs);
+
+    /**
+     * Set the moderators of the game
      * @param moderatorsUUIDs The list of moderators'UUIDs
-     * @param whiteListedPlayers The list of whitListed players'names
+     */
+
+    void setModerators( List<UUID> moderatorsUUIDs);
+
+    /**
+     * Set the White Listed Players of the game
+     * @param whiteListedPlayers The list of whitListed players'UUID
+     */
+
+    void setWhiteListedPlayers(List<UUID> whiteListedPlayers);
+
+    /**
+     * Set the maximum number of players
      * @param playerMax maximum number of players
-     * @return UUID of the create game
+
      */
 
-    UUID launchGame(String name, List<UUID> hostsUUIDs, List<UUID> moderatorsUUIDs, List<String> whiteListedPlayers, int playerMax);
+    void setPlayerMax(int playerMax);
+
 
     /**
-     * Adds a player to the whitelist
-     * @param gameUUID UUID of the concerned game
-     * @param playerName Name of the player
+     * Add a player to the whitelist
+     * @param playerName UUID  of the player
      */
 
-    void addPlayerOnWhiteList(UUID gameUUID,String playerName);
+    void addPlayerOnWhiteList(UUID playerName);
 
     /**
-     * Removes a player to the whitelist
-     * @param gameUUID UUID of the concerned game
-     * @param playerName Name of the player
+     * Remove a player to the whitelist
+     * @param playerName UUID of the player
      */
 
-    void removePlayerOnWhiteList(UUID gameUUID,String playerName);
+    void removePlayerOnWhiteList(UUID playerName);
 
     /**
-     * Adds a host to the game
-     * @param gameUUID UUID of the concerned game
+     * Add a host to the game
      * @param hostUUID UUID of the host
      */
 
-    void addHost(UUID gameUUID,UUID hostUUID);
+    void addHost(UUID hostUUID);
 
     /**
-     * Removes a host to the game
-     * @param gameUUID UUID of the concerned game
+     * Remove a host to the game
      * @param hostUUID UUID of the host
      */
 
-    void removeHost(UUID gameUUID,UUID hostUUID);
+    void removeHost(UUID hostUUID);
 
     /**
-     * Adds a moderator to the game
-     * @param gameUUID UUID of the concerned game
+     * Add a moderator to the game
      * @param moderatorUUID UUID of the moderator
      */
 
-    void addModerator(UUID gameUUID,UUID moderatorUUID);
+    void addModerator(UUID moderatorUUID);
 
     /**
-     * Removes a moderator to the game
-     * @param gameUUID UUID of the concerned game
+     * Remove a moderator to the game
      * @param moderatorUUID UUID of the moderator
      */
 
-    void removeModerator(UUID gameUUID,UUID moderatorUUID);
+    void removeModerator(UUID moderatorUUID);
 
     /**
      * Generate the map of the concerned game
-     * @param gameUUID UUID of the concerned game
      * @param mapRadius radius of the map to be generated
      */
 
-    void generateMap(UUID gameUUID,int mapRadius);
+    void generateMap(int mapRadius);
 
     /**
      * Stop the Game
-     * @param gameUUID UUID of the concerned game
      */
 
-    void stopGame(UUID gameUUID);
+    void stopGame();
+
+
 }
