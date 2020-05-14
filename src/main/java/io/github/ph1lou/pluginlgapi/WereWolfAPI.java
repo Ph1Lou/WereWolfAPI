@@ -1,5 +1,8 @@
 package io.github.ph1lou.pluginlgapi;
 
+import io.github.ph1lou.pluginlgapi.enumlg.Day;
+import io.github.ph1lou.pluginlgapi.enumlg.StateLG;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -103,4 +106,31 @@ public interface WereWolfAPI {
      */
 
     ConfigWereWolfAPI getConfig();
+
+    boolean isState(StateLG state);
+
+    boolean isDay(Day day);
+
+    boolean isWhiteList();
+
+    void setWhiteList(boolean whiteList);
+
+    int getPlayerMax();
+
+    int getSpectatorMode();
+
+    void setSpectatorMode(int spectatorMode);
+
+    String getGameName();
+
+    List<UUID> getWhiteListedPlayers();
+
+    List<UUID> getHosts();
+
+    List<UUID> getModerators();
+
+    List<UUID> getQueue();
+
+    UUID getGameUUID();
+
 }
