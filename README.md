@@ -1,6 +1,6 @@
 # Plugin LG UHC API
 
-One Paragraph of project description goes here
+Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 
 ## Getting Started
 
