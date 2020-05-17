@@ -19,8 +19,8 @@ Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premie
 ```
 GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("pluginLG");
 ```
-```
 Puis :
+```
 WerewolfApi werewolfAPI = ww.getWereWolfAPI();
 ```
 
