@@ -3,17 +3,20 @@ package io.github.ph1lou.pluginlgapi.events;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
+import java.util.List;
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event {
+public class CupidLoversEvent extends Event {
 
     private final UUID playerUUID;
+    private final List<UUID> playersUUID;
+
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ResurrectionEvent(UUID playerUUID) {
+    public CupidLoversEvent(UUID playerUUID, List<UUID> playersUUID){
         this.playerUUID =playerUUID;
+        this.playersUUID =playersUUID;
     }
-
 
     @Override
     public HandlerList getHandlers() {
@@ -27,4 +30,9 @@ public class ResurrectionEvent extends Event {
     public UUID getPlayerUUID() {
         return playerUUID;
     }
+
+    public List<UUID> getPlayersUUID() {
+        return playersUUID;
+    }
 }
+

@@ -7,13 +7,15 @@ import java.util.UUID;
 
 public class SniffEvent extends Event {
 
-    private UUID playerUUID;
-    private UUID sniffPlayerUUID;
+    private final UUID playerUUID;
+    private final UUID sniffPlayerUUID;
+    private final boolean isWereWolf;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SniffEvent(UUID playerUUID, UUID sniffPlayerUUID) {
+    public SniffEvent(UUID playerUUID, UUID sniffPlayerUUID, boolean isWereWolf) {
         this.playerUUID =playerUUID;
         this.sniffPlayerUUID = sniffPlayerUUID;
+        this.isWereWolf = isWereWolf;
     }
 
 
@@ -32,5 +34,9 @@ public class SniffEvent extends Event {
 
     public UUID getSniffPlayerUUID() {
         return sniffPlayerUUID;
+    }
+
+    public boolean isWereWolf() {
+        return isWereWolf;
     }
 }

@@ -1,6 +1,5 @@
 package io.github.ph1lou.pluginlgapi;
 
-import io.github.ph1lou.pluginlgapi.enumlg.RoleLG;
 import io.github.ph1lou.pluginlgapi.enumlg.ScenarioLG;
 import io.github.ph1lou.pluginlgapi.enumlg.TimerLG;
 import io.github.ph1lou.pluginlgapi.enumlg.ToolLG;
@@ -105,11 +104,11 @@ public interface ConfigWereWolfAPI {
 
      void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
 
-     public Map<TimerLG, Integer> getTimerValues();
+     Map<TimerLG, Integer> getTimerValues();
 
-     public Map<ToolLG, Boolean> getConfigValues();
+     Map<ToolLG, Boolean> getConfigValues();
 
-     public Map<RoleLG, Integer> getRoleCount();
+     Map<String, Integer> getRoleCount();
 
-     public Map<ScenarioLG, Boolean> getScenarioValues();
+     Map<ScenarioLG, Boolean> getScenarioValues();
 }

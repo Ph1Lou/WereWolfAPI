@@ -3,8 +3,6 @@ package io.github.ph1lou.pluginlgapi.events;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.util.UUID;
-
 public class NightEvent extends Event {
 
     private final int number;

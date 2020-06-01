@@ -1,20 +1,17 @@
 package io.github.ph1lou.pluginlgapi.events;
 
-import io.github.ph1lou.pluginlgapi.ConfigWereWolfAPI;
+import io.github.ph1lou.pluginlgapi.WereWolfAPI;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
-import java.util.List;
-import java.util.UUID;
 
 public class StartEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final ConfigWereWolfAPI configWereWolfAPI;
+    private final WereWolfAPI wereWolfAPI;
 
 
-    public StartEvent(ConfigWereWolfAPI configWereWolfAPI) {
-        this.configWereWolfAPI=configWereWolfAPI;
+    public StartEvent(WereWolfAPI wereWolfAPI) {
+        this.wereWolfAPI=wereWolfAPI;
     }
 
     public static HandlerList getHandlerList() {
@@ -26,7 +23,7 @@ public class StartEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public ConfigWereWolfAPI getConfigWereWolfAPI() {
-        return configWereWolfAPI;
+    public WereWolfAPI getWereWolfAPI() {
+        return wereWolfAPI;
     }
 }

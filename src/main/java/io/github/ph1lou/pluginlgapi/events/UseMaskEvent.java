@@ -1,17 +1,19 @@
 package io.github.ph1lou.pluginlgapi.events;
 
+import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class SuccubusResurrectionEvent extends ResurrectionEvent {
+public class UseMaskEvent extends Event {
 
-    private final UUID charmedUUID;
+    private final UUID playerUUID;
+    private final int mask;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SuccubusResurrectionEvent(UUID playerUUID, UUID charmedUUID) {
-        super(playerUUID);
-        this.charmedUUID = charmedUUID;
+    public UseMaskEvent(UUID playerUUID, int mask){
+        this.playerUUID =playerUUID;
+        this.mask = mask;
     }
 
     @Override
@@ -23,7 +25,12 @@ public class SuccubusResurrectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
-    public UUID getCharmedUUID() {
-        return charmedUUID;
+    public UUID getPlayerUUID() {
+        return playerUUID;
+    }
+
+    public int getMask() {
+        return mask;
     }
 }
+

@@ -3,7 +3,7 @@ package io.github.ph1lou.pluginlgapi.events;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class AutoAngelEvent extends Event {
+public class GenerationStopEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 

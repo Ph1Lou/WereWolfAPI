@@ -5,15 +5,16 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event {
+public class CharmEvent extends Event {
 
     private final UUID playerUUID;
+    private final UUID charmedPlayerUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ResurrectionEvent(UUID playerUUID) {
+    public CharmEvent(UUID playerUUID, UUID charmedPlayerUUID){
         this.playerUUID =playerUUID;
+        this.charmedPlayerUUID =charmedPlayerUUID;
     }
-
 
     @Override
     public HandlerList getHandlers() {
@@ -27,4 +28,9 @@ public class ResurrectionEvent extends Event {
     public UUID getPlayerUUID() {
         return playerUUID;
     }
+
+    public UUID getCharmedPlayerUUID() {
+        return charmedPlayerUUID;
+    }
 }
+

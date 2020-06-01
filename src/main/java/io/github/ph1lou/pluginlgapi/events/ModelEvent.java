@@ -5,15 +5,16 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event {
+public class ModelEvent extends Event {
 
-    private final UUID playerUUID;
+    private final UUID wildChildUUID;
+    private final UUID modelUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ResurrectionEvent(UUID playerUUID) {
-        this.playerUUID =playerUUID;
+    public ModelEvent(UUID voterUUID, UUID voteUUID){
+        this.wildChildUUID =voterUUID;
+        this.modelUUID =voteUUID;
     }
-
 
     @Override
     public HandlerList getHandlers() {
@@ -24,7 +25,12 @@ public class ResurrectionEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public UUID getWildChildUUID() {
+        return wildChildUUID;
+    }
+
+    public UUID getModelUUID() {
+        return modelUUID;
     }
 }
+

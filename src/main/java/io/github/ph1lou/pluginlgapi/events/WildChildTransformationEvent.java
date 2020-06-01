@@ -4,14 +4,15 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class SuccubusResurrectionEvent extends ResurrectionEvent {
+public class WildChildTransformationEvent extends TransformationEvent {
 
-    private final UUID charmedUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SuccubusResurrectionEvent(UUID playerUUID, UUID charmedUUID) {
-        super(playerUUID);
-        this.charmedUUID = charmedUUID;
+    private final UUID master;
+
+    public WildChildTransformationEvent(UUID uuid, UUID master){
+        super(uuid);
+        this.master = master;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class SuccubusResurrectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
-    public UUID getCharmedUUID() {
-        return charmedUUID;
+    public UUID getMaster() {
+        return master;
     }
 }

@@ -1,19 +1,22 @@
 package io.github.ph1lou.pluginlgapi.events;
 
+import io.github.ph1lou.pluginlgapi.enumlg.AngelForm;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event {
+public class AngelChoiceEvent extends Event {
 
     private final UUID playerUUID;
+    private final AngelForm choice;
+
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ResurrectionEvent(UUID playerUUID) {
+    public AngelChoiceEvent(UUID playerUUID, AngelForm choice){
         this.playerUUID =playerUUID;
+        this.choice = choice;
     }
-
 
     @Override
     public HandlerList getHandlers() {
@@ -27,4 +30,9 @@ public class ResurrectionEvent extends Event {
     public UUID getPlayerUUID() {
         return playerUUID;
     }
+
+    public AngelForm getChoice() {
+        return choice;
+    }
 }
+

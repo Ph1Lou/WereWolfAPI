@@ -5,13 +5,15 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event {
+public class BeginSniffEvent extends Event {
 
     private final UUID playerUUID;
+    private final UUID sniffPlayerUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ResurrectionEvent(UUID playerUUID) {
+    public BeginSniffEvent(UUID playerUUID, UUID sniffPlayerUUID) {
         this.playerUUID =playerUUID;
+        this.sniffPlayerUUID = sniffPlayerUUID;
     }
 
 
@@ -26,5 +28,9 @@ public class ResurrectionEvent extends Event {
 
     public UUID getPlayerUUID() {
         return playerUUID;
+    }
+
+    public UUID getSniffPlayerUUID() {
+        return sniffPlayerUUID;
     }
 }

@@ -3,7 +3,6 @@ package io.github.ph1lou.pluginlgapi;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.util.List;
 import java.util.UUID;
 
 public class UpdateConfigEvent extends Event {

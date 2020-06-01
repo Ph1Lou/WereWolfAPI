@@ -4,6 +4,7 @@ import io.github.ph1lou.pluginlgapi.enumlg.Day;
 import io.github.ph1lou.pluginlgapi.enumlg.StateLG;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public interface WereWolfAPI {

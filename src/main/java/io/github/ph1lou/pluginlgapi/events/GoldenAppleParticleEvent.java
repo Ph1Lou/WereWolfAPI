@@ -1,19 +1,21 @@
+
 package io.github.ph1lou.pluginlgapi.events;
 
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event {
+public class GoldenAppleParticleEvent extends Event implements Cancellable {
 
     private final UUID playerUUID;
+    private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ResurrectionEvent(UUID playerUUID) {
+    public GoldenAppleParticleEvent(UUID playerUUID){
         this.playerUUID =playerUUID;
     }
-
 
     @Override
     public HandlerList getHandlers() {
@@ -26,5 +28,15 @@ public class ResurrectionEvent extends Event {
 
     public UUID getPlayerUUID() {
         return playerUUID;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean b) {
+        this.cancel=b;
     }
 }
