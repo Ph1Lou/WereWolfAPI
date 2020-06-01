@@ -2,6 +2,7 @@ package io.github.ph1lou.pluginlgapi;
 
 import io.github.ph1lou.pluginlgapi.enumlg.Day;
 import io.github.ph1lou.pluginlgapi.enumlg.StateLG;
+import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
 import java.util.Map;
@@ -135,5 +136,9 @@ public interface WereWolfAPI {
     UUID getGameUUID();
 
     void deleteMap();
+
+    Scoreboard getWereWolfScoreBoard();
+
+    Map<UUID,PlayerWW> getPlayersWW();
 
 }

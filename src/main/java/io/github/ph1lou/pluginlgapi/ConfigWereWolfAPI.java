@@ -1,10 +1,16 @@
 package io.github.ph1lou.pluginlgapi;
 
 import io.github.ph1lou.pluginlgapi.enumlg.ScenarioLG;
+import io.github.ph1lou.pluginlgapi.enumlg.State;
 import io.github.ph1lou.pluginlgapi.enumlg.TimerLG;
 import io.github.ph1lou.pluginlgapi.enumlg.ToolLG;
+import io.github.ph1lou.pluginlgapi.rolesattributs.Roles;
+import org.bukkit.Location;
+import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public interface ConfigWereWolfAPI {
 
@@ -111,4 +117,5 @@ public interface ConfigWereWolfAPI {
      Map<String, Integer> getRoleCount();
 
      Map<ScenarioLG, Boolean> getScenarioValues();
+
 }
