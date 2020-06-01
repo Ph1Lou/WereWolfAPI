@@ -133,4 +133,6 @@ public interface WereWolfAPI {
 
     UUID getGameUUID();
 
+    void deleteMap();
+
 }

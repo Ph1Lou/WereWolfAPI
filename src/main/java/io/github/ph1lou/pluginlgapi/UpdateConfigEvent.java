@@ -11,7 +11,6 @@ public class UpdateConfigEvent extends Event {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID player;
 
-
     public UpdateConfigEvent(UUID player) {
         this.player= player;
     }

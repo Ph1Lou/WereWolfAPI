@@ -19,6 +19,7 @@ public enum ScenarioLG {
     CAT_EYES(true,"werewolf.menu.scenarios.cat_eyes"),
     NO_FIRE_WEAPONS(true,"werewolf.menu.scenarios.no_fire_weapons"),
     TIMBER(false,"werewolf.menu.scenarios.timber"),
+    DOUBLE_JUMP(false,"werewolf.menu.scenarios.double_jump"),
     SLOW_BOW(false,"werewolf.menu.scenarios.slow_bow");
 
     private final Boolean value;
