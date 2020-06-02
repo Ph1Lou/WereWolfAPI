@@ -141,4 +141,6 @@ public interface WereWolfAPI {
 
     Map<UUID,PlayerWW> getPlayersWW();
 
+    String translate(String key, Object... args);
+
 }
