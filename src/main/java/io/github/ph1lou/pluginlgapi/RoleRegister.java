@@ -38,7 +38,7 @@ public class RoleRegister {
     public void create(){
         if(constructors==null) return;
         api.getRegisterRoles().put(key,constructors);
-        api.getExtraTexts().put(key,name);
+        api.getExtraTexts().put(key.toLowerCase(),name);
         if(lore.isEmpty()) return;
         api.getExtraLore().put(key,lore);
     }

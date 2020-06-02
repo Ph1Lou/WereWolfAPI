@@ -2,6 +2,8 @@ package io.github.ph1lou.pluginlgapi;
 
 import io.github.ph1lou.pluginlgapi.enumlg.Day;
 import io.github.ph1lou.pluginlgapi.enumlg.StateLG;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -143,4 +145,15 @@ public interface WereWolfAPI {
 
     String translate(String key, Object... args);
 
+    void checkVictory();
+
+    void resurrection(UUID uuid);
+
+    void transportation(UUID playerUUID, double d, String message);
+
+    void death(UUID uuid);
+
+    String conversion(int timer);
+
+    String updateArrow(Player player, Location target);
 }

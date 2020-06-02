@@ -27,4 +27,5 @@ public class AmnesiacTransformationEvent extends TransformationEvent {
     public UUID getVillager() {
         return villager;
     }
+
 }
