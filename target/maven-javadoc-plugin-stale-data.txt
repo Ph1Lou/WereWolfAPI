@@ -1,0 +1,19 @@
+cmd.exe
+/X
+/C
+""C:\Program Files\AdoptOpenJDK\jdk-8.0.242.08-hotspot\jre\..\bin\javadoc.exe" @options @argfile"
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\allclasses-frame.html = 1591178400003
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\allclasses-noframe.html = 1591178400043
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\argfile = 1591178386568
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\constant-values.html = 1591178395065
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\deprecated-list.html = 1591178399951
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\help-doc.html = 1591178400181
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\index-all.html = 1591178399882
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\index.html = 1591178400062
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\options = 1591178386562
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\overview-frame.html = 1591178394437
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\overview-summary.html = 1591178400112
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\overview-tree.html = 1591178399794
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\package-list = 1591178394437
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\script.js = 1591178400233
+C:\Users\philj\IdeaProjects\pluginlgapi\target\apidocs\stylesheet.css = 1587766342132
