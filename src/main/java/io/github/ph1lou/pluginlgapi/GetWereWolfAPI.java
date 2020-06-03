@@ -6,6 +6,10 @@ import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Ph1Lou
+ */
+
 public interface GetWereWolfAPI {
     WereWolfAPI getWereWolfAPI();
     Map<String,String> getExtraTexts();

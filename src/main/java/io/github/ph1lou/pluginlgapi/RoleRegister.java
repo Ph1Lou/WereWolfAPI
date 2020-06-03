@@ -6,6 +6,10 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Ph1Lou
+ */
+
 public class RoleRegister {
 
     GetWereWolfAPI api;

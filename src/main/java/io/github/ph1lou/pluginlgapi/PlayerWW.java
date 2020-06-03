@@ -10,6 +10,10 @@ import org.bukkit.scoreboard.Scoreboard;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * @author Ph1Lou
+ */
+
 public interface PlayerWW {
 
     void setItemDeath(ItemStack[] itemsDeath) ;
