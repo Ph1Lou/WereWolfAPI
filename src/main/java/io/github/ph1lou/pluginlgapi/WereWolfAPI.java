@@ -105,7 +105,7 @@ public interface WereWolfAPI {
     void stopGame();
 
     /**
-     * Get the game config
+     * Get the game configuration
      * @return ConfigWereWolfAPI
      */
 
