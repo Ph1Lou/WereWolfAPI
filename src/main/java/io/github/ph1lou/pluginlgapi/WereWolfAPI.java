@@ -8,6 +8,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -284,4 +285,8 @@ public interface WereWolfAPI {
     String updateArrow(Player player, Location target);
 
     Map<String,String> getLanguage();
+
+    Random getRandom();
+
+    UUID autoSelect(UUID playerUUID);
 }
