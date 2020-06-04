@@ -3,7 +3,6 @@ package io.github.ph1lou.pluginlgapi.events;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,7 +35,8 @@ public class SisterDeathEvent extends Event {
     public List<UUID> getAllSisters() {
         return allSisters;
     }
-    @Nullable
+
+
     public UUID getKiller() {
         return killer;
     }
