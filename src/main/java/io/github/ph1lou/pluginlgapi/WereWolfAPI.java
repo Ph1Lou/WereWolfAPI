@@ -282,4 +282,6 @@ public interface WereWolfAPI {
      */
 
     String updateArrow(Player player, Location target);
+
+    Map<String,String> getLanguage();
 }

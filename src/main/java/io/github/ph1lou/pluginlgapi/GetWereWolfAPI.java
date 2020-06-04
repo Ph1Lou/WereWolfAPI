@@ -12,7 +12,6 @@ import java.util.Map;
 
 public interface GetWereWolfAPI {
     WereWolfAPI getWereWolfAPI();
+    List<RoleRegister> getRegisterRoles();
     Map<String,String> getExtraTexts();
-    Map<String, Constructor<? extends Roles>> getRegisterRoles();
-    Map<String, List<String>> getExtraLore();
 }
