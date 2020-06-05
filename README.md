@@ -36,9 +36,7 @@ Dans votre Pom :
 
 # Numero de version ici :
 
-```
 <https://jitpack.io/#Ph1Lou/pluginlgapi>
-```
 
 ### Premiers pas
 
@@ -94,9 +92,9 @@ Vous pouvez maintenant travailler avec votre classe. Vous pouvez écouter tous l
 Je vous conseille de copié coller les fonctions de la classe du rôle exemple pour ne pas avoir à y refaire.
 
 # Rôle Exemple
-```
-https://github.com/Ph1Lou/addRoleExample
-```
+
+<https://github.com/Ph1Lou/addRoleExample>
+
 
 
 ### Pour enregistrer vos rôles
