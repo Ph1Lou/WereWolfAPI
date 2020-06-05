@@ -37,7 +37,7 @@ Dans votre Pom :
 # Numero de version ici :
 
 ```
-https://jitpack.io/#Ph1Lou/pluginlgapi
+<https://jitpack.io/#Ph1Lou/pluginlgapi>
 ```
 
 ### Premiers pas
