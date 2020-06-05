@@ -19,20 +19,18 @@ Dans votre Pom :
 
 ``
 <repositories>
-		<repository>
+	<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+	</repository>
+</repositories>
  
  
-
-	<dependency>
-	    <groupId>com.github.Ph1Lou</groupId>
-	    <artifactId>pluginlgapi</artifactId>
-	    <version>Tag</version>
-	</dependency>
-
+<dependency>
+	<groupId>com.github.Ph1Lou</groupId>
+	<artifactId>pluginlgapi</artifactId>
+	<version>Tag</version>
+</dependency>
 
 ``
 
