@@ -1,21 +1,16 @@
 package io.github.ph1lou.pluginlgapi.events;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class BeginSniffEvent extends Event {
+public class BeginSniffEvent extends SelectionEvent {
 
-    private final UUID playerUUID;
-    private final UUID sniffPlayerUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public BeginSniffEvent(UUID playerUUID, UUID sniffPlayerUUID) {
-        this.playerUUID =playerUUID;
-        this.sniffPlayerUUID = sniffPlayerUUID;
+        super(playerUUID,sniffPlayerUUID);
     }
-
 
     @Override
     public HandlerList getHandlers() {
@@ -26,11 +21,4 @@ public class BeginSniffEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
-    }
-
-    public UUID getSniffPlayerUUID() {
-        return sniffPlayerUUID;
-    }
 }

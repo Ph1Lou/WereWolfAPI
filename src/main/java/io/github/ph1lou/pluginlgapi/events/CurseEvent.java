@@ -1,20 +1,15 @@
 package io.github.ph1lou.pluginlgapi.events;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class CurseEvent extends Event {
-
-    private final UUID playerUUID;
-    private final UUID targetUUID;
+public class CurseEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public CurseEvent(UUID playerUUID, UUID targetUUID){
-        this.playerUUID =playerUUID;
-        this.targetUUID =targetUUID;
+        super(playerUUID,targetUUID);
     }
 
     @Override
@@ -26,12 +21,5 @@ public class CurseEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
-    }
-
-    public UUID getTargetUUID() {
-        return targetUUID;
-    }
 }
 

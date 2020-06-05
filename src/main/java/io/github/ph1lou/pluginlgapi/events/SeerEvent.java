@@ -1,20 +1,17 @@
 package io.github.ph1lou.pluginlgapi.events;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class SeerEvent extends Event {
+public class SeerEvent extends SelectionEvent {
 
-    private final UUID playerUUID;
-    private final UUID targetUUID;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public SeerEvent(UUID playerUUID, UUID targetUUID){
-        this.playerUUID =playerUUID;
-        this.targetUUID =targetUUID;
+        super(playerUUID,targetUUID);
+
     }
 
     @Override
@@ -26,12 +23,5 @@ public class SeerEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
-    }
-
-    public UUID getTargetUUID() {
-        return targetUUID;
-    }
 }
 

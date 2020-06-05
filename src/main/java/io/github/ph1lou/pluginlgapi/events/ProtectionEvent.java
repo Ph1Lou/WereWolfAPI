@@ -5,16 +5,13 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ProtectionEvent extends Event {
-
-    private final UUID playerUUID;
-    private final UUID targetUUID;
+public class ProtectionEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public ProtectionEvent(UUID playerUUID, UUID targetUUID){
-        this.playerUUID =playerUUID;
-        this.targetUUID =targetUUID;
+        super(playerUUID,targetUUID);
+
     }
 
     @Override
@@ -26,12 +23,5 @@ public class ProtectionEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
-    }
-
-    public UUID getTargetUUID() {
-        return targetUUID;
-    }
 }
 

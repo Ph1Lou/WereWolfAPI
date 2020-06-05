@@ -1,14 +1,16 @@
 package io.github.ph1lou.pluginlgapi.events;
 
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class TransformationEvent extends Event {
+public class TransformationEvent extends Event implements Cancellable {
 
     private final UUID uuid;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private boolean cancel =false;
 
     public TransformationEvent(UUID uuid){
         this.uuid=uuid;
@@ -25,5 +27,15 @@ public class TransformationEvent extends Event {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean b) {
+        this.cancel=b;
     }
 }

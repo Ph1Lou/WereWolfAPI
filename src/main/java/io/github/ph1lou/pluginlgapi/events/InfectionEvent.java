@@ -7,9 +7,11 @@ import java.util.UUID;
 public class InfectionEvent extends ResurrectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final UUID infectionUUID;
 
-    public InfectionEvent(UUID playerUUID) {
+    public InfectionEvent(UUID playerUUID, UUID infectionUUID) {
         super(playerUUID);
+        this.infectionUUID = infectionUUID;
     }
 
     @Override
@@ -21,4 +23,7 @@ public class InfectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
+    public UUID getInfectionUUID() {
+        return infectionUUID;
+    }
 }

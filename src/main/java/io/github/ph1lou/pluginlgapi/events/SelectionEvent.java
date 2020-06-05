@@ -6,16 +6,18 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class ResurrectionEvent extends Event implements Cancellable {
+public class SelectionEvent extends Event implements Cancellable {
 
     private final UUID playerUUID;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final UUID targetUUID;
     private boolean cancel=false;
 
-    public ResurrectionEvent(UUID playerUUID) {
-        this.playerUUID =playerUUID;
-    }
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
 
+    public SelectionEvent(UUID playerUUID, UUID targetUUID){
+        this.playerUUID =playerUUID;
+        this.targetUUID =targetUUID;
+    }
 
     @Override
     public HandlerList getHandlers() {
@@ -30,6 +32,10 @@ public class ResurrectionEvent extends Event implements Cancellable {
         return playerUUID;
     }
 
+    public UUID getTargetUUID() {
+        return targetUUID;
+    }
+
     @Override
     public boolean isCancelled() {
         return cancel;
@@ -40,3 +46,4 @@ public class ResurrectionEvent extends Event implements Cancellable {
         this.cancel=b;
     }
 }
+
