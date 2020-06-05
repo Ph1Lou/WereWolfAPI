@@ -50,6 +50,35 @@ ww.loadTranslation(this,"fr");
 ```
 Ici mon fichier de langue s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet
 
+### Pour créer vos rôles
+
+## 1ère étape 
+
+créez une nouvelle classe, elle devra implémenter Roles, Cloneable et Listener
+```
+public class RoleExample implements Roles, Listener,Cloneable {
+```
+
+## 2ème étape
+
+le constructeur devra obligatoirement être de la forme suivante :
+ 
+```
+public RoleExample(GetWereWolfAPI main, WereWolfAPI game, UUID uuid) 
+```
+
+## 3ème étape
+
+Vous pouvez maintenant travailler avec votre classe. Vous pouvez écouter tous les listeners spigot + ceux de l'api
+
+Je vous conseille de copié coller les fonctions de la classe du rôle exemple pour ne pas avoir à y refaire.
+
+# Rôle Exemple
+```
+https://github.com/Ph1Lou/addRoleExample
+```
+
+
 ### Pour enregistrer vos rôles
 
 ## 1ère étape
@@ -82,10 +111,7 @@ Votre clef doit correspondre à votre fichier de langue , dans le cas ci dessus 
 ```
 
 
-# Rôle Exemple
-```
-https://github.com/Ph1Lou/addRoleExample
-```
+
 
 ## Authors
 
