@@ -89,7 +89,7 @@ public RoleExample(GetWereWolfAPI main, WereWolfAPI game, UUID uuid)
 
 Vous pouvez maintenant travailler avec votre classe. Vous pouvez écouter tous les listeners spigot + ceux de l'api
 
-Je vous conseille de copié coller les fonctions de la classe du rôle exemple pour ne pas avoir à y refaire.
+Je vous conseille de copier coller les fonctions de la classe du rôle exemple pour ne pas avoir à y refaire.
 
 # Rôle Exemple
 
