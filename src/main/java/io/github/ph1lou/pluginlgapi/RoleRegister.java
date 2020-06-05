@@ -6,6 +6,7 @@ import io.github.ph1lou.pluginlgapi.rolesattributs.Roles;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Ph1Lou
@@ -19,25 +20,17 @@ public class RoleRegister {
 
     String key;
 
-    String name="";
-
     List<String> lore=new ArrayList<>();
 
-    Constructor<? extends Roles> constructors= null;
+    Constructor constructors= null;
 
     public RoleRegister(GetWereWolfAPI api, String key) {
         this.api= api;
         this.key=key;
     }
 
-    public RoleRegister registerRole(Constructor<? extends Roles> constructors) {
-        this.constructors=constructors;
-        return this;
-    }
-
-    public RoleRegister setName(String name){
-        this.name=name;
-        api.getExtraTexts().put(key,name);
+    public RoleRegister registerRole(Class roleClass) throws NoSuchMethodException {
+        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class);
         return this;
     }
 

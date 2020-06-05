@@ -5,13 +5,13 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class CitizenCancelVoteEvent extends Event {
+public class CancelVoteEvent extends Event {
 
     private final UUID playerUUID;
     private final UUID voteUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public CitizenCancelVoteEvent(UUID voterUUID, UUID voteUUID){
+    public CancelVoteEvent(UUID voterUUID, UUID voteUUID){
         this.playerUUID =voterUUID;
         this.voteUUID =voteUUID;
     }

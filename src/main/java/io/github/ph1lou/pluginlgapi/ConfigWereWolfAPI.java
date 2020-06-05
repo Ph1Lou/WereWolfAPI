@@ -122,4 +122,17 @@ public interface ConfigWereWolfAPI {
 
      Map<ScenarioLG, Boolean> getScenarioValues();
 
+     int getAmnesiacLoverSize();
+     void setAmnesiacLoverSize(int amnesiacLoverSize);
+
+     int getCursedLoverSize();
+
+     void setCursedLoverSize(int cursedLoverSize);
+
+     int getLoverSize();
+
+     void setLoverSize(int loverSize);
+
+     void getConfig(WereWolfAPI api, String configName);
+
 }

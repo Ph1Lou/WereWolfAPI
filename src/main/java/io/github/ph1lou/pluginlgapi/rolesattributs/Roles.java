@@ -1,6 +1,7 @@
 package io.github.ph1lou.pluginlgapi.rolesattributs;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.github.ph1lou.pluginlgapi.enumlg.Camp;
 
 import org.bukkit.entity.Player;
@@ -18,6 +19,8 @@ public interface Roles {
     String getDescription();
 
     String getDisplay();
+
+    Boolean isDisplay(String key);
 
     UUID getPlayerUUID();
 

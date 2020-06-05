@@ -289,4 +289,19 @@ public interface WereWolfAPI {
     Random getRandom();
 
     UUID autoSelect(UUID playerUUID);
+
+    Vote getVote();
+
+    List<List<UUID>> getLoversRange();
+
+    List<List<UUID>> getAmnesiacLoversRange();
+
+    List<List<UUID>> getCursedLoversRange();
+
+    void updateNameTag();
+
+    void setRoleSize(int roleSize);
+
+    int getRoleSize();
+
 }
