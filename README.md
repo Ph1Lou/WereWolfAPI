@@ -62,9 +62,9 @@ ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("pluginLG");
 try {
     RoleRegister exampleRole = new RoleRegister(ww,"werewolf.role.role_example.display").registerRole(RoleExample.class);
     exampleRole.setLore(Arrays.asList("§fRole Example","§fFait par §bPh1Lou")).addCategory(Category.ADDONS).create();
-    } catch (NoSuchMethodException e) {
-        e.printStackTrace();  
-    }               
+} catch (NoSuchMethodException e) {
+    e.printStackTrace();  
+}               
 ```
 ## 2ème étape
 
