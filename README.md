@@ -17,7 +17,7 @@ Vous aurez besoin du plugin lg uhc en version snapshot 1.15 dernière version en
 
 Dans votre Pom :
 
-``
+```
 <repositories>
 	<repository>
 		    <id>jitpack.io</id>
@@ -32,7 +32,7 @@ Dans votre Pom :
 	<version>Tag</version>
 </dependency>
 
-``
+```
 
 # Numero de version ici :
 
