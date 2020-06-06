@@ -9,4 +9,6 @@ public interface AngelRole {
     AngelForm getChoice();
 
     void setChoice(AngelForm choice);
+
+
 }
