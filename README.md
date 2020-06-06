@@ -72,24 +72,27 @@ Ici mon fichier de langue s'appelle fr.json. Il doit être stocké dans le dossi
 
 ## 1ère étape 
 
-créez une nouvelle classe, elle devra implémenter Roles, Cloneable et Listener
+créez une nouvelle classe, elle devra extends de RolesImpl (ou RoleVillage, RoleNeutral, RoleWereWolf ou RoleWithSelection... en fonction du camp de votre Rôle)
 ```
-public class RoleExample implements Roles, Listener,Cloneable {
+public class RoleExample extends RolesImpl {
 ```
 
 ## 2ème étape
 
-le constructeur devra obligatoirement être de la forme suivante :
+dans le dossier ressource du plugin créer un fichier stuffMeetUp.yml et stuffRole.yml
  
+Puis dans le onEnable
 ```
-public RoleExample(GetWereWolfAPI main, WereWolfAPI game, UUID uuid) 
+ww.getExtraRoleStuff().add(this);
 ```
+
+Cela permet de gérer le Stuff du rôle
 
 ## 3ème étape
 
 Vous pouvez maintenant travailler avec votre classe. Vous pouvez écouter tous les listeners spigot + ceux de l'api
 
-Je vous conseille de copier coller les fonctions de la classe du rôle exemple pour ne pas avoir à y refaire.
+Je vous conseille de lire la documentation pour découvrir tous les events disponibles.
 
 # Rôle Exemple
 
@@ -107,7 +110,7 @@ Remarque : vos rôles ne pourront être enregistrés que lorsque le plugin s'ini
 ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("pluginLG");
 
 try {
-    RoleRegister exampleRole = new RoleRegister(ww,"werewolf.role.role_example.display").registerRole(RoleExample.class);
+    RoleRegister exampleRole = new RoleRegister(this,ww,"werewolf.role.role_example.display").registerRole(RoleExample.class);
     exampleRole.setLore(Arrays.asList("§fRole Example","§fFait par §bPh1Lou")).addCategory(Category.ADDONS).create();
 } catch (NoSuchMethodException e) {
     e.printStackTrace();  
@@ -128,7 +131,22 @@ Votre clef doit correspondre à votre fichier de langue fr.json dans le dossier 
 }
 ```
 
+## 3ème étape
 
+Pour enregistrer du stuff
+Dans vos .yml mettez :
+
+```
+"werewolf.role.protector.display":
+  '0':
+    ==: org.bukkit.inventory.ItemStack
+    type: POTION
+    damage: 16389
+    amount: 3
+ '1': etc...
+```
+
+le StuffRole sera chargé par défault et le MeetUp lors de l'appuie sur le bouton MeetUp dans le Menu
 
 
 ## Authors
