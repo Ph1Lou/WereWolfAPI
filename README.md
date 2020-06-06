@@ -115,7 +115,7 @@ try {
 ```
 ## 2ème étape
 
-Votre clef doit correspondre à votre fichier de langue , dans le cas ci dessus :
+Votre clef doit correspondre à votre fichier de langue fr.json dans le dossier ressource , dans le cas ci dessus :
 ```
 {
   "werewolf": {
