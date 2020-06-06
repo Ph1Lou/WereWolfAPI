@@ -2,6 +2,7 @@ package io.github.ph1lou.pluginlgapi;
 
 import io.github.ph1lou.pluginlgapi.enumlg.Category;
 import io.github.ph1lou.pluginlgapi.rolesattributs.Roles;
+import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -20,11 +21,18 @@ public class RoleRegister {
 
     String key;
 
+    Plugin plugin;
     List<String> lore=new ArrayList<>();
 
     Constructor constructors= null;
 
-    public RoleRegister(GetWereWolfAPI api, String key) {
+
+    public Plugin getPlugin() {
+        return plugin;
+    }
+
+    public RoleRegister(Plugin plugin,GetWereWolfAPI api, String key) {
+        this.plugin=plugin;
         this.api= api;
         this.key=key;
     }
