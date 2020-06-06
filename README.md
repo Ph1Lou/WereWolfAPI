@@ -40,8 +40,9 @@ Dans votre Pom :
 
 ### Premiers pas
 
-Dans le plugin.yml de votre plugin, rajoutez la ligne :
+Dans le plugin.yml de votre plugin, rajoutez les lignes :
 ```
+load: STARTUP
 depend : [pluginLG]
 ```
 
