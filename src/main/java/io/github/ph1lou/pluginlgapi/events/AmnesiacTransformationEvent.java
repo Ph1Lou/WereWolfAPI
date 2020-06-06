@@ -4,7 +4,7 @@ import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class AmnesiacTransformationEvent extends TransformationEvent {
+public class AmnesiacTransformationEvent extends NewWereWolfEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 

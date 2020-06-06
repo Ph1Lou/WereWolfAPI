@@ -1,17 +1,16 @@
 package io.github.ph1lou.pluginlgapi.events;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import java.util.UUID;
 
-public class NewWereWolfEvent extends Event {
+public class NewWereWolfEvent extends TransformationEvent {
 
-    private final UUID uuid;
+    private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public NewWereWolfEvent(UUID uuid){
-        this.uuid=uuid;
+        super(uuid);
     }
 
     @Override
@@ -23,7 +22,13 @@ public class NewWereWolfEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    @Override
+    public boolean isCancelled() {
+        return cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean b) {
+        this.cancel=b;
     }
 }

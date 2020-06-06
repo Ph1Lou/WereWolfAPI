@@ -119,9 +119,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             player.setScoreboard(game.getWereWolfScoreBoard());
         }
     
-        @EventHandler
+        @EventHandler(priority = EventPriority.HIGH)
         public void onNewWereWolf(NewWereWolfEvent event) {
-    
+
+            if(event.isCancelled()) return;
+
             PlayerWW plg = game.getPlayersWW().get(uuid);
     
             if(uuid.equals(event.getUuid())){
