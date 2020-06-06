@@ -150,6 +150,20 @@ Dans vos .yml mettez :
 le StuffRole sera chargé par défault et le MeetUp lors de l'appuie sur le bouton MeetUp dans le Menu
 
 
+### Pour enregistrer une commande
+
+## 1ère étape créer une classe Command qui implémente Commands 
+```
+public class Comman implements Commands 
+```
+
+## 2ème étape
+
+l'enregistrer dans le onEnable
+```
+ww.getListCommands().put("macommande",new Command(ww));
+```
+
 ## Authors
 
 * **Ph1Lou* - *Initial work* - [PurpleBooth](https://github.com/Ph1Lou)
