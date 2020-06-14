@@ -304,4 +304,6 @@ public interface WereWolfAPI {
 
     int getRoleSize();
 
+    StuffManager getStuffs();
+
 }
