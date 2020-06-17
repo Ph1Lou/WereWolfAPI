@@ -18,5 +18,5 @@ public interface GetWereWolfAPI {
     void loadTranslation(Plugin plugin, String defaultLang);
     Map<String, Commands> getListCommands();
     Map<String, Commands> getListAdminCommands();
-    List<Plugin> getExtraRoleStuff();
+    List<Plugin> getAddonsList();
 }
