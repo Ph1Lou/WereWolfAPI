@@ -4,7 +4,6 @@ import io.github.ph1lou.pluginlgapi.GetWereWolfAPI;
 import io.github.ph1lou.pluginlgapi.WereWolfAPI;
 import io.github.ph1lou.pluginlgapi.enumlg.State;
 import io.github.ph1lou.pluginlgapi.events.SelectionEndEvent;
-import io.github.ph1lou.pluginlgapi.rolesattributs.Power;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

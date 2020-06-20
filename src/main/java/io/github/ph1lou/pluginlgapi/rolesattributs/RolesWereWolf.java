@@ -2,7 +2,6 @@ package io.github.ph1lou.pluginlgapi.rolesattributs;
 
 import io.github.ph1lou.pluginlgapi.GetWereWolfAPI;
 import io.github.ph1lou.pluginlgapi.WereWolfAPI;
-import io.github.ph1lou.pluginlgapi.enumlg.Camp;
 import io.github.ph1lou.pluginlgapi.enumlg.Day;
 import io.github.ph1lou.pluginlgapi.enumlg.State;
 import io.github.ph1lou.pluginlgapi.events.DayEvent;
@@ -20,7 +19,6 @@ public abstract class RolesWereWolf extends RolesImpl {
 
     public RolesWereWolf(GetWereWolfAPI main, WereWolfAPI game, UUID uuid) {
         super(main,game, uuid);
-        setCamp(Camp.WEREWOLF);
     }
 
     @EventHandler
@@ -63,8 +61,8 @@ public abstract class RolesWereWolf extends RolesImpl {
 
 
     @Override
-    public void recoverPower(Player player) {
-
+    public boolean isNeutral() {
+        return false;
     }
 
     @Override

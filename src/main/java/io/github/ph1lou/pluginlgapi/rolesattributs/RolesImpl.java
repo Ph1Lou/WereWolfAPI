@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
@@ -22,7 +23,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     
         public final WereWolfAPI game;
         public final GetWereWolfAPI main;
-        private Camp camp = Camp.VILLAGER;
         private UUID uuid;
         private Boolean infected = false;
     
@@ -31,21 +31,60 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             this.main = main;
             this.uuid=uuid;
         }
-    
-    
-        @Override
-        public void setCamp(Camp camp) {
-            this.camp=camp;
-        }
-    
+
+
         @Override
         public boolean isCamp(Camp camp) {
-            return(this.camp.equals(camp));
+            return(getCamp().equals(camp));
         }
-    
-        @Override
+
+    @Override
+    public Player recoverPower() {
+
+        if (Bukkit.getPlayer(uuid)==null) return null;
+
+        Player player = Bukkit.getPlayer(uuid);
+        PlayerWW plg = game.getPlayersWW().get(uuid);
+        plg.setKit(true);
+
+        player.performCommand("ww role");
+        player.sendMessage(game.translate("werewolf.announcement.review_role"));
+
+        recoverPotionEffect(player);
+
+        if(!game.getStuffs().getStuffRoles().containsKey(getDisplay())){
+            Bukkit.getConsoleSender().sendMessage("[plugin lg] invalid plugin structure");
+            return player;
+        }
+
+        for(ItemStack i:game.getStuffs().getStuffRoles().get(plg.getRole().getDisplay())) {
+
+            if(player.getInventory().firstEmpty()==-1) {
+                player.getWorld().dropItem(player.getLocation(),i);
+            }
+            else {
+                player.getInventory().addItem(i);
+                player.updateInventory();
+            }
+        }
+
+        return player;
+    }
+
+    @Override
         public Camp getCamp() {
-            return(this.camp);
+
+            Camp camp;
+
+            if(isNeutral()){
+                camp=Camp.NEUTRAL;
+            }
+            else if(isWereWolf()){
+                camp=Camp.WEREWOLF;
+            }
+            else camp = Camp.VILLAGER;
+
+            return camp;
         }
     
         @Override
@@ -64,7 +103,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         }
     
         @Override
-        public Boolean isDisplay(String s) {
+        public boolean isDisplay(String s) {
             return s.equals(this.getDisplay());
         }
     
@@ -128,8 +167,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     
             if(uuid.equals(event.getUuid())){
     
-                setCamp(Camp.WEREWOLF);
-    
                 if (game.getConfig().getTimerValues().get(TimerLG.WEREWOLF_LIST) < 0) {
     
                     Team team=game.getWereWolfScoreBoard().getTeam(plg.getName());
@@ -189,7 +226,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         }
     
         @Override
-        public Boolean getInfected() {
+        public boolean getInfected() {
             return infected;
         }
     

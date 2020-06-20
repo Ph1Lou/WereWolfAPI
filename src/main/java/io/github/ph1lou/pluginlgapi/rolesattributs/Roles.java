@@ -10,17 +10,15 @@ import java.util.UUID;
 
 public interface Roles {
 
-    void setCamp(Camp camp);
-
-    boolean isCamp(Camp camp);
-
-    Camp getCamp();
-
     String getDescription();
 
     String getDisplay();
 
-    Boolean isDisplay(String key);
+    boolean isDisplay(String key);
+
+    boolean isCamp(Camp camp);
+
+    Camp getCamp();
 
     UUID getPlayerUUID();
 
@@ -28,14 +26,15 @@ public interface Roles {
 
     void stolen(UUID uuid);
 
-    void recoverPower(Player player);
+    Player recoverPower();
 
     void recoverPotionEffect(Player player);
 
     boolean isWereWolf();
 
-    Boolean getInfected();
+    boolean getInfected();
 
+    boolean isNeutral();
 
     void setInfected(Boolean infected);
 

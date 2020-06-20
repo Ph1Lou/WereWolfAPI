@@ -13,7 +13,8 @@ public abstract class RolesVillage extends RolesImpl {
     }
 
     @Override
-    public void recoverPower(Player player) {
+    public boolean isNeutral() {
+        return false;
     }
 
     @Override
