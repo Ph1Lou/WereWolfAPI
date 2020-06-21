@@ -49,7 +49,7 @@ depend : [pluginLG]
 Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premier objet de l'API
 
 ```
-GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("pluginLG");
+GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWolfPlugin");
 ```
 
 ### Pour enregistrer vos textes en Nested Json pour y accéder depuis le WereWolfAPI#translate
@@ -84,7 +84,7 @@ dans le dossier ressource du plugin créer un fichier stuffMeetUp.yml et stuffRo
  
 Puis dans le onEnable
 ```
-ww.getExtraRoleStuff().add(this);
+ww.getAddonsList().add(this);
 ```
 
 Cela permet de gérer le Stuff du rôle
