@@ -13,6 +13,7 @@ public enum ToolLG {
 	POLYGAMY(false, "werewolf.menu.global.polygamy"),
 	COMPASS_MIDDLE(false, "werewolf.menu.global.compass_middle"),
 	SEER_EVERY_OTHER_DAY(false, "werewolf.menu.global.seer_every_other_day"),
+	PROXIMITY_CHAT(false,"werewolf.menu.global.proximity_chat"),
 	RED_NAME_TAG(true, "werewolf.menu.global.red_name_tag");
 	
 	
