@@ -216,13 +216,6 @@ public interface WereWolfAPI {
     void deleteMap();
 
     /**
-     * return the Werewolf Scoreboard
-     * @return Scoreboard
-     */
-
-    Scoreboard getWereWolfScoreBoard();
-
-    /**
      * return the Map of players uuid key with PlayerWW class
      * @return Map game's players
      */
