@@ -53,7 +53,6 @@ public abstract class RolesWereWolf extends RolesImpl {
 
     @Override
     public void recoverPotionEffect(Player player) {
-        super.recoverPotionEffect(player);
         player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
         if(game.isDay(Day.DAY)) return;
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1,false,false));

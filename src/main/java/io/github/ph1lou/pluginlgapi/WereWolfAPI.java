@@ -4,7 +4,6 @@ import io.github.ph1lou.pluginlgapi.enumlg.Day;
 import io.github.ph1lou.pluginlgapi.enumlg.StateLG;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
 import java.util.Map;
@@ -283,7 +282,7 @@ public interface WereWolfAPI {
 
     UUID autoSelect(UUID playerUUID);
 
-    Vote getVote();
+    VoteAPI getVote();
 
     List<List<UUID>> getLoversRange();
 

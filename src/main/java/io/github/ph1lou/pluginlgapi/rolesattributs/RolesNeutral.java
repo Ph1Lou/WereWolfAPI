@@ -13,11 +13,6 @@ public abstract class RolesNeutral extends RolesImpl {
     }
 
     @Override
-    public void recoverPotionEffect(Player player) {
-        super.recoverPotionEffect(player);
-    }
-
-    @Override
     public boolean isNeutral() {
         return !isWereWolf();
     }

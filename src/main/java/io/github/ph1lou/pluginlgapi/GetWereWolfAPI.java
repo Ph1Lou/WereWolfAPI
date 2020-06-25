@@ -19,4 +19,5 @@ public interface GetWereWolfAPI {
     Map<String, Commands> getListCommands();
     Map<String, Commands> getListAdminCommands();
     List<Plugin> getAddonsList();
+    List<ScenarioRegister> getRegisterScenarios();
 }

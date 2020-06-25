@@ -2,7 +2,6 @@ package io.github.ph1lou.pluginlgapi.rolesattributs;
 
 import io.github.ph1lou.pluginlgapi.GetWereWolfAPI;
 import io.github.ph1lou.pluginlgapi.WereWolfAPI;
-import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
@@ -15,10 +14,5 @@ public abstract class RolesVillage extends RolesImpl {
     @Override
     public boolean isNeutral() {
         return false;
-    }
-
-    @Override
-    public void recoverPotionEffect(Player player) {
-        super.recoverPotionEffect(player);
     }
 }
