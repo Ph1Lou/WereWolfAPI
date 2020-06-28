@@ -43,7 +43,7 @@ Dans votre Pom :
 Dans le plugin.yml de votre plugin, rajoutez les lignes :
 ```
 load: STARTUP
-depend : [pluginLG]
+depend : [WereWolfAPI]
 ```
 
 Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premier objet de l'API
