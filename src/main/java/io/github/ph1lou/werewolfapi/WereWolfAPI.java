@@ -246,7 +246,7 @@ public interface WereWolfAPI {
     /**
      * teleport the player around the world
      * @param playerUUID uuid of the player
-     * @param d integer between 0 and the players size who corresponds to the angle of the teleportation
+     * @param d angle in radian
      * @param message teleport message
      */
 
@@ -297,5 +297,7 @@ public interface WereWolfAPI {
     int getRoleSize();
 
     StuffManager getStuffs();
+
+    int getPlayerSize();
 
 }
