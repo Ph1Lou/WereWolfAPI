@@ -15,6 +15,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -153,6 +154,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
                 }
             }
         }
+
+        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main, game::updateNameTag, 10L);
     }
 
     @EventHandler
