@@ -28,7 +28,7 @@ Dans votre Pom :
  
 <dependency>
 	<groupId>com.github.Ph1Lou</groupId>
-	<artifactId>pluginlgapi</artifactId>
+	<artifactId>werewolfplugin</artifactId>
 	<version>Tag</version>
 </dependency>
 
@@ -54,20 +54,12 @@ GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWo
 
 ### Pour enregistrer vos textes en Nested Json pour y accéder depuis le WereWolfAPI#translate
 
-## 1ère étape
-
-Dans le dossier ressource crée un fichier config.yml avec 
-```
-lang : fr 
-```
-
-## 2ème étape
 
 Dans votre onEnable() :
 ```
 ww.loadTranslation(this,"fr");
 ```
-Ici mon fichier de langue s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet
+Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la lange demandé n'existe pas. Il peut y avoir plusieurs .json .
 
 ### Pour créer vos rôles
 
