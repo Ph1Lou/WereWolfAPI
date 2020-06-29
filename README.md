@@ -2,6 +2,9 @@
 
 Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 
+# Java-Doc
+<https://javadoc.jitpack.io/com/github/Ph1Lou/WereWolfAPI/master-SNAPSHOT/javadoc/>
+
 ## Getting Started
 
 Cette API a pour but d'être intégré dans un plugin tournant dans la même jvm que le plugin lg uhc. Cette API permet d'intéragir avec le plugin.
