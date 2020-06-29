@@ -2,6 +2,9 @@
 
 Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 
+# Java-Doc
+<https://javadoc.jitpack.io/com/github/Ph1Lou/WereWolfAPI/master-SNAPSHOT/javadoc/>
+
 ## Getting Started
 
 Cette API a pour but d'être intégré dans un plugin tournant dans la même jvm que le plugin lg uhc. Cette API permet d'intéragir avec le plugin.
@@ -28,15 +31,15 @@ Dans votre Pom :
  
 <dependency>
 	<groupId>com.github.Ph1Lou</groupId>
-	<artifactId>pluginlgapi</artifactId>
-	<version>Tag</version>
+	<artifactId>werewolfapi</artifactId>
+	<version>master-SNAPSHOT</version>
 </dependency>
 
 ```
 
 # Numero de version ici :
 
-<https://jitpack.io/#Ph1Lou/pluginlgapi>
+<https://javadoc.jitpack.io/#Ph1Lou/WereWolfAPI>
 
 ### Premiers pas
 
@@ -54,20 +57,12 @@ GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWo
 
 ### Pour enregistrer vos textes en Nested Json pour y accéder depuis le WereWolfAPI#translate
 
-## 1ère étape
-
-Dans le dossier ressource crée un fichier config.yml avec 
-```
-lang : fr 
-```
-
-## 2ème étape
 
 Dans votre onEnable() :
 ```
 ww.loadTranslation(this,"fr");
 ```
-Ici mon fichier de langue s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet
+Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la lange demandé n'existe pas. Il peut y avoir plusieurs .json .
 
 ### Pour créer vos rôles
 
@@ -108,7 +103,7 @@ Je vous conseille de lire la documentation pour découvrir tous les events dispo
 Remarque : vos rôles ne pourront être enregistrés que lorsque le plugin s'initialise (dans le onEnabled)
 
 ```
-ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("pluginLG");
+ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWolfPlugin");
 
 try {
     RoleRegister exampleRole = new RoleRegister(this,ww,"werewolf.role.role_example.display").registerRole(RoleExample.class);
