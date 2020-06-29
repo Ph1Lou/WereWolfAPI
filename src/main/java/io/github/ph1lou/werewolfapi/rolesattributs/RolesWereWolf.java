@@ -22,7 +22,7 @@ public abstract class RolesWereWolf extends RolesImpl {
     }
 
     @EventHandler
-    public void onNight(NightEvent event) {
+    public void onNightForWereWolf(NightEvent event) {
 
 
         if(!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)){
@@ -37,7 +37,7 @@ public abstract class RolesWereWolf extends RolesImpl {
     }
 
     @EventHandler
-    public void onDay(DayEvent event) {
+    public void onDayForWereWolf(DayEvent event) {
 
 
         if(!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)){
@@ -70,7 +70,7 @@ public abstract class RolesWereWolf extends RolesImpl {
     }
 
     @EventHandler
-    private void onPlayerDeath(PlayerDeathEvent event) {
+    private void onPlayerDeathForWereWolf(PlayerDeathEvent event) {
 
         if(event.getEntity() == null) return;
 

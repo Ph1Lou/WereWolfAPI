@@ -159,7 +159,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onPlayerDeath(PlayerDeathEvent event) {
+    private void onPlayerDeathForInfected(PlayerDeathEvent event) {
 
         if(!infected) return;
 
