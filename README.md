@@ -28,15 +28,15 @@ Dans votre Pom :
  
 <dependency>
 	<groupId>com.github.Ph1Lou</groupId>
-	<artifactId>werewolfplugin</artifactId>
-	<version>Tag</version>
+	<artifactId>werewolfapi</artifactId>
+	<version>master-SNAPSHOT</version>
 </dependency>
 
 ```
 
 # Numero de version ici :
 
-<https://jitpack.io/#Ph1Lou/pluginlgapi>
+<https://javadoc.jitpack.io/#Ph1Lou/WereWolfAPI>
 
 ### Premiers pas
 
@@ -100,7 +100,7 @@ Je vous conseille de lire la documentation pour découvrir tous les events dispo
 Remarque : vos rôles ne pourront être enregistrés que lorsque le plugin s'initialise (dans le onEnabled)
 
 ```
-ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("pluginLG");
+ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWolfPlugin");
 
 try {
     RoleRegister exampleRole = new RoleRegister(this,ww,"werewolf.role.role_example.display").registerRole(RoleExample.class);
