@@ -62,7 +62,7 @@ Dans votre onEnable() :
 ```
 ww.loadTranslation(this,"fr");
 ```
-Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la lange demandé n'existe pas. Il peut y avoir plusieurs .json .
+Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la langue demandée n'existe pas. Il peut y avoir plusieurs .json, mais il suffit de faire qu'un seul loadTranslation avec la langue par défault
 
 ### Pour créer vos rôles
 
