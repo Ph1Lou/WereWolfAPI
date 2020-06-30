@@ -10,7 +10,7 @@ Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 Cette API a pour but d'être intégré dans un plugin tournant dans la même jvm que le plugin lg uhc. Cette API permet d'intéragir avec le plugin.
 
 ### Prerequisites
-Vous aurez besoin du plugin lg uhc en version snapshot 1.15 dernière version en cours. Cette version est disponible sur mon discord en demandant le rôle Snapshot viewer.
+Vous aurez besoin du plugin lg uhc en version snapshot 1.5 dernière version en cours. Cette version est disponible sur mon discord en demandant le rôle Snapshot viewer.
 
 
 
@@ -46,8 +46,11 @@ Dans votre Pom :
 Dans le plugin.yml de votre plugin, rajoutez les lignes :
 ```
 load: STARTUP
-depend : [WereWolfAPI]
+depend : [WereWolfPlugin]
 ```
+le plugin WereWolfPlugin démarre aussi AU STARTUP (càd avant la génération du World) il faut donc charger l'addon lors de cette phase aussi.
+la 2èm ligne permet d'attendre que le plugin WereWolfPlugin se charge avant votre addon et éviter à l'addon de se charger si le plugin n'est pas présent.
+
 
 Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premier objet de l'API
 
@@ -62,7 +65,7 @@ Dans votre onEnable() :
 ```
 ww.loadTranslation(this,"fr");
 ```
-Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la lange demandé n'existe pas. Il peut y avoir plusieurs .json .
+Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la langue demandée n'existe pas. Il peut y avoir plusieurs .json, mais il suffit de faire qu'un seul loadTranslation avec la langue par défault
 
 ### Pour créer vos rôles
 
