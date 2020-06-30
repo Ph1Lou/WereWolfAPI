@@ -48,6 +48,9 @@ Dans le plugin.yml de votre plugin, rajoutez les lignes :
 load: STARTUP
 depend : [WereWolfPlugin]
 ```
+le plugin WereWolfPlugin démarre aussi AU STARTUP (càd avant la génération du World) il faut donc charger l'addon lors de cette phase aussi.
+la 2èm ligne permet d'attendre que le plugin WereWolfPlugin se charge avant votre addon et éviter à l'addon de se charger si le plugin n'est pas présent.
+
 
 Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premier objet de l'API
 
