@@ -18,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
@@ -77,6 +78,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return isNeutral()?Camp.NEUTRAL:isWereWolf()?Camp.WEREWOLF:Camp.VILLAGER;
     }
 
+    @Nullable
     @Override
     public UUID getPlayerUUID(){
         return uuid;
