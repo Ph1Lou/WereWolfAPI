@@ -1,6 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
@@ -13,14 +12,14 @@ import java.util.List;
 
 public class ScenarioRegister {
 
-    GetWereWolfAPI api;
+    final GetWereWolfAPI api;
 
-    String key;
+    final String key;
     boolean defaultValue = false;
-    Plugin plugin;
+    final Plugin plugin;
     List<String> lore=new ArrayList<>();
 
-    Constructor constructors= null;
+    Constructor<?> constructors= null;
 
 
     public Plugin getPlugin() {
@@ -33,7 +32,7 @@ public class ScenarioRegister {
         this.key=key;
     }
 
-    public ScenarioRegister registerScenario(Class scenarioClass) throws NoSuchMethodException {
+    public ScenarioRegister registerScenario(Class<?> scenarioClass) throws NoSuchMethodException {
         this.constructors=scenarioClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, String.class);
         return this;
     }
@@ -70,7 +69,7 @@ public class ScenarioRegister {
         return key;
     }
 
-    public Constructor<? extends Roles> getConstructors() {
+    public Constructor<?> getConstructors() {
         return constructors;
     }
 

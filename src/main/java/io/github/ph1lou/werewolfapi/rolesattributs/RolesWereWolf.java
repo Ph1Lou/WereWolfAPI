@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -29,10 +30,12 @@ public abstract class RolesWereWolf extends RolesImpl {
             return;
         }
 
-        if(Bukkit.getPlayer(getPlayerUUID())==null){
-            return;
-        }
+        if(getPlayerUUID()==null) return;
+
         Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
+
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1, false, false));
     }
 
@@ -44,15 +47,17 @@ public abstract class RolesWereWolf extends RolesImpl {
             return;
         }
 
-        if(Bukkit.getPlayer(getPlayerUUID())==null){
-            return;
-        }
+        if(getPlayerUUID()==null) return;
+
         Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
+
         player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
     @Override
-    public void recoverPotionEffect(Player player) {
+    public void recoverPotionEffect(@NotNull Player player) {
         player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
         if(game.isDay(Day.DAY)) return;
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1,false,false));
@@ -71,8 +76,6 @@ public abstract class RolesWereWolf extends RolesImpl {
 
     @EventHandler
     private void onPlayerDeathForWereWolf(PlayerDeathEvent event) {
-
-        if(event.getEntity() == null) return;
 
         if(event.getEntity().getKiller()==null) return;
 

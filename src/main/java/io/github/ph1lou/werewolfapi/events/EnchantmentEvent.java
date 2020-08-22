@@ -4,8 +4,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -26,6 +26,7 @@ public class EnchantmentEvent extends Event {
     }
 
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;

@@ -2,8 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.Day;
 import io.github.ph1lou.werewolfapi.enumlg.StateLG;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Map;

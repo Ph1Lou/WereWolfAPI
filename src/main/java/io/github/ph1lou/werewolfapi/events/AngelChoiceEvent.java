@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.events;
 import io.github.ph1lou.werewolfapi.enumlg.AngelForm;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ public class AngelChoiceEvent extends Event {
         this.choice = choice;
     }
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;

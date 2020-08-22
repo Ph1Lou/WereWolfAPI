@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class EnchantedEvent extends Event {
         this.playersUUID =playersUUID;
     }
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;

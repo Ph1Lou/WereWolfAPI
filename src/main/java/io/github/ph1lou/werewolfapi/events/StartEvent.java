@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.events;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
 public class StartEvent extends Event {
 
@@ -18,6 +19,7 @@ public class StartEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;

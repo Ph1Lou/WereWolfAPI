@@ -5,10 +5,10 @@ import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enumlg.Camp;
 import io.github.ph1lou.werewolfapi.enumlg.Day;
+import io.github.ph1lou.werewolfapi.enumlg.Sounds;
 import io.github.ph1lou.werewolfapi.enumlg.State;
 import io.github.ph1lou.werewolfapi.events.*;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -18,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -26,26 +27,30 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     
     public final WereWolfAPI game;
     public final GetWereWolfAPI main;
+
+    @NotNull
     private UUID uuid;
     private Boolean infected = false;
 
-    public RolesImpl(GetWereWolfAPI main, WereWolfAPI game, UUID uuid){
+    public RolesImpl(GetWereWolfAPI main, WereWolfAPI game, @NotNull UUID uuid){
         this.game=game;
         this.main = main;
         this.uuid=uuid;
     }
 
     @Override
-    public boolean isCamp(Camp camp) {
+    public boolean isCamp(@NotNull Camp camp) {
         return(getCamp().equals(camp));
     }
 
+    @Nullable
     @Override
     public Player recoverPower() {
 
-        if (Bukkit.getPlayer(uuid)==null) return null;
-
         Player player = Bukkit.getPlayer(uuid);
+
+        if (player==null) return null;
+
         PlayerWW plg = game.getPlayersWW().get(uuid);
         plg.setKit(true);
 
@@ -73,6 +78,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return player;
     }
 
+    @NotNull
     @Override
     public Camp getCamp() {
         return isNeutral()?Camp.NEUTRAL:isWereWolf()?Camp.WEREWOLF:Camp.VILLAGER;
@@ -85,12 +91,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public void setPlayerUUID(UUID uuid) {
+    public void setPlayerUUID(@NotNull UUID uuid) {
         this.uuid=uuid;
     }
 
     @Override
-    public void stolen(UUID uuid) {
+    public void stolen(@NotNull UUID uuid) {
     }
 
     @Override
@@ -118,11 +124,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!lg.isState(State.ALIVE)) return;
 
-        if (Bukkit.getPlayer(uuid) == null) return;
-
         Player player = Bukkit.getPlayer(uuid);
+
+        if (player == null) return;
+
         player.sendMessage(game.translate("werewolf.role.werewolf.see_others"));
-        player.playSound(player.getLocation(), Sound.WOLF_HOWL, 1, 20);
+        Sounds.WOLF_HOWL.play(player);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -134,11 +141,13 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!uuid.equals(event.getUuid())) return;
 
-        if(Bukkit.getPlayer(uuid)!=null) {
-            Player player = Bukkit.getPlayer(uuid);
+        Player player = Bukkit.getPlayer(uuid);
+
+        if(player!=null) {
+
             player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
             player.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
-            player.playSound(player.getLocation(), Sound.WOLF_HOWL, 1, 20);
+            Sounds.WOLF_HOWL.play(player);
             if (game.isDay(Day.NIGHT)) {
                 player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE,-1,false,false));
             }
@@ -148,10 +157,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             if(playerWW.getRole().isWereWolf()) {
                 if (plg.isState(State.ALIVE) ) {
                     UUID uuid1 = playerWW.getRole().getPlayerUUID();
-                    if (Bukkit.getPlayer(uuid1) != null) {
-                        Player lg1 = Bukkit.getPlayer(uuid1);
+                    Player lg1 = Bukkit.getPlayer(uuid1);
+
+                    if (lg1 != null) {
                         lg1.sendMessage(game.translate("werewolf.role.werewolf.new_werewolf"));
-                        lg1.playSound(lg1.getLocation(), Sound.WOLF_HOWL, 1, 20);
+                        Sounds.WOLF_HOWL.play(lg1);
                     }
                 }
             }
@@ -165,7 +175,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!infected) return;
 
-        if(event.getEntity() == null) return;
         if(event.getEntity().getKiller()==null) return;
         Player killer = event.getEntity().getKiller();
 
@@ -198,12 +207,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)) return;
 
-
-        if(Bukkit.getPlayer(getPlayerUUID())==null){
-            return;
-        }
+        if(getPlayerUUID()==null) return;
 
         Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
 
         player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
@@ -215,10 +223,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)) return;
 
-        if(Bukkit.getPlayer(getPlayerUUID())==null){
-            return;
-        }
+        if(getPlayerUUID()==null) return;
+
         Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1, false, false));
     }
@@ -236,7 +245,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public void recoverPotionEffect(Player player) {
+    public void recoverPotionEffect(@NotNull Player player) {
 
     }
 }

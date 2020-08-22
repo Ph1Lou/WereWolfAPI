@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.Category;
-import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
@@ -15,16 +14,16 @@ import java.util.UUID;
 
 public class RoleRegister {
 
-    GetWereWolfAPI api;
+    final GetWereWolfAPI api;
 
-    List<Category> categories = new ArrayList();
+    final List<Category> categories = new ArrayList<>();
 
-    String key;
+    final String key;
 
-    Plugin plugin;
+    final Plugin plugin;
     List<String> lore=new ArrayList<>();
 
-    Constructor constructors= null;
+    Constructor<?> constructors= null;
 
 
     public Plugin getPlugin() {
@@ -37,7 +36,7 @@ public class RoleRegister {
         this.key=key;
     }
 
-    public RoleRegister registerRole(Class roleClass) throws NoSuchMethodException {
+    public RoleRegister registerRole(Class<?> roleClass) throws NoSuchMethodException {
         this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class);
         return this;
     }
@@ -73,7 +72,7 @@ public class RoleRegister {
         return key;
     }
 
-    public Constructor<? extends Roles> getConstructors() {
+    public Constructor<?> getConstructors() {
         return constructors;
     }
 

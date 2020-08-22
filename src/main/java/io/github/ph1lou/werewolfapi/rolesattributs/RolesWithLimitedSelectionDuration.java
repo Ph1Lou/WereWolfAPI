@@ -28,15 +28,14 @@ public abstract class RolesWithLimitedSelectionDuration extends RolesVillage imp
 
         setPower(false);
 
-        if(Bukkit.getPlayer(getPlayerUUID())==null){
-            return;
-        }
+        if(getPlayerUUID()==null) return;
+
         Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
 
         player.sendMessage(game.translate("werewolf.check.end_selection"));
     }
-
-
 
     @Override
     public void setPower(Boolean power) {

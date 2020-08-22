@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -16,6 +17,7 @@ public class CancelVoteEvent extends Event {
         this.voteUUID =voteUUID;
     }
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;

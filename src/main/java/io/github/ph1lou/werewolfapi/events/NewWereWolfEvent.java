@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
@@ -13,6 +14,7 @@ public class NewWereWolfEvent extends TransformationEvent {
         super(uuid);
     }
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;
