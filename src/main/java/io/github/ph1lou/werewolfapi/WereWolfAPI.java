@@ -277,4 +277,6 @@ public interface WereWolfAPI {
 
     ScoreAPI getScore();
 
+    void deathStep1(UUID uuid);
+
 }
