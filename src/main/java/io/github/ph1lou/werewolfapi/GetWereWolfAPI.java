@@ -9,6 +9,8 @@ import java.util.Map;
  * @author Ph1Lou
  */
 
+@SuppressWarnings("unused")
+
 public interface GetWereWolfAPI {
     WereWolfAPI getWereWolfAPI();
     List<RoleRegister> getRegisterRoles();
@@ -18,4 +20,6 @@ public interface GetWereWolfAPI {
     Map<String, Commands> getListAdminCommands();
     List<Plugin> getAddonsList();
     List<ScenarioRegister> getRegisterScenarios();
+    List<ConfigRegister> getRegisterConfigs();
+    List<TimerRegister> getRegisterTimers();
 }

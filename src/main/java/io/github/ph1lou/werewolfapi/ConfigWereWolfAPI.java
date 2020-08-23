@@ -1,13 +1,12 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.enumlg.TimerLG;
-import io.github.ph1lou.werewolfapi.enumlg.ToolLG;
-
 import java.util.Map;
 
 /**
  * @author Ph1Lou
  */
+
+@SuppressWarnings("unused")
 
 public interface ConfigWereWolfAPI {
 
@@ -107,9 +106,9 @@ public interface ConfigWereWolfAPI {
 
      void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
 
-     Map<TimerLG, Integer> getTimerValues();
+     Map<String, Integer> getTimerValues();
 
-     Map<ToolLG, Boolean> getConfigValues();
+     Map<String, Boolean> getConfigValues();
 
      Map<String, Integer> getRoleCount();
 
@@ -127,5 +126,9 @@ public interface ConfigWereWolfAPI {
      void setLoverSize(int loverSize);
 
      void getConfig(WereWolfAPI api, String configName);
+
+     int getLimitDepthStrider();
+
+     void setLimitDepthStrider(int limitDepthRider);
 
 }
