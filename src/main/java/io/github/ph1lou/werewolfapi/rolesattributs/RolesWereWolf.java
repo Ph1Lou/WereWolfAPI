@@ -30,8 +30,6 @@ public abstract class RolesWereWolf extends RolesImpl {
             return;
         }
 
-        if(getPlayerUUID()==null) return;
-
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
         if(player==null) return;
@@ -46,8 +44,6 @@ public abstract class RolesWereWolf extends RolesImpl {
         if(!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)){
             return;
         }
-
-        if(getPlayerUUID()==null) return;
 
         Player player = Bukkit.getPlayer(getPlayerUUID());
 

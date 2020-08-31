@@ -84,7 +84,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return isNeutral()?Camp.NEUTRAL:isWereWolf()?Camp.WEREWOLF:Camp.VILLAGER;
     }
 
-    @Nullable
+    @NotNull
     @Override
     public UUID getPlayerUUID(){
         return uuid;
@@ -207,8 +207,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)) return;
 
-        if(getPlayerUUID()==null) return;
-
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
         if(player==null) return;
@@ -222,8 +220,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if (!getInfected()) return;
 
         if (!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)) return;
-
-        if(getPlayerUUID()==null) return;
 
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
