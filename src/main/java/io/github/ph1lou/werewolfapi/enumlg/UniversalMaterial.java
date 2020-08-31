@@ -116,7 +116,7 @@ public enum UniversalMaterial{
     PEONY("DOUBLE_PLANT", "PEONY", (short) 5),
     DEAD_BUSH,
     CARROT("CARROT_ITEM","CARROT"),
-    SIGN("SIGN_POST","SIGN"),
+    SIGN("SIGN_POST","OAK_SIGN"),
 
 
     WOODEN_PICKAXE("WOOD_PICKAXE", "WOODEN_PICKAXE"),
@@ -136,7 +136,7 @@ public enum UniversalMaterial{
     JUNGLE_LEAVES("LEAVES", "JUNGLE_LEAVES", (short) 3),
     ACACIA_LEAVES("LEAVES_2", "ACACIA_LEAVES", (short) 0),
     DARK_OAK_LEAVES("LEAVES_2", "DARK_OAK_LEAVES", (short) 1),
-
+    COMPARATOR("REDSTONE_COMPARATOR","COMPARATOR"),
     OAK_LOG("LOG", "OAK_LOG", (short) 0),
     SPRUCE_LOG("LOG", "SPRUCE_LOG", (short) 1),
     BIRCH_LOG("LOG", "BIRCH_LOG", (short) 2),

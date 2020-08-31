@@ -9,6 +9,11 @@ public abstract class Scenarios implements Listener {
     public final GetWereWolfAPI main;
     public final WereWolfAPI game;
     public final String scenarioID;
+
+    public boolean isRegister() {
+        return register;
+    }
+
     public boolean register = false;
 
     public Scenarios(GetWereWolfAPI main, WereWolfAPI game, String scenarioID) {
