@@ -53,7 +53,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         PlayerWW plg = game.getPlayersWW().get(uuid);
         plg.setKit(true);
-
+        Sounds.EXPLODE.play(player);
         player.performCommand("ww role");
         player.sendMessage(game.translate("werewolf.announcement.review_role"));
 
@@ -167,7 +167,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             }
         }
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main, game::updateNameTag, 10L);
+        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main,() -> Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent()), 10L);
     }
 
     @EventHandler

@@ -116,7 +116,7 @@ public enum UniversalMaterial{
     PEONY("DOUBLE_PLANT", "PEONY", (short) 5),
     DEAD_BUSH,
     CARROT("CARROT_ITEM","CARROT"),
-    SIGN("SIGN_POST","OAK_SIGN"),
+    SIGN("SIGN","OAK_SIGN"),
 
 
     WOODEN_PICKAXE("WOOD_PICKAXE", "WOODEN_PICKAXE"),

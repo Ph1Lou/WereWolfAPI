@@ -131,4 +131,71 @@ public interface ConfigWereWolfAPI {
 
      void setLimitDepthStrider(int limitDepthRider);
 
+     /**
+      * return true if the whitelist is on
+      * @return boolean
+      */
+
+     boolean isWhiteList();
+
+     /**
+      * change the status of the whitelist
+      * @param whiteList the desired status
+      */
+
+     void setWhiteList(boolean whiteList);
+
+     /**
+      * return the maximum of player accepted in the game
+      * @return int
+      */
+
+     int getPlayerMax();
+
+     /**
+      * Set the maximum number of players
+      * @param playerMax maximum number of players
+
+      */
+
+     void setPlayerMax(int playerMax);
+
+     /**
+      * return the spectator Mode of the game (0 : disable, 1 : for death players, 2: for all players)
+      * @return int
+      */
+
+     int getSpectatorMode();
+
+     /**
+      * change the status of the Spectator Mode
+      * @param spectatorMode the desired status (0 : disable, 1 : for death players, 2: for all players)
+      */
+
+     void setSpectatorMode(int spectatorMode);
+
+     /**
+      * return the Name of the Game
+      * @return String
+      */
+
+     String getGameName();
+
+     /**
+      * Set the name of the game
+      * @param name Name of the game
+      */
+
+     void setGameName(String name);
+
+     /**
+      * return the UUIDs of whitelistedPlayer
+      * @return List whitelisted players's UUID
+      */
+
+     String getTrollKey();
+
+
+     void setTrollKey(String trollKey);
+
 }
