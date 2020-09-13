@@ -114,4 +114,18 @@ public interface WereWolfAPI {
 
     ModerationManagerAPI getModerationManager();
 
+    /**
+     * return the Name of the Game
+     * @return String
+     */
+
+    String getGameName();
+
+    /**
+     * Set the name of the game
+     * @param name Name of the game
+     */
+
+    void setGameName(String name);
+
 }

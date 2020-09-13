@@ -42,6 +42,6 @@ public interface ScoreAPI {
 
     void actionBar(Player player);
 
-
+    int getTimer();
 
 }

@@ -5,14 +5,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class SeerEvent extends SelectionEvent {
+public class LibrarianGiveBackEvent extends SelectionEvent {
 
-    private String camp;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SeerEvent(UUID playerUUID, UUID targetUUID, String camp){
-        super(playerUUID,targetUUID);
-        this.camp=camp;
+    private String info;
+
+    public LibrarianGiveBackEvent(UUID playerUUID, UUID deliveryPlayerUUID, String info) {
+        super(playerUUID,deliveryPlayerUUID);
+        this.info=info;
     }
 
     @NotNull
@@ -25,13 +26,12 @@ public class SeerEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public String getCamp() {
-        return camp;
+    public String getInfo() {
+        return info;
     }
 
-    public void setCamp(String camp) {
-        this.camp = camp;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
 }
-

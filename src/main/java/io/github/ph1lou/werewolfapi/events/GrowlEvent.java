@@ -8,14 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.UUID;
 
-public class EnchantedEvent extends Event implements Cancellable {
+public class GrowlEvent extends Event implements Cancellable {
 
     private final UUID playerUUID;
     private final List<UUID> playersUUID;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public EnchantedEvent(UUID playerUUID, List<UUID> playersUUID){
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
+
+    public GrowlEvent(UUID playerUUID, List<UUID> playersUUID){
         this.playerUUID =playerUUID;
         this.playersUUID =playersUUID;
     }

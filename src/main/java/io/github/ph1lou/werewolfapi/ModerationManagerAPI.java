@@ -69,7 +69,10 @@ public interface ModerationManagerAPI {
 
     void removeModerator(UUID moderatorUUID);
 
-
+    /**
+     * return the UUIDs of whitelistedPlayer
+     * @return List whitelisted players's UUID
+     */
 
     List<UUID> getWhiteListedPlayers();
 

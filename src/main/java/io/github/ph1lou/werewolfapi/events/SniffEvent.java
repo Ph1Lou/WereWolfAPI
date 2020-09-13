@@ -1,21 +1,18 @@
 package io.github.ph1lou.werewolfapi.events;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class SniffEvent extends Event {
+public class SniffEvent extends SelectionEvent {
 
-    private final UUID playerUUID;
-    private final UUID sniffPlayerUUID;
-    private final boolean isWereWolf;
+
+    private boolean isWereWolf;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public SniffEvent(UUID playerUUID, UUID sniffPlayerUUID, boolean isWereWolf) {
-        this.playerUUID =playerUUID;
-        this.sniffPlayerUUID = sniffPlayerUUID;
+        super(playerUUID,sniffPlayerUUID);
         this.isWereWolf = isWereWolf;
     }
 
@@ -30,15 +27,12 @@ public class SniffEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
-    }
-
-    public UUID getSniffPlayerUUID() {
-        return sniffPlayerUUID;
-    }
 
     public boolean isWereWolf() {
         return isWereWolf;
+    }
+
+    public void setWereWolf(boolean wereWolf) {
+        isWereWolf = wereWolf;
     }
 }

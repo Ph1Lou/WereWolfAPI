@@ -174,24 +174,6 @@ public interface ConfigWereWolfAPI {
 
      void setSpectatorMode(int spectatorMode);
 
-     /**
-      * return the Name of the Game
-      * @return String
-      */
-
-     String getGameName();
-
-     /**
-      * Set the name of the game
-      * @param name Name of the game
-      */
-
-     void setGameName(String name);
-
-     /**
-      * return the UUIDs of whitelistedPlayer
-      * @return List whitelisted players's UUID
-      */
 
      String getTrollKey();
 

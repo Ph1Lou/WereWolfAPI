@@ -10,8 +10,11 @@ public class ElderResurrectionEvent extends ResurrectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ElderResurrectionEvent(UUID playerUUID) {
+    private boolean killerIsVillager;
+
+    public ElderResurrectionEvent(UUID playerUUID, boolean killerIsVillager) {
         super(playerUUID);
+        this.killerIsVillager = killerIsVillager;
     }
 
 
@@ -23,6 +26,14 @@ public class ElderResurrectionEvent extends ResurrectionEvent {
 
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
+    }
+
+    public boolean isKillerAVillager() {
+        return killerIsVillager;
+    }
+
+    public void setKillerAVillager(boolean killerIsVillager) {
+        this.killerIsVillager = killerIsVillager;
     }
 
 }

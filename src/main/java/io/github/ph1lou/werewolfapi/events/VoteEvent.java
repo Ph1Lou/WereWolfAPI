@@ -1,20 +1,19 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class VoteEvent extends Event {
+public class VoteEvent extends SelectionEvent {
 
-    private final UUID voterUUID;
-    private final UUID voteUUID;
+
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public VoteEvent(UUID voterUUID,UUID voteUUID){
-        this.voterUUID =voterUUID;
-        this.voteUUID =voteUUID;
+        super(voterUUID,voteUUID);
     }
 
     @NotNull
@@ -27,12 +26,5 @@ public class VoteEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getVoterUUID() {
-        return voterUUID;
-    }
-
-    public UUID getVoteUUID() {
-        return voteUUID;
-    }
 }
 

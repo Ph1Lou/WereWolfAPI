@@ -11,11 +11,13 @@ public class StealEvent extends Event {
 
     private final UUID newUUID;
     private final UUID oldUUID;
+    private final String role;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public StealEvent(UUID newUUID, UUID oldUUID){
+    public StealEvent(UUID newUUID, UUID oldUUID, String role){
         this.newUUID=newUUID;
         this.oldUUID=oldUUID;
+        this.role=role;
     }
 
     @NotNull
@@ -34,5 +36,9 @@ public class StealEvent extends Event {
 
     public UUID getOldUUID() {
         return oldUUID;
+    }
+
+    public String getRole() {
+        return role;
     }
 }

@@ -6,15 +6,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class CharmEvent extends Event {
+public class CharmEvent extends SelectionEvent {
 
-    private final UUID playerUUID;
-    private final UUID charmedPlayerUUID;
+
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public CharmEvent(UUID playerUUID, UUID charmedPlayerUUID){
-        this.playerUUID =playerUUID;
-        this.charmedPlayerUUID =charmedPlayerUUID;
+        super(playerUUID,charmedPlayerUUID);
     }
 
     @NotNull
@@ -27,12 +25,5 @@ public class CharmEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
-    }
-
-    public UUID getCharmedPlayerUUID() {
-        return charmedPlayerUUID;
-    }
 }
 
