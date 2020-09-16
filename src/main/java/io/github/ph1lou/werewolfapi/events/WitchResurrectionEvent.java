@@ -9,11 +9,11 @@ public class WitchResurrectionEvent extends ResurrectionEvent {
 
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final UUID resurrectionUUID;
+    private final UUID witchUUID;
 
-    public WitchResurrectionEvent(UUID playerUUID, UUID resurrectionUUID) {
-        super(playerUUID);
-        this.resurrectionUUID = resurrectionUUID;
+    public WitchResurrectionEvent(UUID playerUUID, UUID targetUUID) {
+        super(targetUUID);
+        this.witchUUID = playerUUID;
     }
 
     @NotNull
@@ -26,7 +26,7 @@ public class WitchResurrectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
-    public UUID getResurrectionUUID() {
-        return resurrectionUUID;
+    public UUID getWitchUUID() {
+        return witchUUID;
     }
 }

@@ -28,8 +28,6 @@ public abstract class RolesWithLimitedSelectionDuration extends RolesVillage imp
 
         setPower(false);
 
-        if(getPlayerUUID()==null) return;
-
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
         if(player==null) return;

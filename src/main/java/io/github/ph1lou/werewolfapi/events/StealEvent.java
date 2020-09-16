@@ -9,14 +9,14 @@ import java.util.UUID;
 
 public class StealEvent extends Event {
 
-    private final UUID newUUID;
-    private final UUID oldUUID;
+    private final UUID killer;
+    private final UUID player;
     private final String role;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public StealEvent(UUID newUUID, UUID oldUUID, String role){
-        this.newUUID=newUUID;
-        this.oldUUID=oldUUID;
+    public StealEvent(UUID killer, UUID player, String role){
+        this.killer =killer;
+        this.player =player;
         this.role=role;
     }
 
@@ -30,12 +30,12 @@ public class StealEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getNewUUID() {
-        return newUUID;
+    public UUID getKiller() {
+        return killer;
     }
 
-    public UUID getOldUUID() {
-        return oldUUID;
+    public UUID getPlayer() {
+        return player;
     }
 
     public String getRole() {

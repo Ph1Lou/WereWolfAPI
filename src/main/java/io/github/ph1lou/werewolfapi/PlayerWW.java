@@ -64,17 +64,6 @@ public interface PlayerWW {
     Location getSpawn();
 
 
-    void setDamn(Boolean damn);
-
-
-    Boolean hasDamn();
-
-
-    void setSalvation(Boolean salvation);
-
-
-    Boolean hasSalvation();
-
 
     void addLover(UUID uuid) ;
 
