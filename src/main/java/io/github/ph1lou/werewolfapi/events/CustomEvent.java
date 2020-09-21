@@ -28,6 +28,17 @@ public class CustomEvent extends Event implements Cancellable {
         this.event=event;
     }
 
+    public CustomEvent(UUID playerUUID, List<UUID> targetUUIDs,int extraInt , String event){
+        this(playerUUID,targetUUIDs,extraInt,"",event);
+    }
+    public CustomEvent(UUID playerUUID, List<UUID> targetUUIDs,String extraInfo , String event){
+        this(playerUUID,targetUUIDs,0,extraInfo,event);
+    }
+
+    public CustomEvent(UUID playerUUID, List<UUID> targetUUIDs, String event){
+        this(playerUUID,targetUUIDs,0,"",event);
+    }
+
     @NotNull
     @Override
     public HandlerList getHandlers() {
