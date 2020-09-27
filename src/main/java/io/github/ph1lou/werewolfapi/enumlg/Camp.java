@@ -10,7 +10,7 @@ public enum Camp {
         return key;
     }
 
-    String key;
+    final String key;
 
     Camp(String key){
         this.key=key;
