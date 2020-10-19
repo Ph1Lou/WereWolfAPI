@@ -5,7 +5,6 @@ import io.github.ph1lou.werewolfapi.enumlg.State;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.List;
 import java.util.UUID;
@@ -142,8 +141,5 @@ public interface PlayerWW {
 
     void setRevealAmnesiacLover(Boolean revealAmnesiacLover);
 
-    Scoreboard getScoreBoard();
-
-    void setScoreBoard(Scoreboard board);
 }
 

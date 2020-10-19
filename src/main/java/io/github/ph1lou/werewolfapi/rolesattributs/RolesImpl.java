@@ -115,6 +115,20 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return null;
     }
 
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
+
+        if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
+        event.setAccept(isWereWolf());
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onAppearInWereWolfList(AppearInWereWolfListEvent event){
+
+        if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
+        event.setAppear(isWereWolf());
+    }
+
     @EventHandler
     public void onWereWolfList(WereWolfListEvent event){
 
