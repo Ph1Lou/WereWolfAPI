@@ -1,6 +1,6 @@
 # Plugin LG UHC API
 
-Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
+Une API pour intéragir avec le plugin de LG UHC Par Ph1Lou
 
 # Java-Doc
 <https://javadoc.jitpack.io/com/github/Ph1Lou/WereWolfAPI/master-SNAPSHOT/javadoc/>
