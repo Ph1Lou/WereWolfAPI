@@ -119,13 +119,21 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
-        event.setAccept(isWereWolf());
+        if(game.getPlayersWW().get(getPlayerUUID()).isState(State.DEATH)) return;
+
+        if (game.getConfig().getConfigValues().get("werewolf.menu.global.red_name_tag")) {
+            if (game.getConfig().getTimerValues().get("werewolf.menu.timers.werewolf_list") <= 0) {
+                event.setAccept(isWereWolf());
+            }
+        }
+
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onAppearInWereWolfList(AppearInWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
+        if(game.getPlayersWW().get(getPlayerUUID()).isState(State.DEATH)) return;
         event.setAppear(isWereWolf());
     }
 
