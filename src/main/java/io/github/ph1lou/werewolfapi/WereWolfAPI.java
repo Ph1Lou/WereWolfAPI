@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.Day;
 import io.github.ph1lou.werewolfapi.enumlg.StateLG;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
@@ -91,6 +92,9 @@ public interface WereWolfAPI {
      */
 
     void death(UUID uuid);
+
+    @Nullable
+    PlayerWW getPlayerWW(UUID uuid);
 
     Map<String,String> getLanguage();
 

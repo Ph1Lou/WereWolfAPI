@@ -8,7 +8,9 @@ import io.github.ph1lou.werewolfapi.enumlg.Day;
 import io.github.ph1lou.werewolfapi.enumlg.Sounds;
 import io.github.ph1lou.werewolfapi.enumlg.State;
 import io.github.ph1lou.werewolfapi.events.*;
+import io.github.ph1lou.werewolfapi.versions.VersionUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -113,6 +115,54 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onRecoverHeart(DayEvent event) {
+
+        PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
+
+        if(playerWW==null) return;
+
+        if (!playerWW.isState(State.ALIVE)) return;
+
+        Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if (player == null) return;
+
+        if (playerWW.getLostHeart() > 0) {
+            VersionUtils.getVersionUtils().setPlayerMaxHealth(player, VersionUtils.getVersionUtils().getPlayerMaxHealth(player) + playerWW.getLostHeart());
+            playerWW.clearLostHeart();
+        }
+
+    }
+
+    @EventHandler
+    public void onModeratorScoreBoard(UpdateModeratorNameTag event){
+
+        PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
+        StringBuilder sb = new StringBuilder(event.getSuffix());
+
+        if(playerWW==null) return;
+
+        if(!playerWW.getLovers().isEmpty()){
+            sb.append(ChatColor.LIGHT_PURPLE).append("A ");
+        }
+
+        if(playerWW.getAmnesiacLoverUUID()!=null){
+            sb.append(ChatColor.DARK_PURPLE).append("AL ");
+        }
+
+        if(isNeutral()){
+            sb.append(ChatColor.BLACK).append("N ");
+        }
+
+        if(!isWereWolf()){
+            sb.append(ChatColor.GREEN).append("V ");
+        }
+
+        event.setSuffix(sb.toString());
+
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
