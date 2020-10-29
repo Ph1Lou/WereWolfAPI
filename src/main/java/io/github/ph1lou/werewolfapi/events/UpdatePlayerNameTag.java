@@ -10,7 +10,7 @@ public class UpdatePlayerNameTag extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
-    private final String prefix;
+    private String prefix;
     private String suffix;
     private boolean visibility;
 
@@ -39,13 +39,16 @@ public class UpdatePlayerNameTag extends Event {
         return prefix;
     }
 
-
     public String getSuffix() {
         return suffix;
     }
 
     public void setSuffix(String suffix) {
         this.suffix = suffix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 
     public boolean isVisibility() {

@@ -1,9 +1,9 @@
 package io.github.ph1lou.werewolfapi;
 
-import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public interface Commands {
 
-    void execute(CommandSender sender, String[] args);
+    void execute(Player player, String[] args);
 
 }

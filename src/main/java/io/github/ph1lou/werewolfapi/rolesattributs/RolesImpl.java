@@ -142,27 +142,38 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
         StringBuilder sb = new StringBuilder(event.getSuffix());
+        StringBuilder sb2 = new StringBuilder(event.getPrefix());
+        if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
 
         if(playerWW==null) return;
 
+        if(playerWW.isState(State.DEATH)){
+            return;
+        }
+
+
         if(!playerWW.getLovers().isEmpty()){
-            sb.append(ChatColor.LIGHT_PURPLE).append("A ");
+            sb.append(ChatColor.LIGHT_PURPLE).append("L ");
         }
 
         if(playerWW.getAmnesiacLoverUUID()!=null){
             sb.append(ChatColor.DARK_PURPLE).append("AL ");
         }
 
+        if(playerWW.getCursedLovers()!=null){
+            sb.append(ChatColor.BLACK).append("CL ");
+        }
+
         if(isNeutral()){
-            sb.append(ChatColor.BLACK).append("N ");
+            sb2.append(ChatColor.GOLD);
         }
-
-        if(!isWereWolf()){
-            sb.append(ChatColor.GREEN).append("V ");
+        else if(isWereWolf()){
+            sb2.append(ChatColor.DARK_RED);
         }
+        else sb2.append(ChatColor.GREEN);
 
+        event.setPrefix(sb2.toString());
         event.setSuffix(sb.toString());
-
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
