@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.enumlg.State;
-import io.github.ph1lou.werewolfapi.enumlg.StateLG;
+import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
+import io.github.ph1lou.werewolfapi.enumlg.StateGame;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +14,8 @@ public class CommandRegister {
     private String permission;
     private boolean roleOnly = false;
     private boolean moderatorAccess = false;
-    private final Set<State> stateAccess = new HashSet<>();
-    private final Set<StateLG> stateWW = new HashSet<>();
+    private final Set<StatePlayer> statePlayerAccesses = new HashSet<>();
+    private final Set<StateGame> stateWW = new HashSet<>();
     private final Set<Integer> argNumbers = new HashSet<>();
     private boolean hostAccess = false;
     private boolean autoCompletion = true;
@@ -108,12 +108,12 @@ public class CommandRegister {
     }
 
 
-    public boolean isStateAccess(State state) {
-        return stateAccess.isEmpty() || stateAccess.contains(state);
+    public boolean isStateAccess(StatePlayer statePlayer) {
+        return statePlayerAccesses.isEmpty() || statePlayerAccesses.contains(statePlayer);
     }
 
-    public CommandRegister addStateAccess(State stateAccess) {
-        this.stateAccess.add(stateAccess);
+    public CommandRegister addStateAccess(StatePlayer statePlayerAccess) {
+        this.statePlayerAccesses.add(statePlayerAccess);
         this.requiredPlayerInGame = true;
         return this;
     }
@@ -136,12 +136,12 @@ public class CommandRegister {
         return this;
     }
 
-    public boolean isStateWW(StateLG stateLG) {
+    public boolean isStateWW(StateGame stateLG) {
 
         return stateWW.isEmpty() || stateWW.contains(stateLG);
     }
 
-    public CommandRegister addStateWW(StateLG stateLG) {
+    public CommandRegister addStateWW(StateGame stateLG) {
         stateWW.add(stateLG);
         return this;
     }

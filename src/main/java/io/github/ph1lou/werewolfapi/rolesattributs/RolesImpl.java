@@ -6,7 +6,7 @@ import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enumlg.Camp;
 import io.github.ph1lou.werewolfapi.enumlg.Day;
 import io.github.ph1lou.werewolfapi.enumlg.Sounds;
-import io.github.ph1lou.werewolfapi.enumlg.State;
+import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
 import io.github.ph1lou.werewolfapi.events.*;
 import io.github.ph1lou.werewolfapi.versions.VersionUtils;
 import org.bukkit.Bukkit;
@@ -33,16 +33,24 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @NotNull
     private UUID uuid;
     private Boolean infected = false;
+    @NotNull
+    private final String key;
 
-    public RolesImpl(GetWereWolfAPI main, WereWolfAPI game, @NotNull UUID uuid){
+    public RolesImpl(GetWereWolfAPI main, WereWolfAPI game, @NotNull UUID uuid,@NotNull String key){
         this.game=game;
         this.main = main;
         this.uuid=uuid;
+        this.key=key;
     }
 
     @Override
     public boolean isCamp(@NotNull Camp camp) {
         return(getCamp().equals(camp));
+    }
+
+    @Override
+    public @NotNull String getKey() {
+        return key;
     }
 
     @Nullable
@@ -61,12 +69,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         recoverPotionEffect(player);
 
-        if(!game.getStuffs().getStuffRoles().containsKey(getDisplay())){
+        if(!game.getStuffs().getStuffRoles().containsKey(getKey())){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
             return player;
         }
 
-        for(ItemStack i:game.getStuffs().getStuffRoles().get(plg.getRole().getDisplay())) {
+        for(ItemStack i:game.getStuffs().getStuffRoles().get(plg.getRole().getKey())) {
 
             if(player.getInventory().firstEmpty()==-1) {
                 player.getWorld().dropItem(player.getLocation(),i);
@@ -102,8 +110,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public boolean isDisplay(String s) {
-        return s.equals(this.getDisplay());
+    public boolean isKey(String s) {
+        return s.equals(this.getKey());
     }
 
 
@@ -124,7 +132,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(playerWW==null) return;
 
-        if (!playerWW.isState(State.ALIVE)) return;
+        if (!playerWW.isState(StatePlayer.ALIVE)) return;
 
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
@@ -147,7 +155,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(playerWW==null) return;
 
-        if(playerWW.isState(State.DEATH)){
+        if(playerWW.isState(StatePlayer.DEATH)){
             return;
         }
 
@@ -180,7 +188,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
-        if(game.getPlayersWW().get(getPlayerUUID()).isState(State.DEATH)) return;
+        if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
 
         if (game.getConfig().getConfigValues().get("werewolf.menu.global.red_name_tag")) {
             if (game.getConfig().getTimerValues().get("werewolf.menu.timers.werewolf_list") <= 0) {
@@ -194,7 +202,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onAppearInWereWolfList(AppearInWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
-        if(game.getPlayersWW().get(getPlayerUUID()).isState(State.DEATH)) return;
+        if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
         event.setAppear(isWereWolf());
     }
 
@@ -205,7 +213,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!isWereWolf()) return;
 
-        if(!lg.isState(State.ALIVE)) return;
+        if(!lg.isState(StatePlayer.ALIVE)) return;
 
         Player player = Bukkit.getPlayer(uuid);
 
@@ -238,7 +246,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         for(PlayerWW playerWW:game.getPlayersWW().values()){
             if(playerWW.getRole().isWereWolf()) {
-                if (plg.isState(State.ALIVE) ) {
+                if (plg.isState(StatePlayer.ALIVE) ) {
                     UUID uuid1 = playerWW.getRole().getPlayerUUID();
                     Player lg1 = Bukkit.getPlayer(uuid1);
 
@@ -288,7 +296,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!getInfected()) return;
 
-        if (!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)) return;
+        if (!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)) return;
 
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
@@ -302,7 +310,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!getInfected()) return;
 
-        if (!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)) return;
+        if (!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)) return;
 
         Player player = Bukkit.getPlayer(getPlayerUUID());
 

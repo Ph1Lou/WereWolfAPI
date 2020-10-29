@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.Day;
-import io.github.ph1lou.werewolfapi.enumlg.StateLG;
+import io.github.ph1lou.werewolfapi.enumlg.StateGame;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public interface WereWolfAPI {
      * @return boolean
      */
 
-    boolean isState(StateLG state);
+    boolean isState(StateGame state);
 
     /**
      * return true if the day's game equal the input' game
@@ -132,6 +132,6 @@ public interface WereWolfAPI {
 
     void setGameName(String name);
 
-    StateLG getState();
+    StateGame getState();
 
 }

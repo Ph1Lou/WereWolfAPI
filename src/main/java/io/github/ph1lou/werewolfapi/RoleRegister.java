@@ -19,7 +19,6 @@ public class RoleRegister {
     final List<Category> categories = new ArrayList<>();
 
     final String key;
-
     final Plugin plugin;
     List<String> lore=new ArrayList<>();
 
@@ -37,7 +36,7 @@ public class RoleRegister {
     }
 
     public RoleRegister registerRole(Class<?> roleClass) throws NoSuchMethodException {
-        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class);
+        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class, String.class);
         return this;
     }
 

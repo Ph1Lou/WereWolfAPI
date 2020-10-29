@@ -3,7 +3,7 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enumlg.Day;
-import io.github.ph1lou.werewolfapi.enumlg.State;
+import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
 import io.github.ph1lou.werewolfapi.events.DayEvent;
 import io.github.ph1lou.werewolfapi.events.NightEvent;
 import org.bukkit.Bukkit;
@@ -18,15 +18,15 @@ import java.util.UUID;
 
 public abstract class RolesWereWolf extends RolesImpl {
 
-    public RolesWereWolf(GetWereWolfAPI main, WereWolfAPI game, UUID uuid) {
-        super(main,game, uuid);
+    public RolesWereWolf(GetWereWolfAPI main, WereWolfAPI game, UUID uuid,String key) {
+        super(main,game, uuid,key);
     }
 
     @EventHandler
     public void onNightForWereWolf(NightEvent event) {
 
 
-        if(!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)){
+        if(!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)){
             return;
         }
 
@@ -41,7 +41,7 @@ public abstract class RolesWereWolf extends RolesImpl {
     public void onDayForWereWolf(DayEvent event) {
 
 
-        if(!game.getPlayersWW().get(getPlayerUUID()).isState(State.ALIVE)){
+        if(!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)){
             return;
         }
 

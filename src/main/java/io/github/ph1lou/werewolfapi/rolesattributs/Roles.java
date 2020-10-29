@@ -13,9 +13,9 @@ public interface Roles {
 
     String getDescription();
 
-    String getDisplay();
+    String getKey();
 
-    boolean isDisplay(String key);
+    boolean isKey(String key);
 
     boolean isCamp(@NotNull Camp camp);
 

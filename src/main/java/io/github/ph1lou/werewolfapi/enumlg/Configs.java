@@ -2,7 +2,7 @@ package io.github.ph1lou.werewolfapi.enumlg;
 
 public enum Configs {
 
-    VICTORY_COUPLE("werewolf.menu.global.victory_couple"),
+    VICTORY_LOVERS("werewolf.menu.global.victory_couple"),
     CHAT("werewolf.menu.global.chat"),
     SHOW_ROLE_TO_DEATH("werewolf.menu.global.show_role_to_death"),
     HIDE_COMPOSITION("werewolf.menu.global.hide_composition"),

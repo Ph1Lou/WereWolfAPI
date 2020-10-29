@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
 
-import io.github.ph1lou.werewolfapi.enumlg.State;
+import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
@@ -24,10 +24,10 @@ public interface PlayerWW {
     void clearItemDeath();
 
 
-    void setState(State state) ;
+    void setState(StatePlayer statePlayer) ;
 
 
-    boolean isState(State state);
+    boolean isState(StatePlayer statePlayer);
 
 
     void addOneKill() ;
@@ -141,7 +141,7 @@ public interface PlayerWW {
 
     void setRevealAmnesiacLover(Boolean revealAmnesiacLover);
 
-    State getState();
+    StatePlayer getState();
 
 }
 
