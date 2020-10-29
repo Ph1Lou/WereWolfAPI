@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.Category;
-import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;

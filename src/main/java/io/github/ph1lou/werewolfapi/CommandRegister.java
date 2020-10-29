@@ -1,20 +1,22 @@
 package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.State;
+import io.github.ph1lou.werewolfapi.enumlg.StateLG;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CommandRegister {
 
 
     private String name;
-    private final List<String> roleKeys = new ArrayList<>();
+    private final Set<String> roleKeys = new HashSet<>();
     private String permission;
     private boolean roleOnly = false;
     private boolean moderatorAccess = false;
-    private final List<State> stateAccess = new ArrayList<>();
-    private int argNumbers = 0;
+    private final Set<State> stateAccess = new HashSet<>();
+    private final Set<StateLG> stateWW = new HashSet<>();
+    private final Set<Integer> argNumbers = new HashSet<>();
     private boolean hostAccess = false;
     private boolean autoCompletion = true;
     private boolean requiredPower = false;
@@ -107,7 +109,7 @@ public class CommandRegister {
 
 
     public boolean isStateAccess(State state) {
-        return stateAccess.contains(state);
+        return stateAccess.isEmpty() || stateAccess.contains(state);
     }
 
     public CommandRegister addStateAccess(State stateAccess) {
@@ -116,12 +118,12 @@ public class CommandRegister {
         return this;
     }
 
-    public int getArgNumbers() {
-        return argNumbers;
+    public boolean isArgNumbers(int args) {
+        return argNumbers.isEmpty() || argNumbers.contains(args);
     }
 
-    public CommandRegister setArgNumbers(int argNumbers) {
-        this.argNumbers = argNumbers;
+    public CommandRegister addArgNumbers(int argNumbers) {
+        this.argNumbers.add(argNumbers);
         return this;
     }
 
@@ -134,4 +136,19 @@ public class CommandRegister {
         return this;
     }
 
+    public boolean isStateWW(StateLG stateLG) {
+
+        return stateWW.isEmpty() || stateWW.contains(stateLG);
+    }
+
+    public CommandRegister addStateWW(StateLG stateLG) {
+        stateWW.add(stateLG);
+        return this;
+    }
+
+    public int getMinArgNumbers() {
+        return argNumbers.stream()
+                .min(Integer::compareTo)
+                .orElse(0);
+    }
 }

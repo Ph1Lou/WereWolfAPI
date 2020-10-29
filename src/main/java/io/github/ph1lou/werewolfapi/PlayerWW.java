@@ -141,5 +141,7 @@ public interface PlayerWW {
 
     void setRevealAmnesiacLover(Boolean revealAmnesiacLover);
 
+    State getState();
+
 }
 

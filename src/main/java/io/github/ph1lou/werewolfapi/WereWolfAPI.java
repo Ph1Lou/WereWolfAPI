@@ -132,4 +132,6 @@ public interface WereWolfAPI {
 
     void setGameName(String name);
 
+    StateLG getState();
+
 }

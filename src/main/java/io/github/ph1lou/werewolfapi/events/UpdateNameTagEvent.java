@@ -11,7 +11,7 @@ import java.util.UUID;
 public class UpdateNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private List<UUID> playersUUID=new ArrayList<>();
+    private final List<UUID> playersUUID=new ArrayList<>();
 
     public UpdateNameTagEvent(){
     }
