@@ -6,12 +6,12 @@ import io.github.ph1lou.werewolfapi.enumlg.StateGame;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CommandRegister {
+public class CommandRegister implements RegisterAPI {
 
 
-    private String name;
+
     private final Set<String> roleKeys = new HashSet<>();
-    private String permission;
+    private final String key;
     private boolean roleOnly = false;
     private boolean moderatorAccess = false;
     private final Set<StatePlayer> statePlayerAccesses = new HashSet<>();
@@ -21,12 +21,13 @@ public class CommandRegister {
     private boolean autoCompletion = true;
     private boolean requiredPower = false;
     private boolean requiredPlayerInGame = false;
-    private Commands command=null;
+    private final Commands command;
+    private final String addonKey;
 
-
-    public CommandRegister registerCommand(Commands command) {
+    public CommandRegister(String addonKey, String key,Commands command){
+        this.addonKey=addonKey;
+        this.key=key;
         this.command=command;
-        return this;
     }
 
     public boolean getRoleOnly(){
@@ -39,26 +40,23 @@ public class CommandRegister {
         return this;
     }
 
-    public String getName() {
-        return this.name;
+    @Override
+    public String getKey() {
+        return key;
+    }
+
+    @Override
+    public String getAddonKey() {
+        return addonKey;
     }
 
     public boolean isRoleKey(String roleKey) {
         return this.roleKeys.contains(roleKey);
     }
 
-    public CommandRegister setName(String name) {
-        this.name = name;
-        this.permission="a."+name;
-        return this;
-    }
 
     public Commands getCommand() {
         return command;
-    }
-
-    public String getPermission() {
-        return permission;
     }
 
     public boolean isRoleOnly() {

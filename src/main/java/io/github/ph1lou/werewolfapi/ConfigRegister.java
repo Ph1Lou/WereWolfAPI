@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import org.bukkit.plugin.Plugin;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +8,17 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 
-public class ConfigRegister {
+public class ConfigRegister implements RegisterAPI {
 
-    final GetWereWolfAPI api;
 
-    final String key;
-    boolean defaultValue = false;
-    final Plugin plugin;
-    List<String> lore=new ArrayList<>();
+    private final String key;
+    private final String addonKey;
+    private boolean defaultValue = false;
+    private List<String> lore=new ArrayList<>();
 
-    public Plugin getPlugin() {
-        return plugin;
-    }
 
-    public ConfigRegister(Plugin plugin, GetWereWolfAPI api, String key) {
-        this.plugin=plugin;
-        this.api= api;
+    public ConfigRegister(String addonKey, String key) {
+        this.addonKey=addonKey;
         this.key=key;
     }
 
@@ -33,8 +26,8 @@ public class ConfigRegister {
         return defaultValue;
     }
 
-    public ConfigRegister setDefaultValue(boolean defaultValue){
-        this.defaultValue=defaultValue;
+    public ConfigRegister setDefaultValue(){
+        this.defaultValue=true;
         return this;
     }
 
@@ -44,18 +37,21 @@ public class ConfigRegister {
         return this;
     }
 
-    public void create(){
-        api.getRegisterConfigs().add(this);
+    public ConfigRegister setLore(String lore){
+        this.lore.add(lore);
+        return this;
     }
 
     public List<String> getLore() {
         return lore;
     }
 
-    public String getName() {
-        return api.getWereWolfAPI().translate(key);
+    @Override
+    public String getAddonKey() {
+        return addonKey;
     }
 
+    @Override
     public String getKey() {
         return key;
     }

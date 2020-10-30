@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import org.bukkit.plugin.Plugin;
-
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,61 +8,52 @@ import java.util.List;
  * @author Ph1Lou
  */
 
-public class ScenarioRegister {
+public class ScenarioRegister implements RegisterAPI {
 
-    final GetWereWolfAPI api;
+    private final String key;
+    private final String addonKey;
+    private boolean defaultValue = false;
+    private List<String> lore=new ArrayList<>();
 
-    final String key;
-    boolean defaultValue = false;
-    final Plugin plugin;
-    List<String> lore=new ArrayList<>();
-
-    Constructor<?> constructors= null;
+    private final Constructor<?> constructors;
 
 
-    public Plugin getPlugin() {
-        return plugin;
-    }
-
-    public ScenarioRegister(Plugin plugin, GetWereWolfAPI api, String key) {
-        this.plugin=plugin;
-        this.api= api;
+    public ScenarioRegister(String addonKey, String key,Class<?> scenarioClass ) throws NoSuchMethodException {
+        this.addonKey=addonKey;
         this.key=key;
+        this.constructors=scenarioClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, String.class);
     }
 
-    public ScenarioRegister registerScenario(Class<?> scenarioClass) throws NoSuchMethodException {
-        this.constructors=scenarioClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, String.class);
-        return this;
-    }
 
     public boolean getDefaultValue(){
         return defaultValue;
     }
 
-    public ScenarioRegister setDefaultValue(boolean defaultValue){
-        this.defaultValue=defaultValue;
+    public ScenarioRegister setDefaultValue(){
+        this.defaultValue=true;
         return this;
     }
-
 
     public ScenarioRegister setLore(List<String> lore){
         this.lore=lore;
         return this;
     }
 
-    public void create(){
-        if(constructors==null) return;
-        api.getRegisterScenarios().add(this);
+    public ScenarioRegister setLore(String lore){
+        this.lore.add(lore);
+        return this;
     }
 
     public List<String> getLore() {
         return lore;
     }
 
-    public String getName() {
-        return api.getWereWolfAPI().translate(key);
+    @Override
+    public String getAddonKey() {
+        return addonKey;
     }
 
+    @Override
     public String getKey() {
         return key;
     }

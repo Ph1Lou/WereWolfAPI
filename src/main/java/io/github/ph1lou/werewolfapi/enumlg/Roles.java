@@ -37,7 +37,7 @@ public enum Roles {
     SERIAL_KILLER("werewolf.role.serial_killer.display"),
     SUCCUBUS("werewolf.role.succubus.display"),
     LIBRARIAN("werewolf.role.librarian.display"),
-    FLUTE_PLAYER("werewolf.role.flute_player");
+    FLUTE_PLAYER("werewolf.role.flute_player.display");
 
     private final String key;
 

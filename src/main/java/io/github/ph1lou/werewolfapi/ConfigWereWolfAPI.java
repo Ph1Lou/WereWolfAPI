@@ -115,6 +115,7 @@ public interface ConfigWereWolfAPI {
      Map<String, Boolean> getScenarioValues();
 
      int getAmnesiacLoverSize();
+
      void setAmnesiacLoverSize(int amnesiacLoverSize);
 
      int getCursedLoverSize();
@@ -124,8 +125,6 @@ public interface ConfigWereWolfAPI {
      int getLoverSize();
 
      void setLoverSize(int loverSize);
-
-     void getConfig(WereWolfAPI api, String configName);
 
      int getLimitDepthStrider();
 

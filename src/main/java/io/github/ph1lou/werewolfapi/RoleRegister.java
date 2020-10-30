@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enumlg.Category;
-import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -12,33 +11,21 @@ import java.util.UUID;
  * @author Ph1Lou
  */
 
-public class RoleRegister {
+public class RoleRegister implements RegisterAPI {
 
-    final GetWereWolfAPI api;
+    private final List<Category> categories = new ArrayList<>();
 
-    final List<Category> categories = new ArrayList<>();
+    private final String key;
+    private final String addonKey;
+    private List<String> lore=new ArrayList<>();
+    private final Constructor<?> constructors;
 
-    final String key;
-    final Plugin plugin;
-    List<String> lore=new ArrayList<>();
-
-    Constructor<?> constructors= null;
-
-
-    public Plugin getPlugin() {
-        return plugin;
-    }
-
-    public RoleRegister(Plugin plugin,GetWereWolfAPI api, String key) {
-        this.plugin=plugin;
-        this.api= api;
+    public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
+        this.addonKey=addonKey;
         this.key=key;
+        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class, String.class);
     }
 
-    public RoleRegister registerRole(Class<?> roleClass) throws NoSuchMethodException {
-        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class, String.class);
-        return this;
-    }
 
     public RoleRegister addCategory(Category category){
         this.categories.add(category);
@@ -50,25 +37,23 @@ public class RoleRegister {
         return this;
     }
 
-    public void create(){
-        if(constructors==null) return;
-        api.getRegisterRoles().add(this);
-    }
 
     public List<String> getLore() {
         return lore;
-    }
-
-    public String getName() {
-        return api.getWereWolfAPI().translate(key);
     }
 
     public List<Category> getCategories() {
         return categories;
     }
 
+    @Override
     public String getKey() {
         return key;
+    }
+
+    @Override
+    public String getAddonKey() {
+        return addonKey;
     }
 
     public Constructor<?> getConstructors() {

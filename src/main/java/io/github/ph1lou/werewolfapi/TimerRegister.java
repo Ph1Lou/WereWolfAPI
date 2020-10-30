@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import org.bukkit.plugin.Plugin;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +8,15 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 
-public class TimerRegister {
+public class TimerRegister implements RegisterAPI {
 
-    final GetWereWolfAPI api;
+    private final String key;
+    private final String addonKey;
+    private int defaultValue = 1;
+    private List<String> lore=new ArrayList<>();
 
-    final String key;
-    int defaultValue = 1;
-    final Plugin plugin;
-    List<String> lore=new ArrayList<>();
-
-    public Plugin getPlugin() {
-        return plugin;
-    }
-
-    public TimerRegister(Plugin plugin, GetWereWolfAPI api, String key) {
-        this.plugin=plugin;
-        this.api= api;
+    public TimerRegister(String addonKey, String key) {
+        this.addonKey=addonKey;
         this.key=key;
     }
 
@@ -44,18 +35,22 @@ public class TimerRegister {
         return this;
     }
 
-    public void create(){
-        api.getRegisterTimers().add(this);
+
+    public TimerRegister setLore(String lore){
+        this.lore.add(lore);
+        return this;
     }
 
     public List<String> getLore() {
         return lore;
     }
 
-    public String getName() {
-        return api.getWereWolfAPI().translate(key);
+    @Override
+    public String getAddonKey() {
+        return addonKey;
     }
 
+    @Override
     public String getKey() {
         return key;
     }
