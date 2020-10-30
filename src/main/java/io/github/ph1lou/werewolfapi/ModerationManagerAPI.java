@@ -96,4 +96,6 @@ public interface ModerationManagerAPI {
      */
 
     List<UUID> getQueue();
+
+    void checkQueue();
 }

@@ -12,8 +12,8 @@
     </properties>
     <repositories>
         <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
     <dependencies>
@@ -27,6 +27,11 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>20.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.Tanju42</groupId>
+            <artifactId>smart-invs-fork</artifactId>
+            <version>1.2.9</version>
         </dependency>
     </dependencies>
     <build>

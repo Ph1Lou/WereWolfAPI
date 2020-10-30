@@ -1,5 +1,9 @@
 package io.github.ph1lou.werewolfapi;
 
+import org.bukkit.World;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
 import java.util.UUID;
 
 public interface MapManagerAPI {
@@ -24,4 +28,10 @@ public interface MapManagerAPI {
      */
 
     void generateMap(int mapRadius);
+
+    void generateMap(CommandSender sender, int mapRadius);
+
+    void createMap();
+
+    World getWorld();
 }
