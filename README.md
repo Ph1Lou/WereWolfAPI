@@ -1,5 +1,8 @@
 # Plugin LG UHC API
 
+
+[![](https://javadoc.jitpack.io/v/Ph1Lou/WereWolfAPI.svg)](https://javadoc.jitpack.io/#Ph1Lou/WereWolfAPI)
+
 Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 
 # Java-Doc
