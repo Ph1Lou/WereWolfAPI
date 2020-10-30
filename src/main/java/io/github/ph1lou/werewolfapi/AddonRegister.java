@@ -2,9 +2,7 @@ package io.github.ph1lou.werewolfapi;
 
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author Ph1Lou
@@ -23,7 +21,7 @@ public class AddonRegister implements RegisterAPI {
 
     private List<String> lore=new ArrayList<>();
 
-    private final List<UUID> authors = new ArrayList<>();
+    private final Map<String,UUID> authors = new HashMap<>();
 
     public AddonRegister(String key, String defaultLanguage, Plugin plugin) {
         this.key=key;
@@ -61,12 +59,12 @@ public class AddonRegister implements RegisterAPI {
         return addonKey;
     }
 
-    public List<UUID> getAuthors() {
-        return authors;
+    public Set<String> getAuthorsName() {
+        return authors.keySet();
     }
 
-    public AddonRegister addAuthors(UUID author) {
-        this.authors.add(author);
+    public AddonRegister addAuthors(String name,UUID uuid) {
+        this.authors.put(name,uuid);
         return this;
     }
 
