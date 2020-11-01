@@ -190,10 +190,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
         if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
 
-        if (game.getConfig().getConfigValues().get("werewolf.menu.global.red_name_tag")) {
-            if (game.getConfig().getTimerValues().get("werewolf.menu.timers.werewolf_list") <= 0) {
-                event.setAccept(isWereWolf());
-            }
+        if (game.getConfig().getTimerValues().get("werewolf.menu.timers.werewolf_list") <= 0) {
+            event.setAccept(isWereWolf());
         }
 
     }
@@ -258,7 +256,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             }
         }
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main,() -> Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent()), 10L);
+        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main,() -> Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(uuid)), 10L);
     }
 
     @EventHandler

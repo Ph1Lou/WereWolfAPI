@@ -13,9 +13,6 @@ public class UpdateNameTagEvent extends Event {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final List<UUID> playersUUID=new ArrayList<>();
 
-    public UpdateNameTagEvent(){
-    }
-
     public UpdateNameTagEvent(UUID playerUUID){
         this.playersUUID.add(playerUUID);
     }
