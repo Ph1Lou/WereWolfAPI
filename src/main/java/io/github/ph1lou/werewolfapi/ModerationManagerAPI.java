@@ -98,4 +98,10 @@ public interface ModerationManagerAPI {
     List<UUID> getQueue();
 
     void checkQueue();
+
+    void alertHostsAndModerators(String message);
+
+    void alertHosts(String message);
+
+    void alertModerators(String message);
 }
