@@ -2,9 +2,11 @@ package io.github.ph1lou.werewolfapi;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public interface StuffManager {
 
@@ -19,6 +21,6 @@ public interface StuffManager {
     void load(String configName);
     void save(String configName);
     Map<String, List<ItemStack>> getStuffRoles();
-
+    Map<UUID, Inventory> getTempStuff();
 
 }

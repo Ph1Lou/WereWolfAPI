@@ -85,12 +85,6 @@ public interface PlayerWW {
     int getDeathTime();
 
 
-    void setCanBeInfect(Boolean b);
-
-
-    Boolean canBeInfect();
-
-
     void clearLostHeart() ;
 
 
@@ -143,5 +137,8 @@ public interface PlayerWW {
 
     StatePlayer getState();
 
+    int getDisconnectedTime();
+
+    void setDisconnectedTime(int disconnectedTime);
 }
 
