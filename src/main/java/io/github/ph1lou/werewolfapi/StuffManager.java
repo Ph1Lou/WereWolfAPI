@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import java.util.List;
 import java.util.Map;

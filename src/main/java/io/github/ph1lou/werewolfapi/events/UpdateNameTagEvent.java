@@ -1,24 +1,24 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.Collection;
+import java.util.Collections;
 
 public class UpdateNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final List<UUID> playersUUID=new ArrayList<>();
+    private final Collection<? extends Player> players;
 
-    public UpdateNameTagEvent(UUID playerUUID){
-        this.playersUUID.add(playerUUID);
+    public UpdateNameTagEvent(Player player){
+        this.players= Collections.singleton(player);
     }
 
-    public UpdateNameTagEvent(List<UUID> playersUUID){
-        this.playersUUID.addAll(playersUUID);
+    public UpdateNameTagEvent(Collection<? extends Player> players){
+        this.players=players;
     }
 
     @NotNull
@@ -31,12 +31,8 @@ public class UpdateNameTagEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public List<UUID> getPlayersUUID(){
-        return this.playersUUID;
-    }
-
-    public void addPlayer(UUID playerUUID){
-        this.playersUUID.add(playerUUID);
+    public Collection<? extends Player> getPlayers(){
+        return this.players;
     }
 
 }

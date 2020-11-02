@@ -150,7 +150,7 @@ public class VersionUtils_1_8 extends VersionUtils {
         try {
             final Object tabHeader = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + header + "\"}");
             final Object tabFooter = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + footer + "\"}");
-            final Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor((Class<?>[]) new Class[0]);
+            final Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor();
             final Object packet = titleConstructor.newInstance();
             try {
                 final Field aField = packet.getClass().getDeclaredField("a");

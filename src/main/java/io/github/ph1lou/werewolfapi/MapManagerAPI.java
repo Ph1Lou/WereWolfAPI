@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.UUID;
 

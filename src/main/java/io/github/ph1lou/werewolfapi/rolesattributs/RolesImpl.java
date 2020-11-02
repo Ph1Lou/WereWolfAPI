@@ -17,12 +17,12 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public abstract class RolesImpl implements Roles, Listener,Cloneable {
@@ -221,12 +221,10 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         Sounds.WOLF_HOWL.play(player);
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void onNewWereWolf(NewWereWolfEvent event) {
 
         if(event.isCancelled()) return;
-
-        PlayerWW plg = game.getPlayersWW().get(uuid);
 
         if(!uuid.equals(event.getUuid())) return;
 
@@ -242,21 +240,17 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             }
         }
 
-        for(PlayerWW playerWW:game.getPlayersWW().values()){
-            if(playerWW.getRole().isWereWolf()) {
-                if (plg.isState(StatePlayer.ALIVE) ) {
-                    UUID uuid1 = playerWW.getRole().getPlayerUUID();
-                    Player lg1 = Bukkit.getPlayer(uuid1);
+        game.getPlayersWW().values().stream()
+                .filter(playerWW -> playerWW.getRole().isWereWolf())
+                .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
+                .map(playerWW -> Bukkit.getPlayer(playerWW.getRole().getPlayerUUID()))
+                .filter(Objects::nonNull)
+                .forEach(player1 -> {
+                    player1.sendMessage(game.translate("werewolf.role.werewolf.new_werewolf"));
+                    Sounds.WOLF_HOWL.play(player1);
+                });
 
-                    if (lg1 != null) {
-                        lg1.sendMessage(game.translate("werewolf.role.werewolf.new_werewolf"));
-                        Sounds.WOLF_HOWL.play(lg1);
-                    }
-                }
-            }
-        }
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main,() -> Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(uuid)), 10L);
     }
 
     @EventHandler

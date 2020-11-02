@@ -104,4 +104,6 @@ public interface ModerationManagerAPI {
     void alertHosts(String message);
 
     void alertModerators(String message);
+
+    boolean isStaff(UUID uuid);
 }
