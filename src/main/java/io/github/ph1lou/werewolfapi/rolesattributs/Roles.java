@@ -26,12 +26,11 @@ public interface Roles {
 
     void setPlayerUUID(@NotNull UUID uuid);
 
-    void stolen(@NotNull UUID uuid);
+    void recoverPowerAfterStolen();
 
-    @Nullable
-    Player recoverPower();
+    void recoverPower();
 
-    void recoverPotionEffect(@NotNull Player player);
+    void recoverPotionEffect();
 
     boolean isWereWolf();
 

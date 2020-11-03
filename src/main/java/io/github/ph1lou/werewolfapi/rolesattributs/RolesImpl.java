@@ -20,7 +20,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -53,13 +52,13 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return key;
     }
 
-    @Nullable
+
     @Override
-    public Player recoverPower() {
+    public void recoverPower() {
 
         Player player = Bukkit.getPlayer(uuid);
 
-        if (player==null) return null;
+        if (player==null) return;
 
         PlayerWW plg = game.getPlayersWW().get(uuid);
         plg.setKit(true);
@@ -67,11 +66,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         player.performCommand("ww role");
         player.sendMessage(game.translate("werewolf.announcement.review_role"));
 
-        recoverPotionEffect(player);
+        recoverPotionEffect();
 
         if(!game.getStuffs().getStuffRoles().containsKey(getKey())){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
-            return player;
+            return;
         }
 
         for(ItemStack i:game.getStuffs().getStuffRoles().get(plg.getRole().getKey())) {
@@ -85,7 +84,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             }
         }
 
-        return player;
     }
 
     @NotNull
@@ -106,7 +104,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public void stolen(@NotNull UUID uuid) {
+    public void recoverPowerAfterStolen() {
     }
 
     @Override
@@ -324,7 +322,16 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public void recoverPotionEffect(@NotNull Player player) {
+    public void recoverPotionEffect() {
 
+        if(!infected) return;
+
+        Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
+
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
+        if(game.isDay(Day.DAY)) return;
+        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1,false,false));
     }
 }
