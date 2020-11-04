@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class AmnesiacTransformationEvent extends NewWereWolfEvent {
+public class AmnesiacTransformationEvent extends TransformationEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 

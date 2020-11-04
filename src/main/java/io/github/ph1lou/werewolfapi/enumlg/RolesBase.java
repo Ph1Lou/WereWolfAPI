@@ -1,7 +1,10 @@
 package io.github.ph1lou.werewolfapi.enumlg;
 
-public enum Roles {
+public enum RolesBase {
 
+    LOVER("werewolf.role.lover.display"),
+    AMNESIAC_LOVER("werewolf.role.amnesiac_lover.display"),
+    CURSED_LOVER("werewolf.role.cursed_lover.display"),
     CUPID("werewolf.role.cupid.display"),
     WEREWOLF("werewolf.role.werewolf.display"),
     INFECT("werewolf.role.infect_father_of_the_wolves.display"),
@@ -41,7 +44,7 @@ public enum Roles {
 
     private final String key;
 
-    Roles(String key) {
+    RolesBase(String key) {
         this.key = key;
     }
 

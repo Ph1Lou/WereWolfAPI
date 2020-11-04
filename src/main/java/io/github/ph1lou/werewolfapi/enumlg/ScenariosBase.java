@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.enumlg;
 
-public enum Scenarios {
+public enum ScenariosBase {
     VANILLA_PLUS("werewolf.menu.scenarios.vanilla_plus"),
     ROD_LESS("werewolf.menu.scenarios.rod_less"),
     HORSE_LESS("werewolf.menu.scenarios.horse_less"),
@@ -28,7 +28,7 @@ public enum Scenarios {
 
     private final String key;
 
-    Scenarios(String key) {
+    ScenariosBase(String key) {
         this.key=key;
     }
 

@@ -63,7 +63,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         PlayerWW plg = game.getPlayersWW().get(uuid);
         plg.setKit(true);
         Sounds.EXPLODE.play(player);
-        player.performCommand("ww role");
+        player.sendMessage(getDescription());
         player.sendMessage(game.translate("werewolf.announcement.review_role"));
 
         recoverPotionEffect();
@@ -222,20 +222,14 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @EventHandler
     public void onNewWereWolf(NewWereWolfEvent event) {
 
-        if(event.isCancelled()) return;
-
         if(!uuid.equals(event.getUuid())) return;
 
         Player player = Bukkit.getPlayer(uuid);
 
         if(player!=null) {
-
-            player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
             player.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
             Sounds.WOLF_HOWL.play(player);
-            if (game.isDay(Day.NIGHT)) {
-                player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE,-1,false,false));
-            }
+            recoverPotionEffect();
         }
 
         game.getPlayersWW().values().stream()
