@@ -1,5 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
+import org.bukkit.entity.Player;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -106,4 +108,8 @@ public interface ModerationManagerAPI {
     void alertModerators(String message);
 
     boolean isStaff(UUID uuid);
+
+    boolean checkAccessAdminCommand(String commandKey, Player player);
+
+    boolean checkAccessAdminCommand(String commandKey, Player player, boolean seePermissionMessages);
 }

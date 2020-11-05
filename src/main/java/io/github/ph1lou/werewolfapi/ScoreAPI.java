@@ -40,8 +40,6 @@ public interface ScoreAPI {
 
     void getKillCounter();
 
-    void actionBar(Player player);
-
     int getTimer();
 
 }

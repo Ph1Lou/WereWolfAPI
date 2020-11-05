@@ -3,10 +3,7 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
-import io.github.ph1lou.werewolfapi.enumlg.Camp;
-import io.github.ph1lou.werewolfapi.enumlg.Day;
-import io.github.ph1lou.werewolfapi.enumlg.Sounds;
-import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
+import io.github.ph1lou.werewolfapi.enumlg.*;
 import io.github.ph1lou.werewolfapi.events.*;
 import io.github.ph1lou.werewolfapi.versions.VersionUtils;
 import org.bukkit.Bukkit;
@@ -21,6 +18,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -301,6 +300,56 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(player==null) return;
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1, false, false));
+    }
+
+    @EventHandler
+    public void onActionBarGameLoverEvent(ActionBarEvent event){
+
+        if(!game.isState(StateGame.GAME)) return;
+
+        if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
+
+        StringBuilder sb = new StringBuilder(event.getActionBar());
+        PlayerWW plg = game.getPlayerWW(event.getPlayerUUID());
+        Player player = Bukkit.getPlayer(getPlayerUUID());
+
+        if(player==null) return;
+
+        assert plg != null;
+
+        if(!plg.isState(StatePlayer.ALIVE)) return;
+
+        buildActionbarLover(player,sb,plg.getLovers());
+
+
+        if(plg.getAmnesiacLoverUUID()!=null && plg.getRevealAmnesiacLover()) {
+            buildActionbarLover(player,
+                    sb,
+                    Collections.singletonList(plg.getAmnesiacLoverUUID()));
+        }
+
+        event.setActionBar(sb.toString());
+
+    }
+
+    public void buildActionbarLover(Player player,StringBuilder sb, List<UUID> list){
+
+        list
+                .stream()
+                .map(game::getPlayerWW)
+                .filter(Objects::nonNull)
+                .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
+                .peek(playerWW -> sb.append("§d ")
+                        .append(playerWW.getName())
+                        .append(" "))
+                .map(PlayerWW::getRole)
+                .map(Roles::getPlayerUUID)
+                .map(Bukkit::getPlayer)
+                .filter(Objects::nonNull)
+                .forEach(player1 -> sb
+                        .append(game.getScore()
+                                .updateArrow(player,
+                                        player1.getLocation())));
     }
 
     @EventHandler
