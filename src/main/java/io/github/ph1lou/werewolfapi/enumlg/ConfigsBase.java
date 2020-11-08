@@ -14,6 +14,7 @@ public enum ConfigsBase {
     COMPASS_MIDDLE("werewolf.menu.global.compass_middle"),
     SEER_EVERY_OTHER_DAY("werewolf.menu.global.seer_every_other_day"),
     PROXIMITY_CHAT("werewolf.menu.global.proximity_chat"),
+    SWEET_ANGEL("werewolf.menu.global.sweet_angel"),
     RED_NAME_TAG("werewolf.menu.global.red_name_tag");
 
 
