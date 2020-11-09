@@ -55,14 +55,13 @@ public interface PlayerWW {
     Roles getRole();
 
 
-    Boolean isRole(Roles role);
+    Boolean isKey(String key);
 
 
     void setSpawn(Location spawn);
 
 
     Location getSpawn();
-
 
 
     void addLover(UUID uuid) ;
