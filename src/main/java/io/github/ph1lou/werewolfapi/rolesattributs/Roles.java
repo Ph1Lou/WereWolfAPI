@@ -2,8 +2,6 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 
 
 import io.github.ph1lou.werewolfapi.enumlg.Camp;
-
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -11,17 +9,20 @@ import java.util.UUID;
 
 public interface Roles {
 
+    @NotNull
     String getDescription();
 
+    @NotNull
     String getKey();
 
-    boolean isKey(String key);
+    boolean isKey(@NotNull String key);
 
     boolean isCamp(@NotNull Camp camp);
 
     @NotNull
     Camp getCamp();
 
+    @NotNull
     UUID getPlayerUUID();
 
     void setPlayerUUID(@NotNull UUID uuid);
@@ -38,8 +39,9 @@ public interface Roles {
 
     boolean isNeutral();
 
-    void setInfected(Boolean infected);
+    void setInfected();
 
+    @Nullable
     Roles publicClone();
 
 }

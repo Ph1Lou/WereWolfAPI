@@ -41,10 +41,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         this.key=key;
     }
 
-    @Override
-    public boolean isCamp(@NotNull Camp camp) {
-        return(getCamp().equals(camp));
-    }
 
     @Override
     public @NotNull String getKey() {
@@ -85,11 +81,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     }
 
-    @NotNull
-    @Override
-    public Camp getCamp() {
-        return isNeutral()?Camp.NEUTRAL:isWereWolf()?Camp.WEREWOLF:Camp.VILLAGER;
-    }
 
     @NotNull
     @Override
@@ -107,10 +98,27 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public boolean isKey(String s) {
+    public boolean isKey(@NotNull String s) {
         return s.equals(this.getKey());
     }
 
+    @Override
+    public @NotNull Camp getCamp() {
+
+        if(isNeutral()){
+            return Camp.NEUTRAL;
+        }
+
+        if(isWereWolf()){
+            return Camp.WEREWOLF;
+        }
+        return Camp.VILLAGER;
+    }
+
+    @Override
+    public boolean isCamp(@NotNull Camp camp) {
+        return camp.equals(getCamp());
+    }
 
     @Override
     public Roles publicClone() {
@@ -270,8 +278,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public void setInfected(Boolean infected) {
-        this.infected = infected;
+    public void setInfected() {
+        this.infected = true;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -376,5 +384,23 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
         if(game.isDay(Day.DAY)) return;
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1,false,false));
+    }
+
+
+
+    @EventHandler
+    public void onCountCategories(CountRemainingRolesCategoriesEvent event){
+
+        if(isNeutral()){
+            event.addNeutral();
+            return;
+        }
+
+        if(isWereWolf()){
+            event.addWerewolf();
+            return;
+        }
+
+        event.addVillager();
     }
 }
