@@ -391,6 +391,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @EventHandler
     public void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
+        if (!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)) return;
+
         if(isNeutral()){
             event.addNeutral();
             return;
