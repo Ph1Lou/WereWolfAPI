@@ -51,5 +51,4 @@
         fi
         - 'mvn $MAVEN_CLI_OPTS deploy -s ci_settings.xml'
         only:
-        - master
         - 1.7-SNAPSHOT
