@@ -179,4 +179,8 @@ public interface ConfigWereWolfAPI {
 
      void setTrollKey(String trollKey);
 
+     int getKnockBackMode();
+
+     void setKnockBackMode(int knockBackMode);
+
 }
