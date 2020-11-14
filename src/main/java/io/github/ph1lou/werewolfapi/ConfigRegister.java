@@ -1,5 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +17,19 @@ public class ConfigRegister implements RegisterAPI {
     private final String addonKey;
     private boolean defaultValue = false;
     private List<String> lore=new ArrayList<>();
+    private ListenerManager config=null;
+    private boolean appearInMenu=true;
 
 
     public ConfigRegister(String addonKey, String key) {
         this.addonKey=addonKey;
         this.key=key;
+    }
+
+    public ConfigRegister addConfig(ListenerManager config) {
+        this.config= config;
+        return this;
+
     }
 
     public boolean getDefaultValue(){
@@ -56,4 +66,17 @@ public class ConfigRegister implements RegisterAPI {
         return key;
     }
 
+    @Nullable
+    public ListenerManager getConfig() {
+        return config;
+    }
+
+    public ConfigRegister unSetAppearInMenu(){
+        appearInMenu=false;
+        return this;
+    }
+
+    public boolean isAppearInMenu() {
+        return appearInMenu;
+    }
 }

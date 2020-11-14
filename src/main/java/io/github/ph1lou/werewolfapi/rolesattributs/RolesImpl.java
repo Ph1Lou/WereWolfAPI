@@ -68,7 +68,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             return;
         }
 
-        for(ItemStack i:game.getStuffs().getStuffRoles().get(plg.getRole().getKey())) {
+        for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
 
             if(player.getInventory().firstEmpty()==-1) {
                 player.getWorld().dropItem(player.getLocation(),i);

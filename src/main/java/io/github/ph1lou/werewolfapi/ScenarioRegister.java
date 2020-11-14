@@ -15,13 +15,13 @@ public class ScenarioRegister implements RegisterAPI {
     private boolean defaultValue = false;
     private List<String> lore=new ArrayList<>();
 
-    private final Constructor<?> constructors;
+    private final ListenerManager scenario;
 
 
-    public ScenarioRegister(String addonKey, String key,Class<?> scenarioClass ) throws NoSuchMethodException {
+    public ScenarioRegister(String addonKey, String key,ListenerManager scenario ) {
         this.addonKey=addonKey;
         this.key=key;
-        this.constructors=scenarioClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, String.class);
+        this.scenario=scenario;
     }
 
 
@@ -58,8 +58,8 @@ public class ScenarioRegister implements RegisterAPI {
         return key;
     }
 
-    public Constructor<?> getConstructors() {
-        return constructors;
-    }
 
+    public ListenerManager getScenario() {
+        return scenario;
+    }
 }
