@@ -9,10 +9,10 @@ import java.util.UUID;
 public class ActionBarEvent extends Event {
 
     private final UUID playerUUID;
-    private String actionBar;
+    private String actionBar="";
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ActionBarEvent(UUID playerUUID, String actionBar){
+    public ActionBarEvent(UUID playerUUID){
         this.playerUUID =playerUUID;
         this.actionBar=actionBar;
     }
