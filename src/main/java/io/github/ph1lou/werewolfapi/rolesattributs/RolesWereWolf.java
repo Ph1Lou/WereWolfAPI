@@ -9,7 +9,6 @@ import io.github.ph1lou.werewolfapi.events.NightEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -74,17 +73,4 @@ public abstract class RolesWereWolf extends RolesImpl {
         return true;
     }
 
-    @EventHandler
-    private void onPlayerDeathForWereWolf(PlayerDeathEvent event) {
-
-        if(event.getEntity().getKiller()==null) return;
-
-        Player killer = event.getEntity().getKiller();
-
-        if(!killer.getUniqueId().equals(getPlayerUUID())) return;
-
-        killer.removePotionEffect(PotionEffectType.ABSORPTION);
-        killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200, 0, false, false));
-        killer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 0, false, false));
-	}
 }

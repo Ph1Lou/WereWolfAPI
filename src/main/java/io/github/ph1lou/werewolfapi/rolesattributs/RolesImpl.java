@@ -252,20 +252,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     }
 
-    @EventHandler
-    private void onPlayerDeathForInfected(PlayerDeathEvent event) {
 
-        if(!infected) return;
-
-        if(event.getEntity().getKiller()==null) return;
-        Player killer = event.getEntity().getKiller();
-
-        if(!killer.getUniqueId().equals(getPlayerUUID())) return;
-
-        killer.removePotionEffect(PotionEffectType.ABSORPTION);
-        killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200, 0, false, false));
-        killer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 0, false, false));
-    }
 
     @Override
     public boolean isWereWolf() {
@@ -404,5 +391,21 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         }
 
         event.addVillager();
+    }
+
+    @EventHandler
+    private void onPlayerDeathByWereWolf(PlayerDeathEvent event) {
+
+        if(!isWereWolf()) return;
+
+        if(event.getEntity().getKiller()==null) return;
+
+        Player killer = event.getEntity().getKiller();
+
+        if(!killer.getUniqueId().equals(getPlayerUUID())) return;
+
+        killer.removePotionEffect(PotionEffectType.ABSORPTION);
+        killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200, 0, false, false));
+        killer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 0, false, false));
     }
 }
