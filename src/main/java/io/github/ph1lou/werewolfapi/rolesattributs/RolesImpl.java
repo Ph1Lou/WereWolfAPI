@@ -43,53 +43,24 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
 
     @Override
-    public @NotNull String getKey() {
+    public final @NotNull String getKey() {
         return key;
     }
 
 
     @Override
     public void recoverPower() {
-
-        Player player = Bukkit.getPlayer(uuid);
-
-        if (player==null) return;
-
-        PlayerWW plg = game.getPlayersWW().get(uuid);
-        plg.setKit(true);
-        Sounds.EXPLODE.play(player);
-        player.sendMessage(getDescription());
-        player.sendMessage(game.translate("werewolf.announcement.review_role"));
-
-        recoverPotionEffect();
-
-        if(!game.getStuffs().getStuffRoles().containsKey(getKey())){
-            Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
-            return;
-        }
-
-        for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
-
-            if(player.getInventory().firstEmpty()==-1) {
-                player.getWorld().dropItem(player.getLocation(),i);
-            }
-            else {
-                player.getInventory().addItem(i);
-                player.updateInventory();
-            }
-        }
-
     }
 
 
     @NotNull
     @Override
-    public UUID getPlayerUUID(){
+    public final UUID getPlayerUUID(){
         return uuid;
     }
 
     @Override
-    public void setPlayerUUID(@NotNull UUID uuid) {
+    public final void setPlayerUUID(@NotNull UUID uuid) {
         this.uuid=uuid;
     }
 
@@ -98,12 +69,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public boolean isKey(@NotNull String s) {
+    public final boolean isKey(@NotNull String s) {
         return s.equals(this.getKey());
     }
 
     @Override
-    public @NotNull Camp getCamp() {
+    public final @NotNull Camp getCamp() {
 
         if(isNeutral()){
             return Camp.NEUTRAL;
@@ -116,12 +87,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
-    public boolean isCamp(@NotNull Camp camp) {
+    public final boolean isCamp(@NotNull Camp camp) {
         return camp.equals(getCamp());
     }
 
     @Override
-    public Roles publicClone() {
+    public final Roles publicClone() {
         try {
             return (Roles) clone();
         } catch (CloneNotSupportedException e) {
@@ -131,7 +102,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onRecoverHeart(DayEvent event) {
+    private void onRecoverHeart(DayEvent event) {
 
         PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
 
@@ -151,7 +122,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    public void onModeratorScoreBoard(UpdateModeratorNameTag event){
+    private void onModeratorScoreBoard(UpdateModeratorNameTag event){
 
         PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
         StringBuilder sb = new StringBuilder(event.getSuffix());
@@ -166,15 +137,15 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
 
         if(!playerWW.getLovers().isEmpty()){
-            sb.append(ChatColor.LIGHT_PURPLE).append("L ");
+            sb.append(ChatColor.LIGHT_PURPLE).append("♥ ");
         }
 
         if(playerWW.getAmnesiacLoverUUID()!=null){
-            sb.append(ChatColor.DARK_PURPLE).append("AL ");
+            sb.append(ChatColor.DARK_PURPLE).append("♥ ");
         }
 
         if(playerWW.getCursedLovers()!=null){
-            sb.append(ChatColor.BLACK).append("CL ");
+            sb.append(ChatColor.BLACK).append("♥ ");
         }
 
         if(isNeutral()){
@@ -190,7 +161,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
+    private void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
         if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
@@ -202,7 +173,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onAppearInWereWolfList(AppearInWereWolfListEvent event){
+    private void onAppearInWereWolfList(AppearInWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
         if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
@@ -210,7 +181,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    public void onWereWolfList(WereWolfListEvent event){
+    private void onWereWolfList(WereWolfListEvent event){
 
         PlayerWW lg = game.getPlayersWW().get(uuid);
 
@@ -227,7 +198,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    public void onNewWereWolf(NewWereWolfEvent event) {
+    private void onNewWereWolf(NewWereWolfEvent event) {
 
         if(!uuid.equals(event.getUuid())) return;
 
@@ -252,25 +223,23 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     }
 
-
-
     @Override
     public boolean isWereWolf() {
         return infected;
     }
 
     @Override
-    public boolean getInfected() {
+    public final boolean getInfected() {
         return infected;
     }
 
     @Override
-    public void setInfected() {
+    public final void setInfected() {
         this.infected = true;
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    public void onInfectedDay(DayEvent event) {
+    private void onInfectedDay(DayEvent event) {
 
         if (!getInfected()) return;
 
@@ -284,7 +253,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onInfectedNight(NightEvent event) {
+    private void onInfectedNight(NightEvent event) {
 
         if (!getInfected()) return;
 
@@ -298,7 +267,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    public void onActionBarGameLoverEvent(ActionBarEvent event){
+    private void onActionBarGameLoverEvent(ActionBarEvent event){
 
         if(!game.isState(StateGame.GAME)) return;
 
@@ -327,14 +296,14 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     }
 
-    public void buildActionbarLover(Player player,StringBuilder sb, List<UUID> list){
+    private void buildActionbarLover(Player player,StringBuilder sb, List<UUID> list){
 
         list
                 .stream()
                 .map(game::getPlayerWW)
                 .filter(Objects::nonNull)
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
-                .peek(playerWW -> sb.append("§d ")
+                .peek(playerWW -> sb.append("§d♥ ")
                         .append(playerWW.getName())
                         .append(" "))
                 .map(PlayerWW::getRole)
@@ -348,7 +317,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    public void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
+    private void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 
         if(!infected) return;
 
@@ -376,7 +345,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
 
     @EventHandler
-    public void onCountCategories(CountRemainingRolesCategoriesEvent event){
+    private void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
         if (!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)) return;
 
@@ -407,5 +376,42 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         killer.removePotionEffect(PotionEffectType.ABSORPTION);
         killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200, 0, false, false));
         killer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 0, false, false));
+    }
+
+
+    @Override
+    public final void roleAnnouncement(){
+
+        Player player = Bukkit.getPlayer(uuid);
+
+        if (player==null) return;
+
+        PlayerWW plg = game.getPlayersWW().get(uuid);
+
+        if(plg==null) return;
+
+        plg.setKit(true);
+        Sounds.EXPLODE.play(player);
+        player.sendMessage(getDescription());
+        player.sendMessage(game.translate("werewolf.announcement.review_role"));
+
+        recoverPotionEffect();
+        recoverPower();
+
+        if(!game.getStuffs().getStuffRoles().containsKey(getKey())){
+            Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
+            return;
+        }
+
+        for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
+
+            if(player.getInventory().firstEmpty()==-1) {
+                player.getWorld().dropItem(player.getLocation(),i);
+            }
+            else {
+                player.getInventory().addItem(i);
+                player.updateInventory();
+            }
+        }
     }
 }

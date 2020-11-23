@@ -44,4 +44,6 @@ public interface Roles {
     @Nullable
     Roles publicClone();
 
+    void roleAnnouncement();
+
 }
