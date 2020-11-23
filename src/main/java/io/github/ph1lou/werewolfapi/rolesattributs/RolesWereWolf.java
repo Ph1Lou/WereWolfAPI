@@ -21,7 +21,7 @@ public abstract class RolesWereWolf extends RolesImpl {
     }
 
     @EventHandler
-    public void onNightForWereWolf(NightEvent event) {
+    private void onNightForWereWolf(NightEvent event) {
 
 
         if(!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)){
@@ -36,7 +36,7 @@ public abstract class RolesWereWolf extends RolesImpl {
     }
 
     @EventHandler
-    public void onDayForWereWolf(DayEvent event) {
+    private void onDayForWereWolf(DayEvent event) {
 
 
         if(!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)){
