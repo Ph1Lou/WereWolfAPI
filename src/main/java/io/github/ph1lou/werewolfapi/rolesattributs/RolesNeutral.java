@@ -21,7 +21,7 @@ public abstract class RolesNeutral extends RolesImpl {
     }
 
     @EventHandler
-    private void onDetectVictoryNeutral(WinConditionsCheckEvent event) {
+    public void onDetectVictoryNeutral(WinConditionsCheckEvent event) {
 
         if (event.isCancelled()) return;
 

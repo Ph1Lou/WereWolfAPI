@@ -102,7 +102,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    private void onRecoverHeart(DayEvent event) {
+    public void onRecoverHeart(DayEvent event) {
 
         PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
 
@@ -122,7 +122,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onModeratorScoreBoard(UpdateModeratorNameTag event){
+    public void onModeratorScoreBoard(UpdateModeratorNameTag event){
 
         PlayerWW playerWW = game.getPlayerWW(getPlayerUUID());
         StringBuilder sb = new StringBuilder(event.getSuffix());
@@ -161,7 +161,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    private void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
+    public void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
         if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
@@ -173,7 +173,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    private void onAppearInWereWolfList(AppearInWereWolfListEvent event){
+    public void onAppearInWereWolfList(AppearInWereWolfListEvent event){
 
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
         if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
@@ -181,7 +181,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onWereWolfList(WereWolfListEvent event){
+    public void onWereWolfList(WereWolfListEvent event){
 
         PlayerWW lg = game.getPlayersWW().get(uuid);
 
@@ -198,7 +198,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onNewWereWolf(NewWereWolfEvent event) {
+    public void onNewWereWolf(NewWereWolfEvent event) {
 
         if(!uuid.equals(event.getUuid())) return;
 
@@ -239,7 +239,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
-    private void onInfectedDay(DayEvent event) {
+    public void onInfectedDay(DayEvent event) {
 
         if (!getInfected()) return;
 
@@ -253,7 +253,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
-    private void onInfectedNight(NightEvent event) {
+    public void onInfectedNight(NightEvent event) {
 
         if (!getInfected()) return;
 
@@ -267,7 +267,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onActionBarGameLoverEvent(ActionBarEvent event){
+    public void onActionBarGameLoverEvent(ActionBarEvent event){
 
         if(!game.isState(StateGame.GAME)) return;
 
@@ -317,7 +317,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
+    public void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 
         if(!infected) return;
 
@@ -345,7 +345,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
 
     @EventHandler
-    private void onCountCategories(CountRemainingRolesCategoriesEvent event){
+    public void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
         if (!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)) return;
 
@@ -363,7 +363,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @EventHandler
-    private void onPlayerDeathByWereWolf(PlayerDeathEvent event) {
+    public void onPlayerDeathByWereWolf(PlayerDeathEvent event) {
 
         if(!isWereWolf()) return;
 
