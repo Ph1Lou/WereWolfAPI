@@ -166,7 +166,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
         if(game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.DEATH)) return;
 
-        if (game.getConfig().getTimerValues().get("werewolf.menu.timers.werewolf_list") <= 0) {
+        if (game.getConfig().getTimerValues().get(TimersBase.WEREWOLF_LIST.getKey()) <= 0) {
             event.setAccept(isWereWolf());
         }
 

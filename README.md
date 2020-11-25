@@ -64,6 +64,8 @@ GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWo
 ### Pour enregistrer vos textes en Nested Json pour y accéder depuis le WereWolfAPI#translate
 
 
+# La suite n'est plus à jours en version 1.7 Snapshot, regardez le repo role example pour savoir comment register l'addon et un rôle et la classe Register du plugin lg pour register des scénarios, Timer, Config,...
+
 Dans votre onEnable() :
 ```
 ww.loadTranslation(this,"fr");
