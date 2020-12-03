@@ -274,12 +274,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(!event.getPlayerUUID().equals(getPlayerUUID())) return;
 
         StringBuilder sb = new StringBuilder(event.getActionBar());
-        PlayerWW plg = game.getPlayerWW(event.getPlayerUUID());
+        PlayerWW plg = game.getPlayerWW(getPlayerUUID());
         Player player = Bukkit.getPlayer(getPlayerUUID());
 
         if(player==null) return;
 
-        assert plg != null;
+        if(plg==null) return;
 
         if(!plg.isState(StatePlayer.ALIVE)) return;
 
@@ -404,13 +404,14 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         }
 
         for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
-
-            if(player.getInventory().firstEmpty()==-1) {
-                player.getWorld().dropItem(player.getLocation(),i);
-            }
-            else {
-                player.getInventory().addItem(i);
-                player.updateInventory();
+            if(i!=null){
+                if(player.getInventory().firstEmpty()==-1) {
+                    player.getWorld().dropItem(player.getLocation(),i);
+                }
+                else {
+                    player.getInventory().addItem(i);
+                    player.updateInventory();
+                }
             }
         }
     }
