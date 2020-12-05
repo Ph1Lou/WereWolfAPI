@@ -153,17 +153,17 @@ public class VersionUtils_1_8 extends VersionUtils {
             final Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor();
             final Object packet = titleConstructor.newInstance();
             try {
-                final Field aField = packet.getClass().getDeclaredField("a");
+                Field aField = packet.getClass().getDeclaredField("a");
                 aField.setAccessible(true);
                 aField.set(packet, tabHeader);
-                final Field bField = packet.getClass().getDeclaredField("b");
+                Field bField = packet.getClass().getDeclaredField("b");
                 bField.setAccessible(true);
                 bField.set(packet, tabFooter);
             } catch (Exception e) {
-                final Field aField2 = packet.getClass().getDeclaredField("header");
+                Field aField2 = packet.getClass().getDeclaredField("header");
                 aField2.setAccessible(true);
                 aField2.set(packet, tabHeader);
-                final Field bField2 = packet.getClass().getDeclaredField("footer");
+                Field bField2 = packet.getClass().getDeclaredField("footer");
                 bField2.setAccessible(true);
                 bField2.set(packet, tabFooter);
             }
@@ -192,12 +192,13 @@ public class VersionUtils_1_8 extends VersionUtils {
 
             Object biomes = biomesField.get(null);
             Object plain = Array.get(biomes, 1);
-            Array.set(biomes, 24, plain);
-            Array.set(biomes, 10, plain);
-            Array.set(biomes, 0, plain);
-            Array.set(biomes, 25, plain);
-            Array.set(biomes, 16, plain);
-            Array.set(biomes, 24, plain);
+            Object forest = Array.get(biomes, 4);
+            Array.set(biomes, 24, forest);
+            Array.set(biomes, 10, forest);
+            Array.set(biomes, 0, forest);
+            Array.set(biomes, 25, forest);
+            Array.set(biomes, 16, forest);
+            Array.set(biomes, 24, forest);
             Array.set(biomes, 25, plain);
             Array.set(biomes, 21, plain);
             Array.set(biomes, 22, plain);

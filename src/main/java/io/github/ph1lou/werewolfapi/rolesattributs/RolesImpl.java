@@ -303,7 +303,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
                 .map(game::getPlayerWW)
                 .filter(Objects::nonNull)
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
-                .peek(playerWW -> sb.append("§d♥ ")
+                .peek(playerWW -> sb.append(" §d♥ ")
                         .append(playerWW.getName())
                         .append(" "))
                 .map(PlayerWW::getRole)
@@ -403,15 +403,16 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
             return;
         }
 
+        Bukkit.getConsoleSender().sendMessage(game.translate(getKey()));
+
         for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
-            if(i!=null){
-                if(player.getInventory().firstEmpty()==-1) {
-                    player.getWorld().dropItem(player.getLocation(),i);
-                }
-                else {
-                    player.getInventory().addItem(i);
-                    player.updateInventory();
-                }
+
+            if(player.getInventory().firstEmpty()==-1) {
+                player.getWorld().dropItem(player.getLocation(),i);
+            }
+            else {
+                player.getInventory().addItem(i);
+                player.updateInventory();
             }
         }
     }

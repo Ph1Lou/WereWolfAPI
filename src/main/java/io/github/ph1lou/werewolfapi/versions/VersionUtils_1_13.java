@@ -56,7 +56,7 @@ public class VersionUtils_1_13 extends VersionUtils {
         BiomeMapping.replaceBiomes(BiomeMapping.Biome.DEEP_LUKEWARM_OCEAN, BiomeMapping.Biome.FOREST);
         BiomeMapping.replaceBiomes(BiomeMapping.Biome.COLD_OCEAN, BiomeMapping.Biome.PLAINS);
         BiomeMapping.replaceBiomes(BiomeMapping.Biome.DEEP_COLD_OCEAN, BiomeMapping.Biome.FOREST);
-        BiomeMapping.replaceBiomes(BiomeMapping.Biome.JUNGLE, BiomeMapping.Biome.PLAINS);
+        BiomeMapping.replaceBiomes(BiomeMapping.Biome.JUNGLE, BiomeMapping.Biome.FOREST);
         BiomeMapping.replaceBiomes(BiomeMapping.Biome.JUNGLE_EDGE, BiomeMapping.Biome.PLAINS);
         BiomeMapping.replaceBiomes(BiomeMapping.Biome.JUNGLE_HILLS, BiomeMapping.Biome.PLAINS);
         BiomeMapping.replaceBiomes(BiomeMapping.Biome.BAMBOO_JUNGLE, BiomeMapping.Biome.PLAINS);

@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -41,4 +40,8 @@ public interface MapManagerAPI {
     void loadMap(@Nullable File map) throws IOException;
 
     void loadMap() throws IOException;
+
+    void changeBorder(int mapRadius);
+
+    double getPercentageGenerated();
 }
