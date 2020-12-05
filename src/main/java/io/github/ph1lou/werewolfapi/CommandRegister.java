@@ -23,6 +23,7 @@ public class CommandRegister implements RegisterAPI {
     private boolean requiredPlayerInGame = false;
     private final Commands command;
     private final String addonKey;
+    private String description="";
 
     public CommandRegister(String addonKey, String key,Commands command){
         this.addonKey=addonKey;
@@ -148,5 +149,15 @@ public class CommandRegister implements RegisterAPI {
         return argNumbers.stream()
                 .min(Integer::compareTo)
                 .orElse(0);
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public CommandRegister setDescription(String description) {
+        this.description = description;
+        return this;
     }
 }

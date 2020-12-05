@@ -60,7 +60,7 @@ public interface WereWolfAPI {
      * @return Map game's players
      */
 
-    Map<UUID,? extends PlayerWW> getPlayersWW();
+    Map<UUID,PlayerWW> getPlayersWW();
 
     /**
      * return the text associated with the key
