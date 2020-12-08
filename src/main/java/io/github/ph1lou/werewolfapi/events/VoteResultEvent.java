@@ -29,7 +29,7 @@ public class VoteResultEvent extends Event implements Cancellable {
         this.playerWW =playerWW;
     }
 
-    public PlayerWW getPlayerVoteUUID(){
+    public PlayerWW getPlayerWW(){
         return playerWW;
     }
 
