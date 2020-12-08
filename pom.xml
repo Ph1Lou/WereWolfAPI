@@ -6,7 +6,7 @@
 
     <groupId>io.github.ph1lou</groupId>
     <artifactId>werewolfapi</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.3-R0.1-SNAPSHOT</version>
+            <version>1.16.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -66,16 +66,4 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>gitlab-maven</id>
-            <!--suppress UnresolvedMavenProperty -->
-            <url>https://gitlab.example.com/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
-        </repository>
-        <snapshotRepository>
-            <id>gitlab-maven</id>
-            <!--suppress UnresolvedMavenProperty -->
-            <url>https://gitlab.example.com/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
