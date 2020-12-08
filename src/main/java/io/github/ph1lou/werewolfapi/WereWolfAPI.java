@@ -51,7 +51,7 @@ public interface WereWolfAPI {
     UUID getGameUUID();
 
     /**
-     * return the  PlayerWW of the game
+     * @return Collection the PlayerWW of the game
      */
 
     Collection<? extends PlayerWW> getPlayerWW();
@@ -73,7 +73,7 @@ public interface WereWolfAPI {
 
     /**
      * resurrects the player specified
-     *
+     * @param playerWW the specified player
      */
 
     void resurrection(PlayerWW playerWW);
@@ -82,6 +82,7 @@ public interface WereWolfAPI {
 
     /**
      * killed specified player
+     * @param playerWW specified player
      */
 
     void death(PlayerWW playerWW);

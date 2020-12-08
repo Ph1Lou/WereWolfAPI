@@ -1,4 +1,7 @@
 io.github.ph1lou.werewolfapi
 io.github.ph1lou.werewolfapi.enums
 io.github.ph1lou.werewolfapi.events
+io.github.ph1lou.werewolfapi.registers
 io.github.ph1lou.werewolfapi.rolesattributs
+io.github.ph1lou.werewolfapi.utils
+io.github.ph1lou.werewolfapi.versions
