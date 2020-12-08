@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi;
+package io.github.ph1lou.werewolfapi.registers;
 
 import java.util.ArrayList;
 import java.util.List;

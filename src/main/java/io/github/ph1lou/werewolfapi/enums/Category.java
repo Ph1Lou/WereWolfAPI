@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.enumlg;
+package io.github.ph1lou.werewolfapi.enums;
 
 public enum Category {
     WEREWOLF("werewolf.categories.werewolf"),

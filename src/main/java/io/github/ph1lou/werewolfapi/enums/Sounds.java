@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.enumlg;
+package io.github.ph1lou.werewolfapi.enums;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;

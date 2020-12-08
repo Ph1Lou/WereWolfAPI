@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.enumlg;
+package io.github.ph1lou.werewolfapi.enums;
 
 public enum TimersBase {
     INVULNERABILITY("werewolf.menu.timers.invulnerability"),

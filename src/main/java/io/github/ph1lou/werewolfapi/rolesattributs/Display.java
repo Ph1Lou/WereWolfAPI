@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
-import io.github.ph1lou.werewolfapi.enumlg.Camp;
+import io.github.ph1lou.werewolfapi.enums.Camp;
 
 public interface Display {
 

@@ -1,7 +1,8 @@
-package io.github.ph1lou.werewolfapi;
+package io.github.ph1lou.werewolfapi.registers;
 
-import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
-import io.github.ph1lou.werewolfapi.enumlg.StateGame;
+import io.github.ph1lou.werewolfapi.Commands;
+import io.github.ph1lou.werewolfapi.enums.StatePlayer;
+import io.github.ph1lou.werewolfapi.enums.StateGame;
 
 import java.util.HashSet;
 import java.util.Set;

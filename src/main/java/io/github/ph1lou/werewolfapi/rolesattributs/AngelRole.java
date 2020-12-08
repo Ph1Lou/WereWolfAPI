@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
-import io.github.ph1lou.werewolfapi.enumlg.AngelForm;
+import io.github.ph1lou.werewolfapi.enums.AngelForm;
 
 public interface AngelRole {
 

@@ -1,6 +1,8 @@
-package io.github.ph1lou.werewolfapi;
+package io.github.ph1lou.werewolfapi.registers;
 
-import io.github.ph1lou.werewolfapi.enumlg.Category;
+import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
+import io.github.ph1lou.werewolfapi.PlayerWW;
+import io.github.ph1lou.werewolfapi.enums.Category;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;

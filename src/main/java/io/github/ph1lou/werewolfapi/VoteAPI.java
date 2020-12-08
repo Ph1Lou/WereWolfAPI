@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.enumlg.VoteStatus;
+import io.github.ph1lou.werewolfapi.enums.VoteStatus;
 
 import java.util.Map;
 

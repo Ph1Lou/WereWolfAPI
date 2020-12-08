@@ -1,8 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
 
-import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
-import io.github.ph1lou.werewolfapi.rolesattributs.LoverAPI;
+import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;

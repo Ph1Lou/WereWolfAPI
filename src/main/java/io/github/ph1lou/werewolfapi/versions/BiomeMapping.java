@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.versions;
 
-import io.github.ph1lou.werewolfapi.enumlg.UniversalMaterial;
+import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import io.github.ph1lou.werewolfapi.utils.NMSUtils;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;

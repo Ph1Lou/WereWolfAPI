@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.enumlg.Day;
-import io.github.ph1lou.werewolfapi.enumlg.StateGame;
+import io.github.ph1lou.werewolfapi.enums.Day;
+import io.github.ph1lou.werewolfapi.enums.StateGame;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;

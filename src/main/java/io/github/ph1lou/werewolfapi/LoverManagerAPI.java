@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.rolesattributs.LoverAPI;
-
 import java.util.List;
 
 public interface LoverManagerAPI {

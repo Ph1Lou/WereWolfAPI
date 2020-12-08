@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.rolesattributs;
+package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
 

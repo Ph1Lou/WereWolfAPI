@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.enumlg;
+package io.github.ph1lou.werewolfapi.enums;
 
 public enum ScenariosBase {
     VANILLA_PLUS("werewolf.menu.scenarios.vanilla_plus"),
