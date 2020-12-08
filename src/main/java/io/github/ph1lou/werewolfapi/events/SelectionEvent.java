@@ -29,11 +29,11 @@ public class SelectionEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public PlayerWW getPlayerWW() {
+    public final PlayerWW getPlayerWW() {
         return playerWW;
     }
 
-    public PlayerWW getTargetWW() {
+    public final PlayerWW getTargetWW() {
         return targetWW;
     }
 

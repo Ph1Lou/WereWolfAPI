@@ -1,17 +1,18 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
+import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class InfectionEvent extends ResurrectionEvent {
+public class InfectionEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final PlayerWW targetWW;
+
 
     public InfectionEvent(PlayerWW playerWW, PlayerWW targetWW) {
-        super(playerWW);
-        this.targetWW = targetWW;
+        super(playerWW, targetWW);
     }
 
     @NotNull
@@ -24,7 +25,5 @@ public class InfectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
-    public PlayerWW getTargetWW() {
-        return targetWW;
-    }
+
 }

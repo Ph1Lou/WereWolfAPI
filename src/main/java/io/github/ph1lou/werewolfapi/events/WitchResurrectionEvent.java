@@ -1,20 +1,21 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
+import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class WitchResurrectionEvent extends ResurrectionEvent {
+public class WitchResurrectionEvent extends SelectionEvent {
 
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final PlayerWW playerWW;
 
-    public WitchResurrectionEvent(PlayerWW playerWW, PlayerWW targetUUID) {
-        super(targetUUID);
-        this.playerWW = playerWW;
+
+    public WitchResurrectionEvent(PlayerWW playerWW, PlayerWW targetWW) {
+        super(playerWW, targetWW);
+
     }
-
     @NotNull
     @Override
     public HandlerList getHandlers() {
@@ -25,7 +26,6 @@ public class WitchResurrectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
-    public PlayerWW getPlayerWW() {
-        return playerWW;
-    }
+
+
 }

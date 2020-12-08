@@ -27,7 +27,7 @@ public class ResurrectionEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public PlayerWW getPlayerWW() {
+    public final PlayerWW getPlayerWW() {
         return playerWW;
     }
 
