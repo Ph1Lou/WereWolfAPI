@@ -1,19 +1,19 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
-import java.util.UUID;
 
 public class AroundLover extends Event {
 
-    private final Set<UUID> uuidS;
+    private final Set<PlayerWW> playerWWS;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public AroundLover(Set<UUID> uuidS){
-       this.uuidS=uuidS;
+    public AroundLover(Set<PlayerWW> playerWWS){
+       this.playerWWS = playerWWS;
     }
 
     @NotNull
@@ -27,12 +27,12 @@ public class AroundLover extends Event {
     }
 
 
-    public Set<? extends UUID> getUuidS() {
-        return uuidS;
+    public Set<? extends PlayerWW> getPlayerWWS() {
+        return playerWWS;
     }
 
-    public void addPlayer(UUID uuid){
-        this.uuidS.add(uuid);
+    public void addPlayer(PlayerWW playerWW){
+        this.playerWWS.add(playerWW);
     }
 
 

@@ -1,22 +1,23 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public class SisterDeathEvent extends Event implements Cancellable {
 
-    private final UUID sister;
-    private final List<UUID> allSisters;
-    private final UUID killer;
+    private final PlayerWW sister;
+    private final Set<PlayerWW> allSisters;
+    private final PlayerWW killer;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SisterDeathEvent(UUID sister, List<UUID> allSisters, UUID killer){
+    public SisterDeathEvent(PlayerWW sister, Set<PlayerWW> allSisters,PlayerWW killer){
         this.sister =sister;
         this.allSisters = allSisters;
         this.killer = killer;
@@ -32,16 +33,16 @@ public class SisterDeathEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getSister() {
+    public PlayerWW getSister() {
         return sister;
     }
 
-    public List<UUID> getAllSisters() {
+    public Set<PlayerWW> getAllSisters() {
         return allSisters;
     }
 
-
-    public UUID getKiller() {
+    @Nullable
+    public PlayerWW getKiller() {
         return killer;
     }
 

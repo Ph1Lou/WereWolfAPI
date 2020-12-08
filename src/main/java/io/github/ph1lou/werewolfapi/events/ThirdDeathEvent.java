@@ -1,21 +1,20 @@
 
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class ThirdDeathEvent extends Event implements Cancellable {
 
-    private final UUID uuid;
+    private final PlayerWW playerWW;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ThirdDeathEvent(UUID uuid){
-        this.uuid=uuid;
+    public ThirdDeathEvent(PlayerWW playerWW){
+        this.playerWW = playerWW;
     }
 
     @NotNull
@@ -28,8 +27,8 @@ public class ThirdDeathEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     @Override

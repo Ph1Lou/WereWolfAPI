@@ -1,18 +1,17 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class AmnesiacTransformationEvent extends TransformationEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    private final UUID villager;
+    private final PlayerWW villager;
 
-    public AmnesiacTransformationEvent(UUID uuid, UUID villager){
-        super(uuid);
+    public AmnesiacTransformationEvent(PlayerWW playerWW, PlayerWW villager){
+        super(playerWW);
         this.villager = villager;
     }
 
@@ -26,7 +25,7 @@ public class AmnesiacTransformationEvent extends TransformationEvent {
         return HANDLERS_LIST;
     }
 
-    public UUID getVillager() {
+    public PlayerWW getVillager() {
         return villager;
     }
 

@@ -1,19 +1,18 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class InvisibleEvent extends Event {
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private final boolean invisible;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public InvisibleEvent(UUID playerUUID, boolean invisible) {
-        this.playerUUID = playerUUID;
+    public InvisibleEvent(PlayerWW playerWW, boolean invisible) {
+        this.playerWW = playerWW;
         this.invisible=invisible;
     }
 
@@ -27,8 +26,8 @@ public class InvisibleEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     public boolean isInvisible() {

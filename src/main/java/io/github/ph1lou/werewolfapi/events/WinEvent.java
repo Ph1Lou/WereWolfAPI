@@ -1,20 +1,20 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public class WinEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final String role;
-    private final List<UUID> players;
+    private final Set<PlayerWW> players;
 
 
-    public WinEvent(String role, List<UUID> players) {
+    public WinEvent(String role, Set<PlayerWW> players) {
         this.role = role;
         this.players = players;
     }
@@ -33,7 +33,7 @@ public class WinEvent extends Event {
         return role;
     }
 
-    public List<UUID> getPlayers() {
+    public Set<PlayerWW> getPlayers() {
         return players;
     }
 }

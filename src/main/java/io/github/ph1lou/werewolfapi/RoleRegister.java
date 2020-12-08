@@ -5,7 +5,6 @@ import io.github.ph1lou.werewolfapi.enumlg.Category;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author Ph1Lou
@@ -23,7 +22,7 @@ public class RoleRegister implements RegisterAPI {
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
         this.addonKey=addonKey;
         this.key=key;
-        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, WereWolfAPI.class, UUID.class, String.class);
+        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, PlayerWW.class, String.class);
     }
 
 

@@ -1,23 +1,22 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class SelectionEvent extends Event implements Cancellable {
 
-    private final UUID playerUUID;
-    private final UUID targetUUID;
+    private final PlayerWW playerWW;
+    private final PlayerWW targetWW;
     private boolean cancel=false;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SelectionEvent(UUID playerUUID, UUID targetUUID){
-        this.playerUUID =playerUUID;
-        this.targetUUID =targetUUID;
+    public SelectionEvent(PlayerWW playerWW, PlayerWW targetWW){
+        this.playerWW =playerWW;
+        this.targetWW =targetWW;
     }
 
     @NotNull
@@ -30,12 +29,12 @@ public class SelectionEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
-    public UUID getTargetUUID() {
-        return targetUUID;
+    public PlayerWW getTargetWW() {
+        return targetWW;
     }
 
     @Override

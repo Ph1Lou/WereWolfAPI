@@ -1,22 +1,17 @@
 package io.github.ph1lou.werewolfapi.events;
 
-import org.bukkit.event.Event;
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.UUID;
-
-public class RevealCursedLoversEvent extends Event {
+public class RegenerationEvent extends SelectionEvent {
 
 
-    private final List<List<UUID>> playersUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public RevealCursedLoversEvent(List<List<UUID>> playersUUID) {
-        this.playersUUID = playersUUID;
+    public RegenerationEvent(PlayerWW playerWW, PlayerWW targetWW){
+        super(playerWW,targetWW);
     }
-
 
     @NotNull
     @Override
@@ -28,8 +23,5 @@ public class RevealCursedLoversEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public List<List<UUID>> getPlayersUUID() {
-        return playersUUID;
-    }
 }
 

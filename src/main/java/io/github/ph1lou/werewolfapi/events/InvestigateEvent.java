@@ -1,25 +1,25 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public class InvestigateEvent extends Event implements Cancellable {
 
-    private final List<UUID> playersUUID;
+    private final Set<PlayerWW> playersUUID;
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private boolean sameCamp;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public InvestigateEvent(UUID playerUUID, List<UUID> playersUUID, boolean sameCamp){
-        this.playerUUID=playerUUID;
-        this.playersUUID =playersUUID;
+    public InvestigateEvent(PlayerWW playerWW, Set<PlayerWW> playerWWS, boolean sameCamp){
+        this.playerWW=playerWW;
+        this.playersUUID =playerWWS;
         this.sameCamp = sameCamp;
     }
 
@@ -37,7 +37,7 @@ public class InvestigateEvent extends Event implements Cancellable {
         return sameCamp;
     }
 
-    public List<UUID> getPlayersUUID() {
+    public Set<PlayerWW> getPlayerWWs() {
         return playersUUID;
     }
 
@@ -45,8 +45,8 @@ public class InvestigateEvent extends Event implements Cancellable {
         this.sameCamp = sameCamp;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     @Override

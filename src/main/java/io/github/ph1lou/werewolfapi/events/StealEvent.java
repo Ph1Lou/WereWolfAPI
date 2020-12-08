@@ -1,22 +1,21 @@
 
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class StealEvent extends Event {
 
-    private final UUID killer;
-    private final UUID player;
+    private final PlayerWW thiefWW;
+    private final PlayerWW playerWW;
     private final String role;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public StealEvent(UUID killer, UUID player, String role){
-        this.killer =killer;
-        this.player =player;
+    public StealEvent(PlayerWW thiefWW, PlayerWW playerWW, String role){
+        this.thiefWW = thiefWW;
+        this.playerWW = playerWW;
         this.role=role;
     }
 
@@ -30,12 +29,12 @@ public class StealEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getKiller() {
-        return killer;
+    public PlayerWW getThiefWW() {
+        return thiefWW;
     }
 
-    public UUID getPlayer() {
-        return player;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     public String getRole() {

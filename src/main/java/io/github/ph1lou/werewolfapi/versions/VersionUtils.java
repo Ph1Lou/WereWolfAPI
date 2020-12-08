@@ -16,7 +16,6 @@ public abstract class VersionUtils {
 
     private static VersionUtils versionUtils = null;
 
-
     public static VersionUtils getVersionUtils() {
         if (versionUtils == null) {
             int version = UniversalMaterial.loadServerVersion();
@@ -31,9 +30,9 @@ public abstract class VersionUtils {
 
     public abstract void setSkullOwner(SkullMeta skull, OfflinePlayer player, String name);
 
-    public abstract void setPlayerMaxHealth(Player player, double maxHealth);
+    public abstract void setPlayerMaxHealth(@NotNull Player player, double maxHealth);
 
-    public abstract double getPlayerMaxHealth(Player player);
+    public abstract double getPlayerMaxHealth(@NotNull Player player);
 
     public abstract void patchBiomes();
 
@@ -43,9 +42,9 @@ public abstract class VersionUtils {
 
     public abstract void setItemUnbreakable(ItemMeta meta, boolean b);
 
-    public abstract void sendTitle(Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime);
+    public abstract void sendTitle(@NotNull Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime);
 
-    public abstract void sendActionBar(Player player, String message);
+    public abstract void sendActionBar(@NotNull Player player, String message);
 
     public abstract void sendTabTitle(@NotNull Player player, @NotNull String header, @NotNull String footer);
 

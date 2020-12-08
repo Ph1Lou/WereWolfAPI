@@ -1,18 +1,17 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class FinalJoinEvent extends Event {
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public FinalJoinEvent(UUID playerUUID) {
-        this.playerUUID =playerUUID;
+    public FinalJoinEvent(PlayerWW playerWW) {
+        this.playerWW =playerWW;
     }
 
     @NotNull
@@ -25,8 +24,8 @@ public class FinalJoinEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
 }

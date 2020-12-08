@@ -2,8 +2,8 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 
 public interface Power {
 
-    void setPower(Boolean power);
+    void setPower(boolean power);
 
-    Boolean hasPower();
+    boolean hasPower();
 
 }

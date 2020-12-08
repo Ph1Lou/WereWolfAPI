@@ -1,9 +1,8 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class ElderResurrectionEvent extends ResurrectionEvent {
 
@@ -12,8 +11,8 @@ public class ElderResurrectionEvent extends ResurrectionEvent {
 
     private boolean killerIsVillager;
 
-    public ElderResurrectionEvent(UUID playerUUID, boolean killerIsVillager) {
-        super(playerUUID);
+    public ElderResurrectionEvent(PlayerWW playerWW, boolean killerIsVillager) {
+        super(playerWW);
         this.killerIsVillager = killerIsVillager;
     }
 

@@ -13,7 +13,7 @@ public class AppearInWereWolfListEvent extends Event {
     private boolean appear =false;
 
     public AppearInWereWolfListEvent(UUID playerUUID){
-        this.playerUUID=playerUUID;
+        this.playerUUID = playerUUID;
     }
 
     @NotNull

@@ -13,7 +13,7 @@ public class ModeratorEvent extends Event {
     private boolean isModerator;
 
     public ModeratorEvent(UUID playerUUID, boolean isModerator) {
-        this.playerUUID =playerUUID;
+        this.playerUUID = playerUUID;
         this.isModerator = isModerator;
     }
 

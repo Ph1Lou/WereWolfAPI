@@ -1,23 +1,22 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enumlg.Camp;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class NewDisplayRole extends Event implements Cancellable {
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private final String newDisplayRole;
     private final Camp newDisplayCamp;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public NewDisplayRole(UUID playerUUID, String newDisplayRole1, Camp newDisplayCamp){
-        this.playerUUID =playerUUID;
+    public NewDisplayRole(PlayerWW playerWW, String newDisplayRole1, Camp newDisplayCamp){
+        this.playerWW =playerWW;
         this.newDisplayRole = newDisplayRole1;
 
         this.newDisplayCamp = newDisplayCamp;
@@ -33,8 +32,8 @@ public class NewDisplayRole extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
 

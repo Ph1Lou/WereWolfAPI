@@ -1,17 +1,16 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class TrackEvent extends SelectionEvent {
 
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public TrackEvent(UUID playerUUID, UUID targetUUID){
-        super(playerUUID,targetUUID);
+    public TrackEvent(PlayerWW playerWW, PlayerWW targetWW){
+        super(playerWW,targetWW);
     }
 
     @NotNull

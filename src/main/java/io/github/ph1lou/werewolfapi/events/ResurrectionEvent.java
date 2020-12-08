@@ -1,20 +1,19 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class ResurrectionEvent extends Event implements Cancellable {
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public ResurrectionEvent(UUID playerUUID) {
-        this.playerUUID =playerUUID;
+    public ResurrectionEvent(PlayerWW playerWW) {
+        this.playerWW =playerWW;
     }
 
 
@@ -28,8 +27,8 @@ public class ResurrectionEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     @Override

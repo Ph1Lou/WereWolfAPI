@@ -28,12 +28,12 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
-    public void setPlayerMaxHealth(Player player, double maxHealth) {
+    public void setPlayerMaxHealth(@NotNull Player player, double maxHealth) {
         player.setMaxHealth(maxHealth);
     }
 
     @Override
-    public double getPlayerMaxHealth(Player player) {
+    public double getPlayerMaxHealth(@NotNull Player player) {
         return player.getMaxHealth();
     }
 
@@ -65,7 +65,7 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
-    public void sendTitle(Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime) {
+    public void sendTitle(@NotNull Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime) {
         try {
             Object chatTitle = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class)
                     .invoke(null, "{\"text\": \"" + title + "\"}");
@@ -94,7 +94,7 @@ public class VersionUtils_1_8 extends VersionUtils {
 
 
     @Override
-    public void sendActionBar(Player player, String message) {
+    public void sendActionBar(@NotNull Player player, String message) {
 
         try {
             Class<?> craftPlayerClass = NMSUtils.getNMSClass("entity.CraftPlayer");

@@ -1,21 +1,20 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class UseMaskEvent extends Event implements Cancellable {
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private final int mask;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public UseMaskEvent(UUID playerUUID, int mask){
-        this.playerUUID =playerUUID;
+    public UseMaskEvent(PlayerWW playerWW, int mask){
+        this.playerWW =playerWW;
         this.mask = mask;
     }
 
@@ -29,8 +28,8 @@ public class UseMaskEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     public int getMask() {

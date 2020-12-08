@@ -6,18 +6,17 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 public interface MapManagerAPI {
 
     /**
      * teleport the player around the world
-     * @param playerUUID uuid of the player
+     * @param playerWW uuid of the player
      * @param d angle in radian
      * @param message teleport message
      */
 
-    void transportation(UUID playerUUID, double d, String message);
+    void transportation(PlayerWW playerWW, double d, String message);
 
     /**
      * delete the game map

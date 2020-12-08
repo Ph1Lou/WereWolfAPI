@@ -13,7 +13,7 @@ public class HostEvent extends Event {
     private boolean isHost;
 
     public HostEvent(UUID playerUUID, boolean isHost) {
-        this.playerUUID =playerUUID;
+        this.playerUUID = playerUUID;
         this.isHost=isHost;
     }
 

@@ -13,7 +13,7 @@ public class RequestSeeWereWolfListEvent extends Event {
     private boolean accept =false;
 
     public RequestSeeWereWolfListEvent(UUID playerUUID){
-        this.playerUUID=playerUUID;
+        this.playerUUID = playerUUID;
     }
 
     @NotNull

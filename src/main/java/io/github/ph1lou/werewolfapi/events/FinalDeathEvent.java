@@ -1,19 +1,18 @@
 
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class FinalDeathEvent extends Event {
 
-    private final UUID uuid;
+    private final PlayerWW playerWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public FinalDeathEvent(UUID uuid){
-        this.uuid=uuid;
+    public FinalDeathEvent(PlayerWW playerWW){
+        this.playerWW = playerWW;
     }
 
     @NotNull
@@ -26,7 +25,7 @@ public class FinalDeathEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 }

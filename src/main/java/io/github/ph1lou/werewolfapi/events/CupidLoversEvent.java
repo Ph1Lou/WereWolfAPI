@@ -1,22 +1,22 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public class CupidLoversEvent extends Event {
 
-    private final UUID playerUUID;
-    private final List<UUID> playersUUID;
+    private final PlayerWW playerWW;
+    private final Set<PlayerWW> playerWWS;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public CupidLoversEvent(UUID playerUUID, List<UUID> playersUUID){
-        this.playerUUID =playerUUID;
-        this.playersUUID =playersUUID;
+    public CupidLoversEvent(PlayerWW playerWW, Set<PlayerWW> playerWWS){
+        this.playerWW =playerWW;
+        this.playerWWS = playerWWS;
     }
 
     @NotNull
@@ -29,12 +29,12 @@ public class CupidLoversEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
-    public List<UUID> getPlayersUUID() {
-        return playersUUID;
+    public Set<PlayerWW> getPlayerWWS() {
+        return playerWWS;
     }
 }
 

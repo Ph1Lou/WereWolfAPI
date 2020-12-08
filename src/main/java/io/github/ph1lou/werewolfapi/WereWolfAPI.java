@@ -4,10 +4,7 @@ import io.github.ph1lou.werewolfapi.enumlg.Day;
 import io.github.ph1lou.werewolfapi.enumlg.StateGame;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author Ph1Lou
@@ -53,14 +50,11 @@ public interface WereWolfAPI {
 
     UUID getGameUUID();
 
-
-
     /**
-     * return the Map of players uuid key with PlayerWW class
-     * @return Map game's players
+     * return the  PlayerWW of the game
      */
 
-    Map<UUID,PlayerWW> getPlayersWW();
+    Collection<? extends PlayerWW> getPlayerWW();
 
     /**
      * return the text associated with the key
@@ -79,19 +73,18 @@ public interface WereWolfAPI {
 
     /**
      * resurrects the player specified
-     * @param uuid uuid of the player
+     *
      */
 
-    void resurrection(UUID uuid);
+    void resurrection(PlayerWW playerWW);
 
 
 
     /**
      * killed specified player
-     * @param uuid uuid of the player
      */
 
-    void death(UUID uuid);
+    void death(PlayerWW playerWW);
 
     @Nullable
     PlayerWW getPlayerWW(UUID uuid);
@@ -100,15 +93,9 @@ public interface WereWolfAPI {
 
     Random getRandom();
 
-    UUID autoSelect(UUID playerUUID);
+    PlayerWW autoSelect(PlayerWW playerWW);
 
     VoteAPI getVote();
-
-    List<List<UUID>> getLoversRange();
-
-    List<List<UUID>> getAmnesiacLoversRange();
-
-    List<List<UUID>> getCursedLoversRange();
 
     StuffManager getStuffs();
 
@@ -133,5 +120,7 @@ public interface WereWolfAPI {
     void setGameName(String name);
 
     StateGame getState();
+
+    LoverManagerAPI getLoversManager();
 
 }

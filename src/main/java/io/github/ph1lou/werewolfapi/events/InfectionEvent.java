@@ -1,18 +1,17 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class InfectionEvent extends ResurrectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final UUID infectionUUID;
+    private final PlayerWW targetWW;
 
-    public InfectionEvent(UUID playerUUID, UUID infectionUUID) {
-        super(playerUUID);
-        this.infectionUUID = infectionUUID;
+    public InfectionEvent(PlayerWW playerWW, PlayerWW targetWW) {
+        super(playerWW);
+        this.targetWW = targetWW;
     }
 
     @NotNull
@@ -25,7 +24,7 @@ public class InfectionEvent extends ResurrectionEvent {
         return HANDLERS_LIST;
     }
 
-    public UUID getInfectionUUID() {
-        return infectionUUID;
+    public PlayerWW getTargetWW() {
+        return targetWW;
     }
 }

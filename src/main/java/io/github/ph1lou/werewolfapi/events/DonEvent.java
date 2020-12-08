@@ -1,23 +1,22 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class DonEvent extends Event implements Cancellable {
 
-    private final UUID donnerUUID;
-    private final UUID receiptUUID;
+    private final PlayerWW playerWW;
+    private final PlayerWW receiverWW;
     private final int don;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public DonEvent(UUID donnerUUID, UUID receiptUUID, int don){
-        this.donnerUUID =donnerUUID;
-        this.receiptUUID =receiptUUID;
+    public DonEvent(PlayerWW playerWW, PlayerWW receiverWW, int don){
+        this.playerWW = playerWW;
+        this.receiverWW = receiverWW;
         this.don = don;
     }
 
@@ -31,12 +30,12 @@ public class DonEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getDonnerUUID() {
-        return donnerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
-    public UUID getReceiptUUID() {
-        return receiptUUID;
+    public PlayerWW getReceiverWW() {
+        return receiverWW;
     }
 
     public int getDon() {

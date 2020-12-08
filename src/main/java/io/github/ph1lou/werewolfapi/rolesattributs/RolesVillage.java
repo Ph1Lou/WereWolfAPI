@@ -1,14 +1,12 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
-import io.github.ph1lou.werewolfapi.WereWolfAPI;
-
-import java.util.UUID;
+import io.github.ph1lou.werewolfapi.PlayerWW;
 
 public abstract class RolesVillage extends RolesImpl {
 
-    public RolesVillage(GetWereWolfAPI main, WereWolfAPI game, UUID uuid, String key) {
-        super(main,game, uuid, key);
+    public RolesVillage(GetWereWolfAPI main, PlayerWW playerWW, String key){
+        super(main,playerWW,key);
     }
 
     @Override

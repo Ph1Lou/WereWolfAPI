@@ -2,9 +2,11 @@ package io.github.ph1lou.werewolfapi;
 
 
 import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
+import io.github.ph1lou.werewolfapi.rolesattributs.LoverAPI;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -43,10 +45,10 @@ public interface PlayerWW {
     int getLostHeart() ;
 
 
-    void setKit(Boolean kit) ;
+    void setKit(boolean kit) ;
 
 
-    Boolean hasKit() ;
+    boolean hasKit() ;
 
 
     void setRole(Roles role);
@@ -55,7 +57,7 @@ public interface PlayerWW {
     Roles getRole();
 
 
-    Boolean isKey(String key);
+    boolean isKey(String key);
 
 
     void setSpawn(Location spawn);
@@ -64,19 +66,10 @@ public interface PlayerWW {
     Location getSpawn();
 
 
-    void addLover(UUID uuid) ;
+    void addKiller(PlayerWW playerWW);
 
 
-    void clearLovers();
-
-
-    List<UUID> getLovers();
-
-
-    void addKiller(UUID killerUUID);
-
-
-    List<UUID> getKillers();
+    List<? extends PlayerWW> getKillers();
 
 
     void setDeathTime(Integer deathTime);
@@ -87,41 +80,18 @@ public interface PlayerWW {
 
     void clearLostHeart() ;
 
+    List<LoverAPI> getLovers();
 
-    void removeLover(UUID uuid);
-
-
-    UUID getCursedLovers();
-
-
-    void setCursedLover(UUID uuid);
-
-
-    Boolean getAnnounceCursedLoversAFK();
-
-
-    void setAnnounceCursedLoversAFK(Boolean announceCursedLoversAFK);
-
-
-    Boolean getAnnounceLoversAFK() ;
-
-
-    void setAnnounceLoversAFK(Boolean announceLoversAFK);
 
     @Nullable
-    UUID getLastKiller();
+    PlayerWW getLastKiller();
 
 
-    void setThief(Boolean thief) ;
+    void setThief(boolean thief) ;
 
 
-    Boolean isThief();
+    boolean isThief();
 
-
-    UUID getAmnesiacLoverUUID();
-
-
-    void setAmnesiacLoverUUID(UUID uuid) ;
 
 
     String getName() ;
@@ -130,15 +100,14 @@ public interface PlayerWW {
     void setName(String name) ;
 
 
-    Boolean getRevealAmnesiacLover() ;
-
-
-    void setRevealAmnesiacLover(Boolean revealAmnesiacLover);
-
+    @NotNull
     StatePlayer getState();
 
     int getDisconnectedTime();
 
     void setDisconnectedTime(int disconnectedTime);
+
+    @NotNull
+    UUID getUUID();
 }
 

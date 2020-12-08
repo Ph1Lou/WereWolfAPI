@@ -4,5 +4,5 @@ public interface Progress {
 
     float getProgress() ;
 
-    void setProgress(Float progress) ;
+    void setProgress(float progress) ;
 }

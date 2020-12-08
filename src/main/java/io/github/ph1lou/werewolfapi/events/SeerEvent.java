@@ -1,17 +1,16 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class SeerEvent extends SelectionEvent {
 
     private String camp;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SeerEvent(UUID playerUUID, UUID targetUUID, String camp){
-        super(playerUUID,targetUUID);
+    public SeerEvent(PlayerWW playerWW, PlayerWW targetWW, String camp){
+        super(playerWW,targetWW);
         this.camp=camp;
     }
 

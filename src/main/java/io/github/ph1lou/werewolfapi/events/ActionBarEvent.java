@@ -13,8 +13,7 @@ public class ActionBarEvent extends Event {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public ActionBarEvent(UUID playerUUID){
-        this.playerUUID =playerUUID;
-        this.actionBar=actionBar;
+        this.playerUUID = playerUUID;
     }
 
     @NotNull

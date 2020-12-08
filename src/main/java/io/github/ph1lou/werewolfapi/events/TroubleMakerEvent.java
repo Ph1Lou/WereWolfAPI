@@ -1,9 +1,8 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class TroubleMakerEvent extends SelectionEvent {
 
@@ -11,8 +10,8 @@ public class TroubleMakerEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public TroubleMakerEvent(UUID playerUUID, UUID targetUUID){
-        super(playerUUID,targetUUID);
+    public TroubleMakerEvent(PlayerWW playerWW, PlayerWW targetWW){
+        super(playerWW,targetWW);
     }
 
     @NotNull

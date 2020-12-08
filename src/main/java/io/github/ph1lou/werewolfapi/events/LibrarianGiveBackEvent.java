@@ -1,9 +1,8 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class LibrarianGiveBackEvent extends SelectionEvent {
 
@@ -11,8 +10,8 @@ public class LibrarianGiveBackEvent extends SelectionEvent {
 
     private String info;
 
-    public LibrarianGiveBackEvent(UUID playerUUID, UUID deliveryPlayerUUID, String info) {
-        super(playerUUID,deliveryPlayerUUID);
+    public LibrarianGiveBackEvent(PlayerWW playerWW, PlayerWW targetWW, String info) {
+        super(playerWW,targetWW);
         this.info=info;
     }
 

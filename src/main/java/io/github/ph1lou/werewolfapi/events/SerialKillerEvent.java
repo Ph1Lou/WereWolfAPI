@@ -1,16 +1,15 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class SerialKillerEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SerialKillerEvent(UUID playerUUID, UUID targetUUID){
-        super(playerUUID,targetUUID);
+    public SerialKillerEvent(PlayerWW playerWW, PlayerWW targetWW){
+        super(playerWW,targetWW);
 
     }
 

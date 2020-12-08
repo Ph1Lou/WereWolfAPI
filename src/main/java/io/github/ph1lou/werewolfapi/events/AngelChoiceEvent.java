@@ -1,21 +1,20 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enumlg.AngelForm;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 public class AngelChoiceEvent extends Event {
 
-    private final UUID playerUUID;
+    private final PlayerWW playerWW;
     private final AngelForm choice;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public AngelChoiceEvent(UUID playerUUID, AngelForm choice){
-        this.playerUUID =playerUUID;
+    public AngelChoiceEvent(PlayerWW playerWW, AngelForm choice){
+        this.playerWW = playerWW;
         this.choice = choice;
     }
 
@@ -29,8 +28,8 @@ public class AngelChoiceEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayerUUID() {
-        return playerUUID;
+    public PlayerWW getPlayerWW() {
+        return playerWW;
     }
 
     public AngelForm getChoice() {

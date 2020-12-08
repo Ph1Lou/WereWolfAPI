@@ -1,19 +1,17 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
-import io.github.ph1lou.werewolfapi.WereWolfAPI;
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enumlg.StatePlayer;
 import io.github.ph1lou.werewolfapi.events.SelectionEndEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 
-import java.util.UUID;
-
 public abstract class RolesWithLimitedSelectionDuration extends RolesVillage implements Power {
 
-    public RolesWithLimitedSelectionDuration(GetWereWolfAPI main, WereWolfAPI game, UUID uuid, String key) {
-        super(main,game,uuid,key);
+    public RolesWithLimitedSelectionDuration(GetWereWolfAPI main, PlayerWW playerWW, String key) {
+        super(main,playerWW,key);
     }
     private boolean power=true;
 
@@ -22,7 +20,7 @@ public abstract class RolesWithLimitedSelectionDuration extends RolesVillage imp
 
         if (!hasPower()) return;
 
-        if(!game.getPlayersWW().get(getPlayerUUID()).isState(StatePlayer.ALIVE)){
+        if(!getPlayerWW().isState(StatePlayer.ALIVE)){
             return;
         }
 
@@ -36,12 +34,12 @@ public abstract class RolesWithLimitedSelectionDuration extends RolesVillage imp
     }
 
     @Override
-    public void setPower(Boolean power) {
+    public final void setPower(boolean power) {
         this.power=power;
     }
 
     @Override
-    public Boolean hasPower() {
+    public final boolean hasPower() {
         return(this.power);
     }
 }

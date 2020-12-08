@@ -31,14 +31,14 @@ public class VersionUtils_1_13 extends VersionUtils {
     }
 
     @Override
-    public void setPlayerMaxHealth(Player player, double maxHealth) {
+    public void setPlayerMaxHealth(@NotNull Player player, double maxHealth) {
         AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (attribute == null) return;
         attribute.setBaseValue(maxHealth);
     }
 
     @Override
-    public double getPlayerMaxHealth(Player player) {
+    public double getPlayerMaxHealth(@NotNull Player player) {
         AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (attribute == null) return 20;
         return attribute.getBaseValue();
@@ -87,12 +87,12 @@ public class VersionUtils_1_13 extends VersionUtils {
 
 
     @Override
-    public void sendTitle(Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime) {
+    public void sendTitle(@NotNull Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime) {
         player.sendTitle(title, subtitle, fadeInTime, showTime, fadeOutTime);
     }
 
     @Override
-    public void sendActionBar(Player player, String message) {
+    public void sendActionBar(@NotNull Player player, String message) {
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(message).create());
     }
 

@@ -1,16 +1,17 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
+
 import java.util.List;
-import java.util.UUID;
 
 public interface AffectedPlayers {
 
-    void addAffectedPlayer(UUID uuid);
+    void addAffectedPlayer(PlayerWW playerWW);
 
-    void removeAffectedPlayer(UUID uuid);
+    void removeAffectedPlayer(PlayerWW playerWW);
 
     void clearAffectedPlayer();
 
-    List<UUID> getAffectedPlayers();
+    List<PlayerWW> getAffectedPlayers();
 
 }

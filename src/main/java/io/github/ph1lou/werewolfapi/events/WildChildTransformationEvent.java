@@ -1,19 +1,18 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class WildChildTransformationEvent extends TransformationEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    private final UUID master;
+    private final PlayerWW model;
 
-    public WildChildTransformationEvent(UUID uuid, UUID master){
-        super(uuid);
-        this.master = master;
+    public WildChildTransformationEvent(PlayerWW playerWW, PlayerWW model){
+        super(playerWW);
+        this.model = model;
     }
 
     @NotNull
@@ -26,7 +25,7 @@ public class WildChildTransformationEvent extends TransformationEvent {
         return HANDLERS_LIST;
     }
 
-    public UUID getMaster() {
-        return master;
+    public PlayerWW getModel() {
+        return model;
     }
 }

@@ -1,17 +1,16 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class VoteEvent extends SelectionEvent {
 
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public VoteEvent(UUID voterUUID,UUID voteUUID){
-        super(voterUUID,voteUUID);
+    public VoteEvent(PlayerWW voterWW, PlayerWW voteWW){
+        super(voterWW,voteWW);
     }
 
     @NotNull

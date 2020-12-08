@@ -1,20 +1,20 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public class RevealAmnesiacLoversEvent extends Event {
 
 
-    private final List<UUID> playersUUID;
+    private final Set<PlayerWW> playerWWS;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public RevealAmnesiacLoversEvent(List<UUID> playersUUID) {
-        this.playersUUID = playersUUID;
+    public RevealAmnesiacLoversEvent(Set<PlayerWW> playerWWS) {
+        this.playerWWS = playerWWS;
     }
 
 
@@ -28,8 +28,8 @@ public class RevealAmnesiacLoversEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public List<UUID> getPlayersUUID() {
-        return playersUUID;
+    public Set<PlayerWW> getPlayerWWS() {
+        return playerWWS;
     }
 }
 

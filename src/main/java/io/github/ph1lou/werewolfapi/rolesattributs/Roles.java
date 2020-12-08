@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enumlg.Camp;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,10 +26,6 @@ public interface Roles {
     @NotNull
     UUID getPlayerUUID();
 
-    void setPlayerUUID(@NotNull UUID uuid);
-
-    void recoverPowerAfterStolen();
-
     void recoverPower();
 
     void recoverPotionEffect();
@@ -45,5 +42,10 @@ public interface Roles {
     Roles publicClone();
 
     void roleAnnouncement();
+
+    @NotNull
+    PlayerWW getPlayerWW();
+
+    void setPlayerWW(@NotNull PlayerWW playerWW);
 
 }
