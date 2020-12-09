@@ -13,7 +13,7 @@ public class TimerRegister implements RegisterAPI {
     private final String key;
     private final String addonKey;
     private int defaultValue = 1;
-    private List<String> lore=new ArrayList<>();
+    private List<String> loreKey =new ArrayList<>();
 
     public TimerRegister(String addonKey, String key) {
         this.addonKey=addonKey;
@@ -30,19 +30,19 @@ public class TimerRegister implements RegisterAPI {
     }
 
 
-    public TimerRegister setLore(List<String> lore){
-        this.lore=lore;
+    public TimerRegister setLoreKey(List<String> loreKey){
+        this.loreKey = loreKey;
         return this;
     }
 
 
-    public TimerRegister setLore(String lore){
-        this.lore.add(lore);
+    public TimerRegister addLoreKey(String lore){
+        this.loreKey.add(lore);
         return this;
     }
 
-    public List<String> getLore() {
-        return lore;
+    public List<? extends String> getLoreKey() {
+        return loreKey;
     }
 
     @Override

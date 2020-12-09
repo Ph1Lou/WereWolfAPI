@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.Category;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Constructor;
@@ -40,17 +41,17 @@ public class RoleRegister implements RegisterAPI {
         return this;
     }
 
-    public RoleRegister setLoreKey(String lore){
+    public RoleRegister addLoreKey(String lore){
         this.loreKey.add(lore);
         return this;
     }
 
 
-    public List<String> getLoreKey() {
+    public List<? extends String> getLoreKey() {
         return loreKey;
     }
 
-    public List<Category> getCategories() {
+    public List<? extends Category> getCategories() {
         return categories;
     }
 
@@ -68,8 +69,8 @@ public class RoleRegister implements RegisterAPI {
         return constructors;
     }
 
-    public ItemStack getItem() {
-        return item;
+    public Material getMaterial() {
+        return item.getType();
     }
 
     public RoleRegister setItem(ItemStack item) {

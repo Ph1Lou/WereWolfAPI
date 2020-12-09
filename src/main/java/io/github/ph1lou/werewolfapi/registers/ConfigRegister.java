@@ -21,6 +21,7 @@ public class ConfigRegister implements RegisterAPI {
     private List<String> loreKey =new ArrayList<>();
     private ListenerManager config=null;
     private boolean appearInMenu=true;
+    private final List<String> incompatibleConfigs =new ArrayList<>();
     private ItemStack item=null;
 
 
@@ -90,5 +91,14 @@ public class ConfigRegister implements RegisterAPI {
     public ConfigRegister setItem(ItemStack item) {
         this.item = item;
         return this;
+    }
+
+    public ConfigRegister addIncompatibleConfig(String key) {
+        incompatibleConfigs.add(key);
+        return this;
+    }
+
+    public List<? extends String> getIncompatibleConfigs() {
+        return incompatibleConfigs;
     }
 }

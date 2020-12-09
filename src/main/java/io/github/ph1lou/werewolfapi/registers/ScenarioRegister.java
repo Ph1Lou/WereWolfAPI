@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class ScenarioRegister implements RegisterAPI {
     private boolean defaultValue = false;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
+
+    private final List<String> incompatibleScenarios =new ArrayList<>();
 
     private final ListenerManager scenario;
 
@@ -42,12 +45,12 @@ public class ScenarioRegister implements RegisterAPI {
         return this;
     }
 
-    public ScenarioRegister setLoreKey(String lore){
+    public ScenarioRegister addLoreKey(String lore){
         this.loreKey.add(lore);
         return this;
     }
 
-    public List<String> getLoreKey() {
+    public List<? extends String> getLoreKey() {
         return loreKey;
     }
 
@@ -66,13 +69,22 @@ public class ScenarioRegister implements RegisterAPI {
         return scenario;
     }
 
-    public ItemStack getItem() {
-        return item;
+    public Material getMaterial() {
+        return item.getType();
     }
 
     public ScenarioRegister setItem(ItemStack item) {
         this.item = item;
         return this;
+    }
+
+    public ScenarioRegister addIncompatibleScenario(String key) {
+        incompatibleScenarios.add(key);
+        return this;
+    }
+
+    public List<? extends String> getIncompatibleScenarios() {
+        return incompatibleScenarios;
     }
 
 
