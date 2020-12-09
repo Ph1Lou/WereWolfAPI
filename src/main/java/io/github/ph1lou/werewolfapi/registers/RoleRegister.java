@@ -5,6 +5,7 @@ import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.Category;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class RoleRegister implements RegisterAPI {
         return constructors;
     }
 
+    @Nullable
     public ItemStack getItem() {
         return item;
     }

@@ -3,9 +3,9 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.ActionItemAddon;
 import io.github.ph1lou.werewolfapi.enums.Sounds;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
-import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -67,8 +67,13 @@ public class AddonRegister implements RegisterAPI {
         return defaultLanguage;
     }
 
-    public Map<String, UUID> getAuthors() {
-        return authors;
+    public Set<? extends String> getAuthors() {
+        return authors.keySet();
+    }
+
+    @Nullable
+    public UUID getAuthorsUUID(String name) {
+        return authors.get(name);
     }
 
     public ItemStack getItem() {
@@ -90,7 +95,7 @@ public class AddonRegister implements RegisterAPI {
         return this;
     }
 
-    public List<String> getLoreKey() {
+    public List<? extends String> getLoreKey() {
         return loreKey;
     }
 

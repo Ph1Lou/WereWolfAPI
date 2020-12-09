@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.ListenerManager;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,7 @@ public class ScenarioRegister implements RegisterAPI {
         return scenario;
     }
 
+    @Nullable
     public ItemStack getItem() {
         return item;
     }
