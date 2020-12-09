@@ -36,12 +36,6 @@ public class CommandRegister implements RegisterAPI {
         return roleOnly;
     }
 
-    public CommandRegister setRoleOnly(){
-        this.roleOnly = true;
-        this.requiredPlayerInGame=true;
-        return this;
-    }
-
     @Override
     public String getKey() {
         return key;
@@ -75,6 +69,8 @@ public class CommandRegister implements RegisterAPI {
     }
 
     public CommandRegister addRoleKey(String roleKeys) {
+        this.roleOnly=true;
+        this.requiredPlayerInGame=true;
         this.roleKeys.add(roleKeys);
         return this;
     }
@@ -97,14 +93,8 @@ public class CommandRegister implements RegisterAPI {
         return this;
     }
 
-
     public boolean isRequiredPlayerInGame() {
         return requiredPlayerInGame;
-    }
-
-    public CommandRegister setRequiredPlayerInGame() {
-        this.requiredPlayerInGame = true;
-        return this;
     }
 
 
@@ -133,11 +123,11 @@ public class CommandRegister implements RegisterAPI {
 
     public CommandRegister setRequiredPower() {
         this.requiredPower = true;
+        this.requiredPlayerInGame=true;
         return this;
     }
 
     public boolean isStateWW(StateGame stateLG) {
-
         return stateWW.isEmpty() || stateWW.contains(stateLG);
     }
 
