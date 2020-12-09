@@ -71,8 +71,8 @@ public class AddonRegister implements RegisterAPI {
         return authors;
     }
 
-    public Material getMaterial() {
-        return item.getType();
+    public ItemStack getItem() {
+        return item;
     }
 
     public ActionItemAddon getAction() {

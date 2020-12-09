@@ -69,8 +69,8 @@ public class ScenarioRegister implements RegisterAPI {
         return scenario;
     }
 
-    public Material getMaterial() {
-        return item.getType();
+    public ItemStack getItem() {
+        return item;
     }
 
     public ScenarioRegister setItem(ItemStack item) {

@@ -69,8 +69,8 @@ public class RoleRegister implements RegisterAPI {
         return constructors;
     }
 
-    public Material getMaterial() {
-        return item.getType();
+    public ItemStack getItem() {
+        return item;
     }
 
     public RoleRegister setItem(ItemStack item) {
