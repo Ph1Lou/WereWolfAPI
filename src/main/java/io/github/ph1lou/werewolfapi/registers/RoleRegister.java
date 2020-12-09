@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.Category;
+import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class RoleRegister implements RegisterAPI {
 
     private final String key;
     private final String addonKey;
-    private List<String> lore=new ArrayList<>();
+    private ItemStack item=null;
+    private List<String> loreKey =new ArrayList<>();
     private final Constructor<?> constructors;
 
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
@@ -33,14 +35,19 @@ public class RoleRegister implements RegisterAPI {
         return this;
     }
 
-    public RoleRegister setLore(List<String> lore){
-        this.lore=lore;
+    public RoleRegister setLoreKey(List<String> loreKey){
+        this.loreKey = loreKey;
+        return this;
+    }
+
+    public RoleRegister setLoreKey(String lore){
+        this.loreKey.add(lore);
         return this;
     }
 
 
-    public List<String> getLore() {
-        return lore;
+    public List<String> getLoreKey() {
+        return loreKey;
     }
 
     public List<Category> getCategories() {
@@ -59,6 +66,15 @@ public class RoleRegister implements RegisterAPI {
 
     public Constructor<?> getConstructors() {
         return constructors;
+    }
+
+    public ItemStack getItem() {
+        return item;
+    }
+
+    public RoleRegister setItem(ItemStack item) {
+        this.item = item;
+        return this;
     }
 
 }

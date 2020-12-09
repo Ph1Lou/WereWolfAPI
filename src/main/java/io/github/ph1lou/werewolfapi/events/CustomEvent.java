@@ -1,11 +1,14 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import com.google.common.collect.Sets;
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class CustomEvent extends Event implements Cancellable {
@@ -20,12 +23,32 @@ public class CustomEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public CustomEvent(PlayerWW playerWW, Set<PlayerWW> playerWWS, int extraInt, String extraInfo, String event){
+    public CustomEvent(PlayerWW playerWW, @NotNull String extraInfo,@NotNull String event){
+        this(playerWW,new HashSet<>(),0,extraInfo,event);
+    }
+
+    public CustomEvent(PlayerWW playerWW, int extraInt,@NotNull String event){
+        this(playerWW,new HashSet<>(),extraInt,"",event);
+    }
+
+    public CustomEvent(int extraInt,@NotNull String extraInfo,@NotNull String event){
+        this(null,new HashSet<>(),extraInt,extraInfo,event);
+    }
+
+    public CustomEvent(PlayerWW playerWW, int extraInt,@NotNull String extraInfo,@NotNull String event){
+        this(playerWW,new HashSet<>(),extraInt,extraInfo,event);
+    }
+
+    public CustomEvent(@Nullable PlayerWW playerWW, @NotNull Set<PlayerWW> playerWWS, int extraInt, @NotNull String extraInfo, @NotNull String event){
         this.playerWW =playerWW;
         this.playerWWS = playerWWS;
         this.extraInt = extraInt;
         this.extraInfo = extraInfo;
         this.event=event;
+    }
+
+    public CustomEvent(@Nullable PlayerWW playerWW, @NotNull PlayerWW targetWW, int extraInt, @NotNull String extraInfo, @NotNull String event){
+        this(playerWW, Sets.newHashSet(targetWW),extraInt,extraInfo,event);
     }
 
     public CustomEvent(PlayerWW playerWW, Set<PlayerWW> playerWWS, int extraInt , String event){

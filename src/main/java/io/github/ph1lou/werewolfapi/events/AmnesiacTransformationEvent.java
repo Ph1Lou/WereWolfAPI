@@ -10,7 +10,7 @@ public class AmnesiacTransformationEvent extends TransformationEvent {
 
     private final PlayerWW villager;
 
-    public AmnesiacTransformationEvent(PlayerWW playerWW, PlayerWW villager){
+    public AmnesiacTransformationEvent(@NotNull PlayerWW playerWW,@NotNull PlayerWW villager){
         super(playerWW);
         this.villager = villager;
     }

@@ -12,7 +12,7 @@ public class AmnesiacLoverDeathEvent extends Event {
     private final PlayerWW playerWW2;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public AmnesiacLoverDeathEvent(PlayerWW playerWW1, PlayerWW playerWW2){
+    public AmnesiacLoverDeathEvent(@NotNull PlayerWW playerWW1,@NotNull PlayerWW playerWW2){
         this.playerWW1 = playerWW1;
         this.playerWW2 = playerWW2;
     }

@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -17,9 +18,10 @@ public class ConfigRegister implements RegisterAPI {
     private final String key;
     private final String addonKey;
     private boolean defaultValue = false;
-    private List<String> lore=new ArrayList<>();
+    private List<String> loreKey =new ArrayList<>();
     private ListenerManager config=null;
     private boolean appearInMenu=true;
+    private ItemStack item=null;
 
 
     public ConfigRegister(String addonKey, String key) {
@@ -43,18 +45,18 @@ public class ConfigRegister implements RegisterAPI {
     }
 
 
-    public ConfigRegister setLore(List<String> lore){
-        this.lore=lore;
+    public ConfigRegister setLoreKey(List<String> loreKey){
+        this.loreKey = loreKey;
         return this;
     }
 
-    public ConfigRegister setLore(String lore){
-        this.lore.add(lore);
+    public ConfigRegister setLoreKey(String lore){
+        this.loreKey.add(lore);
         return this;
     }
 
-    public List<String> getLore() {
-        return lore;
+    public List<String> getLoreKey() {
+        return loreKey;
     }
 
     @Override
@@ -79,5 +81,14 @@ public class ConfigRegister implements RegisterAPI {
 
     public boolean isAppearInMenu() {
         return appearInMenu;
+    }
+
+    public ItemStack getItem() {
+        return item;
+    }
+
+    public ConfigRegister setItem(ItemStack item) {
+        this.item = item;
+        return this;
     }
 }

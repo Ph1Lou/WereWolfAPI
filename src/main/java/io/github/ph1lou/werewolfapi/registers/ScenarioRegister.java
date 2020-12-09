@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,8 @@ public class ScenarioRegister implements RegisterAPI {
     private final String key;
     private final String addonKey;
     private boolean defaultValue = false;
-    private List<String> lore=new ArrayList<>();
+    private ItemStack item=null;
+    private List<String> loreKey =new ArrayList<>();
 
     private final ListenerManager scenario;
 
@@ -35,18 +37,18 @@ public class ScenarioRegister implements RegisterAPI {
         return this;
     }
 
-    public ScenarioRegister setLore(List<String> lore){
-        this.lore=lore;
+    public ScenarioRegister setLoreKey(List<String> loreKey){
+        this.loreKey = loreKey;
         return this;
     }
 
-    public ScenarioRegister setLore(String lore){
-        this.lore.add(lore);
+    public ScenarioRegister setLoreKey(String lore){
+        this.loreKey.add(lore);
         return this;
     }
 
-    public List<String> getLore() {
-        return lore;
+    public List<String> getLoreKey() {
+        return loreKey;
     }
 
     @Override
@@ -63,4 +65,15 @@ public class ScenarioRegister implements RegisterAPI {
     public ListenerManager getScenario() {
         return scenario;
     }
+
+    public ItemStack getItem() {
+        return item;
+    }
+
+    public ScenarioRegister setItem(ItemStack item) {
+        this.item = item;
+        return this;
+    }
+
+
 }
