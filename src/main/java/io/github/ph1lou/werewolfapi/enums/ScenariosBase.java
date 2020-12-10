@@ -12,6 +12,7 @@ public enum ScenariosBase {
     NO_FALL("werewolf.menu.scenarios.no_fall"),
     NO_EGG_SNOWBALL("werewolf.menu.scenarios.no_egg_snowball"),
     NO_POISON("werewolf.menu.scenarios.no_poison"),
+    COMPASS_MIDDLE("werewolf.menu.global.compass_middle"),
     XP_BOOST("werewolf.menu.scenarios.xp_boost"),
     COMPASS_TARGET_LAST_DEATH("werewolf.menu.scenarios.compass_target_last_death"),
     NO_CLEAN_UP("werewolf.menu.scenarios.no_clean_up"),
