@@ -90,8 +90,6 @@ public interface WereWolfAPI {
     @Nullable
     PlayerWW getPlayerWW(UUID uuid);
 
-    Map<String,String> getLanguage();
-
     Random getRandom();
 
     PlayerWW autoSelect(PlayerWW playerWW);

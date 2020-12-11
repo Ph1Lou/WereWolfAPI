@@ -31,6 +31,16 @@ public class VersionUtils_1_13 extends VersionUtils {
     }
 
     @Override
+    public void addPlayerMaxHealth(@NotNull Player player, double health) {
+        setPlayerMaxHealth(player,getPlayerMaxHealth(player)+health);
+    }
+
+    @Override
+    public void removePlayerMaxHealth(@NotNull Player player, double health) {
+        setPlayerMaxHealth(player,Math.max(1,getPlayerMaxHealth(player)-health));
+    }
+
+    @Override
     public void setPlayerMaxHealth(@NotNull Player player, double maxHealth) {
         AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (attribute == null) return;

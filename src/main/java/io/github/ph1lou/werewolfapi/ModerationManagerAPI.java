@@ -76,28 +76,28 @@ public interface ModerationManagerAPI {
      * @return List whitelisted players's UUID
      */
 
-    List<UUID> getWhiteListedPlayers();
+    List<? extends UUID> getWhiteListedPlayers();
 
     /**
      * return the UUIDs of Hosts
      * @return List hosts's UUID
      */
 
-    List<UUID> getHosts();
+    List<? extends UUID> getHosts();
 
     /**
      * return the UUIDs of Moderators
      * @return List moderators's UUID
      */
 
-    List<UUID> getModerators();
+    List<? extends UUID> getModerators();
 
     /**
      * return the UUIDs of Players in queue
      * @return List players's UUID
      */
 
-    List<UUID> getQueue();
+    List<? extends UUID> getQueue();
 
     void checkQueue();
 

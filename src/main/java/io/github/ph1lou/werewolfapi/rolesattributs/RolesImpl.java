@@ -97,7 +97,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if (player == null) return;
 
         if (playerWW.getLostHeart() > 0) {
-            VersionUtils.getVersionUtils().setPlayerMaxHealth(player, VersionUtils.getVersionUtils().getPlayerMaxHealth(player) + playerWW.getLostHeart());
+            VersionUtils.getVersionUtils().addPlayerMaxHealth(player,  playerWW.getLostHeart());
             playerWW.clearLostHeart();
         }
 

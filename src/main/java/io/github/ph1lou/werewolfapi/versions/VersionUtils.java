@@ -30,7 +30,12 @@ public abstract class VersionUtils {
 
     public abstract void setSkullOwner(SkullMeta skull, OfflinePlayer player, String name);
 
+    @Deprecated
     public abstract void setPlayerMaxHealth(@NotNull Player player, double maxHealth);
+
+    public abstract void addPlayerMaxHealth(@NotNull Player player, double health);
+
+    public abstract void removePlayerMaxHealth(@NotNull Player player, double health);
 
     public abstract double getPlayerMaxHealth(@NotNull Player player);
 

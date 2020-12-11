@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import io.github.ph1lou.werewolfapi.PlayerWW;
-
 import java.util.List;
 
 public interface LoverAPI {
@@ -14,5 +12,5 @@ public interface LoverAPI {
 
     boolean isAlive();
 
-    void swap(PlayerWW oldPlayerWW,PlayerWW newPlayerWW);
+    boolean swap(PlayerWW oldPlayerWW,PlayerWW newPlayerWW);
 }

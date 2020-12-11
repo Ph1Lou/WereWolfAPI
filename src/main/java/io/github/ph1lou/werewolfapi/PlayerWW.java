@@ -17,10 +17,9 @@ import java.util.UUID;
 
 public interface PlayerWW {
 
-    void setItemDeath(ItemStack[] itemsDeath) ;
+    void setItemDeath(ItemStack[] items);
 
-
-    List<ItemStack> getItemDeath();
+    List<? extends ItemStack> getItemDeath();
 
 
     void clearItemDeath();
@@ -79,8 +78,11 @@ public interface PlayerWW {
 
     void clearLostHeart() ;
 
-    List<LoverAPI> getLovers();
+    List<? extends LoverAPI> getLovers();
 
+    void addLover(LoverAPI loverAPI);
+
+    void removeLover(LoverAPI loverAPI);
 
     @Nullable
     PlayerWW getLastKiller();

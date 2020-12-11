@@ -4,7 +4,9 @@ import java.util.List;
 
 public interface LoverManagerAPI {
 
-    List<LoverAPI> getLovers();
+    List<? extends LoverAPI> getLovers();
+
+    void removeLover(LoverAPI loverAPI);
 
     void repartition(GetWereWolfAPI main);
 }
