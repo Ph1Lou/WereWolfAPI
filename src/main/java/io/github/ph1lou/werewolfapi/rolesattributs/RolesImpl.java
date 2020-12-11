@@ -5,7 +5,6 @@ import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.*;
 import io.github.ph1lou.werewolfapi.events.*;
-import io.github.ph1lou.werewolfapi.versions.VersionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -92,12 +91,9 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        Player player = Bukkit.getPlayer(uuid);
-
-        if (player == null) return;
 
         if (playerWW.getLostHeart() > 0) {
-            VersionUtils.getVersionUtils().addPlayerMaxHealth(player,  playerWW.getLostHeart());
+            playerWW.addPlayerMaxHealth(playerWW.getLostHeart());
             playerWW.clearLostHeart();
         }
 
@@ -156,12 +152,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        Player player = Bukkit.getPlayer(uuid);
-
-        if (player == null) return;
-
-        player.sendMessage(game.translate("werewolf.role.werewolf.see_others"));
-        Sounds.WOLF_HOWL.play(player);
+        getPlayerWW().sendMessage(game.translate("werewolf.role.werewolf.see_others"));
+        Sounds.WOLF_HOWL.play(getPlayerWW());
     }
 
     @EventHandler
@@ -169,13 +161,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!playerWW.equals(event.getPlayerWW())) return;
 
-        Player player = Bukkit.getPlayer(uuid);
 
-        if(player!=null) {
-            player.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
-            Sounds.WOLF_HOWL.play(player);
-            recoverPotionEffect();
-        }
+
+        getPlayerWW().sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
+        Sounds.WOLF_HOWL.play(getPlayerWW());
+        recoverPotionEffect();
 
         game.getPlayerWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
@@ -212,11 +202,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        Player player = Bukkit.getPlayer(uuid);
-
-        if(player==null) return;
-
-        player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -226,11 +212,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        Player player = Bukkit.getPlayer(uuid);
-
-        if(player==null) return;
-
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1, false, false));
+        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1);
     }
 
 
@@ -253,13 +235,9 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!infected) return;
 
-        Player player = Bukkit.getPlayer(uuid);
-
-        if(player==null) return;
-
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
+        getPlayerWW().addPotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0);
         if(game.isDay(Day.DAY)) return;
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1,false,false));
+        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1);
     }
 
 
@@ -302,14 +280,10 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @Override
     public final void roleAnnouncement(){
 
-        Player player = Bukkit.getPlayer(uuid);
 
-        if (player==null) return;
-
-        playerWW.setKit(true);
-        Sounds.EXPLODE.play(player);
-        player.sendMessage(getDescription());
-        player.sendMessage(game.translate("werewolf.announcement.review_role"));
+        Sounds.EXPLODE.play(getPlayerWW());
+        getPlayerWW().sendMessage(getDescription());
+        getPlayerWW().sendMessage(game.translate("werewolf.announcement.review_role"));
 
         recoverPotionEffect();
         recoverPower();
@@ -320,14 +294,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         }
 
         for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
-
-            if(player.getInventory().firstEmpty()==-1) {
-                player.getWorld().dropItem(player.getLocation(),i);
-            }
-            else {
-                player.getInventory().addItem(i);
-                player.updateInventory();
-            }
+            playerWW.addItem(i);
         }
     }
 

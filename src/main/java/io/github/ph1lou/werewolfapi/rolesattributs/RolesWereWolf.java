@@ -6,10 +6,7 @@ import io.github.ph1lou.werewolfapi.enums.Day;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.events.DayEvent;
 import io.github.ph1lou.werewolfapi.events.NightEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public abstract class RolesWereWolf extends RolesImpl {
@@ -27,11 +24,8 @@ public abstract class RolesWereWolf extends RolesImpl {
             return;
         }
 
-        Player player = Bukkit.getPlayer(getPlayerUUID());
 
-        if(player==null) return;
-
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1, false, false));
+        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1);
     }
 
     @EventHandler
@@ -42,23 +36,15 @@ public abstract class RolesWereWolf extends RolesImpl {
             return;
         }
 
-        Player player = Bukkit.getPlayer(getPlayerUUID());
-
-        if(player==null) return;
-
-        player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
     @Override
     public void recoverPotionEffect() {
 
-        Player player = Bukkit.getPlayer(getPlayerUUID());
-
-        if(player==null) return;
-
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0,false,false));
+        getPlayerWW().addPotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0);
         if(game.isDay(Day.DAY)) return;
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1,false,false));
+        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1);
     }
 
 

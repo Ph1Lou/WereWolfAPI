@@ -4,8 +4,6 @@ import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.events.SelectionEndEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 
 public abstract class RolesWithLimitedSelectionDuration extends RolesVillage implements Power {
@@ -26,11 +24,7 @@ public abstract class RolesWithLimitedSelectionDuration extends RolesVillage imp
 
         setPower(false);
 
-        Player player = Bukkit.getPlayer(getPlayerUUID());
-
-        if(player==null) return;
-
-        player.sendMessage(game.translate("werewolf.check.end_selection"));
+        getPlayerWW().sendMessage(game.translate("werewolf.check.end_selection"));
     }
 
     @Override
