@@ -1,13 +1,16 @@
 package io.github.ph1lou.werewolfapi;
 
 
+import io.github.ph1lou.werewolfapi.enums.Duration;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,6 +19,22 @@ import java.util.UUID;
  */
 
 public interface PlayerWW {
+
+    void addPlayerHeart(int heart);
+
+    void removePlayerHeart(int heart);
+
+    void sendMessage(String message);
+
+    void sendMessage(TextComponent textComponent);
+
+    void addPotionEffect(PotionEffectType potion, int amplifier, int duration, Duration durationType);
+
+    void addPotionEffect(PotionEffectType potion);
+
+    void removePotionEffect(PotionEffectType potion);
+
+    void teleport(Location location);
 
     void setItemDeath(ItemStack[] items);
 

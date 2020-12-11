@@ -42,6 +42,7 @@ public class VersionUtils_1_8 extends VersionUtils {
         setPlayerMaxHealth(player,Math.max(1,getPlayerMaxHealth(player)-health));
     }
 
+    @Deprecated
     @Override
     public double getPlayerMaxHealth(@NotNull Player player) {
         return player.getMaxHealth();
@@ -158,10 +159,10 @@ public class VersionUtils_1_8 extends VersionUtils {
         header = header.replaceAll("%player%", player.getDisplayName());
         footer = footer.replaceAll("%player%", player.getDisplayName());
         try {
-            final Object tabHeader = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + header + "\"}");
-            final Object tabFooter = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + footer + "\"}");
-            final Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor();
-            final Object packet = titleConstructor.newInstance();
+            Object tabHeader = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + header + "\"}");
+            Object tabFooter = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + footer + "\"}");
+            Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor();
+            Object packet = titleConstructor.newInstance();
             try {
                 Field aField = packet.getClass().getDeclaredField("a");
                 aField.setAccessible(true);

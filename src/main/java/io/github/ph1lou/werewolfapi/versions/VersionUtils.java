@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -37,6 +38,7 @@ public abstract class VersionUtils {
 
     public abstract void removePlayerMaxHealth(@NotNull Player player, double health);
 
+    @Deprecated
     public abstract double getPlayerMaxHealth(@NotNull Player player);
 
     public abstract void patchBiomes();
