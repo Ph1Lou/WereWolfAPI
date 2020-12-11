@@ -141,6 +141,8 @@ public interface PlayerWW {
 
     int getDecoHeart();
 
+    List<? extends ItemStack> getDecoItems();
+
     int getDecoMaxHeart();
 
     void resetDeco();
