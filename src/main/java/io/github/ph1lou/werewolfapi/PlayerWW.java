@@ -20,9 +20,9 @@ import java.util.UUID;
 
 public interface PlayerWW {
 
-    void addPlayerHeart(int heart);
+    void addPlayerMaxHeart(int heart);
 
-    void removePlayerHeart(int heart);
+    void removePlayerMaxHeart(int heart);
 
     void sendMessage(String message);
 
