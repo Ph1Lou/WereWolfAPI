@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionEffectTypeWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -128,6 +129,8 @@ public interface PlayerWW {
     UUID getUUID();
 
     List<? extends PotionEffect> getDecoPotions();
+
+    List<? extends PotionEffectType> getDecoRemovePotions();
 
     List<? extends TextComponent> getDecoMessage();
 
