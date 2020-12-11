@@ -4,13 +4,13 @@ package io.github.ph1lou.werewolfapi;
 import io.github.ph1lou.werewolfapi.enums.Duration;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.util.List;
 import java.util.UUID;
 
