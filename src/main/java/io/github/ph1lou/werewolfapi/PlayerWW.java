@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi;
 
 
-import io.github.ph1lou.werewolfapi.enums.Duration;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -32,7 +31,7 @@ public interface PlayerWW {
 
     void sendMessage(TextComponent textComponent);
 
-    void addPotionEffect(PotionEffectType potion, int amplifier, int duration, Duration durationType);
+    void addPotionEffect(PotionEffectType potion, int duration, int amplifier);
 
     void addPotionEffect(PotionEffectType potion);
 
