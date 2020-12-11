@@ -40,7 +40,6 @@ public interface PlayerWW {
 
     List<? extends ItemStack> getItemDeath();
 
-
     void clearItemDeath();
 
 

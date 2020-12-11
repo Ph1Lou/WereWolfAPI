@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
-import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
