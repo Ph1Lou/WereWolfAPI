@@ -6,10 +6,12 @@ import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,13 +21,13 @@ import java.util.UUID;
 
 public interface PlayerWW {
 
-    void addPlayerMaxHeart(int heart);
+    void addPlayerMaxHealth(int heart);
 
-    void removePlayerMaxHeart(int heart);
+    void removePlayerMaxHealth(int heart);
 
-    void addPlayerHeart(int heart);
+    void addPlayerHealth(int heart);
 
-    void removePlayerHeart(int heart);
+    void removePlayerHealth(int heart);
 
     void sendMessage(String message);
 
@@ -131,5 +133,22 @@ public interface PlayerWW {
 
     @NotNull
     UUID getUUID();
+
+    List<? extends PotionEffect> getDecoPotions();
+
+    List<? extends TextComponent> getDecoMessage();
+
+    Location getDecoLocation();
+
+    int getDecoHeart();
+
+    int getDecoMaxHeart();
+
+    void resetDeco();
+
+    void setDecoLocation(Location location);
+
+    void addItem(ItemStack item);
+
 }
 

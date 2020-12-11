@@ -1,5 +1,6 @@
 package io.github.ph1lou.werewolfapi.enums;
 
+import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -289,6 +290,15 @@ public enum Sounds {
     }
 
     public void play(Player player) {
+
+        this.play(player, 0.25f, 1f);
+    }
+
+    public void play(PlayerWW playerWW) {
+
+        Player player = Bukkit.getPlayer(playerWW.getUUID());
+
+        if(player==null) return;
 
         this.play(player, 0.25f, 1f);
     }
