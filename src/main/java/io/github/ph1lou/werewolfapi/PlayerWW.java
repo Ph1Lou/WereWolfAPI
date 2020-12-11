@@ -65,12 +65,6 @@ public interface PlayerWW {
     int getLostHeart() ;
 
 
-    void setKit(boolean kit) ;
-
-
-    boolean hasKit() ;
-
-
     void setRole(Roles role);
 
 
@@ -150,6 +144,8 @@ public interface PlayerWW {
     void setDecoLocation(Location location);
 
     void addItem(ItemStack item);
+
+    int getMaxHealth();
 
 }
 
