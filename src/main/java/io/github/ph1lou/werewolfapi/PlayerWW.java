@@ -24,6 +24,10 @@ public interface PlayerWW {
 
     void removePlayerMaxHeart(int heart);
 
+    void addPlayerHeart(int heart);
+
+    void removePlayerHeart(int heart);
+
     void sendMessage(String message);
 
     void sendMessage(TextComponent textComponent);
