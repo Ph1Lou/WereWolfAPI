@@ -107,7 +107,7 @@ public interface PlayerWW {
 
     void updateAfterReconnect(Player player);
 
-    void setDecoLocation(Location location);
+    void setDisconnectedLocation(Location location);
 
     void addItem(ItemStack item);
 
