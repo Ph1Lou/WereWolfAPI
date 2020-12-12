@@ -5,8 +5,8 @@ import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.rolesattributs.Roles;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,48 +46,33 @@ public interface PlayerWW {
 
     void clearItemDeath();
 
-
     void setState(StatePlayer statePlayer) ;
-
 
     boolean isState(StatePlayer statePlayer);
 
-
     void addOneKill() ;
-
 
     int getNbKill();
 
-
     void addKLostHeart(int k);
-
 
     int getLostHeart() ;
 
-
     void setRole(Roles role);
-
 
     Roles getRole();
 
-
     boolean isKey(String key);
-
 
     void setSpawn(Location spawn);
 
-
     Location getSpawn();
-
 
     void addKiller(PlayerWW playerWW);
 
-
     List<? extends PlayerWW> getKillers();
 
-
     void setDeathTime(Integer deathTime);
-
 
     int getDeathTime();
 
@@ -102,19 +87,13 @@ public interface PlayerWW {
     @Nullable
     PlayerWW getLastKiller();
 
-
     void setThief(boolean thief) ;
-
 
     boolean isThief();
 
-
-
     String getName() ;
 
-
     void setName(String name) ;
-
 
     @NotNull
     StatePlayer getState();
@@ -126,19 +105,7 @@ public interface PlayerWW {
     @NotNull
     UUID getUUID();
 
-    List<? extends PotionAction> getDecoPotions();
-
-    List<? extends TextComponent> getDecoMessage();
-
-    Location getDecoLocation();
-
-    int getDecoHeart();
-
-    List<? extends ItemStack> getDecoItems();
-
-    int getDecoMaxHeart();
-
-    void resetDeco();
+    void updateAfterReconnect(Player player);
 
     void setDecoLocation(Location location);
 
