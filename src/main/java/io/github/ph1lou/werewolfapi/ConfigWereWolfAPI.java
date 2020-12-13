@@ -106,15 +106,45 @@ public interface ConfigWereWolfAPI {
 
      void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
 
+     int getTimerValue(String key);
+
+     boolean isConfigActive(String key);
+
+     int getRoleCount(String key);
+
+     boolean isScenarioActive(String key);
+
+     void switchConfigValue(String key);
+
+     void switchScenarioValue(String key);
+
+     void removeOneRole(String key);
+
+     void addOneRole(String key);
+
+     void setRole(String key, int value);
+
+     @Deprecated
      Map<String, Integer> getTimerValues();
 
+     @Deprecated
      Map<String, Boolean> getConfigValues();
 
+     @Deprecated
      Map<String, Integer> getRoleCount();
 
+     @Deprecated
      Map<String, Boolean> getScenarioValues();
 
+     void decreaseTimer(String key);
+
+     void moveTimer(String key, int value);
+
      int getAmnesiacLoverSize();
+
+     void setConfig(String key,boolean enable);
+
+     void setScenario(String key,boolean enable);
 
      void setAmnesiacLoverSize(int amnesiacLoverSize);
 
@@ -127,6 +157,8 @@ public interface ConfigWereWolfAPI {
      void setLoverSize(int loverSize);
 
      int getLimitDepthStrider();
+
+     void setTimerValue(String key, int value);
 
      void setLimitDepthStrider(int limitDepthRider);
 
