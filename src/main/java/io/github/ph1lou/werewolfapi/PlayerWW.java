@@ -113,6 +113,7 @@ public interface PlayerWW {
 
     int getMaxHealth();
 
+    @NotNull
     Location getLocation();
 }
 
