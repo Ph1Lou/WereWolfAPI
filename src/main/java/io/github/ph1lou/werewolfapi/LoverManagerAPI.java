@@ -8,5 +8,7 @@ public interface LoverManagerAPI {
 
     void removeLover(LoverAPI loverAPI);
 
+    void addLover(LoverAPI loverAPI);
+
     void repartition(GetWereWolfAPI main);
 }
