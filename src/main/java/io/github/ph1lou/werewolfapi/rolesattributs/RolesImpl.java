@@ -152,7 +152,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        getPlayerWW().sendMessage(game.translate("werewolf.role.werewolf.see_others"));
+        playerWW.sendMessage(game.translate("werewolf.role.werewolf.see_others"));
         Sounds.WOLF_HOWL.play(getPlayerWW());
     }
 
@@ -163,7 +163,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
 
 
-        getPlayerWW().sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
+        playerWW.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
         Sounds.WOLF_HOWL.play(getPlayerWW());
         recoverPotionEffect();
 
@@ -202,7 +202,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        playerWW.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -212,7 +212,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if (!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1);
+        playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1);
     }
 
 
@@ -235,9 +235,9 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!infected) return;
 
-        getPlayerWW().addPotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0);
+        playerWW.addPotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0);
         if(game.isDay(Day.DAY)) return;
-        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1);
+        playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1);
     }
 
 
