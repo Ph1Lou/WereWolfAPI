@@ -15,7 +15,6 @@ public enum TimersBase {
     DAY_DURATION("werewolf.menu.timers.day_duration"),
     VOTE_DURATION("werewolf.menu.timers.vote_duration"),
     POWER_DURATION("werewolf.menu.timers.power_duration"),
-    BORDER_DURATION("werewolf.menu.timers.border_duration"),
     FOX_SMELL_DURATION("werewolf.menu.timers.fox_smell_duration"),
     SUCCUBUS_DURATION("werewolf.menu.timers.succubus_duration");
 

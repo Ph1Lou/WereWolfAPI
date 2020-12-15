@@ -114,6 +114,10 @@ public interface ConfigWereWolfAPI {
 
      boolean isScenarioActive(String key);
 
+     double getBorderSpeed();
+
+     void setBorderSpeed(double seed);
+
      void switchConfigValue(String key);
 
      void switchScenarioValue(String key);
