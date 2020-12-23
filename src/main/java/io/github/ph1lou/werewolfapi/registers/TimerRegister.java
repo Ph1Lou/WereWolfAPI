@@ -1,7 +1,11 @@
 package io.github.ph1lou.werewolfapi.registers;
 
+import io.github.ph1lou.werewolfapi.WereWolfAPI;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * @author Ph1Lou
@@ -14,10 +18,16 @@ public class TimerRegister implements RegisterAPI {
     private final String addonKey;
     private int defaultValue = 1;
     private List<String> loreKey =new ArrayList<>();
+    private Supplier<Void> supplier=null;
+    private Predicate<WereWolfAPI> predicate=null;
 
     public TimerRegister(String addonKey, String key) {
         this.addonKey=addonKey;
         this.key=key;
+    }
+
+    public void addPredicate(Predicate<WereWolfAPI> predicate){
+        this.predicate=predicate;
     }
 
     public int getDefaultValue(){
@@ -53,6 +63,19 @@ public class TimerRegister implements RegisterAPI {
     @Override
     public String getKey() {
         return key;
+    }
+
+    public Predicate<WereWolfAPI> getPredicate() {
+        return predicate;
+    }
+
+    public Supplier<Void> getSupplier() {
+        return supplier;
+    }
+
+
+    public void onZero(Supplier<Void> supplier){
+        this.supplier=supplier;
     }
 
 }
