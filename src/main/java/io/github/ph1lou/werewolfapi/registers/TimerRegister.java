@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,8 @@ public class TimerRegister implements RegisterAPI {
     private final String addonKey;
     private int defaultValue = 1;
     private List<String> loreKey =new ArrayList<>();
-    private Consumer<WereWolfAPI> consumer =null;
-    private Predicate<WereWolfAPI> predicate=null;
+    private Consumer<WereWolfAPI> consumer = wereWolfAPI -> {};
+    private Predicate<WereWolfAPI> predicate=wereWolfAPI -> false;
 
     public TimerRegister(String addonKey, String key) {
         this.addonKey=addonKey;
@@ -67,12 +66,12 @@ public class TimerRegister implements RegisterAPI {
         return key;
     }
 
-    @Nullable
+
     public Predicate<WereWolfAPI> getPredicate() {
         return predicate;
     }
 
-    @Nullable
+
     public Consumer<WereWolfAPI> getConsumer() {
         return consumer;
     }
