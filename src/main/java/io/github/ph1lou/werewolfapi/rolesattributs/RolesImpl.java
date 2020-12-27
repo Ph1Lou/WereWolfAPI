@@ -28,6 +28,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @NotNull
     private UUID uuid;
     private boolean infected = false;
+    private boolean isTransformedToNeutral = false;
     @NotNull
     private PlayerWW playerWW;
     @NotNull
@@ -41,6 +42,20 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         this.key=key;
     }
 
+    @Override
+    public boolean isNeutral() {
+        return isTransformedToNeutral;
+    }
+
+    @Override
+    public final boolean isTransformedToNeutral() {
+        return isTransformedToNeutral;
+    }
+
+    @Override
+    public final void setTransformedToNeutral(boolean neutral) {
+        isTransformedToNeutral=neutral;
+    }
 
     @Override
     public final @NotNull String getKey() {

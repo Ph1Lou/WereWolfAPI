@@ -34,6 +34,10 @@ public interface Roles {
 
     boolean getInfected();
 
+    boolean isTransformedToNeutral();
+
+    void setTransformedToNeutral(boolean neutral);
+
     boolean isNeutral();
 
     void setInfected();
