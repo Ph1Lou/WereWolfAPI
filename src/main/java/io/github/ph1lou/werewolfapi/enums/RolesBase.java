@@ -42,6 +42,10 @@ public enum RolesBase {
     LIBRARIAN("werewolf.role.librarian.display"),
     FLUTE_PLAYER("werewolf.role.flute_player.display"),
     STUD("werewolf.role.stud.display"),
+    MYSTICAL_WEREWOLF("werewolf.role.mystical_werewolf.display"),
+    VILLAGE_IDIOT("werewolf.role.village_idiot.display"),
+    PRIESTESS("werewolf.role.priestess.display"),
+    RIVAL("werewolf.role.rival.display"),
     METAMORPH("werewolf.role.metamorph.display");
 
     private final String key;

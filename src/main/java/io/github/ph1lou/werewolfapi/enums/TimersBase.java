@@ -14,8 +14,10 @@ public enum TimersBase {
     CITIZEN_DURATION("werewolf.menu.timers.citizen_duration"),
     DAY_DURATION("werewolf.menu.timers.day_duration"),
     VOTE_DURATION("werewolf.menu.timers.vote_duration"),
+    RIVAL_DURATION("werewolf.menu.timers.rival_duration"),
     POWER_DURATION("werewolf.menu.timers.power_duration"),
     FOX_SMELL_DURATION("werewolf.menu.timers.fox_smell_duration"),
+    WEREWOLF_CHAT_DURATION("werewolf.menu.timers.werewolf_chat_duration"),
     SUCCUBUS_DURATION("werewolf.menu.timers.succubus_duration");
 
     private final String key;

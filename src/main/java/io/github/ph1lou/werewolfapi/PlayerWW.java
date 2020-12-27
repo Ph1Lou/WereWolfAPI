@@ -54,10 +54,6 @@ public interface PlayerWW {
 
     int getNbKill();
 
-    void addKLostHeart(int k);
-
-    int getLostHeart() ;
-
     void setRole(Roles role);
 
     Roles getRole();
@@ -75,8 +71,6 @@ public interface PlayerWW {
     void setDeathTime(Integer deathTime);
 
     int getDeathTime();
-
-    void clearLostHeart() ;
 
     List<? extends LoverAPI> getLovers();
 

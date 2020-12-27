@@ -86,19 +86,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return null;
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onRecoverHeart(DayEvent event) {
-
-        if (!playerWW.isState(StatePlayer.ALIVE)) return;
-
-
-        if (playerWW.getLostHeart() > 0) {
-            playerWW.addPlayerMaxHealth(playerWW.getLostHeart());
-            playerWW.clearLostHeart();
-        }
-
-    }
-
     @EventHandler
     public void onModeratorScoreBoard(UpdateModeratorNameTag event){
 
@@ -195,27 +182,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         this.infected = true;
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
-    public void onInfectedDay(DayEvent event) {
-
-        if (!infected) return;
-
-        if (!playerWW.isState(StatePlayer.ALIVE)) return;
-
-        playerWW.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
-    }
-
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onInfectedNight(NightEvent event) {
-
-        if (!infected) return;
-
-        if (!playerWW.isState(StatePlayer.ALIVE)) return;
-
-        playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, -1);
-    }
-
-
 
 
     @EventHandler
@@ -233,13 +199,35 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @Override
     public void recoverPotionEffect() {
 
-        if(!infected) return;
+        if(!isWereWolf()) return;
 
-        playerWW.addPotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0);
+        playerWW.addPotionEffect(PotionEffectType.NIGHT_VISION);
         if(game.isDay(Day.DAY)) return;
-        playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE,Integer.MAX_VALUE,-1);
+        playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
+    @EventHandler
+    public void onWWChat(WereWolfChatEvent event){
+        if(event.isCancelled()) return;
+
+        if(!isWereWolf()) return;
+
+        getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.prefix",event.getMessage()));
+
+    }
+
+    @EventHandler
+    public void onChatSpeak(WereWolfCanSpeakInChatEvent event){
+
+        if(!playerWW.equals(event.getPlayerWW())) return;
+
+        if(!playerWW.isState(StatePlayer.ALIVE)) return;
+
+        if(!isWereWolf()) return;
+
+        event.setCanSpeak(true);
+
+    }
 
 
     @EventHandler
@@ -308,4 +296,34 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         this.playerWW=playerWW;
         this.uuid=playerWW.getUUID();
     }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onNightForWereWolf(NightEvent event) {
+
+        if(!getPlayerWW().isState(StatePlayer.ALIVE)){
+            return;
+        }
+
+        if(!isWereWolf()) return;
+
+        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
+
+        if(!game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
+
+        getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.announce",game.getScore().conversion(game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey()))));
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onDayForWereWolf(DayEvent event) {
+
+        if(!isWereWolf()) return;
+
+        if(!getPlayerWW().isState(StatePlayer.ALIVE)){
+            return;
+        }
+
+        getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+
+    }
+
 }

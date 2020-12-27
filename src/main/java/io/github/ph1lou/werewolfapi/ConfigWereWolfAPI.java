@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import java.util.Map;
-
 /**
  * @author Ph1Lou
  */
@@ -128,18 +126,6 @@ public interface ConfigWereWolfAPI {
 
      void setRole(String key, int value);
 
-     @Deprecated
-     Map<String, Integer> getTimerValues();
-
-     @Deprecated
-     Map<String, Boolean> getConfigValues();
-
-     @Deprecated
-     Map<String, Integer> getRoleCount();
-
-     @Deprecated
-     Map<String, Boolean> getScenarioValues();
-
      void decreaseTimer(String key);
 
      void moveTimer(String key, int value);
@@ -218,5 +204,11 @@ public interface ConfigWereWolfAPI {
      int getKnockBackMode();
 
      void setKnockBackMode(int knockBackMode);
+
+     int getWereWolfChatMaxMessage();
+
+     void setWereWolfChatMaxMessage(int nbMessage);
+
+
 
 }
