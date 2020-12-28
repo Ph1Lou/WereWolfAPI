@@ -43,6 +43,14 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     @Override
+    public @NotNull String getDescription() {
+        return game.translate("werewolf.description._") +
+                game.translate("werewolf.description.role", getPlayerWW().isThief()?game.translate("werewolf.role.thief.thief", game.translate(getKey())):game.translate(getKey())) +
+                game.translate("werewolf.description.camp", getCamp().getChatColor()+game.translate(getCamp().getKey())) +
+                (isWereWolf()? game.translate("werewolf.description.werewolf"):"");
+    }
+
+    @Override
     public boolean isNeutral() {
         return isTransformedToNeutral;
     }
@@ -325,7 +333,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
 
-        getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.announce",game.getScore().conversion(game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey()))));
+        getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.announce",game.getScore().conversion(game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())),game.getConfig().getWereWolfChatMaxMessage()));
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

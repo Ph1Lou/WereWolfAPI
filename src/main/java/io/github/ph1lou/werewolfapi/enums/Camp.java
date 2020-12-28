@@ -1,18 +1,25 @@
 package io.github.ph1lou.werewolfapi.enums;
 
-public enum Camp {
-    WEREWOLF("werewolf.categories.werewolf"),
-    NEUTRAL("werewolf.categories.neutral"),
-    VILLAGER("werewolf.categories.villager");
+import org.bukkit.ChatColor;
 
+public enum Camp {
+    WEREWOLF("werewolf.categories.werewolf",ChatColor.DARK_RED),
+    NEUTRAL("werewolf.categories.neutral",ChatColor.GRAY),
+    VILLAGER("werewolf.categories.villager",ChatColor.GREEN);
+
+    private final String key;
+    private final ChatColor chatColor;
+
+    Camp(String key, ChatColor chatColor){
+        this.key=key;
+        this.chatColor=chatColor;
+    }
+
+    public ChatColor getChatColor() {
+        return chatColor;
+    }
 
     public String getKey() {
         return key;
-    }
-
-    final String key;
-
-    Camp(String key){
-        this.key=key;
     }
 }

@@ -50,6 +50,9 @@ public class CommandRegister implements RegisterAPI {
         return this.roleKeys.contains(roleKey);
     }
 
+    public String getOneRoleKey(){
+        return roleKeys.stream().findFirst().orElse("");
+    }
 
     public Commands getCommand() {
         return command;

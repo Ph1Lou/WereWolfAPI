@@ -209,6 +209,12 @@ public interface ConfigWereWolfAPI {
 
      void setWereWolfChatMaxMessage(int nbMessage);
 
+     int getDistanceSister();
 
+     void setDistanceSister(int distance);
+
+     int getDistancePriestess();
+
+     void setDistancePriestess(int distance);
 
 }
