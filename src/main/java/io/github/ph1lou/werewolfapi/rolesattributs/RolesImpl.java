@@ -116,9 +116,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!uuid.equals(event.getPlayerUUID())) return;
 
-        if(playerWW.isState(StatePlayer.DEATH)){
-            return;
-        }
+        if(playerWW.isState(StatePlayer.DEATH)) return;
 
         if(isNeutral()){
             sb.append(ChatColor.GOLD);
@@ -170,8 +168,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onNewWereWolf(NewWereWolfEvent event) {
 
         if(!playerWW.equals(event.getPlayerWW())) return;
-
-
+        if(getPlayerWW().isState(StatePlayer.DEATH)) return;
 
         playerWW.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
         Sounds.WOLF_HOWL.play(getPlayerWW());
@@ -186,8 +183,6 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
                     player1.sendMessage(game.translate("werewolf.role.werewolf.new_werewolf"));
                     Sounds.WOLF_HOWL.play(player1);
                 });
-
-
     }
 
     @Override
@@ -233,6 +228,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onWWChat(WereWolfChatEvent event){
         if(event.isCancelled()) return;
 
+        if(!getPlayerWW().isState(StatePlayer.ALIVE)) return;
         if(!isWereWolf()) return;
 
         getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.prefix",event.getMessage()));
@@ -275,6 +271,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onPlayerDeathByWereWolf(PlayerDeathEvent event) {
 
         if(!isWereWolf()) return;
+
+        if(!getPlayerWW().isState(StatePlayer.ALIVE)) return;
 
         if(event.getEntity().getKiller()==null) return;
 

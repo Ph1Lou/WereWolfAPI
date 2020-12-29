@@ -1,11 +1,8 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Set;
 
 public class StudLoverEvent extends SelectionEvent {
 

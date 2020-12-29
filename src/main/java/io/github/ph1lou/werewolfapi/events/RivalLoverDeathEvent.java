@@ -10,8 +10,8 @@ import java.util.List;
 
 public class RivalLoverDeathEvent extends Event {
 
-    private PlayerWW playerWW;
-    private List<PlayerWW> playerWWs = new ArrayList<>();
+    private final PlayerWW playerWW;
+    private List<PlayerWW> playerWWs;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public RivalLoverDeathEvent(PlayerWW playerWW, List<PlayerWW> playerWWs) {
