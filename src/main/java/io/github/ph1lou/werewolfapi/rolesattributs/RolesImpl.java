@@ -348,5 +348,4 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
 
     }
-
 }

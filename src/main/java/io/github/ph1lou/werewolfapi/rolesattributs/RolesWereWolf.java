@@ -12,11 +12,6 @@ public abstract class RolesWereWolf extends RolesImpl {
 
 
     @Override
-    public boolean isNeutral() {
-        return false;
-    }
-
-    @Override
     public boolean isWereWolf() {
         return true;
     }

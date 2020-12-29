@@ -9,8 +9,5 @@ public abstract class RolesVillage extends RolesImpl {
         super(main,playerWW,key);
     }
 
-    @Override
-    public boolean isNeutral() {
-        return false;
-    }
+
 }
