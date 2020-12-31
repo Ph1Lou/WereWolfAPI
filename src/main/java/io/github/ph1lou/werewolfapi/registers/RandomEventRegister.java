@@ -18,18 +18,13 @@ public class RandomEventRegister implements RegisterAPI {
     private final String addonKey;
     private int defaultValue = 0;
     private List<String> loreKey =new ArrayList<>();
-    private ListenerManager randomEvent;
+    private final ListenerManager randomEvent;
     private ItemStack item=null;
 
     public RandomEventRegister(String addonKey, String key, ListenerManager randomEvent) {
         this.addonKey=addonKey;
         this.key=key;
-    }
-
-    public RandomEventRegister addConfig(ListenerManager config) {
-        this.randomEvent = config;
-        return this;
-
+        this.randomEvent=randomEvent;
     }
 
     public int getDefaultValue(){
