@@ -17,16 +17,14 @@ public class RandomEventRegister implements RegisterAPI {
 
     private final String key;
     private final String addonKey;
-    private boolean defaultValue = false;
+    private int defaultValue = 0;
     private List<String> loreKey =new ArrayList<>();
     private ListenerManager randomEvent;
     private ItemStack item=null;
-    private final int probability;
 
-    public RandomEventRegister(String addonKey, String key, int probability, ListenerManager randomEvent) {
+    public RandomEventRegister(String addonKey, String key, ListenerManager randomEvent) {
         this.addonKey=addonKey;
         this.key=key;
-        this.probability=probability;
     }
 
     public RandomEventRegister addConfig(ListenerManager config) {
@@ -35,12 +33,12 @@ public class RandomEventRegister implements RegisterAPI {
 
     }
 
-    public boolean getDefaultValue(){
+    public int getDefaultValue(){
         return defaultValue;
     }
 
-    public RandomEventRegister setDefaultValue(){
-        this.defaultValue=true;
+    public RandomEventRegister setDefaultValue(int probability){
+        this.defaultValue=probability;
         return this;
     }
 
@@ -81,9 +79,5 @@ public class RandomEventRegister implements RegisterAPI {
     public RandomEventRegister setItem(ItemStack item) {
         this.item = item;
         return this;
-    }
-
-    public int getProbability() {
-        return probability;
     }
 }
