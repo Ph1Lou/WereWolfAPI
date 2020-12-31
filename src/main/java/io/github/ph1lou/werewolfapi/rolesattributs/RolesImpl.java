@@ -297,6 +297,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         recoverPotionEffect();
         recoverPower();
 
+        if(game.getConfig().isTrollSV()) return;
+
         if(!game.getStuffs().getStuffRoles().containsKey(getKey())){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
             return;

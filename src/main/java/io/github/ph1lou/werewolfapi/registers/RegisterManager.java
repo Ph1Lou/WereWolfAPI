@@ -11,6 +11,7 @@ public interface RegisterManager {
     void registerTimer(TimerRegister timerRegister);
     void registerAdminCommands(CommandRegister commandRegister);
     void registerCommands(CommandRegister commandRegister);
+    void registerRandomEvents(RandomEventRegister randomEventRegister);
 
     List<? extends RoleRegister> getRolesRegister();
 
@@ -25,4 +26,6 @@ public interface RegisterManager {
     List<? extends CommandRegister> getAdminCommandsRegister();
 
     List<? extends AddonRegister> getAddonsRegister();
+
+    List<? extends AddonRegister> getRandomEventsRegister();
 }
