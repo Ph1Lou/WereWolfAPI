@@ -126,8 +126,6 @@ public interface ConfigWereWolfAPI {
 
      void setRole(String key, int value);
 
-     void decreaseTimer(String key);
-
      void moveTimer(String key, int value);
 
      int getAmnesiacLoverSize();
@@ -195,13 +193,15 @@ public interface ConfigWereWolfAPI {
 
      void setSpectatorMode(int spectatorMode);
 
-
      String getTrollKey();
-
 
      void setTrollKey(String trollKey);
 
      int getKnockBackMode();
+
+     int getProbability(String key);
+
+     void setProbability(String key,int probability);
 
      void setKnockBackMode(int knockBackMode);
 

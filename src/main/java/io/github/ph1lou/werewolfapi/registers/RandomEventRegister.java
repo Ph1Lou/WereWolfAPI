@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +66,6 @@ public class RandomEventRegister implements RegisterAPI {
         return key;
     }
 
-    @Nullable
     public ListenerManager getRandomEvent() {
         return randomEvent;
     }
