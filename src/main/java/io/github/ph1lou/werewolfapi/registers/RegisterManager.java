@@ -27,5 +27,5 @@ public interface RegisterManager {
 
     List<? extends AddonRegister> getAddonsRegister();
 
-    List<? extends AddonRegister> getRandomEventsRegister();
+    List<? extends RandomEventRegister> getRandomEventsRegister();
 }
