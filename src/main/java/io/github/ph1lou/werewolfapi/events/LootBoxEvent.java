@@ -6,18 +6,17 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
-public class ExposedEvent extends Event implements Cancellable {
+public class LootBoxEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private boolean cancel=false;
     private final PlayerWW playerWW;
-    private final List<PlayerWW> roles;
-    private boolean cancel = false;
-    
-    public ExposedEvent(PlayerWW playerWW, List<PlayerWW> playerWWS){
-        this.playerWW=playerWW;
-        this.roles=playerWWS;
+
+    private final int chestNumbers;
+
+    public LootBoxEvent(PlayerWW playerWW,int chestNumbers) {
+        this.playerWW = playerWW;
+        this.chestNumbers=chestNumbers;
     }
 
     @NotNull
@@ -36,16 +35,15 @@ public class ExposedEvent extends Event implements Cancellable {
     }
 
     @Override
-    public void setCancelled(boolean cancelled) {
-        this.cancel=cancelled;
+    public void setCancelled(boolean cancel) {
+        this.cancel=cancel;
     }
 
     public PlayerWW getPlayerWW() {
         return playerWW;
     }
 
-    public List<PlayerWW> getRoles() {
-        return roles;
+    public int getChestNumbers() {
+        return chestNumbers;
     }
 }
-

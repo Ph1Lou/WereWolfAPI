@@ -44,10 +44,10 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     @Override
     public @NotNull String getDescription() {
-        return game.translate("werewolf.description._") +
-                game.translate("werewolf.description.role", getPlayerWW().isThief()?game.translate("werewolf.role.thief.thief", game.translate(getKey())):game.translate(getKey())) +
+        return game.translate("werewolf.description.role", getPlayerWW().isThief()?game.translate("werewolf.role.thief.thief", game.translate(getKey())):game.translate(getKey())) +
                 game.translate("werewolf.description.camp", getCamp().getChatColor()+game.translate(getCamp().getKey())) +
-                (isWereWolf()? game.translate("werewolf.description.werewolf"):"");
+                (isWereWolf()? game.translate("werewolf.description.werewolf"):"") +
+                (this instanceof Transformed ? game.translate("werewolf.role.amnesiac_werewolf.transformed",game.translate(((Transformed)this).getTransformed()?"werewolf.description.yes":"werewolf.description.no")):"");
     }
 
     @Override
@@ -285,13 +285,18 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         killer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 0, false, false));
     }
 
+    @Override
+    public final String getBetterDescription(){
+        return game.translate("werewolf.description._") +
+                getDescription() +
+                game.translate("werewolf.description._");
+    }
 
     @Override
     public final void roleAnnouncement(){
 
-
         Sounds.EXPLODE.play(getPlayerWW());
-        getPlayerWW().sendMessage(getDescription());
+        getPlayerWW().sendMessage(getBetterDescription());
         getPlayerWW().sendMessage(game.translate("werewolf.announcement.review_role"));
 
         recoverPotionEffect();

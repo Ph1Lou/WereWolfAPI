@@ -4,7 +4,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class ChestEvent extends Event {
+public class FindAllLootBoxEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 

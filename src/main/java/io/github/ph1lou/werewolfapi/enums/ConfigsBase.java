@@ -8,7 +8,6 @@ public enum ConfigsBase {
     SHOW_ROLE_CATEGORY_TO_DEATH("werewolf.menu.global.show_role_category_to_death"),
     HIDE_COMPOSITION("werewolf.menu.global.hide_composition"),
     VOTE("werewolf.menu.global.vote"),
-    EVENT_SEER_DEATH("werewolf.menu.global.event_seer_death"),
     AUTO_REZ_WITCH("werewolf.menu.global.auto_rez_witch"),
     POLYGAMY("werewolf.menu.global.polygamy"),
     SEER_EVERY_OTHER_DAY("werewolf.menu.global.seer_every_other_day"),
