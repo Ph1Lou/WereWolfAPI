@@ -161,7 +161,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(!playerWW.isState(StatePlayer.ALIVE)) return;
 
         playerWW.sendMessage(game.translate("werewolf.role.werewolf.see_others"));
-        Sounds.WOLF_HOWL.play(getPlayerWW());
+        Sound.WOLF_HOWL.play(getPlayerWW());
     }
 
     @EventHandler
@@ -171,7 +171,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(getPlayerWW().isState(StatePlayer.DEATH)) return;
 
         playerWW.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
-        Sounds.WOLF_HOWL.play(getPlayerWW());
+        Sound.WOLF_HOWL.play(getPlayerWW());
         recoverPotionEffect();
 
         game.getPlayerWW().stream()
@@ -181,7 +181,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
                 .filter(Objects::nonNull)
                 .forEach(player1 -> {
                     player1.sendMessage(game.translate("werewolf.role.werewolf.new_werewolf"));
-                    Sounds.WOLF_HOWL.play(player1);
+                    Sound.WOLF_HOWL.play(player1);
                 });
     }
 
@@ -295,7 +295,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @Override
     public final void roleAnnouncement(){
 
-        Sounds.EXPLODE.play(getPlayerWW());
+        Sound.EXPLODE.play(getPlayerWW());
         getPlayerWW().sendMessage(getBetterDescription());
         getPlayerWW().sendMessage(game.translate("werewolf.announcement.review_role"));
 
@@ -338,6 +338,11 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
 
+        openWereWolfChat();
+
+    }
+
+    protected void openWereWolfChat(){
         getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.announce",game.getScore().conversion(game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())),game.getConfig().getWereWolfChatMaxMessage()));
     }
 

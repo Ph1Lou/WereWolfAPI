@@ -2,14 +2,13 @@ package io.github.ph1lou.werewolfapi.enums;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 /**
  * Version independent spigot sounds.
  */
 
-public enum Sounds {
+public enum Sound {
     AMBIENCE_CAVE("AMBIENCE_CAVE", "AMBIENT_CAVE"),
     AMBIENCE_RAIN("AMBIENCE_RAIN", "WEATHER_RAIN"),
     AMBIENCE_THUNDER("AMBIENCE_THUNDER", "ENTITY_LIGHTNING_THUNDER", "ENTITY_LIGHTNING_BOLT_THUNDER"),
@@ -271,21 +270,21 @@ public enum Sounds {
     private final String sound8;
     private final String sound912;
     private final String sound13;
-    private Sound cachedSound = null;
+    private org.bukkit.Sound cachedSound = null;
     private final String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3].replace("v", "").replace("R", "").replace("_", ".");
 
 
-    Sounds(String sound8, String sound912, String sound13) {
+    Sound(String sound8, String sound912, String sound13) {
         this.sound8 = sound8;
         this.sound912 = sound912;
         this.sound13 = sound13;
     }
 
-    Sounds(String sound8, String sound913) {
+    Sound(String sound8, String sound913) {
         this(sound8, sound913, sound913);
     }
 
-    Sounds(String sound13) {
+    Sound(String sound13) {
         this(null, null, sound13);
     }
 
@@ -308,7 +307,7 @@ public enum Sounds {
         player.playSound(player.getLocation(), getSound(), volume, pitch);
     }
 
-    private Sound getSound() {
+    private org.bukkit.Sound getSound() {
 
         if (cachedSound != null)
         {
@@ -316,13 +315,13 @@ public enum Sounds {
         }
         if (version.contains("1.8"))
         {
-            return cachedSound = sound8 == null ? Sound.valueOf("IRONGOLEM_DEATH") : Sound.valueOf(sound8);
+            return cachedSound = sound8 == null ? org.bukkit.Sound.valueOf("IRONGOLEM_DEATH") : org.bukkit.Sound.valueOf(sound8);
         } else if (version.contains("1.9") || version.contains("1.10") || version.contains("1.11") || version.contains("1.12"))
         {
-            return cachedSound = sound912 == null ? Sound.valueOf("ENTITY_IRONGOLEM_DEATH") : Sound.valueOf(sound912);
+            return cachedSound = sound912 == null ? org.bukkit.Sound.valueOf("ENTITY_IRONGOLEM_DEATH") : org.bukkit.Sound.valueOf(sound912);
         } else
         {
-            return cachedSound = sound13 == null ? Sound.valueOf("ENTITY_IRON_GOLEM_DEATH") : Sound.valueOf(sound13);
+            return cachedSound = sound13 == null ? org.bukkit.Sound.valueOf("ENTITY_IRON_GOLEM_DEATH") : org.bukkit.Sound.valueOf(sound13);
         }
     }
 }

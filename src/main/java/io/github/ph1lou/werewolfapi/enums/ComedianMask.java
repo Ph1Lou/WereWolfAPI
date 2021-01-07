@@ -2,7 +2,7 @@ package io.github.ph1lou.werewolfapi.enums;
 
 import org.bukkit.potion.PotionEffectType;
 
-public enum ComedianMasks {
+public enum ComedianMask {
     RESISTANCE("werewolf.role.comedian.1",PotionEffectType.DAMAGE_RESISTANCE),
     SPEED("werewolf.role.comedian.2",PotionEffectType.SPEED),
     STRENGTH("werewolf.role.comedian.3",PotionEffectType.INCREASE_DAMAGE);
@@ -10,7 +10,7 @@ public enum ComedianMasks {
     private final String key;
     private final PotionEffectType potionEffectType;
 
-    ComedianMasks(String key, PotionEffectType potionEffectType) {
+    ComedianMask(String key, PotionEffectType potionEffectType) {
         this.key = key;
         this.potionEffectType=potionEffectType;
     }

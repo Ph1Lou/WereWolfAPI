@@ -2,9 +2,6 @@ package io.github.ph1lou.werewolfapi.enums;
 
 public enum RolesBase {
 
-    LOVER("werewolf.role.lover.display"),
-    AMNESIAC_LOVER("werewolf.role.amnesiac_lover.display"),
-    CURSED_LOVER("werewolf.role.cursed_lover.display"),
     CUPID("werewolf.role.cupid.display"),
     WEREWOLF("werewolf.role.werewolf.display"),
     INFECT("werewolf.role.infect_father_of_the_wolves.display"),

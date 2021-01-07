@@ -9,7 +9,6 @@ public enum ConfigsBase {
     HIDE_COMPOSITION("werewolf.menu.global.hide_composition"),
     VOTE("werewolf.menu.global.vote"),
     AUTO_REZ_WITCH("werewolf.menu.global.auto_rez_witch"),
-    POLYGAMY("werewolf.menu.global.polygamy"),
     SEER_EVERY_OTHER_DAY("werewolf.menu.global.seer_every_other_day"),
     PROXIMITY_CHAT("werewolf.menu.global.proximity_chat"),
     SWEET_ANGEL("werewolf.menu.global.sweet_angel"),

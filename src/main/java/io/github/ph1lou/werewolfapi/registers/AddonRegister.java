@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ActionItemAddon;
-import io.github.ph1lou.werewolfapi.enums.Sounds;
+import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -28,7 +28,7 @@ public class AddonRegister implements RegisterAPI {
 
     private final Map<String,UUID> authors = new HashMap<>();
 
-    private ActionItemAddon action=(player, previous) -> Sounds.CAT_MEOW.play(player);
+    private ActionItemAddon action=(player, previous) -> Sound.CAT_MEOW.play(player);
 
 
     public AddonRegister(String key, String defaultLanguage, Plugin plugin) {
