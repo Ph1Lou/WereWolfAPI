@@ -15,7 +15,7 @@ Cette API a pour but d'être intégré dans un plugin tournant dans la même jvm
 ### Prerequisites
 Vous aurez besoin du plugin lg uhc en version snapshot 1.5 dernière version en cours. Cette version est disponible sur mon discord en demandant le rôle Snapshot viewer.
 
-
+**Vous devez connaitre le Java, l'api Spigot et Maven avant de commencer à faire un addon.**
 
 ### Installing
 
@@ -55,44 +55,48 @@ le plugin WereWolfPlugin démarre aussi AU STARTUP (càd avant la génération d
 la 2èm ligne permet d'attendre que le plugin WereWolfPlugin se charge avant votre addon et éviter à l'addon de se charger si le plugin n'est pas présent.
 
 
-Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premier objet de l'API
+Depuis votre plugin Spigot, dans votre IDE préférée pour récuperer le premier objet de l'API ( dans le onEnable )
 
 ```
-GetWereWolfAPI ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWolfPlugin");
+GetWereWolfAPI ww = getServer().getServicesManager().load(GetWereWolfAPI.class);
 ```
 
-### Pour enregistrer vos textes en Nested Json pour y accéder depuis le WereWolfAPI#translate
+### Pour enregistrer votre addons
 
-
-# La suite n'est plus à jours en version 1.7 Snapshot, regardez le repo role example pour savoir comment register l'addon et un rôle et la classe Register du plugin lg pour register des scénarios, Timer, Config,...
-
-Dans votre onEnable() :
 ```
-ww.loadTranslation(this,"fr");
+RegisterManager registerManager = ww.getRegisterManager();
+String addonKey = "werewolf.nom_de_votre_addon.un_nom_unique":
+
+registerManager.registerAddon(new AddonRegister(addonKey,
+                "fr",
+                this));	
 ```
+
 Ici mon fichier de langue par défault s'appelle fr.json. Il doit être stocké dans le dossier ressource du projet c'est le fichier qui est chargé par défault si la langue demandée n'existe pas. Il peut y avoir plusieurs .json, mais il suffit de faire qu'un seul loadTranslation avec la langue par défault
+
+Votre addonKy doit correspondre à votre fichier de langue fr.json dans le dossier ressource , dans le cas ci dessus :
+```
+{
+  "werewolf": {
+              "nom_de_votre_addon": {
+                      "un_nom_unique" : "Un nom unique"
+                      }
+              }
+}
+
+```
+La valeur associée à l'addonKey sera le nom de l'Addon. L'addonKey doit être **unique**, deux addons ne doivent pas avoir la même.
 
 ### Pour créer vos rôles
 
 ## 1ère étape 
 
-créez une nouvelle classe, elle devra extends de RolesImpl (ou RoleVillage, RoleNeutral, RoleWereWolf ou RoleWithSelection... en fonction du camp de votre Rôle)
+créez une nouvelle classe, elle devra extends de RoleVillage (ou RoleNeutral, RoleWereWolf ou RoleWithSelection... en fonction du camp de votre Rôle)
 ```
 public class RoleExample extends RolesImpl {
 ```
 
 ## 2ème étape
-
-dans le dossier ressource du plugin créer un fichier stuffMeetUp.yml et stuffRole.yml
- 
-Puis dans le onEnable
-```
-ww.getAddonsList().add(this);
-```
-
-Cela permet de gérer le Stuff du rôle
-
-## 3ème étape
 
 Vous pouvez maintenant travailler avec votre classe. Vous pouvez écouter tous les listeners spigot + ceux de l'api
 
@@ -111,11 +115,16 @@ Je vous conseille de lire la documentation pour découvrir tous les events dispo
 Remarque : vos rôles ne pourront être enregistrés que lorsque le plugin s'initialise (dans le onEnabled)
 
 ```
-ww = (GetWereWolfAPI) Bukkit.getPluginManager().getPlugin("WereWolfPlugin");
+GetWereWolfAPI ww = getServer().getServicesManager().load(GetWereWolfAPI.class);
+RegisterManager registerManager = ww.getRegisterManager();
+String addonkey = "une.clef.unique":
 
 try {
-    RoleRegister exampleRole = new RoleRegister(this,ww,"werewolf.role.role_example.display").registerRole(RoleExample.class);
-    exampleRole.setLore(Arrays.asList("§fRole Example","§fFait par §bPh1Lou")).addCategory(Category.ADDONS).create();
+    registerManager
+                    .registerRole(new RoleRegister(addonKey,
+                            "werewolf.role.le_nom_de_votre_role.display",
+                            VotreRole.class)
+                            .addCategory(Category.ADDONS));
 } catch (NoSuchMethodException e) {
     e.printStackTrace();  
 }               
@@ -127,7 +136,7 @@ Votre clef doit correspondre à votre fichier de langue fr.json dans le dossier 
 {
   "werewolf": {
               "role": {
-                      "role_example" : {
+                      "le_nom_de_votre_role" : {
                                       "display" : "Role Exemple"
                                         }
                       }
@@ -137,8 +146,8 @@ Votre clef doit correspondre à votre fichier de langue fr.json dans le dossier 
 
 ## 3ème étape
 
-Pour enregistrer du stuff
-Dans vos .yml mettez :
+Pour enregistrer du stuff dans le dossier ressource du plugin créer un fichier stuffMeetUp.yml et stuffRole.yml
+Dans vos .yml mettez (par exemple) :
 
 ```
 "werewolf.role.protector.display":
@@ -164,7 +173,7 @@ public class Comman implements Commands
 
 l'enregistrer dans le onEnable
 ```
-ww.getListCommands().put("macommande",new Command(ww));
+registerManager.registerCommands(new CommandRegister(addonKey, "key_de_votre_role, new CommandDeVotreRole(ww));
 ```
 
 ## Authors
