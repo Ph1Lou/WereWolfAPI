@@ -38,6 +38,8 @@ public interface PlayerWW {
 
     void removePotionEffect(PotionEffectType potion);
 
+    List<? extends PotionEffectType> getPotionEffects();
+
     void teleport(Location location);
 
     void setItemDeath(ItemStack[] items);

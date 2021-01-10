@@ -57,4 +57,8 @@ public class PotionAction {
         player.removePotionEffect(potionEffectType);
 
     }
+
+    public boolean isAdd() {
+        return add;
+    }
 }
