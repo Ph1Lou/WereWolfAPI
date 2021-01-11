@@ -61,4 +61,16 @@ public class PotionAction {
     public boolean isAdd() {
         return add;
     }
+
+    public PotionEffectType getPotionEffectType() {
+        return potionEffectType;
+    }
+
+    public int getAmplifier() {
+        return amplifier;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
 }
