@@ -325,7 +325,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         this.uuid=playerWW.getUUID();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onNightForWereWolf(NightEvent event) {
 
         if(!getPlayerWW().isState(StatePlayer.ALIVE)){

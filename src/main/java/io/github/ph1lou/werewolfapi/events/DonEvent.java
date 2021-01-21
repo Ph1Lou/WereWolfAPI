@@ -10,11 +10,11 @@ public class DonEvent extends Event implements Cancellable {
 
     private final PlayerWW playerWW;
     private final PlayerWW receiverWW;
-    private final String don;
+    private final int don;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public DonEvent(PlayerWW playerWW, PlayerWW receiverWW, String don){
+    public DonEvent(PlayerWW playerWW, PlayerWW receiverWW, int don){
         this.playerWW = playerWW;
         this.receiverWW = receiverWW;
         this.don = don;
@@ -38,7 +38,7 @@ public class DonEvent extends Event implements Cancellable {
         return receiverWW;
     }
 
-    public String getDon() {
+    public int getDon() {
         return don;
     }
 
