@@ -47,12 +47,12 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         return game.translate("werewolf.description.role", getPlayerWW().isThief()?game.translate("werewolf.role.thief.thief", game.translate(getKey())):game.translate(getKey())) +
                 game.translate("werewolf.description.camp", getCamp().getChatColor()+game.translate(getCamp().getKey())) +
                 (isWereWolf()? game.translate("werewolf.description.werewolf"):"") +
-                (this instanceof Transformed ? game.translate("werewolf.role.amnesiac_werewolf.transformed",game.translate(((Transformed)this).getTransformed()?"werewolf.description.yes":"werewolf.description.no")):"");
+                (this instanceof Transformed ? game.translate("werewolf.description.transformed",game.translate(((Transformed)this).getTransformed()?"werewolf.description.yes":"werewolf.description.no")):"");
     }
 
     @Override
     public boolean isNeutral() {
-        return isTransformedToNeutral;
+        return isTransformedToNeutral && !isWereWolf();
     }
 
     @Override

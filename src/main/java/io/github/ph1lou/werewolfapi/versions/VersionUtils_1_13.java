@@ -37,7 +37,7 @@ public class VersionUtils_1_13 extends VersionUtils {
 
     @Override
     public void removePlayerMaxHealth(@NotNull Player player, double health) {
-        setPlayerMaxHealth(player,Math.max(1,getPlayerMaxHealth(player)-health));
+        setPlayerMaxHealth(player,Math.max(2,getPlayerMaxHealth(player)-health));
     }
 
     @Override
