@@ -9,5 +9,4 @@ public abstract class RolesVillage extends RolesImpl {
         super(main,playerWW,key);
     }
 
-
 }

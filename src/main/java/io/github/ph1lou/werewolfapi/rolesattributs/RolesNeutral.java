@@ -14,7 +14,7 @@ public abstract class RolesNeutral extends RolesImpl {
 
     @Override
     public boolean isNeutral() {
-        return !isWereWolf();
+        return !super.isWereWolf();
     }
 
     @EventHandler

@@ -52,7 +52,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     @Override
     public boolean isNeutral() {
-        return isTransformedToNeutral && !isWereWolf();
+        return isTransformedToNeutral && !this.isWereWolf();
     }
 
     @Override

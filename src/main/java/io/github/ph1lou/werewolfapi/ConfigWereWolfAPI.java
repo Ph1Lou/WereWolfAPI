@@ -110,6 +110,14 @@ public interface ConfigWereWolfAPI {
 
      int getRoleCount(String key);
 
+     int getLoverCount(String key);
+
+     void setLoverCount(String key,int value);
+
+     void addOneLover(String key);
+
+     void removeOneLover(String key);
+
      boolean isScenarioActive(String key);
 
      double getBorderSpeed();
@@ -128,21 +136,9 @@ public interface ConfigWereWolfAPI {
 
      void moveTimer(String key, int value);
 
-     int getAmnesiacLoverSize();
-
      void setConfig(String key,boolean enable);
 
      void setScenario(String key,boolean enable);
-
-     void setAmnesiacLoverSize(int amnesiacLoverSize);
-
-     int getCursedLoverSize();
-
-     void setCursedLoverSize(int cursedLoverSize);
-
-     int getLoverSize();
-
-     void setLoverSize(int loverSize);
 
      int getLimitDepthStrider();
 

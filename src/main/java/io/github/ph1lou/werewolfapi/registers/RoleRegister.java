@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.PlayerWW;
 import io.github.ph1lou.werewolfapi.enums.Category;
+import io.github.ph1lou.werewolfapi.enums.RandomCompositionAttribute;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,9 +21,12 @@ public class RoleRegister implements RegisterAPI {
 
     private final String key;
     private final String addonKey;
+    private float weight=1;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
     private final Constructor<?> constructors;
+
+    private RandomCompositionAttribute randomCompositionAttribute=RandomCompositionAttribute.VILLAGER;
 
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
         this.addonKey=addonKey;
@@ -30,9 +34,24 @@ public class RoleRegister implements RegisterAPI {
         this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, PlayerWW.class, String.class);
     }
 
+    public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){
+        this.randomCompositionAttribute=randomCompositionAttribute;
+        return this;
+    }
+
 
     public RoleRegister addCategory(Category category){
         this.categories.add(category);
+
+        if(this.randomCompositionAttribute.equals(RandomCompositionAttribute.VILLAGER)){
+            if(category.equals(Category.WEREWOLF)){
+                this.randomCompositionAttribute=RandomCompositionAttribute.WEREWOLF;
+            }
+            else if(category.equals(Category.NEUTRAL)){
+                this.randomCompositionAttribute=RandomCompositionAttribute.NEUTRAL;
+            }
+        }
+
         return this;
     }
 
@@ -69,6 +88,10 @@ public class RoleRegister implements RegisterAPI {
         return constructors;
     }
 
+    public RandomCompositionAttribute getRandomCompositionAttribute() {
+        return randomCompositionAttribute;
+    }
+
     @Nullable
     public ItemStack getItem() {
         return item;
@@ -78,5 +101,15 @@ public class RoleRegister implements RegisterAPI {
         this.item = item;
         return this;
     }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public RoleRegister setWeight(float weight) {
+        this.weight = weight;
+        return this;
+    }
+
 
 }
