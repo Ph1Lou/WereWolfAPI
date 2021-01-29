@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Ph1Lou
@@ -69,9 +70,9 @@ public class ScenarioRegister implements RegisterAPI {
         return scenario;
     }
 
-    @Nullable
-    public ItemStack getItem() {
-        return item;
+
+    public Optional<ItemStack> getItem() {
+        return this.item==null?Optional.empty():Optional.of(this.item);
     }
 
     public ScenarioRegister setItem(ItemStack item) {

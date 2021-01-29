@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Ph1Lou
@@ -70,9 +71,9 @@ public class ConfigRegister implements RegisterAPI {
         return key;
     }
 
-    @Nullable
-    public ListenerManager getConfig() {
-        return config;
+
+    public Optional<ListenerManager> getConfig() {
+        return this.config==null?Optional.empty():Optional.of(this.config);
     }
 
     public ConfigRegister unSetAppearInMenu(){
