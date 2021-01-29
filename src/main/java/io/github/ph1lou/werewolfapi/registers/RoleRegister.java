@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Ph1Lou
@@ -27,6 +28,8 @@ public class RoleRegister implements RegisterAPI {
     private final Constructor<?> constructors;
 
     private RandomCompositionAttribute randomCompositionAttribute=RandomCompositionAttribute.VILLAGER;
+    private boolean requireDouble=false;
+    private String requireRole="";
 
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
         this.addonKey=addonKey;
@@ -36,6 +39,16 @@ public class RoleRegister implements RegisterAPI {
 
     public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){
         this.randomCompositionAttribute=randomCompositionAttribute;
+        return this;
+    }
+
+    public RoleRegister setRequireDouble(){
+        this.requireDouble=true;
+        return this;
+    }
+
+    public RoleRegister setRequireAnotherRole(String key){
+        this.requireRole=key;
         return this;
     }
 
@@ -92,9 +105,8 @@ public class RoleRegister implements RegisterAPI {
         return randomCompositionAttribute;
     }
 
-    @Nullable
-    public ItemStack getItem() {
-        return item;
+    public Optional<ItemStack> getItem() {
+        return this.item==null?Optional.empty():Optional.of(this.item);
     }
 
     public RoleRegister setItem(ItemStack item) {
@@ -111,5 +123,12 @@ public class RoleRegister implements RegisterAPI {
         return this;
     }
 
+    public boolean isRequireDouble() {
+        return requireDouble;
+    }
+
+    public Optional<String> getRequireRole() {
+        return requireRole.isEmpty()?Optional.empty():Optional.of(requireRole);
+    }
 
 }
