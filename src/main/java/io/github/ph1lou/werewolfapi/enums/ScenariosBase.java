@@ -12,7 +12,7 @@ public enum ScenariosBase {
     NO_FALL("werewolf.menu.scenarios.no_fall"),
     NO_EGG_SNOWBALL("werewolf.menu.scenarios.no_egg_snowball"),
     NO_POISON("werewolf.menu.scenarios.no_poison"),
-    COMPASS_MIDDLE("werewolf.menu.global.compass_middle"),
+    COMPASS_MIDDLE("werewolf.menu.scenarios.compass_middle"),
     XP_BOOST("werewolf.menu.scenarios.xp_boost"),
     COMPASS_TARGET_LAST_DEATH("werewolf.menu.scenarios.compass_target_last_death"),
     NO_CLEAN_UP("werewolf.menu.scenarios.no_clean_up"),
@@ -21,6 +21,8 @@ public enum ScenariosBase {
     NO_FIRE_WEAPONS("werewolf.menu.scenarios.no_fire_weapons"),
     TIMBER("werewolf.menu.scenarios.timber"),
     SLOW_BOW("werewolf.menu.scenarios.slow_bow"),
+    HIDE_EVENTS("werewolf.menu.scenarios.hide_events"),
+    HIDE_SCENARIOS("werewolf.menu.scenarios.hide_scenarios"),
     NO_NETHER("werewolf.menu.scenarios.no_nether"),
     NO_END("werewolf.menu.scenarios.no_end"),
     DOUBLE_JUMP("werewolf.menu.scenarios.double_jump");
