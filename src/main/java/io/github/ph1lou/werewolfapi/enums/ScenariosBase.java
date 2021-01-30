@@ -21,8 +21,6 @@ public enum ScenariosBase {
     NO_FIRE_WEAPONS("werewolf.menu.scenarios.no_fire_weapons"),
     TIMBER("werewolf.menu.scenarios.timber"),
     SLOW_BOW("werewolf.menu.scenarios.slow_bow"),
-    HIDE_EVENTS("werewolf.menu.scenarios.hide_events"),
-    HIDE_SCENARIOS("werewolf.menu.scenarios.hide_scenarios"),
     NO_NETHER("werewolf.menu.scenarios.no_nether"),
     NO_END("werewolf.menu.scenarios.no_end"),
     DOUBLE_JUMP("werewolf.menu.scenarios.double_jump");

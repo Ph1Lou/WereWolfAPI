@@ -17,6 +17,8 @@ public enum ConfigsBase {
     WEREWOLF_CHAT("werewolf.menu.global.werewolf_chat"),
     EVIL_THIEF("werewolf.menu.global.evil_thief"),
     DOUBLE_TROLL("werewolf.menu.global.double_troll"),
+    HIDE_EVENTS("werewolf.menu.global.hide_events"),
+    HIDE_SCENARIOS("werewolf.menu.global.hide_scenarios"),
     LONE_WOLF("werewolf.menu.global.lone_wolf");
 
     private final String key;
