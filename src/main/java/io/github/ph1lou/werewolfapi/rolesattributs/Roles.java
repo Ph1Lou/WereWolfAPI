@@ -30,6 +30,10 @@ public interface Roles {
 
     void recoverPower();
 
+    void setSolitary(boolean solitary);
+
+    boolean isSolitary();
+
     void recoverPotionEffect();
 
     boolean isWereWolf();

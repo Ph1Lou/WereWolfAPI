@@ -15,7 +15,6 @@ public enum ConfigsBase {
     SWEET_ANGEL("werewolf.menu.global.sweet_angel"),
     RED_NAME_TAG("werewolf.menu.global.red_name_tag"),
     WEREWOLF_CHAT("werewolf.menu.global.werewolf_chat"),
-    EVIL_THIEF("werewolf.menu.global.evil_thief"),
     DOUBLE_TROLL("werewolf.menu.global.double_troll"),
     HIDE_EVENTS("werewolf.menu.global.hide_events"),
     HIDE_SCENARIOS("werewolf.menu.global.hide_scenarios"),

@@ -27,6 +27,7 @@ public enum RolesBase {
     CITIZEN("werewolf.role.citizen.display"),
     SIAMESE_TWIN("werewolf.role.siamese_twin.display"),
     COMEDIAN("werewolf.role.comedian.display"),
+    IMITATOR("werewolf.role.imitator.display"),
     TRAPPER("werewolf.role.trapper.display"),
     ANGEL("werewolf.role.angel.display"),
     GUARDIAN_ANGEL("werewolf.role.guardian_angel.display"),

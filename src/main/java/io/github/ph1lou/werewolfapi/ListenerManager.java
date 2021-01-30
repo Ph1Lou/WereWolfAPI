@@ -9,7 +9,7 @@ public abstract class ListenerManager implements Listener {
 
     public final GetWereWolfAPI main;
 
-    private boolean register = false;
+    protected boolean register = false;
 
     public ListenerManager(GetWereWolfAPI main) {
         this.main = main;
@@ -30,9 +30,5 @@ public abstract class ListenerManager implements Listener {
             HandlerList.unregisterAll(this);
             register = false;
         }
-    }
-
-    public void setRegister(boolean register) {
-        this.register = register;
     }
 }

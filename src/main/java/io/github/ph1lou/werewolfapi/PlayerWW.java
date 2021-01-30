@@ -28,6 +28,7 @@ public interface PlayerWW {
 
     void removePlayerHealth(int heart);
 
+    @Deprecated
     void sendMessage(String message);
 
     void sendMessageWithKey(String key,Object ... args);

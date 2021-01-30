@@ -13,6 +13,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +29,8 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @NotNull
     private UUID uuid;
     private boolean infected = false;
-    private boolean isTransformedToNeutral = false;
+    private boolean transformedToNeutral = false;
+    private boolean solitary =false;
     @NotNull
     private PlayerWW playerWW;
     @NotNull
@@ -45,6 +47,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @Override
     public @NotNull String getDescription() {
         return game.translate("werewolf.description.role", getPlayerWW().isThief()?game.translate("werewolf.role.thief.thief", game.translate(getKey())):game.translate(getKey())) +
+                (this.infected ? game.translate("werewolf.end.infect"):"") + (this.solitary?game.translate("werewolf.end.solitary"):"") + '\n' +
                 game.translate("werewolf.description.camp", getCamp().getChatColor()+game.translate(getCamp().getKey())) +
                 (isWereWolf()? game.translate("werewolf.description.werewolf"):"") +
                 (this instanceof Transformed ? game.translate("werewolf.description.transformed",game.translate(((Transformed)this).getTransformed()?"werewolf.description.yes":"werewolf.description.no")):"");
@@ -52,17 +55,17 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     @Override
     public boolean isNeutral() {
-        return isTransformedToNeutral && !this.isWereWolf();
+        return solitary || transformedToNeutral && !this.isWereWolf();
     }
 
     @Override
     public final boolean isTransformedToNeutral() {
-        return isTransformedToNeutral;
+        return transformedToNeutral;
     }
 
     @Override
     public final void setTransformedToNeutral(boolean neutral) {
-        isTransformedToNeutral=neutral;
+        transformedToNeutral =neutral;
     }
 
     @Override
@@ -205,13 +208,18 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     @EventHandler
     public void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 
-        if(!infected) return;
-
         if(!playerWW.equals(event.getPlayerWW())) return;
 
         StringBuilder sb = event.getEndMessage();
 
-        sb.append(game.translate("werewolf.end.infect"));
+        if(infected){
+            sb.append(game.translate("werewolf.end.infect"));
+        }
+
+        if(solitary){
+            sb.append(game.translate("werewolf.end.solitary"));
+        }
+
     }
 
     @Override
@@ -297,7 +305,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         Sound.EXPLODE.play(getPlayerWW());
         getPlayerWW().sendMessage(getBetterDescription());
-        getPlayerWW().sendMessage(game.translate("werewolf.announcement.review_role"));
+        getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
 
         recoverPotionEffect();
         recoverPower();
@@ -343,7 +351,23 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     }
 
     protected void openWereWolfChat(){
-        getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.announce",game.getScore().conversion(game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())),game.getConfig().getWereWolfChatMaxMessage()));
+        getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.announce",
+                game.getScore()
+                        .conversion(
+                                game.getConfig()
+                                        .getTimerValue(
+                                                TimersBase.WEREWOLF_CHAT_DURATION
+                                                        .getKey())),
+                game.getConfig().getWereWolfChatMaxMessage());
+
+        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main,
+                () -> {
+                    if(!game.isState(StateGame.END)){
+                        getPlayerWW()
+                                .sendMessageWithKey("werewolf.commands.admin.ww_chat.disable");
+                    }
+                },
+                game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -357,5 +381,33 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
 
+    }
+
+
+
+    @Override
+    public void setSolitary(boolean solitary) {
+        this.solitary=solitary;
+    }
+
+    @Override
+    public boolean isSolitary() {
+        return solitary;
+    }
+
+    @EventHandler
+    public void onDetectVictoryNeutral(WinConditionsCheckEvent event) {
+
+        if(!isNeutral()) return;
+
+        if (event.isCancelled()) return;
+
+        if (!getPlayerWW().isState(StatePlayer.ALIVE)) return;
+
+        if (game.getScore().getPlayerSize() != 1) return;
+
+        event.setCancelled(true);
+
+        event.setVictoryTeam(getKey());
     }
 }
