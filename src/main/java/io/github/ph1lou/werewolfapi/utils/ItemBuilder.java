@@ -117,7 +117,7 @@ public class ItemBuilder {
     public ItemBuilder addEnchant(Enchantment enchantment, int level) {
         ItemMeta meta = getItemMeta();
         if(meta instanceof EnchantmentStorageMeta){
-            ((EnchantmentStorageMeta)getItemMeta()).addStoredEnchant(enchantment,level,true);
+            ((EnchantmentStorageMeta)meta).addStoredEnchant(enchantment,level,true);
         }
         else meta.addEnchant(enchantment, level, true);
         setItemMeta(meta);
