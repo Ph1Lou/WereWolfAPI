@@ -30,6 +30,8 @@ public interface PlayerWW {
 
     void sendMessage(String message);
 
+    void sendMessageWithKey(String key);
+
     void sendMessage(TextComponent textComponent);
 
     void addPotionEffect(PotionEffectType potion, int duration, int amplifier);
