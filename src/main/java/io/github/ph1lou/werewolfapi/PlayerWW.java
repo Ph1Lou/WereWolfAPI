@@ -30,7 +30,7 @@ public interface PlayerWW {
 
     void sendMessage(String message);
 
-    void sendMessageWithKey(String key);
+    void sendMessageWithKey(String key,Object ... args);
 
     void sendMessage(TextComponent textComponent);
 

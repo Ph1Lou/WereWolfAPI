@@ -213,4 +213,8 @@ public interface ConfigWereWolfAPI {
 
      void setDistancePriestess(int distance);
 
+     boolean isTrollLover();
+
+     void setTrollLover(boolean troll);
+
 }
