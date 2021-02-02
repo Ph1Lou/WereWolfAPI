@@ -58,4 +58,8 @@ public interface Roles {
 
     void setPlayerWW(@NotNull PlayerWW playerWW);
 
+    String getDeathRole();
+
+    void setDeathRole(String role);
+
 }

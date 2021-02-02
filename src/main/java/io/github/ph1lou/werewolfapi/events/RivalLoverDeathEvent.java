@@ -5,13 +5,12 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RivalLoverDeathEvent extends Event {
 
     private final PlayerWW playerWW;
-    private List<PlayerWW> playerWWs;
+    private final List<PlayerWW> playerWWs;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public RivalLoverDeathEvent(PlayerWW playerWW, List<PlayerWW> playerWWs) {

@@ -6,8 +6,6 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
-
 public class SwapEvent extends Event implements Cancellable {
 
 

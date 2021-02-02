@@ -1,19 +1,19 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class VillagerKitEvent extends Event {
+public class LoneWolfEvent extends Event implements Cancellable {
 
-    private final PlayerWW playerWW;
-    private final String kit;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final PlayerWW playerWW;
+    private boolean cancel = false;
 
-    public VillagerKitEvent(PlayerWW playerWW, String kit){
+    public LoneWolfEvent(PlayerWW playerWW){
         this.playerWW=playerWW;
-        this.kit =kit;
     }
 
     @NotNull
@@ -26,12 +26,19 @@ public class VillagerKitEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @Override
+    public boolean isCancelled() {
+        return cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        this.cancel=cancelled;
+    }
+
     public PlayerWW getPlayerWW() {
         return playerWW;
     }
 
-    public String getKit() {
-        return kit;
-    }
 }
 

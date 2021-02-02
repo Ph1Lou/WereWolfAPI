@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
-import io.github.ph1lou.werewolfapi.enums.RolesBase;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -20,7 +19,7 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
     public AnnouncementDeathEvent(PlayerWW playerWW, String format){
         this.playerWW=playerWW;
         this.playerName=playerWW.getName();
-        this.role= playerWW.isThief()? RolesBase.THIEF.getKey():playerWW.getRole().getKey();
+        this.role= playerWW.getRole().getDeathRole();
         this.format=format;
     }
 

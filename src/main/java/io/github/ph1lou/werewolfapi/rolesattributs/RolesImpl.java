@@ -35,6 +35,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     private PlayerWW playerWW;
     @NotNull
     private final String key;
+    private String deathRole="";
 
     public RolesImpl(@NotNull GetWereWolfAPI main,@NotNull PlayerWW playerWW ,@NotNull String key){
         this.main = main;
@@ -46,7 +47,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     @Override
     public @NotNull String getDescription() {
-        return game.translate("werewolf.description.role", getPlayerWW().isThief()?game.translate("werewolf.role.thief.thief", game.translate(getKey())):game.translate(getKey())) +
+        return game.translate("werewolf.description.role", game.translate(getKey())) +
                 (this.infected ? game.translate("werewolf.end.infect"):"") + (this.solitary?game.translate("werewolf.end.solitary"):"") + '\n' +
                 game.translate("werewolf.description.camp", getCamp().getChatColor()+game.translate(getCamp().getKey())) +
                 (isWereWolf()? game.translate("werewolf.description.werewolf"):"") +
@@ -55,7 +56,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     @Override
     public boolean isNeutral() {
-        return solitary || transformedToNeutral && !this.isWereWolf();
+        return solitary || transformedToNeutral && !this.infected;
     }
 
     @Override
@@ -409,5 +410,15 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         event.setCancelled(true);
 
         event.setVictoryTeam(getKey());
+    }
+    @Override
+    public String getDeathRole(){
+        return this.deathRole.isEmpty()?getKey():this.deathRole;
+    }
+
+
+    @Override
+    public void setDeathRole(String role){
+        this.deathRole=role;
     }
 }

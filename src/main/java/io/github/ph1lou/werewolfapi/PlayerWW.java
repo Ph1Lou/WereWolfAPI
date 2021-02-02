@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -83,25 +83,18 @@ public interface PlayerWW {
 
     void removeLover(LoverAPI loverAPI);
 
-    @Nullable
-    PlayerWW getLastKiller();
-
-    void setThief(boolean thief) ;
-
-    boolean isThief();
+    Optional<PlayerWW> getLastKiller();
 
     String getName() ;
 
     void setName(String name) ;
 
-    @NotNull
     StatePlayer getState();
 
     int getDisconnectedTime();
 
     void setDisconnectedTime(int disconnectedTime);
 
-    @NotNull
     UUID getUUID();
 
     void updateAfterReconnect(Player player);
