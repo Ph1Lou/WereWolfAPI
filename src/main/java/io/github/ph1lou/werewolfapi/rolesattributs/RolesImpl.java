@@ -47,7 +47,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
     @Override
     public @NotNull String getDescription() {
-        return game.translate("werewolf.description.role", game.translate(getKey())) +
+        return game.translate("werewolf.description.role", game.translate(this.getDeathRole())) + (!this.getDeathRole().equals(this.getKey())?game.translate("werewolf.role.thief.thief",this.getKey()):"") +
                 (this.infected ? game.translate("werewolf.end.infect"):"") + (this.solitary?game.translate("werewolf.end.solitary"):"") + '\n' +
                 game.translate("werewolf.description.camp", getCamp().getChatColor()+game.translate(getCamp().getKey())) +
                 (isWereWolf()? game.translate("werewolf.description.werewolf"):"") +
@@ -164,7 +164,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
 
         if(!playerWW.isState(StatePlayer.ALIVE)) return;
 
-        playerWW.sendMessage(game.translate("werewolf.role.werewolf.see_others"));
+        playerWW.sendMessageWithKey("werewolf.role.werewolf.see_others");
         Sound.WOLF_HOWL.play(getPlayerWW());
     }
 
@@ -174,7 +174,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(!playerWW.equals(event.getPlayerWW())) return;
         if(getPlayerWW().isState(StatePlayer.DEATH)) return;
 
-        playerWW.sendMessage(game.translate("werewolf.role.werewolf.go_to_the_werewolf_camp"));
+        playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
         recoverPotionEffect();
 
@@ -240,7 +240,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
         if(!getPlayerWW().isState(StatePlayer.ALIVE)) return;
         if(!isWereWolf()) return;
 
-        getPlayerWW().sendMessage(game.translate("werewolf.commands.admin.ww_chat.prefix",event.getMessage()));
+        getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.prefix",event.getMessage());
 
     }
 

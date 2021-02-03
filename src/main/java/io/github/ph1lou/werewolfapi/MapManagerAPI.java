@@ -13,10 +13,9 @@ public interface MapManagerAPI {
      * teleport the player around the world
      * @param playerWW uuid of the player
      * @param d angle in radian
-     * @param message teleport message
      */
 
-    void transportation(PlayerWW playerWW, double d, String message);
+    void transportation(PlayerWW playerWW, double d);
 
     /**
      * delete the game map
