@@ -87,7 +87,8 @@ public interface WereWolfAPI {
 
     void death(PlayerWW playerWW);
 
-    Optional<PlayerWW> getPlayerWW(UUID uuid);
+    @Nullable
+    PlayerWW getPlayerWW(UUID uuid);
 
     Random getRandom();
 
