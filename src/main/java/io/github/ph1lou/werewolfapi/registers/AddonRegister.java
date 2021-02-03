@@ -5,9 +5,14 @@ import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * @author Ph1Lou
@@ -71,9 +76,11 @@ public class AddonRegister implements RegisterAPI {
         return authors.keySet();
     }
 
-    @Nullable
-    public UUID getAuthorsUUID(String name) {
-        return authors.get(name);
+    public Optional<UUID> getAuthorsUUID(String name) {
+        if(authors.containsKey(name)){
+            return Optional.empty();
+        }
+        return Optional.of(authors.get(name));
     }
 
     public ItemStack getItem() {
