@@ -16,8 +16,6 @@ public interface Roles {
     @NotNull
     String getKey();
 
-    String getBetterDescription();
-
     boolean isKey(@NotNull String key);
 
     boolean isCamp(@NotNull Camp camp);
