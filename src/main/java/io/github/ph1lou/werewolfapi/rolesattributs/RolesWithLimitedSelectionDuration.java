@@ -24,7 +24,7 @@ public abstract class RolesWithLimitedSelectionDuration extends RolesVillage imp
 
         setPower(false);
 
-        getPlayerWW().sendMessage(game.translate("werewolf.check.end_selection"));
+        getPlayerWW().sendMessageWithKey("werewolf.check.end_selection");
     }
 
     @Override

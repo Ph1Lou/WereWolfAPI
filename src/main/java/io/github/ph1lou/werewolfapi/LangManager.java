@@ -1,8 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
-import java.util.Map;
+import java.util.Set;
 
 public interface LangManager {
 
-    Map<String, String> getExtraTexts();
 }

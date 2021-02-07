@@ -4,13 +4,13 @@ import io.github.ph1lou.werewolfapi.enums.Camp;
 
 public interface Display {
 
-    void setDisplayCamp(Camp camp);
+    void setDisplayCamp(String camp);
 
-    boolean isDisplayCamp(Camp camp);
+    boolean isDisplayCamp(String camp);
 
-    Camp getDisplayCamp() ;
+    String getDisplayCamp() ;
 
-    Roles getDisplayRole();
+    String getDisplayRole();
 
-    void setDisplayRole(Roles roleLG);
+    void setDisplayRole(String key);
 }

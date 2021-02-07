@@ -1,7 +1,6 @@
 package io.github.ph1lou.werewolfapi.events;
 
 import io.github.ph1lou.werewolfapi.PlayerWW;
-import io.github.ph1lou.werewolfapi.enums.Camp;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -11,11 +10,11 @@ public class NewDisplayRole extends Event implements Cancellable {
 
     private final PlayerWW playerWW;
     private final String newDisplayRole;
-    private final Camp newDisplayCamp;
+    private final String newDisplayCamp;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public NewDisplayRole(PlayerWW playerWW, String newDisplayRole1, Camp newDisplayCamp){
+    public NewDisplayRole(PlayerWW playerWW, String newDisplayRole1, String newDisplayCamp){
         this.playerWW =playerWW;
         this.newDisplayRole = newDisplayRole1;
 
@@ -37,7 +36,7 @@ public class NewDisplayRole extends Event implements Cancellable {
     }
 
 
-    public Camp getNewDisplayCamp() {
+    public String getNewDisplayCamp() {
         return newDisplayCamp;
     }
 

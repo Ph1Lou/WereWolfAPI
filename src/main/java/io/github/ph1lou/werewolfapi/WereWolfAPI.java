@@ -96,6 +96,8 @@ public interface WereWolfAPI {
 
     VoteAPI getVote();
 
+    List<String> translateArray(String key);
+
     StuffManager getStuffs();
 
     ScoreAPI getScore();
