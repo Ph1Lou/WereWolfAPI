@@ -163,6 +163,7 @@ public abstract class RolesImpl implements Roles, Listener,Cloneable {
     public void onNewWereWolf(NewWereWolfEvent event) {
 
         if(!playerWW.equals(event.getPlayerWW())) return;
+
         if(getPlayerWW().isState(StatePlayer.DEATH)) return;
 
         playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
