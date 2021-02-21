@@ -74,7 +74,7 @@ public class DescriptionBuilder {
                 roles.getCamp().getChatColor()+game.translate(roles.getCamp().getKey())));
 
         sb.append(roles.getInfected()?
-                game.translate("werewolf.description.werewolf")
+                game.translate("werewolf.description.effect",game.translate("werewolf.description.werewolf"))
                 :"");
 
         sb.append(roles instanceof Transformed ?

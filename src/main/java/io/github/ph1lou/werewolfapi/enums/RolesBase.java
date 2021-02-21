@@ -45,6 +45,7 @@ public enum RolesBase {
     PRIESTESS("werewolf.role.priestess.display"),
     RIVAL("werewolf.role.rival.display"),
     WOLF_DOG("werewolf.role.wolf_dog.display"),
+    GRIMY_WEREWOLF("werewolf.role.grimy_werewolf.display"),
     GUARD("werewolf.role.guard.display");
 
     private final String key;
