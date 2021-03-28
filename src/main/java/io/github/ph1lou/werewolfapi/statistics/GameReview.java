@@ -15,7 +15,7 @@ public class GameReview implements IGameReview {
 
     private final UUID gameUUID;
     private final List<PlayerReview> players = new ArrayList<>();
-    private final int playerSize;
+    private int playerSize;
     private final transient WereWolfAPI api;
     private final List<RegisteredAction> registeredActions = new ArrayList<>();
     private Set<UUID> winners;
@@ -32,7 +32,6 @@ public class GameReview implements IGameReview {
     public GameReview(WereWolfAPI api) {
         this.api = api;
         this.gameUUID = api.getGameUUID();
-        this.playerSize = api.getScore().getPlayerSize();
     }
 
     public void end(String winnerCampKey, Set<PlayerWW> winners) {
@@ -44,6 +43,7 @@ public class GameReview implements IGameReview {
             players.add(playerReview);
         }
         this.duration = api.getScore().getTimer();
+        this.playerSize = api.getPlayerWW().size();
     }
 
     public void addRegisteredAction(RegisteredAction registeredAction) {
