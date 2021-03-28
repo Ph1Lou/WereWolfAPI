@@ -37,7 +37,7 @@ public class GameReview implements IGameReview {
 
     public void end(String winnerCampKey, Set<PlayerWW> winners) {
         this.winnerCampKey = winnerCampKey;
-        this.winners = winners.stream().map(PlayerWW::getUUID).collect(Collectors.toSet());
+        this.winners = winners.stream().map(PlayerWW::getMojangUUID).collect(Collectors.toSet());
         this.name = api.getGameName();
         for (PlayerWW playerWW : api.getPlayerWW()) {
             PlayerReview playerReview = new PlayerReview(playerWW);

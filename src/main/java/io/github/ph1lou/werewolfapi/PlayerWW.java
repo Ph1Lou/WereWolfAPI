@@ -64,6 +64,8 @@ public interface PlayerWW {
 
     int getNbKill();
 
+    UUID getMojangUUID();
+
     void setRole(Roles role);
 
     Roles getRole();
