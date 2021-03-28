@@ -213,6 +213,10 @@ public interface ConfigWereWolfAPI {
 
      void setDistancePriestess(int distance);
 
+     int getDistanceAvengerWerewolf();
+
+     void setDistanceAvengerWerewolf(int distance);
+
      boolean isTrollLover();
 
      void setTrollLover(boolean troll);
