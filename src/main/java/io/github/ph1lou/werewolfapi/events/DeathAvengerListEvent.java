@@ -9,7 +9,7 @@ public class DeathAvengerListEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public DeathAvengerListEvent(PlayerWW playerWW, PlayerWW targetWW, boolean isWereWolf) {
+    public DeathAvengerListEvent(PlayerWW playerWW, PlayerWW targetWW) {
         super(playerWW,targetWW);
     }
 

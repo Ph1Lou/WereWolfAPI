@@ -9,7 +9,7 @@ public class RegisterAvengerListEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public RegisterAvengerListEvent(PlayerWW playerWW, PlayerWW targetWW, boolean isWereWolf) {
+    public RegisterAvengerListEvent(PlayerWW playerWW, PlayerWW targetWW) {
         super(playerWW,targetWW);
     }
 
