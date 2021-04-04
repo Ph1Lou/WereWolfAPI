@@ -11,7 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 
-public class RandomEventRegister implements RegisterAPI {
+public class RandomEventRegister implements IRegister {
 
 
     private final String key;

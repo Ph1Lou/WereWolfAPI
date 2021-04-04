@@ -1,9 +1,8 @@
 package io.github.ph1lou.werewolfapi.statistics;
 
-import io.github.ph1lou.werewolfapi.LoverAPI;
-import io.github.ph1lou.werewolfapi.PlayerWW;
+import io.github.ph1lou.werewolfapi.ILover;
 import io.github.ph1lou.werewolfapi.enums.LoverType;
-
+import io.github.ph1lou.werewolfapi.IPlayerWW;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,27 +23,27 @@ public class PlayerReview implements IPlayerReview {
     private final List<UUID> lovers = new ArrayList<>();
     private UUID cursedLover = null;
 
-    public PlayerReview(PlayerWW playerWW) {
+    public PlayerReview(IPlayerWW playerWW) {
 
         this.uuid = playerWW.getMojangUUID();
         this.role = playerWW.getRole().getDeathRole();
-        for (LoverAPI loverAPI : playerWW.getLovers()) {
+        for (ILover ILover : playerWW.getLovers()) {
 
-            List<PlayerWW> lovers = new ArrayList<>(loverAPI.getLovers());
+            List<IPlayerWW> lovers = new ArrayList<>(ILover.getLovers());
             lovers.remove(playerWW);
 
             if (!lovers.isEmpty()) {
 
-                if (loverAPI.isKey(LoverType.AMNESIAC_LOVER.getKey())) {
+                if (ILover.isKey(LoverType.AMNESIAC_LOVER.getKey())) {
                     this.amnesiacLover = lovers.get(0).getMojangUUID();
-                } else if (loverAPI.isKey(LoverType.CURSED_LOVER.getKey())) {
+                } else if (ILover.isKey(LoverType.CURSED_LOVER.getKey())) {
                     this.cursedLover = lovers.get(0).getMojangUUID();
-                } else this.lovers.addAll(lovers.stream().map(PlayerWW::getMojangUUID).collect(Collectors.toList()));
+                } else this.lovers.addAll(lovers.stream().map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList()));
             }
         }
 
         this.deathTime = playerWW.getDeathTime();
-        this.killers = playerWW.getKillers().stream().filter(Objects::nonNull).map(PlayerWW::getMojangUUID).collect(Collectors.toList());
+        this.killers = playerWW.getKillers().stream().filter(Objects::nonNull).map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList());
         this.nbKill = playerWW.getNbKill();
         this.solitary = playerWW.getRole().isSolitary();
         this.infected = playerWW.getRole().getInfected();

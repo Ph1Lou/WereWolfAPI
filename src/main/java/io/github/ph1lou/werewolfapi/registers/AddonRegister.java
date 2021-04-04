@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.registers;
 
-import io.github.ph1lou.werewolfapi.ActionItemAddon;
+import io.github.ph1lou.werewolfapi.IActionItemAddon;
 import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.inventory.ItemStack;
@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 @SuppressWarnings("unused")
 
-public class AddonRegister implements RegisterAPI {
+public class AddonRegister implements IRegister {
 
     private final String key;
 
@@ -33,7 +33,7 @@ public class AddonRegister implements RegisterAPI {
 
     private final Map<String,UUID> authors = new HashMap<>();
 
-    private ActionItemAddon action=(player, previous) -> Sound.CAT_MEOW.play(player);
+    private IActionItemAddon action=(player, previous) -> Sound.CAT_MEOW.play(player);
 
 
     public AddonRegister(String key, String defaultLanguage, Plugin plugin) {
@@ -43,7 +43,7 @@ public class AddonRegister implements RegisterAPI {
     }
 
 
-    public AddonRegister setAction(ActionItemAddon action){
+    public AddonRegister setAction(IActionItemAddon action){
         this.action=action;
         return this;
     }
@@ -87,7 +87,7 @@ public class AddonRegister implements RegisterAPI {
         return item;
     }
 
-    public ActionItemAddon getAction() {
+    public IActionItemAddon getAction() {
         return action;
     }
 

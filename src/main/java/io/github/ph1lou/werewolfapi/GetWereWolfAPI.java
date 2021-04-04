@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi;
 
 import fr.minuskube.inv.InventoryManager;
-import io.github.ph1lou.werewolfapi.registers.RegisterManager;
+import io.github.ph1lou.werewolfapi.registers.IRegisterManager;
 
 /**
  * @author Ph1Lou
@@ -11,7 +11,7 @@ import io.github.ph1lou.werewolfapi.registers.RegisterManager;
 
 public interface GetWereWolfAPI {
     WereWolfAPI getWereWolfAPI();
-    RegisterManager getRegisterManager();
-    LangManager getLangManager();
+    IRegisterManager getRegisterManager();
+    ILanguageManager getLangManager();
     InventoryManager getInvManager();
 }

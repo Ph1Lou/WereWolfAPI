@@ -11,8 +11,6 @@ import java.util.*;
  */
 public interface WereWolfAPI {
 
-
-
     /**
      * Stop the Game
      */
@@ -24,7 +22,7 @@ public interface WereWolfAPI {
      * @return ConfigWereWolfAPI
      */
 
-    ConfigWereWolfAPI getConfig();
+    IConfiguration getConfig();
 
 
     /**
@@ -54,7 +52,7 @@ public interface WereWolfAPI {
      * @return Collection the PlayerWW of the game
      */
 
-    Collection<? extends PlayerWW> getPlayerWW();
+    Collection<? extends IPlayerWW> getPlayerWW();
 
     /**
      * return the text associated with the key
@@ -76,7 +74,7 @@ public interface WereWolfAPI {
      * @param playerWW the specified player
      */
 
-    void resurrection(PlayerWW playerWW);
+    void resurrection(IPlayerWW playerWW);
 
 
 
@@ -85,26 +83,26 @@ public interface WereWolfAPI {
      * @param playerWW specified player
      */
 
-    void death(PlayerWW playerWW);
+    void death(IPlayerWW playerWW);
 
     @Nullable
-    PlayerWW getPlayerWW(UUID uuid);
+    IPlayerWW getPlayerWW(UUID uuid);
 
     Random getRandom();
 
-    PlayerWW autoSelect(PlayerWW playerWW);
+    IPlayerWW autoSelect(IPlayerWW playerWW);
 
-    VoteAPI getVote();
+    IVoteManager getVote();
 
     List<String> translateArray(String key);
 
-    StuffManager getStuffs();
+    IStuffManager getStuffs();
 
-    ScoreAPI getScore();
+    IScoreBoard getScore();
 
-    MapManagerAPI getMapManager();
+    IMapManager getMapManager();
 
-    ModerationManagerAPI getModerationManager();
+    IModerationManager getModerationManager();
 
     /**
      * return the Name of the Game
@@ -122,6 +120,6 @@ public interface WereWolfAPI {
 
     StateGame getState();
 
-    LoverManagerAPI getLoversManager();
+    ILoverManager getLoversManager();
 
 }

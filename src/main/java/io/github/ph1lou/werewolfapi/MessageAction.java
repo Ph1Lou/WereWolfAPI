@@ -2,9 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enums.Sound;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.Optional;
 

@@ -11,7 +11,7 @@ import java.util.Optional;
  * @author Ph1Lou
  */
 
-public class ScenarioRegister implements RegisterAPI {
+public class ScenarioRegister implements IRegister {
 
     private final String key;
     private final String addonKey;

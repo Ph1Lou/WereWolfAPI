@@ -1,7 +1,7 @@
 package io.github.ph1lou.werewolfapi.statistics;
 
 
-import io.github.ph1lou.werewolfapi.PlayerWW;
+import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 
 
@@ -34,11 +34,11 @@ public class GameReview implements IGameReview {
         this.gameUUID = api.getGameUUID();
     }
 
-    public void end(String winnerCampKey, Set<PlayerWW> winners) {
+    public void end(String winnerCampKey, Set<IPlayerWW> winners) {
         this.winnerCampKey = winnerCampKey;
-        this.winners = winners.stream().map(PlayerWW::getMojangUUID).collect(Collectors.toSet());
+        this.winners = winners.stream().map(IPlayerWW::getMojangUUID).collect(Collectors.toSet());
         this.name = api.getGameName();
-        for (PlayerWW playerWW : api.getPlayerWW()) {
+        for (IPlayerWW playerWW : api.getPlayerWW()) {
             PlayerReview playerReview = new PlayerReview(playerWW);
             players.add(playerReview);
         }

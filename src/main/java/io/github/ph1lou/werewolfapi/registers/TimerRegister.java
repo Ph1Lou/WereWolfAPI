@@ -12,7 +12,7 @@ import java.util.function.Predicate;
  */
 @SuppressWarnings("unused")
 
-public class TimerRegister implements RegisterAPI {
+public class TimerRegister implements IRegister {
 
     private final String key;
     private final String addonKey;

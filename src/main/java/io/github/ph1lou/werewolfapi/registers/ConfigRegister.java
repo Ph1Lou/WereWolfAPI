@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 @SuppressWarnings("unused")
 
-public class ConfigRegister implements RegisterAPI {
+public class ConfigRegister implements IRegister {
 
 
     private final String key;
