@@ -157,34 +157,34 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onAppearInWereWolfList(AppearInWereWolfListEvent event){
 
-        if(!uuid.equals(event.getPlayerUUID())) return;
+        if(!this.uuid.equals(event.getPlayerUUID())) return;
 
-        if(playerWW.isState(StatePlayer.DEATH)) return;
+        if(this.playerWW.isState(StatePlayer.DEATH)) return;
 
-        event.setAppear(isWereWolf());
+        event.setAppear(this.isWereWolf());
     }
 
     @EventHandler
     public void onWereWolfList(WereWolfListEvent event){
 
-        if(!isWereWolf()) return;
+        if(!this.isWereWolf()) return;
 
-        if(!playerWW.isState(StatePlayer.ALIVE)) return;
+        if(!this.playerWW.isState(StatePlayer.ALIVE)) return;
 
-        playerWW.sendMessageWithKey("werewolf.role.werewolf.see_others");
+        this.playerWW.sendMessageWithKey("werewolf.role.werewolf.see_others");
         Sound.WOLF_HOWL.play(getPlayerWW());
     }
 
     @EventHandler
     public void onNewWereWolf(NewWereWolfEvent event) {
 
-        if(!playerWW.equals(event.getPlayerWW())) return;
+        if(!this.playerWW.equals(event.getPlayerWW())) return;
 
-        if(getPlayerWW().isState(StatePlayer.DEATH)) return;
+        if(this.getPlayerWW().isState(StatePlayer.DEATH)) return;
 
-        playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
+        this.playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
-        recoverPotionEffect();
+        this.recoverPotionEffect();
 
         game.getPlayerWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
@@ -212,20 +212,18 @@ public abstract class Role implements IRole, Listener,Cloneable {
         this.infected = true;
     }
 
-
-
     @EventHandler
     public void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 
-        if(!playerWW.equals(event.getPlayerWW())) return;
+        if(!this.playerWW.equals(event.getPlayerWW())) return;
 
         StringBuilder sb = event.getEndMessage();
 
-        if(infected){
+        if(this.infected){
             sb.append(game.translate("werewolf.end.infect"));
         }
 
-        if(solitary){
+        if(this.solitary){
             sb.append(game.translate("werewolf.end.solitary"));
         }
 
@@ -234,32 +232,32 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @Override
     public void recoverPotionEffect() {
 
-        if(!isWereWolf()) return;
+        if(!this.isWereWolf()) return;
 
-        playerWW.addPotionEffect(PotionEffectType.NIGHT_VISION);
+        this.playerWW.addPotionEffect(PotionEffectType.NIGHT_VISION);
         if(game.isDay(Day.DAY)) return;
-        playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        this.playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
     }
 
     @EventHandler
     public void onWWChat(WereWolfChatEvent event){
         if(event.isCancelled()) return;
 
-        if(!getPlayerWW().isState(StatePlayer.ALIVE)) return;
-        if(!isWereWolf()) return;
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
+        if(!this.isWereWolf()) return;
 
-        getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.prefix",event.getMessage());
+        this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.prefix",event.getMessage());
 
     }
 
     @EventHandler
     public void onChatSpeak(WereWolfCanSpeakInChatEvent event){
 
-        if(!playerWW.equals(event.getPlayerWW())) return;
+        if(!this.playerWW.equals(event.getPlayerWW())) return;
 
-        if(!playerWW.isState(StatePlayer.ALIVE)) return;
+        if(!this.playerWW.isState(StatePlayer.ALIVE)) return;
 
-        if(!isWereWolf()) return;
+        if(!this.isWereWolf()) return;
 
         event.setCanSpeak(true);
 
@@ -269,9 +267,9 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @EventHandler
     public void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
-        if (!playerWW.isState(StatePlayer.ALIVE)) return;
+        if (!this.playerWW.isState(StatePlayer.ALIVE)) return;
 
-        if(isNeutral()){
+        if(this.isNeutral()){
             event.addNeutral();
             return;
         }

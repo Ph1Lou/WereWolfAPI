@@ -10,10 +10,13 @@ public class AppearInWereWolfListEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
+
+    private final UUID requesterUUID;
     private boolean appear =false;
 
-    public AppearInWereWolfListEvent(UUID playerUUID){
+    public AppearInWereWolfListEvent(UUID playerUUID, UUID requester){
         this.playerUUID = playerUUID;
+        this.requesterUUID = requester;
     }
 
     @NotNull
@@ -28,6 +31,10 @@ public class AppearInWereWolfListEvent extends Event {
 
     public UUID getPlayerUUID() {
         return playerUUID;
+    }
+
+    public UUID getRequesterUUID() {
+        return requesterUUID;
     }
 
     public boolean isAppear() {
