@@ -3,6 +3,11 @@
 
 [![](https://javadoc.jitpack.io/v/Ph1Lou/WereWolfAPI.svg)](https://javadoc.jitpack.io/#Ph1Lou/WereWolfAPI)
 
+
+[![Crowdin](https://badges.crowdin.net/plugin-werewolf-uhc/localized.svg)](https://crowdin.com/project/plugin-werewolf-uhc)
+
+
+
 Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 
 # Java-Doc
@@ -13,7 +18,7 @@ Une API pour intéragir avec le plugin de LG UHC By Ph1Lou
 Cette API a pour but d'être intégré dans un plugin tournant dans la même jvm que le plugin lg uhc. Cette API permet d'intéragir avec le plugin.
 
 ### Prerequisites
-Vous aurez besoin du plugin lg uhc en version snapshot 1.5 dernière version en cours. Cette version est disponible sur mon discord en demandant le rôle Snapshot viewer.
+Vous aurez besoin du plugin lg uhc en version snapshot 1.7 dernière version en cours. Cette version est disponible sur mon discord => https://discord.gg/3TJQtVsamB.
 
 **Vous devez connaitre le Java, l'api Spigot et Maven avant de commencer à faire un addon.**
 
