@@ -379,8 +379,6 @@ public abstract class Role implements IRole, Listener,Cloneable {
 
     }
 
-
-
     @Override
     public void setSolitary(boolean solitary) {
         this.solitary=solitary;
