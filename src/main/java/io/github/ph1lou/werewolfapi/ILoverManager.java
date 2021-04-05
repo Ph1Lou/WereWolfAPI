@@ -10,5 +10,5 @@ public interface ILoverManager {
 
     void addLover(ILover ILover);
 
-    void repartition(GetWereWolfAPI main);
+    void repartition();
 }

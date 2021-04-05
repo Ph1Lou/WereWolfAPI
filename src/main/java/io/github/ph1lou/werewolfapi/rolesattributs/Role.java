@@ -3,13 +3,18 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
-import io.github.ph1lou.werewolfapi.enums.*;
-import io.github.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTag;
-import io.github.ph1lou.werewolfapi.events.game.timers.WereWolfListEvent;
-import io.github.ph1lou.werewolfapi.events.game.utils.CountRemainingRolesCategoriesEvent;
+import io.github.ph1lou.werewolfapi.enums.Camp;
+import io.github.ph1lou.werewolfapi.enums.ConfigsBase;
+import io.github.ph1lou.werewolfapi.enums.Day;
+import io.github.ph1lou.werewolfapi.enums.Sound;
+import io.github.ph1lou.werewolfapi.enums.StateGame;
+import io.github.ph1lou.werewolfapi.enums.StatePlayer;
+import io.github.ph1lou.werewolfapi.enums.TimersBase;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
-import io.github.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
+import io.github.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTag;
+import io.github.ph1lou.werewolfapi.events.game.utils.CountRemainingRolesCategoriesEvent;
+import io.github.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
 import io.github.ph1lou.werewolfapi.events.game.utils.WinConditionsCheckEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.AppearInWereWolfListEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.NewWereWolfEvent;
@@ -59,17 +64,17 @@ public abstract class Role implements IRole, Listener,Cloneable {
 
     @Override
     public boolean isNeutral() {
-        return solitary || transformedToNeutral && !this.infected;
+        return this.solitary || this.transformedToNeutral && !this.infected;
     }
 
     @Override
     public final boolean isTransformedToNeutral() {
-        return transformedToNeutral;
+        return this.transformedToNeutral;
     }
 
     @Override
     public final void setTransformedToNeutral(boolean neutral) {
-        transformedToNeutral =neutral;
+        this.transformedToNeutral =neutral;
     }
 
     @Override
@@ -91,11 +96,11 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @Override
     public final @NotNull Camp getCamp() {
 
-        if(isNeutral()){
+        if(this.isNeutral()){
             return Camp.NEUTRAL;
         }
 
-        if(isWereWolf()){
+        if(this.isWereWolf()){
             return Camp.WEREWOLF;
         }
         return Camp.VILLAGER;
@@ -103,7 +108,7 @@ public abstract class Role implements IRole, Listener,Cloneable {
 
     @Override
     public final boolean isCamp(@NotNull Camp camp) {
-        return camp.equals(getCamp());
+        return camp.equals(this.getCamp());
     }
 
     @Override
@@ -121,14 +126,14 @@ public abstract class Role implements IRole, Listener,Cloneable {
 
         StringBuilder sb = new StringBuilder(event.getPrefix());
 
-        if(!uuid.equals(event.getPlayerUUID())) return;
+        if(!this.uuid.equals(event.getPlayerUUID())) return;
 
-        if(playerWW.isState(StatePlayer.DEATH)) return;
+        if(this.playerWW.isState(StatePlayer.DEATH)) return;
 
-        if(isNeutral()){
+        if(this.isNeutral()){
             sb.append(ChatColor.GOLD);
         }
-        else if(isWereWolf()){
+        else if(this.isWereWolf()){
             sb.append(ChatColor.DARK_RED);
         }
         else sb.append(ChatColor.GREEN);
@@ -144,11 +149,11 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onRequestWereWolfList(RequestSeeWereWolfListEvent event){
 
-        if(!uuid.equals(event.getPlayerUUID())) return;
+        if(!this.uuid.equals(event.getPlayerUUID())) return;
 
-        if(playerWW.isState(StatePlayer.DEATH)) return;
+        if(this.playerWW.isState(StatePlayer.DEATH)) return;
 
-        if (game.getConfig().getTimerValue(TimersBase.WEREWOLF_LIST.getKey()) <= 0) {
+        if (this.game.getConfig().getTimerValue(TimersBase.WEREWOLF_LIST.getKey()) <= 0) {
             event.setAccept(isWereWolf());
         }
 
@@ -165,17 +170,6 @@ public abstract class Role implements IRole, Listener,Cloneable {
     }
 
     @EventHandler
-    public void onWereWolfList(WereWolfListEvent event){
-
-        if(!this.isWereWolf()) return;
-
-        if(!this.playerWW.isState(StatePlayer.ALIVE)) return;
-
-        this.playerWW.sendMessageWithKey("werewolf.role.werewolf.see_others");
-        Sound.WOLF_HOWL.play(getPlayerWW());
-    }
-
-    @EventHandler
     public void onNewWereWolf(NewWereWolfEvent event) {
 
         if(!this.playerWW.equals(event.getPlayerWW())) return;
@@ -186,7 +180,7 @@ public abstract class Role implements IRole, Listener,Cloneable {
         Sound.WOLF_HOWL.play(getPlayerWW());
         this.recoverPotionEffect();
 
-        game.getPlayerWW().stream()
+        this.game.getPlayerWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
                 .map(playerWW -> Bukkit.getPlayer(playerWW.getUUID()))
@@ -199,12 +193,12 @@ public abstract class Role implements IRole, Listener,Cloneable {
 
     @Override
     public boolean isWereWolf() {
-        return infected;
+        return this.infected;
     }
 
     @Override
     public final boolean getInfected() {
-        return infected;
+        return this.infected;
     }
 
     @Override
@@ -274,7 +268,7 @@ public abstract class Role implements IRole, Listener,Cloneable {
             return;
         }
 
-        if(isWereWolf()){
+        if(this.isWereWolf()){
             event.addWerewolf();
             return;
         }
@@ -285,15 +279,15 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @EventHandler
     public void onPlayerDeathByWereWolf(PlayerDeathEvent event) {
 
-        if(!isWereWolf()) return;
+        if(!this.isWereWolf()) return;
 
-        if(!getPlayerWW().isState(StatePlayer.ALIVE)) return;
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
 
         if(event.getEntity().getKiller()==null) return;
 
         Player killer = event.getEntity().getKiller();
 
-        if(!uuid.equals(killer.getUniqueId())) return;
+        if(!this.uuid.equals(killer.getUniqueId())) return;
 
         killer.removePotionEffect(PotionEffectType.ABSORPTION);
         killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200, 0, false, false));
@@ -305,22 +299,22 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @Override
     public final void roleAnnouncement(){
 
-        Sound.EXPLODE.play(getPlayerWW());
-        getPlayerWW().sendMessage(this.getDescription());
-        getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
+        Sound.EXPLODE.play(this.getPlayerWW());
+        this.getPlayerWW().sendMessage(this.getDescription());
+        this.getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
 
-        recoverPotionEffect();
-        recoverPower();
+        this.recoverPotionEffect();
+        this.recoverPower();
 
-        if(game.getConfig().isTrollSV()) return;
+        if(this.game.getConfig().isTrollSV()) return;
 
-        if(!game.getStuffs().getStuffRoles().containsKey(getKey())){
+        if(!this.game.getStuffs().getStuffRoles().containsKey(getKey())){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
             return;
         }
 
         for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
-            playerWW.addItem(i);
+            this.playerWW.addItem(i);
         }
     }
 
@@ -338,50 +332,50 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @EventHandler(priority = EventPriority.HIGH)
     public void onNightForWereWolf(NightEvent event) {
 
-        if(!getPlayerWW().isState(StatePlayer.ALIVE)){
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
             return;
         }
 
-        if(!isWereWolf()) return;
+        if(!this.isWereWolf()) return;
 
-        getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        this.getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
 
-        if(!game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
+        if(!this.game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
 
         openWereWolfChat();
 
     }
 
     protected void openWereWolfChat(){
-        getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.announce",
+        this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.announce",
                 Utils
                         .conversion(
-                                game.getConfig()
+                                this.game.getConfig()
                                         .getTimerValue(
                                                 TimersBase.WEREWOLF_CHAT_DURATION
                                                         .getKey())),
-                game.getConfig().getWereWolfChatMaxMessage());
+                this.game.getConfig().getWereWolfChatMaxMessage());
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) main,
+        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) this.main,
                 () -> {
-                    if(!game.isState(StateGame.END)){
+                    if(!this.game.isState(StateGame.END)){
                         getPlayerWW()
                                 .sendMessageWithKey("werewolf.commands.admin.ww_chat.disable");
                     }
                 },
-                game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
+                this.game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onDayForWereWolf(DayEvent event) {
 
-        if(!isWereWolf()) return;
+        if(!this.isWereWolf()) return;
 
-        if(!getPlayerWW().isState(StatePlayer.ALIVE)){
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
             return;
         }
 
-        getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        this.getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
 
     }
 
@@ -400,13 +394,13 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @EventHandler
     public void onDetectVictoryNeutral(WinConditionsCheckEvent event) {
 
-        if(!isNeutral()) return;
+        if(!this.isNeutral()) return;
 
         if (event.isCancelled()) return;
 
-        if (!getPlayerWW().isState(StatePlayer.ALIVE)) return;
+        if (!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
 
-        if (game.getScore().getPlayerSize() != 1) return;
+        if (this.game.getScore().getPlayerSize() != 1) return;
 
         event.setCancelled(true);
 
@@ -414,7 +408,7 @@ public abstract class Role implements IRole, Listener,Cloneable {
     }
     @Override
     public String getDeathRole(){
-        return this.deathRole.isEmpty()?getKey():this.deathRole;
+        return this.deathRole.isEmpty()?this.getKey():this.deathRole;
     }
 
 
