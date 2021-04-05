@@ -30,4 +30,13 @@ public class BukkitUtils {
         Bukkit.getPluginManager().registerEvents(listener, (Plugin) api);
     }
 
+
+    public static int scheduleSyncRepeatingTask(@NotNull Runnable runnable, long delay, long period){
+        GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
+        if(api==null){
+            throw new RuntimeException("WereWolfPlugin not loaded");
+        }
+        return Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) api,runnable,delay,period);
+    }
+
 }
