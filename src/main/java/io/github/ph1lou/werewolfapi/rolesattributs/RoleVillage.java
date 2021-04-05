@@ -1,12 +1,12 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
-import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.WereWolfAPI;
 
 public abstract class RoleVillage extends Role {
 
-    public RoleVillage(GetWereWolfAPI main, IPlayerWW playerWW, String key){
-        super(main, playerWW,key);
+    public RoleVillage(WereWolfAPI game, IPlayerWW playerWW, String key){
+        super(game, playerWW,key);
     }
 
 }

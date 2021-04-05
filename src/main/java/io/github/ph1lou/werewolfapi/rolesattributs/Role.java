@@ -1,6 +1,5 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
-import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.Camp;
@@ -21,6 +20,7 @@ import io.github.ph1lou.werewolfapi.events.werewolf.NewWereWolfEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.RequestSeeWereWolfListEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.WereWolfCanSpeakInChatEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.WereWolfChatEvent;
+import io.github.ph1lou.werewolfapi.utils.BukkitUtils;
 import io.github.ph1lou.werewolfapi.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,7 +30,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +40,6 @@ import java.util.UUID;
 public abstract class Role implements IRole, Listener,Cloneable {
     
     protected final WereWolfAPI game;
-    protected final GetWereWolfAPI main;
 
     @NotNull
     private UUID uuid;
@@ -54,9 +52,8 @@ public abstract class Role implements IRole, Listener,Cloneable {
     private final String key;
     private String deathRole="";
 
-    public Role(@NotNull GetWereWolfAPI main, @NotNull IPlayerWW playerWW, @NotNull String key){
-        this.main = main;
-        this.game = main.getWereWolfAPI();
+    public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
+        this.game = game;
         this.uuid= playerWW.getUUID();
         this.playerWW = playerWW;
         this.key=key;
@@ -356,7 +353,7 @@ public abstract class Role implements IRole, Listener,Cloneable {
                                                         .getKey())),
                 this.game.getConfig().getWereWolfChatMaxMessage());
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) this.main,
+        BukkitUtils.scheduleSyncDelayedTask(
                 () -> {
                     if(!this.game.isState(StateGame.END)){
                         getPlayerWW()

@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.Category;
 import io.github.ph1lou.werewolfapi.enums.RandomCompositionAttribute;
 import org.bukkit.inventory.ItemStack;
@@ -33,7 +34,7 @@ public class RoleRegister implements IRegister {
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
         this.addonKey=addonKey;
         this.key=key;
-        this.constructors=roleClass.getConstructor(GetWereWolfAPI.class, IPlayerWW.class, String.class);
+        this.constructors=roleClass.getConstructor(WereWolfAPI.class, IPlayerWW.class, String.class);
     }
 
     public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){

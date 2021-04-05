@@ -7,6 +7,7 @@ import org.bukkit.util.Vector;
 
 public class Utils {
 
+
     public static int midDistance(Player player) {
 
         World world = player.getWorld();
