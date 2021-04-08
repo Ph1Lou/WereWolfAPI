@@ -19,11 +19,11 @@ public class DescriptionBuilder {
     private final List<Supplier<String>> extraLines = new ArrayList<>();
 
     private final WereWolfAPI game;
-    private final IRole IRole;
+    private final IRole role;
 
-    public DescriptionBuilder(WereWolfAPI game, IRole IRole){
+    public DescriptionBuilder(WereWolfAPI game, IRole role){
         this.game=game;
-        this.IRole = IRole;
+        this.role = role;
     }
 
     public DescriptionBuilder setDescription(Supplier<String> key){
@@ -65,54 +65,54 @@ public class DescriptionBuilder {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(game.translate("werewolf.description.role", game.translate(IRole.getDeathRole()) +
-                (!IRole.getDeathRole().equals(IRole.getKey()) ? game.translate("werewolf.role.thief.thief", IRole.getKey()) : "") +
-                (IRole.getInfected() ? game.translate("werewolf.end.infect") : "") +
-                (IRole.isSolitary() ? game.translate("werewolf.end.solitary") : "")));
+        sb.append(this.game.translate("werewolf.description.role", this.game.translate(this.role.getDeathRole()) +
+                (!this.role.getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief", this.game.translate(this.role.getKey())) : "") +
+                (this.role.getInfected() ? this.game.translate("werewolf.end.infect") : "") +
+                (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : "")));
 
-        sb.append(game.translate("werewolf.description.camp",
-                IRole.getCamp().getChatColor()+game.translate(IRole.getCamp().getKey())));
+        sb.append(this.game.translate("werewolf.description.camp",
+                this.role.getCamp().getChatColor()+this.game.translate(this.role.getCamp().getKey())));
 
-        sb.append(IRole.getInfected()?
-                game.translate("werewolf.description.effect",game.translate("werewolf.description.werewolf"))
+        sb.append(this.role.getInfected()?
+                this.game.translate("werewolf.description.effect",this.game.translate("werewolf.description.werewolf"))
                 :"");
 
-        sb.append(IRole instanceof ITransformed ?
-                game.translate("werewolf.description.transformed",
-                        game.translate(((ITransformed) IRole).getTransformed()?
+        sb.append(this.role instanceof ITransformed ?
+                this.game.translate("werewolf.description.transformed",
+                        this.game.translate(((ITransformed) this.role).getTransformed()?
                                 "werewolf.description.yes"
                                 : "werewolf.description.no"))
                 : "");
 
         if(this.description!=null){
-            sb.append(game.translate("werewolf.description.description", this.description.get()));
+            sb.append(this.game.translate("werewolf.description.description", this.description.get()));
         }
 
         if(this.power!=null){
-            sb.append(game.translate("werewolf.description.power",this.power.get()));
+            sb.append(this.game.translate("werewolf.description.power",this.power.get()));
         }
 
         if(this.effects!=null){
-            sb.append(game.translate("werewolf.description.effect",this.effects.get()));
+            sb.append(this.game.translate("werewolf.description.effect",this.effects.get()));
         }
 
         if(this.items!=null){
-            sb.append(game.translate("werewolf.description.item",this.items.get()));
+            sb.append(this.game.translate("werewolf.description.item",this.items.get()));
         }
 
         if(this.equipments!=null){
-            sb.append(game.translate("werewolf.description.equipment",this.equipments.get()));
+            sb.append(this.game.translate("werewolf.description.equipment",this.equipments.get()));
         }
 
         if(this.command!=null){
-            sb.append(game.translate("werewolf.description.command",this.command.get()));
+            sb.append(this.game.translate("werewolf.description.command",this.command.get()));
         }
 
-        extraLines.forEach(stringSupplier -> sb.append(stringSupplier.get()));
+        this.extraLines.forEach(stringSupplier -> sb.append(stringSupplier.get()));
 
-        return game.translate("werewolf.description._") +
+        return this.game.translate("werewolf.description._") +
                 sb.toString() +
-                game.translate("werewolf.description._");
+                this.game.translate("werewolf.description._");
 
     }
 }
