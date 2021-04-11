@@ -9,6 +9,13 @@ public class PoorlyGroomedBearEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
+
+    private final int modification;
+
+    public PoorlyGroomedBearEvent(int modification){
+        this.modification=modification;
+    }
+
     @NotNull
     @Override
     public HandlerList getHandlers() {
@@ -27,5 +34,9 @@ public class PoorlyGroomedBearEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean cancel) {
         this.cancel=cancel;
+    }
+
+    public int getModification() {
+        return modification;
     }
 }
