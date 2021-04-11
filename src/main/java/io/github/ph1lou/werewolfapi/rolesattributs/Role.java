@@ -34,7 +34,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Role implements IRole, Listener,Cloneable {
@@ -180,10 +179,8 @@ public abstract class Role implements IRole, Listener,Cloneable {
         this.game.getPlayerWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
-                .map(playerWW -> Bukkit.getPlayer(playerWW.getUUID()))
-                .filter(Objects::nonNull)
                 .forEach(player1 -> {
-                    player1.sendMessage(game.translate("werewolf.role.werewolf.new_werewolf"));
+                    player1.sendMessageWithKey("werewolf.role.werewolf.new_werewolf");
                     Sound.WOLF_HOWL.play(player1);
                 });
     }
