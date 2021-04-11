@@ -1,14 +1,15 @@
 package io.github.ph1lou.werewolfapi.events.random_events;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class DrunkenWereWolfEvent extends Event {
+public class DrunkenWereWolfEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-
+    private boolean cancel=false;
     private final IPlayerWW playerWW;
     @NotNull
     @Override
@@ -26,5 +27,15 @@ public class DrunkenWereWolfEvent extends Event {
 
     public IPlayerWW getPlayerWW() {
         return playerWW;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return this.cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean cancel) {
+        this.cancel=cancel;
     }
 }
