@@ -171,7 +171,7 @@ le StuffRole sera chargé par défault et le MeetUp lors de l'appuie sur le bout
 
 ## 1ère étape créer une classe Command qui implémente Commands 
 ```
-public class Comman implements Commands 
+public class Command implements Commands 
 ```
 
 ## 2ème étape
