@@ -6,22 +6,24 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
+
 public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     private final IPlayerWW playerWW;
-    private final IPlayerWW targetPlayerWW;
+    private final UUID targetPlayer;
     private String playerName;
     private String role;
     private String format;
     private  boolean cancel;
 
-    public AnnouncementDeathEvent(IPlayerWW playerWW, IPlayerWW targetPlayerWW, String format){
+    public AnnouncementDeathEvent(IPlayerWW playerWW, UUID targetPlayer, String format){
         this.playerWW = playerWW;
         this.playerName= playerWW.getName();
         this.role= playerWW.getRole().getDeathRole();
-        this.targetPlayerWW = targetPlayerWW;
+        this.targetPlayer = targetPlayer;
         this.format=format;
     }
 
@@ -63,8 +65,8 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
         return playerWW;
     }
 
-    public IPlayerWW getTargetPlayerWW() {
-        return targetPlayerWW;
+    public UUID getTargetPlayerWW() {
+        return targetPlayer;
     }
 
     @Override
