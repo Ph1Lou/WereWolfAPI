@@ -11,15 +11,17 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     private final IPlayerWW playerWW;
+    private final IPlayerWW targetPlayerWW;
     private String playerName;
     private String role;
     private String format;
     private  boolean cancel;
 
-    public AnnouncementDeathEvent(IPlayerWW playerWW, String format){
+    public AnnouncementDeathEvent(IPlayerWW playerWW, IPlayerWW targetPlayerWW, String format){
         this.playerWW = playerWW;
         this.playerName= playerWW.getName();
         this.role= playerWW.getRole().getDeathRole();
+        this.targetPlayerWW = targetPlayerWW;
         this.format=format;
     }
 
@@ -59,6 +61,10 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     public IPlayerWW getPlayerWW() {
         return playerWW;
+    }
+
+    public IPlayerWW getTargetPlayerWW() {
+        return targetPlayerWW;
     }
 
     @Override
