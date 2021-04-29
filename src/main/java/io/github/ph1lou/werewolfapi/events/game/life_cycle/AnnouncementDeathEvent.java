@@ -65,7 +65,7 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
         return playerWW;
     }
 
-    public UUID getTargetPlayerWW() {
+    public UUID getTargetPlayer() {
         return targetPlayer;
     }
 
