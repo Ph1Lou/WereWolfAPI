@@ -1,6 +1,5 @@
 package io.github.ph1lou.werewolfapi.events.game.game_cycle;
 
-import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.UpdateCompositionReason;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
