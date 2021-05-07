@@ -6,14 +6,16 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public class ShamanEvent extends Event implements Cancellable {
 
     private boolean cancel;
     private final IPlayerWW victim;
-    private final IPlayerWW killer;
+    private final Optional<IPlayerWW> killer;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ShamanEvent(IPlayerWW victim, IPlayerWW killer) {
+    public ShamanEvent(IPlayerWW victim, Optional<IPlayerWW> killer) {
         this.killer = killer;
         this.victim = victim;
         this.cancel = false;
@@ -38,7 +40,7 @@ public class ShamanEvent extends Event implements Cancellable {
         return victim;
     }
 
-    public IPlayerWW getKiller() {
+    public Optional<IPlayerWW> getKiller() {
         return killer;
     }
 }
