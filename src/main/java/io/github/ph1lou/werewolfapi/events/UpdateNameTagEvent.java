@@ -1,5 +1,6 @@
 package io.github.ph1lou.werewolfapi.events;
 
+import io.github.ph1lou.werewolfapi.IPlayerWW;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -11,15 +12,12 @@ import java.util.Collections;
 public class UpdateNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final Collection<? extends Player> players;
+    private final IPlayerWW playerWW;
 
-    public UpdateNameTagEvent(Player player){
-        this.players= Collections.singleton(player);
+    public UpdateNameTagEvent(IPlayerWW playerWW){
+        this.playerWW= playerWW;
     }
 
-    public UpdateNameTagEvent(Collection<? extends Player> players){
-        this.players=players;
-    }
 
     @NotNull
     @Override
@@ -31,8 +29,8 @@ public class UpdateNameTagEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public Collection<? extends Player> getPlayers(){
-        return this.players;
+    public IPlayerWW getPlayerWW(){
+        return this.playerWW;
     }
 
 }
