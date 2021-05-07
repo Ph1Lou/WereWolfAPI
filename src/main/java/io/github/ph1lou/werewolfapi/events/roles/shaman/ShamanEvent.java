@@ -12,10 +12,10 @@ public class ShamanEvent extends Event implements Cancellable {
 
     private boolean cancel;
     private final IPlayerWW victim;
-    private final Optional<IPlayerWW> killer;
+    private final IPlayerWW killer;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ShamanEvent(IPlayerWW victim, Optional<IPlayerWW> killer) {
+    public ShamanEvent(IPlayerWW victim, IPlayerWW killer) {
         this.killer = killer;
         this.victim = victim;
         this.cancel = false;
@@ -23,12 +23,12 @@ public class ShamanEvent extends Event implements Cancellable {
 
     @Override
     public boolean isCancelled() {
-        return cancel;
+        return this.cancel;
     }
 
     @Override
     public void setCancelled(boolean b) {
-        cancel = b;
+        this.cancel = b;
     }
 
     @Override
@@ -37,10 +37,10 @@ public class ShamanEvent extends Event implements Cancellable {
     }
 
     public IPlayerWW getVictim() {
-        return victim;
+        return this.victim;
     }
 
     public Optional<IPlayerWW> getKiller() {
-        return killer;
+        return Optional.ofNullable(this.killer);
     }
 }
