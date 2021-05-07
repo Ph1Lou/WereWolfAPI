@@ -104,6 +104,10 @@ public interface IConfiguration {
 
      void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
 
+     int getDistanceFlutePlayer();
+
+     void setDistanceFlutePlayer(int distanceAmnesiacLovers);
+
      int getTimerValue(String key);
 
      boolean isConfigActive(String key);
