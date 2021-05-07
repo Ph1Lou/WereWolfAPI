@@ -33,10 +33,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-public abstract class Role implements IRole, Listener,Cloneable {
+public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     
     protected final WereWolfAPI game;
 
@@ -49,6 +50,10 @@ public abstract class Role implements IRole, Listener,Cloneable {
     private IPlayerWW playerWW;
     @NotNull
     private final String key;
+    @Nullable
+    private String displayRole;
+    @Nullable
+    private String displayCamp;
     private String deathRole="";
 
     public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
@@ -407,5 +412,37 @@ public abstract class Role implements IRole, Listener,Cloneable {
     @Override
     public void setDeathRole(String role){
         this.deathRole=role;
+    }
+
+
+    @Override
+    public void setDisplayCamp(@Nullable String camp) {
+        this.displayCamp=camp;
+    }
+
+    @Override
+    public boolean isDisplayCamp(String camp) {
+        return false;
+    }
+
+    @Override
+    public String getDisplayCamp() {
+        if(this.displayCamp!=null){
+            return this.displayCamp;
+        }
+        return this.getCamp().getKey();
+    }
+
+    @Override
+    public String getDisplayRole() {
+        if(this.displayRole!=null){
+            return this.displayRole;
+        }
+        return this.key;
+    }
+
+    @Override
+    public void setDisplayRole(@Nullable String key) {
+        this.displayRole=key;
     }
 }

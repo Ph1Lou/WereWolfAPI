@@ -85,6 +85,12 @@ public interface WereWolfAPI {
 
     void death(IPlayerWW playerWW);
 
+
+    /**
+     * allow to get playerww with uuid
+     * @param uuid uuid of the player
+     * @return the instance of playerWW
+     */
     @Nullable
     IPlayerWW getPlayerWW(UUID uuid);
 
