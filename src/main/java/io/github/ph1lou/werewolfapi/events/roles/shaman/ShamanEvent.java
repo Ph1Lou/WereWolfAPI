@@ -8,27 +8,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class ShamanEvent extends Event implements Cancellable {
+public class ShamanEvent extends Event {
 
     private boolean cancel;
     private final IPlayerWW victim;
-    private final Optional<IPlayerWW> killer;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ShamanEvent(IPlayerWW victim, Optional<IPlayerWW> killer) {
-        this.killer = killer;
+    public ShamanEvent(IPlayerWW victim) {
         this.victim = victim;
         this.cancel = false;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return cancel;
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-        cancel = b;
     }
 
     @Override
@@ -38,9 +26,5 @@ public class ShamanEvent extends Event implements Cancellable {
 
     public IPlayerWW getVictim() {
         return victim;
-    }
-
-    public Optional<IPlayerWW> getKiller() {
-        return killer;
     }
 }
