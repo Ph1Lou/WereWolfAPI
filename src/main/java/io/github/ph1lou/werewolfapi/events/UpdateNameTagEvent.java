@@ -8,17 +8,21 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.UUID;
 
 public class UpdateNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final IPlayerWW playerWW;
+    private final UUID uuid;
 
     public UpdateNameTagEvent(IPlayerWW playerWW){
-        this.playerWW= playerWW;
+        this.uuid= playerWW.getUUID();
     }
 
 
+    public UpdateNameTagEvent(Player player){
+        this.uuid = player.getUniqueId();
+    }
     @NotNull
     @Override
     public HandlerList getHandlers() {
@@ -29,8 +33,8 @@ public class UpdateNameTagEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public IPlayerWW getPlayerWW(){
-        return this.playerWW;
+    public UUID getUUID(){
+        return this.uuid;
     }
 
 }

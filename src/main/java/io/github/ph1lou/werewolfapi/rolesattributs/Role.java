@@ -425,7 +425,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
     @Override
     public boolean isDisplayCamp(String camp) {
-        return false;
+        return this.getDisplayCamp().equals(camp);
     }
 
     @Override
