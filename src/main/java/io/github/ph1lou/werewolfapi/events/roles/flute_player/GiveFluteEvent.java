@@ -5,13 +5,12 @@ import io.github.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class EnchantedEvent extends SelectionEvent {
+public class GiveFluteEvent extends SelectionEvent {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public EnchantedEvent(IPlayerWW playerWW, IPlayerWW playerWW1){
-        super(playerWW,playerWW1);
+    public GiveFluteEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+        super(playerWW, targetWW);
     }
-
     @NotNull
     @Override
     public HandlerList getHandlers() {
@@ -22,4 +21,3 @@ public class EnchantedEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 }
-

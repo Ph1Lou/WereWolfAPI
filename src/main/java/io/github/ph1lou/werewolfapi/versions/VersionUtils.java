@@ -1,12 +1,14 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
+import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.Team;
@@ -55,6 +57,8 @@ public abstract class VersionUtils {
     public abstract Location findBiome(World world) throws Exception;
 
     public abstract int biomeSize(Location location, World world);
+
+    public abstract ShapedRecipe registerCraft(ItemStack result, String key);
 
     public abstract ItemStack getItemInHand(@NotNull Player player);
 }

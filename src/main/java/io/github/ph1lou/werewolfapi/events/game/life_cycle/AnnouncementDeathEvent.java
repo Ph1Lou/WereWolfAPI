@@ -6,7 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class AnnouncementDeathEvent extends Event implements Cancellable {
+public class AnnouncementDeathEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
@@ -15,8 +15,13 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
     private String playerName;
     private String role;
     private String format;
-    private  boolean cancel;
 
+    /**
+     *
+     * @param playerWW the player dead
+     * @param targetPlayer the player who will show the message
+     * @param format the message
+     */
     public AnnouncementDeathEvent(IPlayerWW playerWW, IPlayerWW targetPlayer, String format){
         this.playerWW = playerWW;
         this.playerName= playerWW.getName();
@@ -65,15 +70,5 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     public IPlayerWW getTargetPlayer() {
         return this.targetPlayer;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return cancel;
-    }
-
-    @Override
-    public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
     }
 }

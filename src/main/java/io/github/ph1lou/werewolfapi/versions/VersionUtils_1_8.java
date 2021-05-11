@@ -1,11 +1,13 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
+import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.utils.NMSUtils;
 import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.NameTagVisibility;
@@ -273,6 +275,12 @@ public class VersionUtils_1_8 extends VersionUtils {
 
         return i;
     }
+
+    @Override
+    public ShapedRecipe registerCraft(ItemStack result, String key) {
+        return new ShapedRecipe(result);
+    }
+
 
     @Override
     public ItemStack getItemInHand(@NotNull Player player) {

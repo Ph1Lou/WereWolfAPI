@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.events.roles.shaman;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -8,23 +9,21 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class ShamanEvent extends Event {
+public class ShamanEvent extends SelectionEvent {
 
-    private boolean cancel;
-    private final IPlayerWW victim;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ShamanEvent(IPlayerWW victim) {
-        this.victim = victim;
-        this.cancel = false;
+    public ShamanEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+        super(playerWW, targetWW);
     }
 
+    @NotNull
     @Override
-    public @NotNull HandlerList getHandlers() {
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
-    public IPlayerWW getVictim() {
-        return victim;
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 }

@@ -1,10 +1,13 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
+import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.ComponentBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -12,8 +15,10 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
@@ -158,6 +163,15 @@ public class VersionUtils_1_13 extends VersionUtils {
         }
 
         return i;
+    }
+
+    @Override
+    public ShapedRecipe registerCraft(ItemStack result, String key) {
+        GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
+        if(api==null){
+            throw new RuntimeException("WereWolfPlugin not loaded");
+        }
+        return new ShapedRecipe(new NamespacedKey((Plugin) api, key), result);
     }
 
     @Override

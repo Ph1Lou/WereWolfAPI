@@ -9,6 +9,7 @@ import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.enums.TimersBase;
+import io.github.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
 import io.github.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTag;
@@ -176,6 +177,8 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(!this.playerWW.equals(event.getPlayerWW())) return;
 
         if(this.getPlayerWW().isState(StatePlayer.DEATH)) return;
+
+        Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
 
         this.playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
@@ -422,7 +425,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
     @Override
     public boolean isDisplayCamp(String camp) {
-        return false;
+        return this.getDisplayCamp().equals(camp);
     }
 
     @Override

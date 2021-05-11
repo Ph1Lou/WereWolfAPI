@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-public interface IRole {
+public interface IRole extends IDisplay {
 
     @NotNull
     String getDescription();
