@@ -13,9 +13,10 @@ public class ShamanEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ShamanEvent(IPlayerWW victim, IPlayerWW killer) {
-        super(victim,killer);
+    public ShamanEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+        super(playerWW, targetWW);
     }
+
     @NotNull
     @Override
     public HandlerList getHandlers() {
@@ -25,5 +26,4 @@ public class ShamanEvent extends SelectionEvent {
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
-
 }
