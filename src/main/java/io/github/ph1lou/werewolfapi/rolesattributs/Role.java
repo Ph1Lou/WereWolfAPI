@@ -21,6 +21,7 @@ import io.github.ph1lou.werewolfapi.events.werewolf.NewWereWolfEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.RequestSeeWereWolfListEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.WereWolfCanSpeakInChatEvent;
 import io.github.ph1lou.werewolfapi.events.werewolf.WereWolfChatEvent;
+import io.github.ph1lou.werewolfapi.events.werewolf.WereWolfChatPrefixEvent;
 import io.github.ph1lou.werewolfapi.utils.BukkitUtils;
 import io.github.ph1lou.werewolfapi.utils.Utils;
 import org.bukkit.Bukkit;
@@ -242,7 +243,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
         if(!this.isWereWolf()) return;
 
-        this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.prefix",event.getMessage());
+        this.getPlayerWW().sendMessageWithKey(event.getPrefix(this.getPlayerWW()),event.getMessage());
 
     }
 

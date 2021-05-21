@@ -47,12 +47,13 @@ public enum RolesBase {
     WOLF_DOG("werewolf.role.wolf_dog.display"),
     GRIMY_WEREWOLF("werewolf.role.grimy_werewolf.display"),
     GUARD("werewolf.role.guard.display"),
-    CHASSEUR("werewolf.role.hunter.display"),
+    HUNTER("werewolf.role.hunter.display"),
     LITTLE_RED_RIDING_HOOD("werewolf.role.little_red_riding_hood.display"),
     BIG_BAD_WEREWOLF("werewolf.role.big_bad_werewolf.display"),
     AVENGER_WEREWOLF("werewolf.role.avenger_werewolf.display"),
     CHARMER("werewolf.role.charmer.display"),
-    SHAMAN("werewolf.role.shaman.display");
+    SHAMAN("werewolf.role.shaman.display"),
+    ALPHA_WEREWOLF("werewolf.role.alpha_werewolf.display");
 
     private final String key;
 

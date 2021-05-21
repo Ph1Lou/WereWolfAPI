@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.events.werewolf;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -44,6 +45,14 @@ public class WereWolfChatEvent extends Event implements Cancellable {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getPrefix(IPlayerWW playerWW1){
+        WereWolfChatPrefixEvent event1 = new WereWolfChatPrefixEvent(playerWW,playerWW1);
+
+        Bukkit.getPluginManager().callEvent(event1);
+
+        return event1.getPrefix();
     }
 }
 
