@@ -13,7 +13,7 @@ public class UpdateCompositionEvent extends Event implements Cancellable {
     private final UpdateCompositionReason reason;
     private final String key;
     private final int modifier;
-    private boolean cancel=false;
+    private boolean cancel=true;
 
     public UpdateCompositionEvent(String key, UpdateCompositionReason reason, int modifier) {
         this.key=key;
