@@ -1,6 +1,8 @@
 package io.github.ph1lou.werewolfapi.events.werewolf;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.WereWolfAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -8,12 +10,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class WereWolfChatEvent extends Event implements Cancellable {
 
+    private final WereWolfAPI game;
     private final IPlayerWW playerWW;
     private final String message;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public WereWolfChatEvent(IPlayerWW playerWW, String message){
+    public WereWolfChatEvent(WereWolfAPI game,IPlayerWW playerWW, String message){
+        this.game=game;
         this.playerWW = playerWW;
         this.message=message;
     }
@@ -44,6 +48,14 @@ public class WereWolfChatEvent extends Event implements Cancellable {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getPrefix(IPlayerWW playerWW1){
+        WereWolfChatPrefixEvent event1 = new WereWolfChatPrefixEvent(game,playerWW,playerWW1);
+
+        Bukkit.getPluginManager().callEvent(event1);
+
+        return event1.getPrefix();
     }
 }
 

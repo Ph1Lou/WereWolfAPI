@@ -221,7 +221,6 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(this.solitary){
             sb.append(game.translate("werewolf.end.solitary"));
         }
-
     }
 
     @Override
@@ -241,8 +240,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
         if(!this.isWereWolf()) return;
 
-        this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.prefix",event.getMessage());
-
+        this.getPlayerWW().sendMessage(String.format(event.getPrefix(this.getPlayerWW()),event.getMessage()));
     }
 
     @EventHandler
@@ -255,7 +253,6 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(!this.isWereWolf()) return;
 
         event.setCanSpeak(true);
-
     }
 
 
