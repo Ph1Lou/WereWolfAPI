@@ -469,6 +469,11 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     @Override
+    public void removeTemporaryAuras() {
+        auraModifiers.removeAll(auraModifiers.stream().filter(IAuraModifier::isTemporary).collect(Collectors.toList()));
+    }
+
+    @Override
     public List<IAuraModifier> getAuraModifiers() {
         return auraModifiers;
     }

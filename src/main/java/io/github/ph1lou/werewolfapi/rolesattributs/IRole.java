@@ -75,5 +75,7 @@ public interface IRole extends IDisplay {
 
     void removeAuraModifier(String modifierName);
 
+    void removeTemporaryAuras();
+
     List<IAuraModifier> getAuraModifiers();
 }
