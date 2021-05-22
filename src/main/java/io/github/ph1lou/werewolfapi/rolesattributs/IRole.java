@@ -1,7 +1,9 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
 
+import io.github.ph1lou.werewolfapi.IAuraModifier;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.enums.Aura;
 import io.github.ph1lou.werewolfapi.enums.Camp;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -61,5 +63,15 @@ public interface IRole extends IDisplay {
     String getDeathRole();
 
     void setDeathRole(String role);
+
+    Aura getAura();
+
+    Aura getDefaultAura();
+
+    void addAuraModifier(IAuraModifier auraModifier);
+
+    void removeAuraModifier(IAuraModifier auraModifier);
+
+    void removeAuraModifier(String modifierName);
 
 }
