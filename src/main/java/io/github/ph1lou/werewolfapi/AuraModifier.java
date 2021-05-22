@@ -11,11 +11,13 @@ public class AuraModifier implements IAuraModifier {
     private final String name;
     private final Aura aura;
     private final int priority;
+    private final boolean isTemporary;
 
-    public AuraModifier(String name, Aura aura, int priority) {
+    public AuraModifier(String name, Aura aura, int priority, boolean isTemporary) {
         this.name = name;
         this.aura = aura;
         this.priority = priority;
+        this.isTemporary = isTemporary;
     }
 
     @Override
@@ -31,6 +33,11 @@ public class AuraModifier implements IAuraModifier {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean isTemporary() {
+        return isTemporary;
     }
 
     @Override

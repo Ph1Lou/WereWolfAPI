@@ -8,6 +8,7 @@ import io.github.ph1lou.werewolfapi.enums.Camp;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface IRole extends IDisplay {
@@ -74,4 +75,5 @@ public interface IRole extends IDisplay {
 
     void removeAuraModifier(String modifierName);
 
+    List<IAuraModifier> getAuraModifiers();
 }

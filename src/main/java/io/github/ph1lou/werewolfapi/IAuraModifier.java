@@ -16,4 +16,6 @@ public interface IAuraModifier extends Comparable<IAuraModifier> {
      * @return The name of the modifier. Only the most recent modifier with a given name is considered
      */
     String getName();
+
+    boolean isTemporary();
 }
