@@ -1,19 +1,24 @@
 package io.github.ph1lou.werewolfapi.events.werewolf;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+import java.util.function.Function;
 
 public class WereWolfChatPrefixEvent extends Event  {
 
+    private final WereWolfAPI api;
     private final IPlayerWW playerWW;
     private final IPlayerWW requester;
 
-    private String prefix="werewolf.commands.admin.ww_chat.prefix";
+    private Function<WereWolfAPI,String> prefix= (game) -> game.translate("werewolf.commands.admin.ww_chat.prefix",
+            "%s");
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public WereWolfChatPrefixEvent(IPlayerWW playerWW, IPlayerWW requester){
+    public WereWolfChatPrefixEvent(WereWolfAPI api,IPlayerWW playerWW, IPlayerWW requester){
+        this.api=api;
         this.playerWW=playerWW;
         this.requester=requester;
     }
@@ -37,10 +42,10 @@ public class WereWolfChatPrefixEvent extends Event  {
     }
 
     public String getPrefix() {
-        return prefix;
+        return prefix.apply(this.api).replace("&name",playerWW.getName());
     }
 
-    public void setPrefix(String prefix) {
+    public void setPrefix(Function<WereWolfAPI,String> prefix) {
         this.prefix = prefix;
     }
 }
