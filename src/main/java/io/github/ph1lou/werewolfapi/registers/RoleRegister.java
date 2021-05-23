@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.registers;
 
-import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
+import fr.minuskube.inv.ClickableItem;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.Category;
@@ -11,6 +11,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 /**
  * @author Ph1Lou
@@ -25,6 +26,7 @@ public class RoleRegister implements IRegister {
     private float weight=1;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
+    private final List<Function<WereWolfAPI,ClickableItem>> config =new ArrayList<>();
     private final Constructor<?> constructors;
 
     private RandomCompositionAttribute randomCompositionAttribute=RandomCompositionAttribute.VILLAGER;
@@ -131,4 +133,12 @@ public class RoleRegister implements IRegister {
         return requireRole.isEmpty()?Optional.empty():Optional.of(requireRole);
     }
 
+    public RoleRegister addConfig(Function<WereWolfAPI,ClickableItem> config){
+        this.config.add(config);
+        return this;
+    }
+
+    public List<? extends Function<WereWolfAPI,ClickableItem>> getConfig() {
+        return this.config;
+    }
 }

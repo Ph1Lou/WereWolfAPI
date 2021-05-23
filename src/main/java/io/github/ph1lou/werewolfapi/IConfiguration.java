@@ -224,5 +224,25 @@ public interface IConfiguration {
      boolean isTrollLover();
 
      void setTrollLover(boolean troll);
+     
+     void setWitchAutoResurrection(boolean autoRez);
+
+     boolean isWitchAutoResurrection();
+
+     void setSeerEveryOtherDay(boolean everyOtherDay);
+
+     boolean isSeerEveryOtherDay();
+
+     void setDetectiveEveryOtherDay(boolean everyOtherDay);
+
+     boolean isDetectiveEveryOtherDay();
+
+     void setOracleEveryOtherDay(boolean everyOtherDay);
+
+     boolean isOracleEveryOtherDay();
+
+     void setSweetAngel(boolean sweet);
+
+     boolean isSweetAngel();
 
 }

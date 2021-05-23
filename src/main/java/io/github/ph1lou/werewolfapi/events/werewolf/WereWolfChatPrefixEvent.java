@@ -42,7 +42,7 @@ public class WereWolfChatPrefixEvent extends Event  {
     }
 
     public String getPrefix() {
-        return prefix.apply(this.api).replace("&name",playerWW.getName());
+        return prefix.apply(this.api).replace("&name&",playerWW.getName());
     }
 
     public void setPrefix(Function<WereWolfAPI,String> prefix) {
