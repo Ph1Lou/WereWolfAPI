@@ -43,6 +43,7 @@ public enum RolesBase {
     MYSTICAL_WEREWOLF("werewolf.role.mystical_werewolf.display"),
     VILLAGE_IDIOT("werewolf.role.village_idiot.display"),
     PRIESTESS("werewolf.role.priestess.display"),
+    ORACLE("werewolf.role.oracle.display"),
     RIVAL("werewolf.role.rival.display"),
     WOLF_DOG("werewolf.role.wolf_dog.display"),
     GRIMY_WEREWOLF("werewolf.role.grimy_werewolf.display"),

@@ -1,14 +1,9 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
+import io.github.ph1lou.werewolfapi.IAuraModifier;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
-import io.github.ph1lou.werewolfapi.enums.Camp;
-import io.github.ph1lou.werewolfapi.enums.ConfigsBase;
-import io.github.ph1lou.werewolfapi.enums.Day;
-import io.github.ph1lou.werewolfapi.enums.Sound;
-import io.github.ph1lou.werewolfapi.enums.StateGame;
-import io.github.ph1lou.werewolfapi.enums.StatePlayer;
-import io.github.ph1lou.werewolfapi.enums.TimersBase;
+import io.github.ph1lou.werewolfapi.enums.*;
 import io.github.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
@@ -36,7 +31,10 @@ import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     
@@ -56,6 +54,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Nullable
     private String displayCamp;
     private String deathRole="";
+    private List<IAuraModifier> auraModifiers = new ArrayList<>();
 
     public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
         this.game = game;
@@ -444,5 +443,38 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Override
     public void setDisplayRole(@Nullable String key) {
         this.displayRole=key;
+    }
+
+    @Override
+    public Aura getAura() {
+        return auraModifiers.isEmpty() ? getDefaultAura() : auraModifiers.get(auraModifiers.size() - 1).getAura();
+    }
+
+    @Override
+    public void addAuraModifier(IAuraModifier auraModifier) {
+        removeAuraModifier(auraModifier.getName());
+        auraModifiers.add(auraModifier);
+        auraModifiers.sort(null);
+    }
+
+    @Override
+    public void removeAuraModifier(IAuraModifier auraModifier) {
+        auraModifiers.remove(auraModifier);
+    }
+
+    @Override
+    public void removeAuraModifier(String modifierName) {
+        auraModifiers.removeAll(auraModifiers.stream()
+                .filter(a -> a.getName().equals(modifierName)).collect(Collectors.toList()));
+    }
+
+    @Override
+    public void removeTemporaryAuras() {
+        auraModifiers.removeAll(auraModifiers.stream().filter(IAuraModifier::isTemporary).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<IAuraModifier> getAuraModifiers() {
+        return auraModifiers;
     }
 }
