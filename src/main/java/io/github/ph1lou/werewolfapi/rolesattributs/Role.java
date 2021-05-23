@@ -53,8 +53,9 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     private String displayRole;
     @Nullable
     private String displayCamp;
-    private String deathRole="";
-    private List<IAuraModifier> auraModifiers = new ArrayList<>();
+    @Nullable
+    private String deathRole;
+    private final List<IAuraModifier> auraModifiers = new ArrayList<>();
 
     public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
         this.game = game;
@@ -404,12 +405,12 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
     @Override
     public String getDeathRole(){
-        return this.deathRole.isEmpty()?this.getKey():this.deathRole;
+        return this.deathRole==null?this.getKey():this.deathRole;
     }
 
 
     @Override
-    public void setDeathRole(String role){
+    public void setDeathRole(@Nullable String role){
         this.deathRole=role;
     }
 
@@ -448,6 +449,12 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Override
     public Aura getAura() {
         return auraModifiers.isEmpty() ? getDefaultAura() : auraModifiers.get(auraModifiers.size() - 1).getAura();
+    }
+
+    @Override
+    public void clearDisplay() {
+        this.displayCamp=null;
+        this.displayRole=null;
     }
 
     @Override

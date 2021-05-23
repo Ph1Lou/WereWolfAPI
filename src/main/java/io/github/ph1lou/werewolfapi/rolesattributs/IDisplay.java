@@ -11,4 +11,6 @@ public interface IDisplay {
     String getDisplayRole();
 
     void setDisplayRole(String key);
+
+    void clearDisplay();
 }
