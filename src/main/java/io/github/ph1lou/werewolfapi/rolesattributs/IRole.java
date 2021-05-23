@@ -1,17 +1,14 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
 
-import io.github.ph1lou.werewolfapi.IAuraModifier;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
-import io.github.ph1lou.werewolfapi.enums.Aura;
 import io.github.ph1lou.werewolfapi.enums.Camp;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.UUID;
 
-public interface IRole extends IDisplay {
+public interface IRole extends IDisplay, IAura, ICamp {
 
     @NotNull
     String getDescription();
@@ -33,23 +30,7 @@ public interface IRole extends IDisplay {
 
     void recoverPower();
 
-    void setSolitary(boolean solitary);
-
-    boolean isSolitary();
-
     void recoverPotionEffect();
-
-    boolean isWereWolf();
-
-    boolean getInfected();
-
-    boolean isTransformedToNeutral();
-
-    void setTransformedToNeutral(boolean neutral);
-
-    boolean isNeutral();
-
-    void setInfected();
 
     @Nullable
     IRole publicClone();
@@ -65,17 +46,4 @@ public interface IRole extends IDisplay {
 
     void setDeathRole(String role);
 
-    Aura getAura();
-
-    Aura getDefaultAura();
-
-    void addAuraModifier(IAuraModifier auraModifier);
-
-    void removeAuraModifier(IAuraModifier auraModifier);
-
-    void removeAuraModifier(String modifierName);
-
-    void removeTemporaryAuras();
-
-    List<IAuraModifier> getAuraModifiers();
 }

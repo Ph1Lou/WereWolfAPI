@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
+import io.github.ph1lou.werewolfapi.enums.Aura;
 
 public abstract class RoleVillage extends Role {
 
@@ -9,4 +10,8 @@ public abstract class RoleVillage extends Role {
         super(game, playerWW,key);
     }
 
+    @Override
+    public Aura getDefaultAura() {
+        return Aura.LIGHT;
+    }
 }

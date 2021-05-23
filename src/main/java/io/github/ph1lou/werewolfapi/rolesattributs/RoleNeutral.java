@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi.rolesattributs;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
+import io.github.ph1lou.werewolfapi.enums.Aura;
 
 public abstract class RoleNeutral extends Role {
 
@@ -14,5 +15,9 @@ public abstract class RoleNeutral extends Role {
         return !super.isWereWolf();
     }
 
+    @Override
+    public Aura getDefaultAura() {
+        return Aura.NEUTRAL;
+    }
 
 }
