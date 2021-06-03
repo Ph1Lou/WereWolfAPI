@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.enums;
 
-public enum TimersBase {
+public enum TimerBase {
     INVULNERABILITY("werewolf.menu.timers.invulnerability"),
     ROLE_DURATION("werewolf.menu.timers.role_duration"),
     WEREWOLF_LIST("werewolf.menu.timers.werewolf_list"),
@@ -23,7 +23,7 @@ public enum TimersBase {
 
     private final String key;
 
-    TimersBase(String key) {
+    TimerBase(String key) {
         this.key = key;
     }
 

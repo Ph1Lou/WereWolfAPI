@@ -7,12 +7,12 @@ import io.github.ph1lou.werewolfapi.PotionModifier;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.Aura;
 import io.github.ph1lou.werewolfapi.enums.Camp;
-import io.github.ph1lou.werewolfapi.enums.ConfigsBase;
+import io.github.ph1lou.werewolfapi.enums.ConfigBase;
 import io.github.ph1lou.werewolfapi.enums.Day;
 import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
-import io.github.ph1lou.werewolfapi.enums.TimersBase;
+import io.github.ph1lou.werewolfapi.enums.TimerBase;
 import io.github.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
@@ -164,7 +164,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if(this.playerWW.isState(StatePlayer.DEATH)) return;
 
-        if (this.game.getConfig().getTimerValue(TimersBase.WEREWOLF_LIST.getKey()) <= 0) {
+        if (this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_LIST.getKey()) <= 0) {
             event.setAccept(isWereWolf());
         }
 
@@ -349,7 +349,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
-        if(!this.game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
+        if(!this.game.getConfig().isConfigActive(ConfigBase.WEREWOLF_CHAT.getKey())) return;
 
         openWereWolfChat();
 
@@ -361,7 +361,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
                         .conversion(
                                 this.game.getConfig()
                                         .getTimerValue(
-                                                TimersBase.WEREWOLF_CHAT_DURATION
+                                                TimerBase.WEREWOLF_CHAT_DURATION
                                                         .getKey())),
                 this.game.getConfig().getWereWolfChatMaxMessage());
 
@@ -372,7 +372,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
                                 .sendMessageWithKey("werewolf.commands.admin.ww_chat.disable");
                     }
                 },
-                this.game.getConfig().getTimerValue(TimersBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
+                this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

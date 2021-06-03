@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.registers;
 
-import io.github.ph1lou.werewolfapi.ICommands;
+import io.github.ph1lou.werewolfapi.ICommand;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
 
@@ -31,13 +31,13 @@ public class CommandRegister implements IRegister {
 
     private boolean requiredPlayerInGame = false;
 
-    private final ICommands command;
+    private final ICommand command;
 
     private final String addonKey;
 
     private String description="";
 
-    public CommandRegister(String addonKey, String key, ICommands command){
+    public CommandRegister(String addonKey, String key, ICommand command){
         this.addonKey=addonKey;
         this.key=key;
         this.command=command;
@@ -65,7 +65,7 @@ public class CommandRegister implements IRegister {
         return roleKeys.stream().findFirst().orElse("");
     }
 
-    public ICommands getCommand() {
+    public ICommand getCommand() {
         return command;
     }
 

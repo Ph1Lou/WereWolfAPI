@@ -79,7 +79,7 @@ public class DescriptionBuilder {
 
         sb.append(this.role instanceof ITransformed ?
                 this.game.translate("werewolf.description.transformed",
-                        this.game.translate(((ITransformed) this.role).getTransformed()?
+                        this.game.translate(((ITransformed) this.role).isTransformed()?
                                 "werewolf.description.yes"
                                 : "werewolf.description.no"))
                 : "");

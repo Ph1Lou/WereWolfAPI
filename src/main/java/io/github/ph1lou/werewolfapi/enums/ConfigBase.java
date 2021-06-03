@@ -1,6 +1,6 @@
 package io.github.ph1lou.werewolfapi.enums;
 
-public enum ConfigsBase {
+public enum ConfigBase {
 
     VICTORY_LOVERS("werewolf.menu.global.victory_couple"),
     CHAT("werewolf.menu.global.chat"),
@@ -18,7 +18,7 @@ public enum ConfigsBase {
 
     private final String key;
 
-    ConfigsBase(String key) {
+    ConfigBase(String key) {
         this.key = key;
     }
 
