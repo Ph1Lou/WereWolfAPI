@@ -1,7 +1,9 @@
 package io.github.ph1lou.werewolfapi.events.werewolf;
 
+import io.github.ph1lou.werewolfapi.Formatter;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -10,14 +12,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class WereWolfChatEvent extends Event implements Cancellable {
 
-    private final WereWolfAPI game;
     private final IPlayerWW playerWW;
     private final String message;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public WereWolfChatEvent(WereWolfAPI game,IPlayerWW playerWW, String message){
-        this.game=game;
+    public WereWolfChatEvent(IPlayerWW playerWW, String message){
         this.playerWW = playerWW;
         this.message=message;
     }
@@ -50,12 +50,19 @@ public class WereWolfChatEvent extends Event implements Cancellable {
         return message;
     }
 
-    public String getPrefix(IPlayerWW playerWW1){
-        WereWolfChatPrefixEvent event1 = new WereWolfChatPrefixEvent(game,playerWW,playerWW1);
+    public void sendMessage(IPlayerWW playerWW){
+
+        WereWolfChatPrefixEvent event1 = new WereWolfChatPrefixEvent(this.getPlayerWW(),playerWW);
 
         Bukkit.getPluginManager().callEvent(event1);
 
-        return event1.getPrefix();
+        Formatter[] formatters = (Formatter[]) ArrayUtils.addAll(
+                event1.getFormatters().toArray(new Formatter[0]),
+                new Formatter[]{Formatter.format("&message&", this.message)});
+
+        playerWW.sendMessageWithKey(event1.getPrefix(),formatters);
     }
+
+
 }
 

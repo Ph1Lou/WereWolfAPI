@@ -9,21 +9,32 @@ import java.util.Set;
 
 public class CommandRegister implements IRegister {
 
-
-
     private final Set<String> roleKeys = new HashSet<>();
+
     private final String key;
+
     private boolean roleOnly = false;
+
     private boolean moderatorAccess = false;
+
     private final Set<StatePlayer> statePlayerAccesses = new HashSet<>();
+
     private final Set<StateGame> stateWW = new HashSet<>();
+
     private final Set<Integer> argNumbers = new HashSet<>();
+
     private boolean hostAccess = false;
+
     private boolean autoCompletion = true;
+
     private boolean requiredPower = false;
+
     private boolean requiredPlayerInGame = false;
+
     private final ICommands command;
+
     private final String addonKey;
+
     private String description="";
 
     public CommandRegister(String addonKey, String key, ICommands command){

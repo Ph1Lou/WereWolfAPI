@@ -38,12 +38,12 @@ public class GameReview implements IGameReview {
         this.winnerCampKey = winnerCampKey;
         this.winners = winners.stream().map(IPlayerWW::getMojangUUID).collect(Collectors.toSet());
         this.name = api.getGameName();
-        for (IPlayerWW playerWW : api.getPlayerWW()) {
+        for (IPlayerWW playerWW : api.getPlayersWW()) {
             PlayerReview playerReview = new PlayerReview(playerWW);
             players.add(playerReview);
         }
-        this.duration = api.getScore().getTimer();
-        this.playerSize = api.getPlayerWW().size();
+        this.duration = api.getTimer();
+        this.playerSize = api.getPlayersWW().size();
     }
 
     public void addRegisteredAction(RegisteredAction registeredAction) {

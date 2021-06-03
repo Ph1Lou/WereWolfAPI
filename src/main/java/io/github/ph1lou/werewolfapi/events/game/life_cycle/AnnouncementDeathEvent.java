@@ -1,10 +1,14 @@
 package io.github.ph1lou.werewolfapi.events.game.life_cycle;
 
+import io.github.ph1lou.werewolfapi.Formatter;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnnouncementDeathEvent extends Event {
 
@@ -15,6 +19,8 @@ public class AnnouncementDeathEvent extends Event {
     private String playerName;
     private String role;
     private String format;
+
+    private final List<Formatter> formatters = new ArrayList<>();
 
     /**
      *
@@ -70,5 +76,13 @@ public class AnnouncementDeathEvent extends Event {
 
     public IPlayerWW getTargetPlayer() {
         return this.targetPlayer;
+    }
+
+    public List<? extends Formatter> getFormatters() {
+        return formatters;
+    }
+
+    public void addFormatter(Formatter formatter){
+        this.formatters.add(formatter);
     }
 }

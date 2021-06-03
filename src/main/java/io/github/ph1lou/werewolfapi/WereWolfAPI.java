@@ -2,9 +2,12 @@ package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enums.Day;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * @author Ph1Lou
@@ -52,7 +55,19 @@ public interface WereWolfAPI {
      * @return Collection the PlayerWW of the game
      */
 
-    Collection<? extends IPlayerWW> getPlayerWW();
+    Collection<? extends IPlayerWW> getPlayersWW();
+
+    /**
+     * @deprecated use Formatter
+     * return the text associated with the key
+     * @param key key of the json
+     * @param args parameters to format
+     * @return String
+     */
+    @Deprecated
+    String translate(String key, Object... args);
+
+
 
     /**
      * return the text associated with the key
@@ -61,7 +76,7 @@ public interface WereWolfAPI {
      * @return String
      */
 
-    String translate(String key, Object... args);
+    String translate(String key, Formatter... args);
 
     /**
      * launch the win victory check process
@@ -91,23 +106,57 @@ public interface WereWolfAPI {
      * @param uuid uuid of the player
      * @return the instance of playerWW
      */
-    @Nullable
-    IPlayerWW getPlayerWW(UUID uuid);
+    Optional<IPlayerWW> getPlayerWW(UUID uuid);
 
+    /**
+     * Get Random Generator of the game
+     * @return the random generator
+     */
     Random getRandom();
 
+    /**
+     * Select a random Player who should be alive
+     * @param playerWW the requester
+     * @return a random player or the requester if no-player was found
+     */
     IPlayerWW autoSelect(IPlayerWW playerWW);
 
+    /**
+     * Get Vote Manager
+     * @return Vote Manager
+     */
     IVoteManager getVote();
 
-    List<String> translateArray(String key);
+    /**
+     * Translate a key array
+     * @param key associated with json
+     * @param args the formatters
+     * @return a string translated array
+     */
+    List<String> translateArray(String key, Formatter... args);
 
+    /**
+     * Get Stuff Manager
+     * @return Stuff Manager
+     */
     IStuffManager getStuffs();
 
+    /**
+     * Get ScoreBoard Manager
+     * @return the ScoreBoard Manager
+     */
     IScoreBoard getScore();
 
+    /**
+     * Get Map Manager
+     * @return the Map Manager
+     */
     IMapManager getMapManager();
 
+    /**
+     * Get Moderation Manager
+     * @return the Moderation Manager
+     */
     IModerationManager getModerationManager();
 
     /**
@@ -124,8 +173,46 @@ public interface WereWolfAPI {
 
     void setGameName(String name);
 
+    /**
+     * Get the game's state
+     * @return game'state
+     */
     StateGame getState();
 
+    /**
+     * Get Lover Manager
+     * @return Lover Manager
+     */
     ILoverManager getLoversManager();
+
+    /**
+     * Get Alive Player Size
+     * @return player's alive size
+     */
+    int getPlayerSize();
+
+    /**
+     * Get Group SIze
+     * @return the size
+     */
+    int getGroup();
+
+    /**
+     * Change Group Size
+     * @param group the size
+     */
+    void setGroup(int group);
+
+    /**
+     * Get Timer
+     * @return the timer
+     */
+    int getTimer();
+
+    /**
+     * Get Role initial size
+     * @return the role initial size
+     */
+    int getRoleInitialSize();
 
 }

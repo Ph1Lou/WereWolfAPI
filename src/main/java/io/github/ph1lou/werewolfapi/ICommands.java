@@ -4,6 +4,6 @@ import org.bukkit.entity.Player;
 
 public interface ICommands {
 
-    void execute(Player player, String[] args);
+    void execute(WereWolfAPI game,Player player, String[] args);
 
 }

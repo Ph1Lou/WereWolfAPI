@@ -1,9 +1,18 @@
 package io.github.ph1lou.werewolfapi.rolesattributs;
 
+import io.github.ph1lou.werewolfapi.Formatter;
 import io.github.ph1lou.werewolfapi.IAuraModifier;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.PotionModifier;
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
-import io.github.ph1lou.werewolfapi.enums.*;
+import io.github.ph1lou.werewolfapi.enums.Aura;
+import io.github.ph1lou.werewolfapi.enums.Camp;
+import io.github.ph1lou.werewolfapi.enums.ConfigsBase;
+import io.github.ph1lou.werewolfapi.enums.Day;
+import io.github.ph1lou.werewolfapi.enums.Sound;
+import io.github.ph1lou.werewolfapi.enums.StateGame;
+import io.github.ph1lou.werewolfapi.enums.StatePlayer;
+import io.github.ph1lou.werewolfapi.enums.TimersBase;
 import io.github.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
@@ -184,7 +193,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         Sound.WOLF_HOWL.play(getPlayerWW());
         this.recoverPotionEffect();
 
-        this.game.getPlayerWW().stream()
+        this.game.getPlayersWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
                 .forEach(player1 -> {
@@ -229,9 +238,10 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        this.playerWW.addPotionEffect(PotionEffectType.NIGHT_VISION);
+        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,"werewolf"));
         if(game.isDay(Day.DAY)) return;
-        this.playerWW.addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+
     }
 
     @EventHandler
@@ -241,7 +251,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
         if(!this.isWereWolf()) return;
 
-        this.getPlayerWW().sendMessage(String.format(event.getPrefix(this.getPlayerWW()),event.getMessage()));
+        event.sendMessage(this.getPlayerWW());
     }
 
     @EventHandler
@@ -299,7 +309,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     public final void roleAnnouncement(){
 
         Sound.EXPLODE.play(this.getPlayerWW());
-        this.getPlayerWW().sendMessage(this.getDescription());
+        this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message", Formatter.format("&description&", this.getDescription()));
         this.getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
 
         this.recoverPotionEffect();
@@ -337,7 +347,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        this.getPlayerWW().addPotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
         if(!this.game.getConfig().isConfigActive(ConfigsBase.WEREWOLF_CHAT.getKey())) return;
 
@@ -374,7 +384,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
             return;
         }
 
-        this.getPlayerWW().removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
     }
 
@@ -397,7 +407,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if (!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
 
-        if (this.game.getScore().getPlayerSize() != 1) return;
+        if (this.game.getPlayerSize() != 1) return;
 
         event.setCancelled(true);
 

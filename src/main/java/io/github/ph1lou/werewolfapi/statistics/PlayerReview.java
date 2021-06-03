@@ -44,7 +44,7 @@ public class PlayerReview implements IPlayerReview {
 
         this.deathTime = playerWW.getDeathTime();
         this.killers = playerWW.getKillers().stream().filter(Objects::nonNull).map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList());
-        this.nbKill = playerWW.getNbKill();
+        this.nbKill = playerWW.getPlayersKills().size();
         this.solitary = playerWW.getRole().isSolitary();
         this.infected = playerWW.getRole().getInfected();
         this.name = playerWW.getName();
