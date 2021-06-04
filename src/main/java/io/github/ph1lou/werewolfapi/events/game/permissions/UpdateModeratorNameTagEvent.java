@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.events;
+package io.github.ph1lou.werewolfapi.events.game.permissions;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -6,19 +6,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class UpdatePlayerNameTag extends Event {
+public class UpdateModeratorNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
     private String prefix;
     private String suffix;
-    private boolean visibility;
 
-    public UpdatePlayerNameTag(UUID playerUUID, String prefix, String suffix, boolean visibility){
+    public UpdateModeratorNameTagEvent(UUID playerUUID, String prefix, String suffix){
         this.playerUUID = playerUUID;
-        this.prefix = prefix;
-        this.suffix = suffix;
-        this.visibility=visibility;
+        this.prefix=prefix;
+        this.suffix=suffix;
     }
 
     @NotNull
@@ -39,6 +37,7 @@ public class UpdatePlayerNameTag extends Event {
         return prefix;
     }
 
+
     public String getSuffix() {
         return suffix;
     }
@@ -51,13 +50,6 @@ public class UpdatePlayerNameTag extends Event {
         this.prefix = prefix;
     }
 
-    public boolean isVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(boolean visibility) {
-        this.visibility = visibility;
-    }
 
 }
 

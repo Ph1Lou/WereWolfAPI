@@ -16,7 +16,7 @@ import io.github.ph1lou.werewolfapi.enums.TimerBase;
 import io.github.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
 import io.github.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
-import io.github.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTag;
+import io.github.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTagEvent;
 import io.github.ph1lou.werewolfapi.events.game.utils.CountRemainingRolesCategoriesEvent;
 import io.github.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
 import io.github.ph1lou.werewolfapi.events.game.utils.WinConditionsCheckEvent;
@@ -133,7 +133,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     @EventHandler
-    public void onModeratorScoreBoard(UpdateModeratorNameTag event){
+    public void onModeratorScoreBoard(UpdateModeratorNameTagEvent event){
 
         StringBuilder sb = new StringBuilder(event.getPrefix());
 

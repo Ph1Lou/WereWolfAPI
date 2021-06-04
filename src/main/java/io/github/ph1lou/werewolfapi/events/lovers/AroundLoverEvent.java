@@ -7,12 +7,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class AroundLover extends Event {
+public class AroundLoverEvent extends Event {
 
     private final Set<IPlayerWW> playerWWS;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public AroundLover(Set<IPlayerWW> playerWWS){
+    public AroundLoverEvent(Set<IPlayerWW> playerWWS){
        this.playerWWS = playerWWS;
     }
 
