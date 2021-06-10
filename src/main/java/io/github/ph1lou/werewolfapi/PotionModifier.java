@@ -16,8 +16,6 @@ public class PotionModifier {
 
     private final String identifier;
 
-    private boolean use = false;
-
     private int timer = Integer.MAX_VALUE;
 
     private PotionModifier(PotionEffectType potionEffectType, int duration, int amplifier, String identifier,  boolean add){
@@ -54,34 +52,6 @@ public class PotionModifier {
         this.timer=timer;
     }
 
-    public void setUse(){
-        this.use=true;
-    }
-
-    public boolean isUse(){
-        return this.use;
-    }
-
-    public void executePotionAction(Player player){
-
-        if(use){
-            return;
-        }
-
-        if(add){
-            PotionEffect potionEffect = new PotionEffect(potionEffectType,
-                    duration,
-                    amplifier,
-                    false,
-                    false);
-
-            player.addPotionEffect(potionEffect);
-            return;
-        }
-
-        player.removePotionEffect(potionEffectType);
-
-    }
 
     public boolean isAdd() {
         return add;

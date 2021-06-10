@@ -4,12 +4,28 @@ import java.util.List;
 
 public interface ILover {
 
+    /**
+     * Get Lover Members
+     * @return List of lover's member
+     */
     List<? extends IPlayerWW> getLovers();
 
+    /**
+     * Check if the lover type key match with parameter
+     * @param key string key
+     * @return if keys match
+     */
     boolean isKey(String key);
 
+    /**
+     * Get the lover type key
+     * @return the string key
+     */
     String getKey();
 
+    /**
+     * @return if this lover is alive
+     */
     boolean isAlive();
 
     /**
