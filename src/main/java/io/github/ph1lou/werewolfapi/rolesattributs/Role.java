@@ -191,7 +191,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         this.playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
-        this.recoverPotionEffect();
+        this.recoverPotionEffects();
 
         this.game.getPlayersWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
@@ -235,6 +235,10 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
     @Override
     public void recoverPotionEffect() {
+    }
+
+    @Override
+    public final void recoverPotionEffects() {
 
         if(!this.isWereWolf()) return;
 
@@ -242,6 +246,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(game.isDay(Day.DAY)) return;
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
+        this.recoverPotionEffect();
     }
 
     @EventHandler
@@ -312,7 +317,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message", Formatter.format("&description&", this.getDescription()));
         this.getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
 
-        this.recoverPotionEffect();
+        this.recoverPotionEffects();
         this.recoverPower();
 
         if(this.game.getConfig().isTrollSV()) return;

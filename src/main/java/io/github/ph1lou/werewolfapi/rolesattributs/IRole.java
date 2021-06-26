@@ -32,6 +32,8 @@ public interface IRole extends IDisplay, IAura, ICamp {
 
     void recoverPotionEffect();
 
+    void recoverPotionEffects();
+
     @Nullable
     IRole publicClone();
 
