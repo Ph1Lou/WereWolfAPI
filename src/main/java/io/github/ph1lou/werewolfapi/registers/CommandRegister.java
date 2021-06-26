@@ -77,11 +77,28 @@ public class CommandRegister implements IRegister {
         return moderatorAccess;
     }
 
+    public boolean isHostAccess() {
+        return hostAccess;
+    }
+
+    public boolean isAutoCompletion() {
+        return autoCompletion;
+    }
+
+    /**
+     * Active le fait que la commande peut être utilisé par les modérateurs
+     * @return l'instance du register
+     */
     public CommandRegister setModeratorAccess() {
         this.moderatorAccess = true;
         return this;
     }
 
+    /**
+     * Ajoute la clef d'un rôle nécessaire pour effectuer la commande
+     * @param roleKeys clef du rôle
+     * @return l'instance du register
+     */
     public CommandRegister addRoleKey(String roleKeys) {
         this.roleOnly=true;
         this.requiredPlayerInGame=true;
@@ -89,22 +106,95 @@ public class CommandRegister implements IRegister {
         return this;
     }
 
-    public boolean isHostAccess() {
-        return hostAccess;
-    }
 
+    /**
+     * Active le fait que la commande peut être utilisé par les hosts
+     * @return l'instance du register
+     */
     public CommandRegister setHostAccess() {
         this.hostAccess = true;
         return this;
     }
 
-    public boolean isAutoCompletion() {
-        return autoCompletion;
-    }
-
+    /**
+     * Désactive l'autocomplétion de la commande
+     * @return l'instance du register
+     */
     public CommandRegister unsetAutoCompletion() {
         this.autoCompletion = false;
         return this;
+    }
+
+    /**
+     * Ajoute un état du joueur durant lequel la commande peut être effectuée
+     * @param statePlayerAccess état du joueur
+     * @return l'instance du register
+     */
+    public CommandRegister addStateAccess(StatePlayer statePlayerAccess) {
+        this.statePlayerAccesses.add(statePlayerAccess);
+        this.requiredPlayerInGame = true;
+        return this;
+    }
+
+    public boolean isArgNumbers(int args) {
+        return argNumbers.isEmpty() || argNumbers.contains(args);
+    }
+
+    /**
+     * Ajoute un nombre d'argument que le joueur doit entrer après sa commande
+     * @param argNumbers nombre d'argument
+     * @return l'instance du register
+     */
+    public CommandRegister addArgNumbers(int argNumbers) {
+        this.argNumbers.add(argNumbers);
+        return this;
+    }
+
+
+
+    /**
+     * Spécifie que le joueur effectuant la commande doit avoir un rôle qui implémente IPower et qui a encore son pouvoir
+     * @return l'instance du register
+     */
+    public CommandRegister setRequiredPower() {
+        this.requiredPower = true;
+        this.requiredPlayerInGame=true;
+        return this;
+    }
+
+
+    /**
+     * Ajoute une période de la partie où la commande peut être effectuée
+     * @param stateLG moment de la partie
+     * @return l'instance du register
+     */
+    public CommandRegister addStateWW(StateGame stateLG) {
+        stateWW.add(stateLG);
+        return this;
+    }
+
+    /**
+     * Ajoute une descriptions à la commande dans la commande d'aide
+     * @param description clef de la description
+     * @return l'instance du register
+     */
+    public CommandRegister setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public boolean isStateWW(StateGame stateLG) {
+        return stateWW.isEmpty() || stateWW.contains(stateLG);
+    }
+
+    public boolean isRequiredPower() {
+        return requiredPower;
+    }
+
+    public int getMinArgNumbers() {
+        return argNumbers.stream()
+                .min(Integer::compareTo)
+                .orElse(0);
     }
 
     public boolean isRequiredPlayerInGame() {
@@ -116,53 +206,10 @@ public class CommandRegister implements IRegister {
         return statePlayerAccesses.isEmpty() || statePlayerAccesses.contains(statePlayer);
     }
 
-    public CommandRegister addStateAccess(StatePlayer statePlayerAccess) {
-        this.statePlayerAccesses.add(statePlayerAccess);
-        this.requiredPlayerInGame = true;
-        return this;
-    }
-
-    public boolean isArgNumbers(int args) {
-        return argNumbers.isEmpty() || argNumbers.contains(args);
-    }
-
-    public CommandRegister addArgNumbers(int argNumbers) {
-        this.argNumbers.add(argNumbers);
-        return this;
-    }
-
-    public boolean isRequiredPower() {
-        return requiredPower;
-    }
-
-    public CommandRegister setRequiredPower() {
-        this.requiredPower = true;
-        this.requiredPlayerInGame=true;
-        return this;
-    }
-
-    public boolean isStateWW(StateGame stateLG) {
-        return stateWW.isEmpty() || stateWW.contains(stateLG);
-    }
-
-    public CommandRegister addStateWW(StateGame stateLG) {
-        stateWW.add(stateLG);
-        return this;
-    }
-
-    public int getMinArgNumbers() {
-        return argNumbers.stream()
-                .min(Integer::compareTo)
-                .orElse(0);
-    }
-
 
     public String getDescription() {
         return description;
     }
 
-    public CommandRegister setDescription(String description) {
-        this.description = description;
-        return this;
-    }
+
 }

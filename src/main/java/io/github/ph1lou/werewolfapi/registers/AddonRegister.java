@@ -43,6 +43,11 @@ public class AddonRegister implements IRegister {
     }
 
 
+    /**
+     * Ajouter une action quand l'utilisateur clique sur l'item de l'addon dans le gui
+     * @param action l'action à effectuer
+     * @return instance de l'objet
+     */
     public AddonRegister setAction(IActionItemAddon action){
         this.action=action;
         return this;
@@ -63,6 +68,12 @@ public class AddonRegister implements IRegister {
         return key;
     }
 
+    /**
+     * Ajoute un auteur dans les crédits de l'addon
+     * @param name de l'auteur
+     * @param uuid de l'auteur
+     * @return l'instance de l'objet
+     */
     public AddonRegister addAuthors(String name,UUID uuid) {
         this.authors.put(name,uuid);
         return this;
@@ -92,11 +103,21 @@ public class AddonRegister implements IRegister {
     }
 
 
-    public AddonRegister setLoreKey(List<String> loreKey){
+    /**
+     * Ajoute du texte dans le lore de l'objet de l'item du GUI
+     * @param loreKeys des clefs du texte souhaitée
+     * @return l'instance de l'objet
+     */
+    public AddonRegister setLoreKey(List<String> loreKeys){
         this.loreKey = loreKey;
         return this;
     }
 
+    /**
+     * Ajoute du texte dans le lore de l'objet de l'item du GUI
+     * @param lore la clef du texte souhaitée
+     * @return l'instance de l'objet
+     */
     public AddonRegister addLoreKey(String lore){
         this.loreKey.add(lore);
         return this;
@@ -106,6 +127,12 @@ public class AddonRegister implements IRegister {
         return loreKey;
     }
 
+
+    /**
+     * Change l'item de l'addon dans le gui
+     * @param item de l'addon
+     * @return l'instance de l'objet
+     */
     public AddonRegister setItem(ItemStack item) {
         this.item = item;
         return this;

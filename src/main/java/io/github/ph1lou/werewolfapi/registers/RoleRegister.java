@@ -39,48 +39,6 @@ public class RoleRegister implements IRegister {
         this.constructors=roleClass.getConstructor(WereWolfAPI.class, IPlayerWW.class, String.class);
     }
 
-    public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){
-        this.randomCompositionAttribute=randomCompositionAttribute;
-        return this;
-    }
-
-    public RoleRegister setRequireDouble(){
-        this.requireDouble=true;
-        return this;
-    }
-
-    public RoleRegister setRequireAnotherRole(String key){
-        this.requireRole=key;
-        return this;
-    }
-
-
-    public RoleRegister addCategory(Category category){
-        this.categories.add(category);
-
-        if(this.randomCompositionAttribute.equals(RandomCompositionAttribute.VILLAGER)){
-            if(category.equals(Category.WEREWOLF)){
-                this.randomCompositionAttribute=RandomCompositionAttribute.WEREWOLF;
-            }
-            else if(category.equals(Category.NEUTRAL)){
-                this.randomCompositionAttribute=RandomCompositionAttribute.NEUTRAL;
-            }
-        }
-
-        return this;
-    }
-
-    public RoleRegister setLoreKey(List<String> loreKey){
-        this.loreKey = loreKey;
-        return this;
-    }
-
-    public RoleRegister addLoreKey(String lore){
-        this.loreKey.add(lore);
-        return this;
-    }
-
-
     public List<? extends String> getLoreKey() {
         return loreKey;
     }
@@ -111,18 +69,8 @@ public class RoleRegister implements IRegister {
         return this.item==null?Optional.empty():Optional.of(this.item);
     }
 
-    public RoleRegister setItem(ItemStack item) {
-        this.item = item;
-        return this;
-    }
-
     public float getWeight() {
         return weight;
-    }
-
-    public RoleRegister setWeight(float weight) {
-        this.weight = weight;
-        return this;
     }
 
     public boolean isRequireDouble() {
@@ -133,12 +81,106 @@ public class RoleRegister implements IRegister {
         return requireRole.isEmpty()?Optional.empty():Optional.of(requireRole);
     }
 
-    public RoleRegister addConfig(Function<WereWolfAPI,ClickableItem> config){
-        this.config.add(config);
+    public List<? extends Function<WereWolfAPI,ClickableItem>> getConfig() {
+        return this.config;
+    }
+
+    /**
+     * Ajoute un attribut au rôle pour la composition automatique
+     * @param randomCompositionAttribute l'attribut
+     * @return l'instance du register
+     */
+    public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){
+        this.randomCompositionAttribute=randomCompositionAttribute;
         return this;
     }
 
-    public List<? extends Function<WereWolfAPI,ClickableItem>> getConfig() {
-        return this.config;
+    /**
+     * Le rôle doit être au moins en double dans la composition de la partie
+     * @return l'instance du register
+     */
+    public RoleRegister setRequireDouble(){
+        this.requireDouble=true;
+        return this;
+    }
+
+    /**
+     * Le rôle est dépendant d'un autre rôle
+     * @param key clef du rôle dépendant
+     * @return l'instance du register
+     */
+    public RoleRegister setRequireAnotherRole(String key){
+        this.requireRole=key;
+        return this;
+    }
+
+    /**
+     * Ajoute une catégorie au rôle pour le GUI
+     * @param category catégorie
+     * @return l'instance du register
+     */
+    public RoleRegister addCategory(Category category){
+        this.categories.add(category);
+
+        if(this.randomCompositionAttribute.equals(RandomCompositionAttribute.VILLAGER)){
+            if(category.equals(Category.WEREWOLF)){
+                this.randomCompositionAttribute=RandomCompositionAttribute.WEREWOLF;
+            }
+            else if(category.equals(Category.NEUTRAL)){
+                this.randomCompositionAttribute=RandomCompositionAttribute.NEUTRAL;
+            }
+        }
+
+        return this;
+    }
+
+    /**
+     * Change le lore dans le GUI
+     * @param loreKey liste des clefs de descriptions
+     * @return l'instance du register
+     */
+    public RoleRegister setLoreKey(List<String> loreKey){
+        this.loreKey = loreKey;
+        return this;
+    }
+
+    /**
+     * Ajoute un lore dans le GUI
+     * @param lore clef du lore
+     * @return l'instance du register
+     */
+    public RoleRegister addLoreKey(String lore){
+        this.loreKey.add(lore);
+        return this;
+    }
+
+    /**
+     * Change l'item dans le GUI
+     * @param item l'item
+     * @return l'instance du register
+     */
+    public RoleRegister setItem(ItemStack item) {
+        this.item = item;
+        return this;
+    }
+
+    /**
+     * Change le poids du rôle dans le Composition aléatoire
+     * @param weight poids
+     * @return l'instance du register
+     */
+    public RoleRegister setWeight(float weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    /**
+     * Ajoute un item de config pour ce rôle dans le GUI
+     * @param config doit retourner un ClickableItem
+     * @return l'instance du register
+     */
+    public RoleRegister addConfig(Function<WereWolfAPI,ClickableItem> config){
+        this.config.add(config);
+        return this;
     }
 }

@@ -30,30 +30,8 @@ public class ConfigRegister implements IRegister {
         this.key=key;
     }
 
-    public ConfigRegister addConfig(ListenerManager config) {
-        this.config= config;
-        return this;
-
-    }
-
     public boolean getDefaultValue(){
         return defaultValue;
-    }
-
-    public ConfigRegister setDefaultValue(){
-        this.defaultValue=true;
-        return this;
-    }
-
-
-    public ConfigRegister setLoreKey(List<String> loreKey){
-        this.loreKey = loreKey;
-        return this;
-    }
-
-    public ConfigRegister setLoreKey(String lore){
-        this.loreKey.add(lore);
-        return this;
     }
 
     public List<String> getLoreKey() {
@@ -75,17 +53,21 @@ public class ConfigRegister implements IRegister {
         return this.config==null?Optional.empty():Optional.of(this.config);
     }
 
-    public ConfigRegister unSetAppearInMenu(){
-        appearInMenu=false;
-        return this;
-    }
-
     public boolean isAppearInMenu() {
         return appearInMenu;
     }
 
     public ItemStack getItem() {
         return item;
+    }
+
+    public List<? extends String> getIncompatibleConfigs() {
+        return incompatibleConfigs;
+    }
+
+    public ConfigRegister addConfig(ListenerManager config) {
+        this.config= config;
+        return this;
     }
 
     public ConfigRegister setItem(ItemStack item) {
@@ -98,7 +80,25 @@ public class ConfigRegister implements IRegister {
         return this;
     }
 
-    public List<? extends String> getIncompatibleConfigs() {
-        return incompatibleConfigs;
+    public ConfigRegister unSetAppearInMenu(){
+        appearInMenu=false;
+        return this;
     }
+
+
+    public ConfigRegister setDefaultValue(){
+        this.defaultValue=true;
+        return this;
+    }
+
+    public ConfigRegister setLoreKey(List<String> loreKey){
+        this.loreKey = loreKey;
+        return this;
+    }
+
+    public ConfigRegister setLoreKey(String lore){
+        this.loreKey.add(lore);
+        return this;
+    }
+
 }
