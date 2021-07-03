@@ -240,13 +240,13 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Override
     public final void recoverPotionEffects() {
 
+        this.recoverPotionEffect();
+
         if(!this.isWereWolf()) return;
 
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,"werewolf"));
         if(game.isDay(Day.DAY)) return;
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
-
-        this.recoverPotionEffect();
     }
 
     @EventHandler
