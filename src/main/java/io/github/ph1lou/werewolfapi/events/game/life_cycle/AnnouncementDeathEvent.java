@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnouncementDeathEvent extends Event {
+public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
@@ -21,6 +21,7 @@ public class AnnouncementDeathEvent extends Event {
     private String format;
 
     private final List<Formatter> formatters = new ArrayList<>();
+    private boolean cancel = false;
 
     /**
      *
@@ -84,5 +85,15 @@ public class AnnouncementDeathEvent extends Event {
 
     public void addFormatter(Formatter formatter){
         this.formatters.add(formatter);
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return this.cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean cancel) {
+        this.cancel = cancel;
     }
 }
