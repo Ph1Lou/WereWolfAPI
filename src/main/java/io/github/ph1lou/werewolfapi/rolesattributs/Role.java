@@ -65,6 +65,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Nullable
     private String deathRole;
     private final List<IAuraModifier> auraModifiers = new ArrayList<>();
+    private boolean abilityEnabled = true;
 
     public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
         this.game = game;
@@ -246,6 +247,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,"werewolf"));
         if(game.isDay(Day.DAY)) return;
+        if(!abilityEnabled) return;
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
     }
 
@@ -296,6 +298,8 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         if(!this.isWereWolf()) return;
 
         if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
+
+        if(!abilityEnabled) return;
 
         if(event.getEntity().getKiller()==null) return;
 
@@ -351,6 +355,8 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
         }
 
         if(!this.isWereWolf()) return;
+
+        if(!abilityEnabled) return;
 
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
@@ -498,5 +504,38 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Override
     public List<IAuraModifier> getAuraModifiers() {
         return auraModifiers;
+    }
+
+    @Override
+    public void disableAbilities() {
+        abilityEnabled = false;
+
+        if(!this.isWereWolf()) return;
+
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
+            return;
+        }
+
+        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+    }
+
+    @Override
+    public void enableAbilities() {
+        abilityEnabled = true;
+
+        if(!this.isWereWolf()) return;
+
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
+            return;
+        }
+
+        if(game.isDay(Day.DAY)) return;
+
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+    }
+
+    @Override
+    public boolean isAbilityEnabled() {
+        return abilityEnabled;
     }
 }

@@ -29,6 +29,8 @@ public class CommandRegister implements IRegister {
 
     private boolean requiredPower = false;
 
+    private boolean requiredAbilityEnabled = false;
+
     private boolean requiredPlayerInGame = false;
 
     private final ICommand command;
@@ -162,6 +164,15 @@ public class CommandRegister implements IRegister {
         return this;
     }
 
+    /**
+     * Spécifie que le joueur effectuant la commande ne doit pas avoir ses pouvoirs désactivés
+     * @return l'instance du register
+     */
+    public CommandRegister setRequiredAbilityEnabled() {
+        this.requiredAbilityEnabled = true;
+        this.requiredPlayerInGame = true;
+        return this;
+    }
 
     /**
      * Ajoute une période de la partie où la commande peut être effectuée

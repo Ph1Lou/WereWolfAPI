@@ -48,4 +48,9 @@ public interface IRole extends IDisplay, IAura, ICamp {
 
     void setDeathRole(String role);
 
+    void disableAbilities();
+
+    void enableAbilities();
+
+    boolean isAbilityEnabled();
 }
