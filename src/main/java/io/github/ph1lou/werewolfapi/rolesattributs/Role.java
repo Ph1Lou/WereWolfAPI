@@ -523,15 +523,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     public void enableAbilities() {
         abilityEnabled = true;
 
-        if(!this.isWereWolf()) return;
-
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
-            return;
-        }
-
-        if(game.isDay(Day.DAY)) return;
-
-        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+        this.recoverPotionEffects();
     }
 
     @Override
