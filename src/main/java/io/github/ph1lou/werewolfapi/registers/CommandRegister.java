@@ -202,6 +202,10 @@ public class CommandRegister implements IRegister {
         return requiredPower;
     }
 
+    public boolean isRequiredAbilityEnabled() {
+        return requiredAbilityEnabled;
+    }
+
     public int getMinArgNumbers() {
         return argNumbers.stream()
                 .min(Integer::compareTo)
