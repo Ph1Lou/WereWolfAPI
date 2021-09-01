@@ -215,4 +215,7 @@ public interface WereWolfAPI {
      */
     int getRoleInitialSize();
 
+    void enableWereWolfChat();
+
+    void disableWereWolfChat();
 }
