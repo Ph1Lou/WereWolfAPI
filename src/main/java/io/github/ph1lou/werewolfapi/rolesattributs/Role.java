@@ -422,7 +422,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         event.setCancelled(true);
 
-        event.setVictoryTeam(getKey());
+        event.setVictoryTeam(this.getKey());
     }
     @Override
     public String getDeathRole(){

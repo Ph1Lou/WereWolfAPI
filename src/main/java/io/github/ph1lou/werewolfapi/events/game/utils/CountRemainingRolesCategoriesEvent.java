@@ -23,27 +23,27 @@ public class CountRemainingRolesCategoriesEvent extends Event {
     }
 
     public int getVillager() {
-        return villager;
+        return this.villager;
     }
 
     public int getWerewolf() {
-        return werewolf;
+        return this.werewolf;
     }
 
     public int getNeutral() {
-        return neutral;
+        return this.neutral;
     }
 
     public void addVillager() {
-        villager++;
+        this.villager++;
     }
 
     public void addWerewolf() {
-        werewolf++;
+        this.werewolf++;
     }
 
     public void addNeutral() {
-        neutral++;
+        this.neutral++;
     }
 
 

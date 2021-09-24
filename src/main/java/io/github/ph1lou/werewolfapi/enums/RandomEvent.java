@@ -10,7 +10,6 @@ public enum RandomEvent {
     SWAP("werewolf.random_events.swap.name"),
     DRUNKEN_WEREWOLF("werewolf.random_events.drunken_werewolf.name"),
     AMNESIC("werewolf.random_events.amnesic.name"),
-    POORLY_GROOMED_BEAR("werewolf.random_events.poorly_groomed_bear.name"),
     LOOT_BOX("werewolf.random_events.loot_box.name");
 
     private final String key;

@@ -113,7 +113,10 @@ public class VersionUtils_1_13 extends VersionUtils {
 
     @Override
     public void sendTabTitle(@NotNull Player player, @NotNull String header, @NotNull String footer) {
-        player.setPlayerListHeaderFooter(header, footer + "Ph1Lou");
+        if(!footer.contains("Ph1Lou")){
+            footer += "\n§7Plugin made by §bPh1Lou";
+        }
+        player.setPlayerListHeaderFooter(header, footer);
     }
 
     @Override

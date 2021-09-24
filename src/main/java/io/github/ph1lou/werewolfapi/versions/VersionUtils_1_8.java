@@ -1,9 +1,12 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
-import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.utils.NMSUtils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +17,11 @@ import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,7 +163,10 @@ public class VersionUtils_1_8 extends VersionUtils {
 
 
         header = ChatColor.translateAlternateColorCodes('&', header);
-        footer = ChatColor.translateAlternateColorCodes('&', footer + "Ph1Lou");
+        footer = ChatColor.translateAlternateColorCodes('&', footer );
+        if(!footer.contains("Ph1Lou")){
+            footer += "\n§7Plugin made by §bPh1Lou";
+        }
 
         header = header.replaceAll("%player%", player.getDisplayName());
         footer = footer.replaceAll("%player%", player.getDisplayName());
