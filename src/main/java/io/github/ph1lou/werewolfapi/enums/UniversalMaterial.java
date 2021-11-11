@@ -194,6 +194,7 @@ public enum UniversalMaterial{
                 material = Material.valueOf(getTypeName());
             }catch (IllegalArgumentException ex){
                 material = null;
+                ex.printStackTrace();
             }
             loaded = true;
         }
@@ -218,7 +219,7 @@ public enum UniversalMaterial{
         int version = 0;
 
         for (int i = 8; i <= 16; i ++){
-            if (versionString.contains("1." + i)){
+            if (versionString.startsWith("1." + i)){
                 version = i;
             }
         }

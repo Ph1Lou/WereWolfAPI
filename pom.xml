@@ -6,7 +6,7 @@
 
     <groupId>io.github.ph1lou</groupId>
     <artifactId>werewolfapi</artifactId>
-    <version>1.6</version>
+    <version>1.8</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -23,9 +23,14 @@
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <artifactId>spigot</artifactId>
+            <version>1.17.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.pieterdebot.biomemapping</groupId>
+            <artifactId>BiomeMapping</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>

@@ -17,11 +17,9 @@ import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -196,43 +194,6 @@ public class VersionUtils_1_8 extends VersionUtils {
         }
 
 
-    }
-
-
-    @Override
-    public void patchBiomes() {
-
-        Field biomesField;
-        try {
-            Class<?> clazz = NMSUtils.getNMSClass("BiomeBase");
-
-            biomesField = clazz.getDeclaredField("biomes");
-            biomesField.setAccessible(true);
-
-            Field modifiersField = Field.class.getDeclaredField("modifiers");
-            modifiersField.setAccessible(true);
-            modifiersField.setInt(biomesField, biomesField.getModifiers() & ~Modifier.FINAL);
-
-            Object biomes = biomesField.get(null);
-            Object plain = Array.get(biomes, 1);
-            Object forest = Array.get(biomes, 4);
-            Array.set(biomes, 24, forest);
-            Array.set(biomes, 10, forest);
-            Array.set(biomes, 0, forest);
-            Array.set(biomes, 25, forest);
-            Array.set(biomes, 16, forest);
-            Array.set(biomes, 24, forest);
-            Array.set(biomes, 25, plain);
-            Array.set(biomes, 21, plain);
-            Array.set(biomes, 22, plain);
-            Array.set(biomes, 23, plain);
-            Array.set(biomes, 24, plain);
-            Array.set(biomes, 34, plain);
-            biomesField.set(null, biomes);
-
-        } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
 

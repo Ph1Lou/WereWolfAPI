@@ -91,13 +91,13 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
     @Override
     public final @NotNull String getKey() {
-        return key;
+        return this.key;
     }
 
     @NotNull
     @Override
     public final UUID getPlayerUUID(){
-        return uuid;
+        return this.uuid;
     }
 
     @Override
@@ -326,7 +326,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if(this.game.getConfig().isTrollSV()) return;
 
-        if(!this.game.getStuffs().getStuffRoles().containsKey(getKey())){
+        if(!this.game.getStuffs().getStuffRoles().containsKey(this.getKey())){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
             return;
         }
