@@ -64,53 +64,61 @@ public class DescriptionBuilder {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(this.game.translate("werewolf.description.role", this.game.translate(this.role.getDeathRole()) +
-                (!this.role.getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief", this.game.translate(this.role.getKey())) : "") +
+        sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&",this.game.translate(this.role.getDeathRole()) +
+                (!this.role.getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief",
+                        Formatter.format("&role&",this.game.translate(this.role.getKey()))) : "") +
                 (this.role.getInfected() ? this.game.translate("werewolf.end.infect") : "") +
-                (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : "")));
+                (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));
 
         sb.append(this.game.translate("werewolf.description.camp",
-                this.role.getCamp().getChatColor()+this.game.translate(this.role.getCamp().getKey())));
+                Formatter.format("&camp&",this.role.getCamp().getChatColor()+this.game.translate(this.role.getCamp().getKey()))));
 
         sb.append(this.role.getInfected()?
-                this.game.translate("werewolf.description.effect",this.game.translate("werewolf.description.werewolf"))
+                this.game.translate("werewolf.description.effect",
+                        Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf")))
                 :"");
 
         sb.append(this.role instanceof ITransformed ?
                 this.game.translate("werewolf.description.transformed",
-                        this.game.translate(((ITransformed) this.role).isTransformed()?
+                        Formatter.format("&on&",this.game.translate(((ITransformed) this.role).isTransformed()?
                                 "werewolf.description.yes"
-                                : "werewolf.description.no"))
+                                : "werewolf.description.no")))
                 : "");
 
         if(this.description!=null){
-            sb.append(this.game.translate("werewolf.description.description", this.description));
+            sb.append(this.game.translate("werewolf.description.description",
+                    Formatter.format("&text&",this.description)));
         }
 
         if(this.power!=null){
-            sb.append(this.game.translate("werewolf.description.power",this.power));
+            sb.append(this.game.translate("werewolf.description.power",
+                    Formatter.format("&on&",this.power)));
         }
 
         if(this.effects!=null){
-            sb.append(this.game.translate("werewolf.description.effect",this.effects));
+            sb.append(this.game.translate("werewolf.description.effect",
+                    Formatter.format("&effect&",this.effects)));
         }
 
         if(this.items!=null){
-            sb.append(this.game.translate("werewolf.description.item",this.items));
+            sb.append(this.game.translate("werewolf.description.item",
+                    Formatter.format("&items&",this.items)));
         }
 
         if(this.equipments!=null){
-            sb.append(this.game.translate("werewolf.description.equipment",this.equipments));
+            sb.append(this.game.translate("werewolf.description.equipment",
+                    Formatter.format("&equipment&",this.equipments)));
         }
 
         if(this.command!=null){
-            sb.append(this.game.translate("werewolf.description.command",this.command));
+            sb.append(this.game.translate("werewolf.description.command",
+                    Formatter.format("&command&",this.command)));
         }
 
         this.extraLines.forEach(sb::append);
 
         return this.game.translate("werewolf.description._") +
-                sb.toString() +
+                sb +
                 this.game.translate("werewolf.description._");
 
     }

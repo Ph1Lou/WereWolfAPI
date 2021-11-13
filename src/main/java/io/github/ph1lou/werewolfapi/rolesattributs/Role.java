@@ -368,13 +368,9 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
     protected void openWereWolfChat(){
         this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.announce",
-                Utils
-                        .conversion(
-                                this.game.getConfig()
-                                        .getTimerValue(
-                                                TimerBase.WEREWOLF_CHAT_DURATION
-                                                        .getKey())),
-                this.game.getConfig().getWereWolfChatMaxMessage());
+                Formatter.format("&timer&",Utils.conversion(game.getConfig()
+                        .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey()))),
+                Formatter.format("&number&",game.getConfig().getWereWolfChatMaxMessage()));
 
         BukkitUtils.scheduleSyncDelayedTask(
                 () -> {

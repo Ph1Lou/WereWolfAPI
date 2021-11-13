@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
@@ -114,5 +115,9 @@ public abstract class VersionUtils {
     public abstract ShapedRecipe registerCraft(ItemStack result, String key);
 
     public abstract ItemStack getItemInHand(@NotNull Player player);
+
+    public abstract ItemStack getPotionItem(short id);
+
+    public abstract short generatePotionId(ItemStack itemStack);
 }
 

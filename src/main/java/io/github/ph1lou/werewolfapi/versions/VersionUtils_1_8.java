@@ -5,6 +5,7 @@ import io.github.ph1lou.werewolfapi.utils.NMSUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
@@ -256,6 +258,16 @@ public class VersionUtils_1_8 extends VersionUtils {
     @Override
     public ItemStack getItemInHand(@NotNull Player player) {
         return player.getItemInHand();
+    }
+
+    @Override
+    public ItemStack getPotionItem(short id) {
+        return new ItemStack(Material.POTION,1, id);
+    }
+
+    @Override
+    public short generatePotionId(ItemStack itemStack) {
+        return itemStack.getDurability();
     }
 
 }

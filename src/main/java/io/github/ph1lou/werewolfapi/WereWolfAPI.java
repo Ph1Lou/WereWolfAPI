@@ -58,18 +58,6 @@ public interface WereWolfAPI {
     Collection<? extends IPlayerWW> getPlayersWW();
 
     /**
-     * @deprecated use Formatter
-     * return the text associated with the key
-     * @param key key of the json
-     * @param args parameters to format
-     * @return String
-     */
-    @Deprecated
-    String translate(String key, Object... args);
-
-
-
-    /**
      * return the text associated with the key
      * @param key key of the json
      * @param args parameters to format
@@ -77,6 +65,17 @@ public interface WereWolfAPI {
      */
 
     String translate(String key, Formatter... args);
+
+
+    /**
+     * return the text associated with the key
+     * @param prefixKey key of the json
+     * @param key key of the json
+     * @param args parameters to format
+     * @return String
+     */
+
+    String translate(String prefixKey, String key, Formatter... args);
 
     /**
      * launch the win victory check process

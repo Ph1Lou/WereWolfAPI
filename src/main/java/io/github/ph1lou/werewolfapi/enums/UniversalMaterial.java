@@ -120,8 +120,8 @@ public enum UniversalMaterial{
     PEONY("DOUBLE_PLANT", "PEONY", (short) 5),
     DEAD_BUSH,
     CARROT("CARROT_ITEM","CARROT"),
-    SIGN("SIGN","OAK_SIGN"),
-    WALL_SIGN("SIGN_POST","WALL_SIGN"),
+    SIGN("SIGN","SIGN","OAK_SIGN"),
+    WALL_SIGN("SIGN_POST","WALL_SIGN","OAK_WALL_SIGN"),
 
     WOODEN_PICKAXE("WOOD_PICKAXE", "WOODEN_PICKAXE"),
     GOLDEN_PICKAXE("GOLD_PICKAXE", "GOLDEN_PICKAXE"),
@@ -163,13 +163,14 @@ public enum UniversalMaterial{
     private final String name8;
     private final String name13;
     private final short id8;
-
+    private final String name14;
     private boolean loaded;
     private Material material;
 
     UniversalMaterial(String name8, String name13, short id8){
         this.name8 = name8;
         this.name13 = name13;
+        this.name14= name13;
         this.id8 = id8;
         loaded = false;
     }
@@ -177,6 +178,15 @@ public enum UniversalMaterial{
     UniversalMaterial(String name8, String name13){
         this.name8 = name8;
         this.name13 = name13;
+        this.name14= name13;
+        id8 = 0;
+        loaded = false;
+    }
+
+    UniversalMaterial(String name8, String name13, String name14){
+        this.name8 = name8;
+        this.name13 = name13;
+        this.name14 = name14;
         id8 = 0;
         loaded = false;
     }
@@ -184,6 +194,7 @@ public enum UniversalMaterial{
     UniversalMaterial(){
         this.name8 = name();
         this.name13 = name();
+        this.name14= name();
         id8 = 0;
         loaded = false;
     }
@@ -202,7 +213,8 @@ public enum UniversalMaterial{
     }
 
     private String getTypeName(){
-        return (loadServerVersion() < 13) ? name8 : name13;
+        int version = loadServerVersion();
+        return (version < 13) ? name8 : (version > 13) ? name14: name13;
     }
 
     public short getData(){
@@ -218,7 +230,7 @@ public enum UniversalMaterial{
         String versionString = Bukkit.getBukkitVersion();
         int version = 0;
 
-        for (int i = 8; i <= 16; i ++){
+        for (int i = 8; i <= 100; i ++){
             if (versionString.startsWith("1." + i)){
                 version = i;
             }
