@@ -1,15 +1,71 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
+import io.github.ph1lou.werewolfapi.enums.PotionUtil;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
 public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
+
+    @Override
+    public ItemStack getPotionItem(short id) {
+        byte data = (byte) id;
+        byte data2 = (byte) (id >> 8);
+        PotionType type = PotionUtil.getPotion((byte) (data & 0b00011111));
+        PotionData potionData = new PotionData(type,
+                ((data & 0b01000000) == 0b01000000) && type.isExtendable(),
+                ((data & 0b00100000) == 0b00100000) && type.isUpgradeable());
+        ItemStack item = new ItemStack((data2 & 0b01000000) == 0b01000000 ?
+                Material.SPLASH_POTION :
+                Material.POTION);
+        PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
+        if (potionMeta != null) {
+            potionMeta.setBasePotionData(potionData);
+        }
+        item.setItemMeta(potionMeta);
+        return item;
+    }
+
+    @Override
+    public short generatePotionId(ItemStack itemStack) {
+
+        if(!(itemStack.getItemMeta() instanceof PotionMeta)){
+            return 0;
+        }
+
+        PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
+        PotionData potionData = potionMeta.getBasePotionData();
+
+        byte data = PotionUtil.getId(potionData.getType());
+
+        if(data == 0){  //POTION > 1.8
+            return 0;
+        }
+        byte data2 = 0;
+        if(potionData.isExtended()){
+            data |= 0b00100000;
+        }
+        if(potionData.isUpgraded()){
+            data |= 0b00010000;
+        }
+        if(itemStack.getType() == Material.SPLASH_POTION){
+            data2 |= 0b00100000;
+        }
+        else{
+            data2 |= 0b00010000;
+        }
+
+        return (short) (data2 << 8 | data);
+    }
 
     @Override
     public void addPlayerMaxHealth(@NotNull Player player, double health) {
