@@ -22,7 +22,7 @@ public class RoleRegister implements IRegister {
     private final List<Category> categories = new ArrayList<>();
 
     private final String key;
-    private final AddonRegister addonRegister;
+    private final String addonKey;
     private float weight=1;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
@@ -33,8 +33,8 @@ public class RoleRegister implements IRegister {
     private boolean requireDouble=false;
     private String requireRole="";
 
-    public RoleRegister(AddonRegister addonRegister, String key, Class<?> roleClass) throws NoSuchMethodException {
-        this.addonRegister = addonRegister;
+    public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
+        this.addonKey=addonKey;
         this.key=key;
         this.constructors=roleClass.getConstructor(WereWolfAPI.class, IPlayerWW.class, String.class);
     }
@@ -53,8 +53,8 @@ public class RoleRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this.addonRegister;
+    public String getAddonKey() {
+        return addonKey;
     }
 
     public Constructor<?> getConstructors() {

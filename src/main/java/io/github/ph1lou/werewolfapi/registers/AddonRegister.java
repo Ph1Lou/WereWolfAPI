@@ -64,8 +64,8 @@ public class AddonRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this;
+    public String getAddonKey() {
+        return key;
     }
 
     /**

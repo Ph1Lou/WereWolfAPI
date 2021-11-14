@@ -16,7 +16,7 @@ public class ConfigRegister implements IRegister {
 
 
     private final String key;
-    private final AddonRegister addonRegister;
+    private final String addonKey;
     private boolean defaultValue = false;
     private List<String> loreKey =new ArrayList<>();
     private ListenerManager config=null;
@@ -25,8 +25,8 @@ public class ConfigRegister implements IRegister {
     private ItemStack item=null;
 
 
-    public ConfigRegister(AddonRegister addonRegister, String key) {
-        this.addonRegister = addonRegister;
+    public ConfigRegister(String addonKey, String key) {
+        this.addonKey=addonKey;
         this.key=key;
     }
 
@@ -39,8 +39,8 @@ public class ConfigRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this.addonRegister;
+    public String getAddonKey() {
+        return addonKey;
     }
 
     @Override

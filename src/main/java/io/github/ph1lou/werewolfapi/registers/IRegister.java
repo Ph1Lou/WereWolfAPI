@@ -4,5 +4,5 @@ public interface IRegister {
 
     String getKey();
 
-    AddonRegister getAddon();
+    String getAddonKey();
 }

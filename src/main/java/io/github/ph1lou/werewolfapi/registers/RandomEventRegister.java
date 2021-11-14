@@ -15,14 +15,14 @@ public class RandomEventRegister implements IRegister {
 
 
     private final String key;
-    private final AddonRegister addonRegister;
+    private final String addonKey;
     private int defaultValue = 0;
     private List<String> loreKey =new ArrayList<>();
     private final ListenerManager randomEvent;
     private ItemStack item=null;
 
-    public RandomEventRegister(AddonRegister addonRegister, String key, ListenerManager randomEvent) {
-        this.addonRegister = addonRegister;
+    public RandomEventRegister(String addonKey, String key, ListenerManager randomEvent) {
+        this.addonKey=addonKey;
         this.key=key;
         this.randomEvent=randomEvent;
     }
@@ -52,8 +52,8 @@ public class RandomEventRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this.addonRegister;
+    public String getAddonKey() {
+        return addonKey;
     }
 
     @Override

@@ -35,12 +35,12 @@ public class CommandRegister implements IRegister {
 
     private final ICommand command;
 
-    private final AddonRegister addonRegister;
+    private final String addonKey;
 
     private String description="";
 
-    public CommandRegister(AddonRegister addonRegister, String key, ICommand command){
-        this.addonRegister = addonRegister;
+    public CommandRegister(String addonKey, String key, ICommand command){
+        this.addonKey=addonKey;
         this.key=key;
         this.command=command;
     }
@@ -55,8 +55,8 @@ public class CommandRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this.addonRegister;
+    public String getAddonKey() {
+        return addonKey;
     }
 
     public boolean isRoleKey(String roleKey) {

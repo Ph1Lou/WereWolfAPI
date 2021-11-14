@@ -15,14 +15,14 @@ import java.util.function.Predicate;
 public class TimerRegister implements IRegister {
 
     private final String key;
-    private final AddonRegister addonRegister;
+    private final String addonKey;
     private int defaultValue = 1;
     private List<String> loreKey =new ArrayList<>();
     private Consumer<WereWolfAPI> consumer = wereWolfAPI -> {};
     private Predicate<WereWolfAPI> predicate=wereWolfAPI -> false;
 
-    public TimerRegister(AddonRegister addonRegister, String key) {
-        this.addonRegister = addonRegister;
+    public TimerRegister(String addonKey, String key) {
+        this.addonKey=addonKey;
         this.key=key;
     }
 
@@ -87,8 +87,8 @@ public class TimerRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this.addonRegister;
+    public String getAddonKey() {
+        return addonKey;
     }
 
     @Override

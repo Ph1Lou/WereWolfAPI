@@ -14,7 +14,7 @@ import java.util.Optional;
 public class ScenarioRegister implements IRegister {
 
     private final String key;
-    private final AddonRegister addonRegister;
+    private final String addonKey;
     private boolean defaultValue = false;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
@@ -23,8 +23,8 @@ public class ScenarioRegister implements IRegister {
 
     private final ListenerManager scenario;
 
-    public ScenarioRegister(AddonRegister addonRegister, String key, ListenerManager scenario ) {
-        this.addonRegister = addonRegister;
+    public ScenarioRegister(String addonKey, String key,ListenerManager scenario ) {
+        this.addonKey=addonKey;
         this.key=key;
         this.scenario=scenario;
     }
@@ -38,8 +38,8 @@ public class ScenarioRegister implements IRegister {
     }
 
     @Override
-    public AddonRegister getAddon() {
-        return this.addonRegister;
+    public String getAddonKey() {
+        return addonKey;
     }
 
     @Override
