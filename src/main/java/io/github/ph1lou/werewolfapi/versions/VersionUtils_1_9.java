@@ -52,16 +52,16 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
         }
         byte data2 = 0;
         if(potionData.isExtended()){
-            data |= 0b00100000;
+            data |= 0b01000000;
         }
         if(potionData.isUpgraded()){
-            data |= 0b00010000;
+            data |= 0b00100000;
         }
         if(itemStack.getType() == Material.SPLASH_POTION){
-            data2 |= 0b00100000;
+            data2 |= 0b01000000;
         }
         else{
-            data2 |= 0b00010000;
+            data2 |= 0b00100000;
         }
 
         return (short) (data2 << 8 | data);
