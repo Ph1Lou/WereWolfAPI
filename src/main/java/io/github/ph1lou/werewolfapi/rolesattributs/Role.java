@@ -199,7 +199,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
                 .forEach(player1 -> {
-                    player1.sendMessageWithKey("werewolf.role.werewolf.new_werewolf");
+                    player1.sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.role.werewolf.new_werewolf");
                     Sound.WOLF_HOWL.play(player1);
                 });
     }
@@ -369,7 +369,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     protected void openWereWolfChat(){
-        this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.announce",
+        this.getPlayerWW().sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.commands.admin.ww_chat.announce",
                 Formatter.format("&timer&",Utils.conversion(game.getConfig()
                         .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey()))),
                 Formatter.format("&number&",game.getConfig().getWereWolfChatMaxMessage()));
@@ -378,7 +378,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
                 () -> {
                     if(!this.game.isState(StateGame.END)){
                         getPlayerWW()
-                                .sendMessageWithKey("werewolf.commands.admin.ww_chat.disable");
+                                .sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.commands.admin.ww_chat.disable");
                     }
                 },
                 this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
