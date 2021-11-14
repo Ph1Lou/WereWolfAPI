@@ -9,6 +9,7 @@ import io.github.ph1lou.werewolfapi.enums.Aura;
 import io.github.ph1lou.werewolfapi.enums.Camp;
 import io.github.ph1lou.werewolfapi.enums.ConfigBase;
 import io.github.ph1lou.werewolfapi.enums.Day;
+import io.github.ph1lou.werewolfapi.enums.Prefix;
 import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
@@ -190,7 +191,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
 
-        this.playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
+        this.playerWW.sendMessageWithKey(Prefix.YELLOW.getKey() , "werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
         this.recoverPotionEffects();
 
@@ -318,8 +319,9 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     public final void roleAnnouncement(){
 
         Sound.EXPLODE.play(this.getPlayerWW());
-        this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message", Formatter.format("&description&", this.getDescription()));
-        this.getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
+        this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message",
+                Formatter.format("&description&", this.getDescription()));
+        this.getPlayerWW().sendMessageWithKey(Prefix.YELLOW.getKey() , "werewolf.announcement.review_role");
 
         this.recoverPotionEffects();
         this.recoverPower();
