@@ -16,10 +16,10 @@ public class VersionUtils_1_13 extends VersionUtils_1_12 {
         }
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked"})
     @Override
-    public void setGameRuleValue(World world, String name, Object value) {
-        GameRule gameRule = GameRule.getByName(name);
+    public <T> void setGameRuleValue(World world, String name, T value) {
+        GameRule<T> gameRule = (GameRule<T>) GameRule.getByName(name);
 
         if (gameRule == null) return;
         world.setGameRule(gameRule, value);

@@ -2,12 +2,8 @@ package io.github.ph1lou.werewolfapi.events.roles.shaman;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import io.github.ph1lou.werewolfapi.events.roles.SelectionEvent;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 public class ShamanEvent extends SelectionEvent {
 

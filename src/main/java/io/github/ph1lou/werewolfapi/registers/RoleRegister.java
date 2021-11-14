@@ -6,6 +6,7 @@ import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.Category;
 import io.github.ph1lou.werewolfapi.enums.RandomCompositionAttribute;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class RoleRegister implements IRegister {
     private final List<Category> categories = new ArrayList<>();
 
     private final String key;
-    private final String addonKey;
+    private final Plugin plugin;
     private float weight=1;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
@@ -33,8 +34,8 @@ public class RoleRegister implements IRegister {
     private boolean requireDouble=false;
     private String requireRole="";
 
-    public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
-        this.addonKey=addonKey;
+    public RoleRegister(Plugin plugin, String key, Class<?> roleClass) throws NoSuchMethodException {
+        this.plugin=plugin;
         this.key=key;
         this.constructors=roleClass.getConstructor(WereWolfAPI.class, IPlayerWW.class, String.class);
     }
@@ -53,8 +54,8 @@ public class RoleRegister implements IRegister {
     }
 
     @Override
-    public String getAddonKey() {
-        return addonKey;
+    public Plugin getAddon() {
+        return this.plugin;
     }
 
     public Constructor<?> getConstructors() {

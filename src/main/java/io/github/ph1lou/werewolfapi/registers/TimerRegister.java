@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.WereWolfAPI;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +16,14 @@ import java.util.function.Predicate;
 public class TimerRegister implements IRegister {
 
     private final String key;
-    private final String addonKey;
+    private final Plugin plugin;
     private int defaultValue = 1;
     private List<String> loreKey =new ArrayList<>();
     private Consumer<WereWolfAPI> consumer = wereWolfAPI -> {};
     private Predicate<WereWolfAPI> predicate=wereWolfAPI -> false;
 
-    public TimerRegister(String addonKey, String key) {
-        this.addonKey=addonKey;
+    public TimerRegister(Plugin plugin, String key) {
+        this.plugin=plugin;
         this.key=key;
     }
 
@@ -87,8 +88,8 @@ public class TimerRegister implements IRegister {
     }
 
     @Override
-    public String getAddonKey() {
-        return addonKey;
+    public Plugin getAddon() {
+        return this.plugin;
     }
 
     @Override

@@ -2,6 +2,7 @@ package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ConfigRegister implements IRegister {
 
 
     private final String key;
-    private final String addonKey;
+    private final Plugin plugin;
     private boolean defaultValue = false;
     private List<String> loreKey =new ArrayList<>();
     private ListenerManager config=null;
@@ -25,8 +26,8 @@ public class ConfigRegister implements IRegister {
     private ItemStack item=null;
 
 
-    public ConfigRegister(String addonKey, String key) {
-        this.addonKey=addonKey;
+    public ConfigRegister(Plugin plugin, String key) {
+        this.plugin=plugin;
         this.key=key;
     }
 
@@ -39,8 +40,8 @@ public class ConfigRegister implements IRegister {
     }
 
     @Override
-    public String getAddonKey() {
-        return addonKey;
+    public Plugin getAddon() {
+        return this.plugin;
     }
 
     @Override

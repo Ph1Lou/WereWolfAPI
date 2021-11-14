@@ -13,7 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
@@ -59,7 +58,7 @@ public class VersionUtils_1_8 extends VersionUtils {
 
 
     @Override
-    public void setGameRuleValue(World world, String gameRule, Object value) {
+    public <T> void setGameRuleValue(World world, String gameRule, T value) {
         world.setGameRuleValue(gameRule, value.toString());
     }
 

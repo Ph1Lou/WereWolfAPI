@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
@@ -96,7 +95,7 @@ public abstract class VersionUtils {
         }
     }
 
-    public abstract void setGameRuleValue(World world, String gameRule, Object value);
+    public abstract <T> void setGameRuleValue(World world, String gameRule, T value);
 
     public abstract void setTeamNameTagVisibility(Team team, boolean value);
 

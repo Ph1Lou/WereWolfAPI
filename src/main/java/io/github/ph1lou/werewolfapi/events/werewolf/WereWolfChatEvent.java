@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi.events.werewolf;
 
 import io.github.ph1lou.werewolfapi.Formatter;
 import io.github.ph1lou.werewolfapi.IPlayerWW;
-import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;

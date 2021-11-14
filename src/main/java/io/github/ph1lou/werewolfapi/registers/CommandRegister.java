@@ -3,6 +3,7 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.ICommand;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
+import org.bukkit.plugin.Plugin;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,12 +36,12 @@ public class CommandRegister implements IRegister {
 
     private final ICommand command;
 
-    private final String addonKey;
+    private final Plugin plugin;
 
     private String description="";
 
-    public CommandRegister(String addonKey, String key, ICommand command){
-        this.addonKey=addonKey;
+    public CommandRegister(Plugin plugin, String key, ICommand command){
+        this.plugin=plugin;
         this.key=key;
         this.command=command;
     }
@@ -55,8 +56,8 @@ public class CommandRegister implements IRegister {
     }
 
     @Override
-    public String getAddonKey() {
-        return addonKey;
+    public Plugin getAddon() {
+        return this.plugin;
     }
 
     public boolean isRoleKey(String roleKey) {

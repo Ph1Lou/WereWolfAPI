@@ -64,8 +64,8 @@ public class AddonRegister implements IRegister {
     }
 
     @Override
-    public String getAddonKey() {
-        return key;
+    public Plugin getAddon() {
+        return this.plugin;
     }
 
     /**
@@ -109,7 +109,7 @@ public class AddonRegister implements IRegister {
      * @return l'instance de l'objet
      */
     public AddonRegister setLoreKey(List<String> loreKeys){
-        this.loreKey = loreKey;
+        this.loreKey = loreKeys;
         return this;
     }
 
