@@ -6,7 +6,6 @@ import io.github.ph1lou.werewolfapi.WereWolfAPI;
 import io.github.ph1lou.werewolfapi.enums.Category;
 import io.github.ph1lou.werewolfapi.enums.RandomCompositionAttribute;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class RoleRegister implements IRegister {
     private final List<Category> categories = new ArrayList<>();
 
     private final String key;
-    private final Plugin plugin;
+    private final AddonRegister addonRegister;
     private float weight=1;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
@@ -34,36 +33,36 @@ public class RoleRegister implements IRegister {
     private boolean requireDouble=false;
     private String requireRole="";
 
-    public RoleRegister(Plugin plugin, String key, Class<?> roleClass) throws NoSuchMethodException {
-        this.plugin=plugin;
+    public RoleRegister(AddonRegister addonRegister, String key, Class<?> roleClass) throws NoSuchMethodException {
+        this.addonRegister = addonRegister;
         this.key=key;
         this.constructors=roleClass.getConstructor(WereWolfAPI.class, IPlayerWW.class, String.class);
     }
 
     public List<? extends String> getLoreKey() {
-        return loreKey;
+        return this.loreKey;
     }
 
     public List<? extends Category> getCategories() {
-        return categories;
+        return this.categories;
     }
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     @Override
-    public Plugin getAddon() {
-        return this.plugin;
+    public AddonRegister getAddon() {
+        return this.addonRegister;
     }
 
     public Constructor<?> getConstructors() {
-        return constructors;
+        return this.constructors;
     }
 
     public RandomCompositionAttribute getRandomCompositionAttribute() {
-        return randomCompositionAttribute;
+        return this.randomCompositionAttribute;
     }
 
     public Optional<ItemStack> getItem() {
@@ -71,15 +70,15 @@ public class RoleRegister implements IRegister {
     }
 
     public float getWeight() {
-        return weight;
+        return this.weight;
     }
 
     public boolean isRequireDouble() {
-        return requireDouble;
+        return this.requireDouble;
     }
 
     public Optional<String> getRequireRole() {
-        return requireRole.isEmpty()?Optional.empty():Optional.of(requireRole);
+        return this.requireRole.isEmpty()?Optional.empty():Optional.of(this.requireRole);
     }
 
     public List<? extends Function<WereWolfAPI,ClickableItem>> getConfig() {

@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.Optional;
 public class ScenarioRegister implements IRegister {
 
     private final String key;
-    private final Plugin plugin;
+    private final AddonRegister addonRegister;
     private boolean defaultValue = false;
     private ItemStack item=null;
     private List<String> loreKey =new ArrayList<>();
@@ -24,8 +23,8 @@ public class ScenarioRegister implements IRegister {
 
     private final ListenerManager scenario;
 
-    public ScenarioRegister(Plugin plugin, String key,ListenerManager scenario ) {
-        this.plugin=plugin;
+    public ScenarioRegister(AddonRegister addonRegister, String key, ListenerManager scenario ) {
+        this.addonRegister = addonRegister;
         this.key=key;
         this.scenario=scenario;
     }
@@ -39,17 +38,17 @@ public class ScenarioRegister implements IRegister {
     }
 
     @Override
-    public Plugin getAddon() {
-        return this.plugin;
+    public AddonRegister getAddon() {
+        return this.addonRegister;
     }
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     public ListenerManager getScenario() {
-        return scenario;
+        return this.scenario;
     }
 
     public Optional<ItemStack> getItem() {
@@ -57,7 +56,7 @@ public class ScenarioRegister implements IRegister {
     }
 
     public List<? extends String> getIncompatibleScenarios() {
-        return incompatibleScenarios;
+        return this.incompatibleScenarios;
     }
 
     /**
@@ -76,7 +75,7 @@ public class ScenarioRegister implements IRegister {
      * @return l'instance du register
      */
     public ScenarioRegister addIncompatibleScenario(String key) {
-        incompatibleScenarios.add(key);
+        this.incompatibleScenarios.add(key);
         return this;
     }
 

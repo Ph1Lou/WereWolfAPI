@@ -3,7 +3,6 @@ package io.github.ph1lou.werewolfapi.registers;
 import io.github.ph1lou.werewolfapi.ICommand;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
-import org.bukkit.plugin.Plugin;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,12 +35,12 @@ public class CommandRegister implements IRegister {
 
     private final ICommand command;
 
-    private final Plugin plugin;
+    private final AddonRegister addonRegister;
 
     private String description="";
 
-    public CommandRegister(Plugin plugin, String key, ICommand command){
-        this.plugin=plugin;
+    public CommandRegister(AddonRegister addonRegister, String key, ICommand command){
+        this.addonRegister = addonRegister;
         this.key=key;
         this.command=command;
     }
@@ -56,8 +55,8 @@ public class CommandRegister implements IRegister {
     }
 
     @Override
-    public Plugin getAddon() {
-        return this.plugin;
+    public AddonRegister getAddon() {
+        return this.addonRegister;
     }
 
     public boolean isRoleKey(String roleKey) {
@@ -65,27 +64,27 @@ public class CommandRegister implements IRegister {
     }
 
     public String getOneRoleKey(){
-        return roleKeys.stream().findFirst().orElse("");
+        return this.roleKeys.stream().findFirst().orElse("");
     }
 
     public ICommand getCommand() {
-        return command;
+        return this.command;
     }
 
     public boolean isRoleOnly() {
-        return roleOnly;
+        return this.roleOnly;
     }
 
     public boolean isModeratorAccess() {
-        return moderatorAccess;
+        return this.moderatorAccess;
     }
 
     public boolean isHostAccess() {
-        return hostAccess;
+        return this.hostAccess;
     }
 
     public boolean isAutoCompletion() {
-        return autoCompletion;
+        return this.autoCompletion;
     }
 
     /**
@@ -140,7 +139,7 @@ public class CommandRegister implements IRegister {
     }
 
     public boolean isArgNumbers(int args) {
-        return argNumbers.isEmpty() || argNumbers.contains(args);
+        return this.argNumbers.isEmpty() || this.argNumbers.contains(args);
     }
 
     /**
@@ -196,15 +195,15 @@ public class CommandRegister implements IRegister {
     }
 
     public boolean isStateWW(StateGame stateLG) {
-        return stateWW.isEmpty() || stateWW.contains(stateLG);
+        return this.stateWW.isEmpty() || this.stateWW.contains(stateLG);
     }
 
     public boolean isRequiredPower() {
-        return requiredPower;
+        return this.requiredPower;
     }
 
     public boolean isRequiredAbilityEnabled() {
-        return requiredAbilityEnabled;
+        return this.requiredAbilityEnabled;
     }
 
     public int getMinArgNumbers() {
@@ -214,17 +213,17 @@ public class CommandRegister implements IRegister {
     }
 
     public boolean isRequiredPlayerInGame() {
-        return requiredPlayerInGame;
+        return this.requiredPlayerInGame;
     }
 
 
     public boolean isStateAccess(StatePlayer statePlayer) {
-        return statePlayerAccesses.isEmpty() || statePlayerAccesses.contains(statePlayer);
+        return this.statePlayerAccesses.isEmpty() || this.statePlayerAccesses.contains(statePlayer);
     }
 
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
 

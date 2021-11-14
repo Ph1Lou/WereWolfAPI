@@ -2,9 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enums.Day;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
-import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -68,27 +65,6 @@ public interface WereWolfAPI {
      */
 
     String translate(String key, Formatter... args);
-
-
-    /**
-     * return the text associated with the key
-     * @param plugin instance of addon
-     * @param prefixKey key of the json
-     * @param key key of the json
-     * @param args parameters to format
-     * @return String
-     */
-
-    String translate(Plugin plugin, String prefixKey, String key, Formatter... args);
-    /**
-     * return the text associated with the key
-     * @param plugin instance of addon
-     * @param key key of the json
-     * @param args parameters to format
-     * @return String
-     */
-
-    String translate(@Nullable Plugin plugin, String key, Formatter... args);
 
 
     /**
@@ -158,15 +134,6 @@ public interface WereWolfAPI {
      */
     List<String> translateArray(String key, Formatter... args);
 
-
-    /**
-     * Translate a key array
-     * @param plugin instance of addon
-     * @param key associated with json
-     * @param args the formatters
-     * @return a string translated array
-     */
-    List<String> translateArray(@Nullable Plugin plugin , String key, Formatter... args);
 
     /**
      * Get Stuff Manager

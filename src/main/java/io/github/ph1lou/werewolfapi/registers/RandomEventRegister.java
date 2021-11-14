@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +15,14 @@ public class RandomEventRegister implements IRegister {
 
 
     private final String key;
-    private final Plugin plugin;
+    private final AddonRegister addonRegister;
     private int defaultValue = 0;
     private List<String> loreKey =new ArrayList<>();
     private final ListenerManager randomEvent;
     private ItemStack item=null;
 
-    public RandomEventRegister(Plugin plugin, String key, ListenerManager randomEvent) {
-        this.plugin=plugin;
+    public RandomEventRegister(AddonRegister addonRegister, String key, ListenerManager randomEvent) {
+        this.addonRegister = addonRegister;
         this.key=key;
         this.randomEvent=randomEvent;
     }
@@ -53,8 +52,8 @@ public class RandomEventRegister implements IRegister {
     }
 
     @Override
-    public Plugin getAddon() {
-        return this.plugin;
+    public AddonRegister getAddon() {
+        return this.addonRegister;
     }
 
     @Override

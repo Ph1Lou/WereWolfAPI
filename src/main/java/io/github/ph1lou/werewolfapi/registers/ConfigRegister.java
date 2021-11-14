@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi.registers;
 
 import io.github.ph1lou.werewolfapi.ListenerManager;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class ConfigRegister implements IRegister {
 
 
     private final String key;
-    private final Plugin plugin;
+    private final AddonRegister addonRegister;
     private boolean defaultValue = false;
     private List<String> loreKey =new ArrayList<>();
     private ListenerManager config=null;
@@ -26,27 +25,27 @@ public class ConfigRegister implements IRegister {
     private ItemStack item=null;
 
 
-    public ConfigRegister(Plugin plugin, String key) {
-        this.plugin=plugin;
+    public ConfigRegister(AddonRegister addonRegister, String key) {
+        this.addonRegister = addonRegister;
         this.key=key;
     }
 
     public boolean getDefaultValue(){
-        return defaultValue;
+        return this.defaultValue;
     }
 
     public List<String> getLoreKey() {
-        return loreKey;
+        return this.loreKey;
     }
 
     @Override
-    public Plugin getAddon() {
-        return this.plugin;
+    public AddonRegister getAddon() {
+        return this.addonRegister;
     }
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
 
@@ -55,15 +54,15 @@ public class ConfigRegister implements IRegister {
     }
 
     public boolean isAppearInMenu() {
-        return appearInMenu;
+        return this.appearInMenu;
     }
 
     public ItemStack getItem() {
-        return item;
+        return this.item;
     }
 
     public List<? extends String> getIncompatibleConfigs() {
-        return incompatibleConfigs;
+        return this.incompatibleConfigs;
     }
 
     public ConfigRegister addConfig(ListenerManager config) {

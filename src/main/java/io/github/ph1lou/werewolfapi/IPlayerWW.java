@@ -8,9 +8,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,24 +59,6 @@ public interface IPlayerWW {
      * @param args for parsing
      */
     void sendMessageWithKey(@NotNull String prefixKey, @NotNull String key, Formatter ... args);
-
-
-    /**
-     * Send String message to the player (if he was disconnected, he received the message later)
-     * @param plugin instance of addon
-     * @param key the key associated to message in language json file
-     * @param args for parsing
-     */
-    void sendMessageWithKey(@Nullable Plugin plugin, @NotNull String key, Formatter ... args);
-
-    /**
-     * Send String message to the player (if he was disconnected, he received the message later)
-     * @param plugin instance of addon
-     * @param prefixKey key of prefix
-     * @param key the key associated to message in language json file
-     * @param args for parsing
-     */
-    void sendMessageWithKey(@Nullable Plugin plugin, @NotNull String prefixKey, @NotNull String key, Formatter ... args);
 
 
     /**
