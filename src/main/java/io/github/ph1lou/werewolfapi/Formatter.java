@@ -15,7 +15,7 @@ public class Formatter {
     }
 
     public String handle(String message){
-        return message.replace(this.pattern,
+        return message.replaceAll(this.pattern,
                 String.valueOf(this.supplier));
     }
 }
