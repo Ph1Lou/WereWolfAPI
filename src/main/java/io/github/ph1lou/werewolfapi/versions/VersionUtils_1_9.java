@@ -9,9 +9,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
@@ -33,6 +37,15 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
         }
         item.setItemMeta(potionMeta);
         return item;
+    }
+
+    @Override
+    public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
+        if(itemStack.getItemMeta() instanceof PotionMeta){
+            PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
+            return potionMeta.getCustomEffects();
+        }
+        return Collections.emptyList();
     }
 
     @Override
