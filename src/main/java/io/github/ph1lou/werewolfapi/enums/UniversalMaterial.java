@@ -205,7 +205,6 @@ public enum UniversalMaterial{
                 material = Material.valueOf(getTypeName());
             }catch (IllegalArgumentException ex){
                 material = null;
-                ex.printStackTrace();
             }
             loaded = true;
         }

@@ -14,6 +14,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +24,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings({"deprecation"})
@@ -50,24 +54,31 @@ public class VersionUtils_1_8 extends VersionUtils {
         setPlayerMaxHealth(player,Math.max(2,getPlayerMaxHealth(player)-health));
     }
 
-    @Deprecated
     @Override
     public double getPlayerMaxHealth(@NotNull Player player) {
         return player.getMaxHealth();
     }
-
 
     @Override
     public <T> void setGameRuleValue(World world, String gameRule, T value) {
         world.setGameRuleValue(gameRule, value.toString());
     }
 
-
     @Override
     public void setTeamNameTagVisibility(Team team, boolean value) {
         team.setNameTagVisibility(value ? NameTagVisibility.ALWAYS : NameTagVisibility.NEVER);
     }
 
+    @Override
+    public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
+        try{
+            return Potion.fromItemStack(itemStack)
+                    .getEffects();
+        }
+        catch (Exception ignored){
+        }
+        return Collections.emptyList();
+    }
 
     @Override
     public void setItemUnbreakable(ItemMeta meta, boolean b) {
