@@ -37,6 +37,8 @@ public enum PotionUtil {
     public static PotionType getPotion(byte id) {
         return Arrays.stream(PotionUtil.values())
                 .filter(potion -> potion.id == id)
-                .map(potion -> potion.potionType).findFirst().orElse(PotionType.UNCRAFTABLE);
+                .map(potion -> potion.potionType)
+                .findFirst()
+                .orElse(PotionType.UNCRAFTABLE);
     }
 }
