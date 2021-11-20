@@ -28,9 +28,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.pieterdebot.biomemapping</groupId>
+            <groupId>com.github.Mezy</groupId>
             <artifactId>BiomeMapping</artifactId>
-            <version>1.0</version>
+            <version>master-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
