@@ -2,13 +2,10 @@ package io.github.ph1lou.werewolfapi.versions;
 
 
 import io.github.ph1lou.werewolfapi.enums.PotionUtil;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
@@ -50,8 +47,7 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
             PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
             List<PotionEffect> potionEffectList = potionMeta.getCustomEffects();
             PotionData potionData = potionMeta.getBasePotionData();
-            potionEffectList.add(new PotionEffect(potionData.getType().getEffectType(),
-                    potionMeta.));
+            //todo
             return potionEffectList;
         }
         return Collections.emptyList();
