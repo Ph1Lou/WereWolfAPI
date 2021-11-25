@@ -16,6 +16,7 @@ import org.bukkit.potion.PotionType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -46,7 +47,7 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
     public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
         if(itemStack.getItemMeta() instanceof PotionMeta){
             PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
-            List<PotionEffect> potionEffectList = potionMeta.getCustomEffects();
+            List<PotionEffect> potionEffectList = new ArrayList<>(potionMeta.getCustomEffects());
             PotionData potionData = potionMeta.getBasePotionData();
             PotionEffectType type = potionData.getType().getEffectType();
             if(type != null){
