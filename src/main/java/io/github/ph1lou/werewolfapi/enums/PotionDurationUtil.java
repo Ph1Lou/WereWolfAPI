@@ -5,7 +5,7 @@ import org.bukkit.potion.PotionEffectType;
 public enum PotionDurationUtil {
     SPEED(3600, 9600,1800),
     INCREASE_DAMAGE(3600,9600,1800),
-    HEAL(1,1),
+    HEAL(2,0,2),
     JUMP(3600,9600,1800) ,
     REGENERATION(900,1800,440),
     FIRE_RESISTANCE(3600,9600),
@@ -13,11 +13,11 @@ public enum PotionDurationUtil {
     INVISIBILITY(3600, 9600),
     NIGHT_VISION(3600,9600) ,
     WEAKNESS(1800,4800),
-    HARM(1,1),
+    HARM(5,0,5),
     POISON(900,1800,432),
     SLOW(1800,4800,400),
-    LUCK(300) ,
-    SLOW_FALLING(1800, 240);
+    LUCK(6000) ,
+    SLOW_FALLING(1800, 4800);
 
     private final int base;
     private final int extended;
