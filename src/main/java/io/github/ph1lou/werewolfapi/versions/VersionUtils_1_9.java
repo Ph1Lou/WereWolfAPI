@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
+import io.github.ph1lou.werewolfapi.enums.PotionDurationUtil;
 import io.github.ph1lou.werewolfapi.enums.PotionUtil;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -10,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +21,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class VersionUtils_1_9 extends VersionUtils_1_8 {
-
 
     @Override
     public ItemStack getPotionItem(short id) {
@@ -47,7 +48,14 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
             PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
             List<PotionEffect> potionEffectList = potionMeta.getCustomEffects();
             PotionData potionData = potionMeta.getBasePotionData();
-            //todo
+            PotionEffectType type = potionData.getType().getEffectType();
+            if(type != null){
+                potionEffectList.add(new PotionEffect(type,
+                        PotionDurationUtil.getDuration(type,potionData.isExtended(),potionData.isUpgraded()),
+                        PotionDurationUtil.getAmplifier(type, potionData.isUpgraded()),
+                        false,
+                        false));
+            }
             return potionEffectList;
         }
         return Collections.emptyList();
