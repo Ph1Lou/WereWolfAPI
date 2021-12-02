@@ -52,26 +52,26 @@ public class PotionModifier {
 
 
     public boolean isAdd() {
-        return add;
+        return this.add;
     }
 
     public PotionEffectType getPotionEffectType() {
-        return potionEffectType;
+        return this.potionEffectType;
     }
 
     public int getAmplifier() {
-        return amplifier;
+        return this.amplifier;
     }
 
     public int getDuration() {
-        return duration;
+        return this.duration;
     }
 
     public String getIdentifier() {
-        return identifier;
+        return this.identifier;
     }
 
     public int getTimer() {
-        return timer;
+        return this.timer;
     }
 }

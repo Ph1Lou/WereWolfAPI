@@ -1,8 +1,10 @@
 package io.github.ph1lou.werewolfapi;
 
+import org.bukkit.event.Listener;
+
 import java.util.List;
 
-public interface ILover {
+public interface ILover extends Listener {
 
     /**
      * Get Lover Members

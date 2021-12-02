@@ -14,6 +14,14 @@ public class Formatter {
         return new Formatter(pattern,supplier);
     }
 
+    public static Formatter player(Object supplier){
+        return format("&player&",supplier);
+    }
+
+    public static Formatter timer(Object supplier){
+        return format("&timer&",supplier);
+    }
+
     public String handle(String message){
         return message.replaceAll(this.pattern,
                 String.valueOf(this.supplier));
