@@ -67,13 +67,13 @@ public class DescriptionBuilder {
         sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&",this.game.translate(this.role.getDeathRole()) +
                 (!this.role.getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief",
                         Formatter.format("&role&",this.game.translate(this.role.getKey()))) : "") +
-                (this.role.getInfected() ? this.game.translate("werewolf.end.infect") : "") +
+                (this.role.isInfected() ? this.game.translate("werewolf.end.infect") : "") +
                 (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));
 
         sb.append(this.game.translate("werewolf.description.camp",
                 Formatter.format("&camp&",this.role.getCamp().getChatColor()+this.game.translate(this.role.getCamp().getKey()))));
 
-        sb.append(this.role.getInfected()?
+        sb.append(this.role.isInfected()?
                 this.game.translate("werewolf.description.effect",
                         Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf")))
                 :"");

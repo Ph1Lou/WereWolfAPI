@@ -9,6 +9,4 @@ public interface ILoverManager {
     void removeLover(ILover ILover);
 
     void addLover(ILover ILover);
-
-    void repartition();
 }

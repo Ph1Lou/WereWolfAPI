@@ -46,7 +46,7 @@ public class PlayerReview implements IPlayerReview {
         this.killers = playerWW.getKillers().stream().filter(Objects::nonNull).map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList());
         this.nbKill = playerWW.getPlayersKills().size();
         this.solitary = playerWW.getRole().isSolitary();
-        this.infected = playerWW.getRole().getInfected();
+        this.infected = playerWW.getRole().isInfected();
         this.name = playerWW.getName();
     }
 

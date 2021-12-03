@@ -213,6 +213,18 @@ public interface IConfiguration {
 
      void setDistanceSister(int distance);
 
+     int getDistanceFearfulWerewolf();
+
+     void setDistanceFearfulWerewolf(int distance);
+
+     int getDistanceHermit();
+
+     void setDistanceHermit(int distance);
+
+     int getDistanceWillOTheWisp();
+
+     void setDistanceWillOTheWisp(int distance);
+
      int getDistancePriestess();
 
      void setDistancePriestess(int distance);

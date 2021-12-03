@@ -19,11 +19,11 @@ public abstract class RoleWithLimitedSelectionDuration extends RoleVillage imple
 
         if (!hasPower()) return;
 
+        setPower(false);
+
         if(!getPlayerWW().isState(StatePlayer.ALIVE)){
             return;
         }
-
-        setPower(false);
 
         getPlayerWW().sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.check.end_selection");
     }

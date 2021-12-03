@@ -14,12 +14,19 @@ public class Formatter {
         return new Formatter(pattern,supplier);
     }
 
-    public static Formatter player(Object supplier){
-        return format("&player&",supplier);
+    public static Formatter player(String player){
+        return format("&player&",player);
     }
 
-    public static Formatter timer(Object supplier){
-        return format("&timer&",supplier);
+    public static Formatter timer(String timer){
+        return format("&timer&",timer);
+    }
+
+    public static Formatter number(int number){
+        return format("&number&",number);
+    }
+    public static Formatter role(String role){
+        return format("&role&",role);
     }
 
     public String handle(String message){

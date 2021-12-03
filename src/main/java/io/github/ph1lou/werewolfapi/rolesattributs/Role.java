@@ -134,7 +134,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
     }
 
     @EventHandler
-    public void onModeratorScoreBoard(UpdateModeratorNameTagEvent event){
+    public final void onModeratorScoreBoard(UpdateModeratorNameTagEvent event){
 
         StringBuilder sb = new StringBuilder(event.getPrefix());
 
@@ -209,7 +209,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
     }
 
     @Override
-    public final boolean getInfected() {
+    public final boolean isInfected() {
         return this.infected;
     }
 
@@ -219,7 +219,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
     }
 
     @EventHandler
-    public void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
+    public final void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 
         if(!this.playerWW.equals(event.getPlayerWW())) return;
 
@@ -247,7 +247,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,"werewolf"));
         if(game.isDay(Day.DAY)) return;
-        if(!abilityEnabled) return;
+        if(!this.isAbilityEnabled()) return;
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
     }
 
@@ -275,7 +275,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
 
     @EventHandler
-    public void onCountCategories(CountRemainingRolesCategoriesEvent event){
+    public final void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
         if (!this.playerWW.isState(StatePlayer.ALIVE)) return;
 
@@ -297,9 +297,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
-
-        if(!abilityEnabled) return;
+        if(!this.isAbilityEnabled()) return;
 
         if(event.getEntity().getKiller()==null) return;
 
@@ -345,19 +343,15 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
     @Override
     public final void setPlayerWW(@NotNull IPlayerWW playerWW) {
         this.playerWW = playerWW;
-        this.uuid= playerWW.getUUID();
+        this.uuid = playerWW.getUUID();
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onNightForWereWolf(NightEvent event) {
 
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
-            return;
-        }
-
         if(!this.isWereWolf()) return;
 
-        if(!abilityEnabled) return;
+        if(!this.isAbilityEnabled()) return;
 
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
@@ -387,10 +381,6 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
     public void onDayForWereWolf(DayEvent event) {
 
         if(!this.isWereWolf()) return;
-
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
-            return;
-        }
 
         this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
@@ -505,7 +495,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
     @Override
     public void disableAbilities() {
-        abilityEnabled = false;
+        this.abilityEnabled = false;
 
         if(!this.isWereWolf()) return;
 
@@ -518,13 +508,13 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
     @Override
     public void enableAbilities() {
-        abilityEnabled = true;
+        this.abilityEnabled = true;
 
         this.recoverPotionEffects();
     }
 
     @Override
     public boolean isAbilityEnabled() {
-        return abilityEnabled;
+        return this.abilityEnabled;
     }
 }
