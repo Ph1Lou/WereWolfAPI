@@ -10,15 +10,16 @@ public class UpdatePlayerNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
+    private final UUID targetUUID;
+    private boolean tabVisibility = true;
     private String prefix;
-    private String suffix;
-    private boolean visibility;
+    private String suffix = "";
+    private boolean visibility = true;
 
-    public UpdatePlayerNameTagEvent(UUID playerUUID, String prefix, String suffix, boolean visibility){
+    public UpdatePlayerNameTagEvent(UUID playerUUID,UUID targetUUID, String prefix){
         this.playerUUID = playerUUID;
+        this.targetUUID = targetUUID;
         this.prefix = prefix;
-        this.suffix = suffix;
-        this.visibility=visibility;
     }
 
     @NotNull
@@ -59,5 +60,16 @@ public class UpdatePlayerNameTagEvent extends Event {
         this.visibility = visibility;
     }
 
+    public boolean isTabVisibility() {
+        return tabVisibility;
+    }
+
+    public void setTabVisibility(boolean tabVisibility) {
+        this.tabVisibility = tabVisibility;
+    }
+
+    public UUID getTargetUUID() {
+        return targetUUID;
+    }
 }
 

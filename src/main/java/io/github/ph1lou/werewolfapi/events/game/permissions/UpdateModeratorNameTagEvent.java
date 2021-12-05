@@ -10,13 +10,11 @@ public class UpdateModeratorNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
-    private String prefix;
-    private String suffix;
+    private String prefix="";
+    private String suffix="";
 
-    public UpdateModeratorNameTagEvent(UUID playerUUID, String prefix, String suffix){
+    public UpdateModeratorNameTagEvent(UUID playerUUID){
         this.playerUUID = playerUUID;
-        this.prefix=prefix;
-        this.suffix=suffix;
     }
 
     @NotNull

@@ -79,5 +79,20 @@ public abstract class VersionUtils {
 
     public abstract Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack);
 
+    /**
+     * Hide a player in tab and in game for a player
+     * @param viewer the player
+     * @param player the player hides
+     */
+    public abstract void hidePlayer(Player viewer, Player player);
+
+    /**
+     * Show a player in tab and in game for a player
+     * @param viewer the player
+     * @param player the player shows
+     */
+    public abstract void showPlayer(Player viewer, Player player);
+
+
 }
 

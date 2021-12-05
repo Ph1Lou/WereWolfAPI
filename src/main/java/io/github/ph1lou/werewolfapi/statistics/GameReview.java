@@ -23,7 +23,7 @@ public class GameReview implements IGameReview {
     private String winnerCampKey;
     private int duration;
     private String name;
-    private Date date = new Date();
+    private final Date date = new Date();
 
     public void setServerUUID(UUID serverUUID) {
         this.serverUUID = serverUUID;

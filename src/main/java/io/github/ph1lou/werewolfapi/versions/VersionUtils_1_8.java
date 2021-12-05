@@ -81,6 +81,16 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
+    public void hidePlayer(Player viewer, Player player) {
+        viewer.hidePlayer(player);
+    }
+
+    @Override
+    public void showPlayer(Player viewer, Player player) {
+        viewer.showPlayer(player);
+    }
+
+    @Override
     public void setItemUnbreakable(ItemMeta meta, boolean b) {
 
 
