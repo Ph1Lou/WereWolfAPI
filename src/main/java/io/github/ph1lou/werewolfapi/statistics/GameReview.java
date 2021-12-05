@@ -6,6 +6,7 @@ import io.github.ph1lou.werewolfapi.WereWolfAPI;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -22,6 +23,7 @@ public class GameReview implements IGameReview {
     private String winnerCampKey;
     private int duration;
     private String name;
+    private Date date = new Date();
 
     public void setServerUUID(UUID serverUUID) {
         this.serverUUID = serverUUID;
@@ -89,6 +91,10 @@ public class GameReview implements IGameReview {
     @Override
     public UUID getServerUUID() {
         return this.serverUUID;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
 }

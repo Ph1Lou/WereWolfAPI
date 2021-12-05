@@ -42,8 +42,13 @@ public class PotionModifier {
         return new PotionModifier(potionEffectType,Integer.MAX_VALUE,0, identifier,true);
     }
 
+    @Deprecated
     public static PotionModifier remove(PotionEffectType potionEffectType, String identifier){
         return new PotionModifier(potionEffectType,0,0, identifier,false);
+    }
+
+    public static PotionModifier remove(PotionEffectType potionEffectType, String identifier, int amplifier){
+        return new PotionModifier(potionEffectType,0,amplifier, identifier,false);
     }
 
     public void setTimer(int timer){
