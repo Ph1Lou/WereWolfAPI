@@ -128,7 +128,5 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
     public ItemStack getItemInHand(@NotNull Player player) {
         return player.getInventory().getItemInMainHand();
     }
-
-
 }
 
