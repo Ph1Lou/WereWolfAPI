@@ -208,6 +208,8 @@ public interface IPlayerWW {
      */
     void removeLover(ILover ILover);
 
+    void clearLover();
+
     /**
      * Get Last killer
      * @return the last killer if he exists

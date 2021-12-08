@@ -24,16 +24,12 @@ public class GameReview implements IGameReview {
     private int duration;
     private String name;
     private final Date date = new Date();
+    private final UUID serverUUID;
 
-    public void setServerUUID(UUID serverUUID) {
-        this.serverUUID = serverUUID;
-    }
-
-    private UUID serverUUID=UUID.randomUUID();
-
-    public GameReview(WereWolfAPI api) {
+    public GameReview(WereWolfAPI api, UUID serverUUID) {
         this.api = api;
         this.gameUUID = api.getGameUUID();
+        this.serverUUID = serverUUID;
     }
 
     public void end(String winnerCampKey, Set<IPlayerWW> winners) {
