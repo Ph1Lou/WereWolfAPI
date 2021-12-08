@@ -209,6 +209,8 @@ public interface IPlayerWW {
      */
     void removeLover(ILover ILover);
 
+    void clearLover();
+
     /**
      * Clear Player Lovers
      */
