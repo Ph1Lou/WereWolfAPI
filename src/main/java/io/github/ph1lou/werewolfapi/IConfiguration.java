@@ -80,6 +80,14 @@ public interface IConfiguration {
 
      void setDistanceFox(int distanceFox);
 
+     int getDistanceHowlingWerewolf();
+
+     void setDistanceHowlingWerewolf(int howlerWerewolf);
+
+     int getDistanceTwin();
+
+     void setDistanceTwin(int twin);
+
      int getResistanceRate() ;
 
      void setResistanceRate(int resistanceRate);
