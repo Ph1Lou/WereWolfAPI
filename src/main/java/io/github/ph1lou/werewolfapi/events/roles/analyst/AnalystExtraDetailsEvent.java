@@ -7,14 +7,15 @@ import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Set;
 
 public class AnalystExtraDetailsEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    private final List<PotionEffectType> potions;
+    private final Set<PotionEffectType> potions;
 
-    public AnalystExtraDetailsEvent(IPlayerWW playerWW, IPlayerWW targetUUID, List<PotionEffectType> potions){
+    public AnalystExtraDetailsEvent(IPlayerWW playerWW, IPlayerWW targetUUID, Set<PotionEffectType> potions){
         super(playerWW,targetUUID);
         this.potions=potions;
     }
@@ -29,8 +30,8 @@ public class AnalystExtraDetailsEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public List<PotionEffectType> getPotions() {
-        return potions;
+    public Set<PotionEffectType> getPotions() {
+        return this.potions;
     }
 
 }
