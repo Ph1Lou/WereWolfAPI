@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -137,10 +138,13 @@ public interface IPlayerWW {
     List<? extends IPlayerWW> getPlayersKills();
 
     /**
-     * Get MojangUUID of the Player (if he was crack, it will send back uuid)
+     * Get MojangUUID of the Player
      * @return the uuid
      */
-    UUID getMojangUUID();
+
+    Optional<UUID> getMojangUUID();
+
+    UUID getReviewUUID();
 
     /**
      * Change the rôle of a player

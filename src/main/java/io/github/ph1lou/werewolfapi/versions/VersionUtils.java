@@ -73,6 +73,8 @@ public abstract class VersionUtils {
 
     public abstract ItemStack getItemInHand(@NotNull Player player);
 
+    public abstract void setItemInHand(@NotNull Player player, ItemStack itemStack);
+
     public abstract ItemStack getPotionItem(short id);
 
     public abstract short generatePotionId(ItemStack itemStack);

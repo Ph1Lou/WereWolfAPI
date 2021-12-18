@@ -12,7 +12,7 @@ public abstract class RoleNeutral extends Role {
 
     @Override
     public boolean isNeutral() {
-        return !super.isWereWolf();
+        return !this.isWereWolf();
     }
 
     @Override

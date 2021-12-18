@@ -34,7 +34,7 @@ public class GameReview implements IGameReview {
 
     public void end(String winnerCampKey, Set<IPlayerWW> winners) {
         this.winnerCampKey = winnerCampKey;
-        this.winners = winners.stream().map(IPlayerWW::getMojangUUID).collect(Collectors.toSet());
+        this.winners = winners.stream().map(IPlayerWW::getReviewUUID).collect(Collectors.toSet());
         this.name = api.getGameName();
         for (IPlayerWW playerWW : api.getPlayersWW()) {
             PlayerReview playerReview = new PlayerReview(playerWW);
@@ -92,5 +92,4 @@ public class GameReview implements IGameReview {
     public Date getDate() {
         return date;
     }
-
 }

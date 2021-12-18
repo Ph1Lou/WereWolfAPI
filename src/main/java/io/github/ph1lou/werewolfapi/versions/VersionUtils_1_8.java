@@ -91,6 +91,11 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
+    public void setItemInHand(@NotNull Player player, ItemStack itemStack) {
+        player.setItemInHand(itemStack);
+    }
+
+    @Override
     public void setItemUnbreakable(ItemMeta meta, boolean b) {
 
 
