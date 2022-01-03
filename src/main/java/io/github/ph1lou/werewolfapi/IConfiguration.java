@@ -76,6 +76,10 @@ public interface IConfiguration {
 
      void setDistanceBearTrainer(int distanceBearTrainer);
 
+     int getDistanceDruid();
+
+     void setDistanceDruid(int distanceDruid);
+
      int getDistanceFox();
 
      void setDistanceFox(int distanceFox);
