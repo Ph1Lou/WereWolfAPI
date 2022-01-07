@@ -17,9 +17,13 @@ public enum TimerBase {
     RIVAL_DURATION("werewolf.menu.timers.rival_duration"),
     POWER_DURATION("werewolf.menu.timers.power_duration"),
     FOX_SMELL_DURATION("werewolf.menu.timers.fox_smell_duration"),
+    TWIN_DURATION("werewolf.menu.timers.twin_duration"),
+    ANALYSE_DURATION("werewolf.menu.timers.analyse_duration"),
+
     WEREWOLF_CHAT_DURATION("werewolf.menu.timers.werewolf_chat_duration"),
     AUTO_RESTART_DURATION("werewolf.menu.timers.auto_restart_duration"),
-    SUCCUBUS_DURATION("werewolf.menu.timers.succubus_duration");
+    SUCCUBUS_DURATION("werewolf.menu.timers.succubus_duration"),
+    CHARMER_COUNTDOWN("werewolf.menu.timers.charmer_countdown");
 
     private final String key;
 

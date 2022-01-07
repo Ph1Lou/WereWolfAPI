@@ -1,7 +1,5 @@
 package io.github.ph1lou.werewolfapi;
 
-import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class PotionModifier {
@@ -44,8 +42,13 @@ public class PotionModifier {
         return new PotionModifier(potionEffectType,Integer.MAX_VALUE,0, identifier,true);
     }
 
+    @Deprecated
     public static PotionModifier remove(PotionEffectType potionEffectType, String identifier){
         return new PotionModifier(potionEffectType,0,0, identifier,false);
+    }
+
+    public static PotionModifier remove(PotionEffectType potionEffectType, String identifier, int amplifier){
+        return new PotionModifier(potionEffectType,0,amplifier, identifier,false);
     }
 
     public void setTimer(int timer){
@@ -54,26 +57,26 @@ public class PotionModifier {
 
 
     public boolean isAdd() {
-        return add;
+        return this.add;
     }
 
     public PotionEffectType getPotionEffectType() {
-        return potionEffectType;
+        return this.potionEffectType;
     }
 
     public int getAmplifier() {
-        return amplifier;
+        return this.amplifier;
     }
 
     public int getDuration() {
-        return duration;
+        return this.duration;
     }
 
     public String getIdentifier() {
-        return identifier;
+        return this.identifier;
     }
 
     public int getTimer() {
-        return timer;
+        return this.timer;
     }
 }

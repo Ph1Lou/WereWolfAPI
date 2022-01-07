@@ -29,6 +29,8 @@ public class CommandRegister implements IRegister {
 
     private boolean requiredPower = false;
 
+    private boolean requiredAbilityEnabled = false;
+
     private boolean requiredPlayerInGame = false;
 
     private final ICommand command;
@@ -62,27 +64,27 @@ public class CommandRegister implements IRegister {
     }
 
     public String getOneRoleKey(){
-        return roleKeys.stream().findFirst().orElse("");
+        return this.roleKeys.stream().findFirst().orElse("");
     }
 
     public ICommand getCommand() {
-        return command;
+        return this.command;
     }
 
     public boolean isRoleOnly() {
-        return roleOnly;
+        return this.roleOnly;
     }
 
     public boolean isModeratorAccess() {
-        return moderatorAccess;
+        return this.moderatorAccess;
     }
 
     public boolean isHostAccess() {
-        return hostAccess;
+        return this.hostAccess;
     }
 
     public boolean isAutoCompletion() {
-        return autoCompletion;
+        return this.autoCompletion;
     }
 
     /**
@@ -137,7 +139,7 @@ public class CommandRegister implements IRegister {
     }
 
     public boolean isArgNumbers(int args) {
-        return argNumbers.isEmpty() || argNumbers.contains(args);
+        return this.argNumbers.isEmpty() || this.argNumbers.contains(args);
     }
 
     /**
@@ -162,6 +164,15 @@ public class CommandRegister implements IRegister {
         return this;
     }
 
+    /**
+     * Spécifie que le joueur effectuant la commande ne doit pas avoir ses pouvoirs désactivés
+     * @return l'instance du register
+     */
+    public CommandRegister setRequiredAbilityEnabled() {
+        this.requiredAbilityEnabled = true;
+        this.requiredPlayerInGame = true;
+        return this;
+    }
 
     /**
      * Ajoute une période de la partie où la commande peut être effectuée
@@ -184,11 +195,15 @@ public class CommandRegister implements IRegister {
     }
 
     public boolean isStateWW(StateGame stateLG) {
-        return stateWW.isEmpty() || stateWW.contains(stateLG);
+        return this.stateWW.isEmpty() || this.stateWW.contains(stateLG);
     }
 
     public boolean isRequiredPower() {
-        return requiredPower;
+        return this.requiredPower;
+    }
+
+    public boolean isRequiredAbilityEnabled() {
+        return this.requiredAbilityEnabled;
     }
 
     public int getMinArgNumbers() {
@@ -198,17 +213,17 @@ public class CommandRegister implements IRegister {
     }
 
     public boolean isRequiredPlayerInGame() {
-        return requiredPlayerInGame;
+        return this.requiredPlayerInGame;
     }
 
 
     public boolean isStateAccess(StatePlayer statePlayer) {
-        return statePlayerAccesses.isEmpty() || statePlayerAccesses.contains(statePlayer);
+        return this.statePlayerAccesses.isEmpty() || this.statePlayerAccesses.contains(statePlayer);
     }
 
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
 

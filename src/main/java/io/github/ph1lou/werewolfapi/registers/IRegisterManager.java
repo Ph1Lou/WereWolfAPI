@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.registers;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IRegisterManager {
 
@@ -12,6 +13,8 @@ public interface IRegisterManager {
     void registerAdminCommands(CommandRegister commandRegister);
     void registerCommands(CommandRegister commandRegister);
     void registerRandomEvents(RandomEventRegister randomEventRegister);
+
+    Optional<IRegisterManager> getRegister(String key);
 
     List<? extends RoleRegister> getRolesRegister();
 

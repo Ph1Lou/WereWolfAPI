@@ -80,6 +80,14 @@ public interface IConfiguration {
 
      void setDistanceFox(int distanceFox);
 
+     int getDistanceHowlingWerewolf();
+
+     void setDistanceHowlingWerewolf(int howlerWerewolf);
+
+     int getDistanceTwin();
+
+     void setDistanceTwin(int twin);
+
      int getResistanceRate() ;
 
      void setResistanceRate(int resistanceRate);
@@ -212,6 +220,18 @@ public interface IConfiguration {
      int getDistanceSister();
 
      void setDistanceSister(int distance);
+
+     int getDistanceFearfulWerewolf();
+
+     void setDistanceFearfulWerewolf(int distance);
+
+     int getDistanceHermit();
+
+     void setDistanceHermit(int distance);
+
+     int getDistanceWillOTheWisp();
+
+     void setDistanceWillOTheWisp(int distance);
 
      int getDistancePriestess();
 

@@ -44,11 +44,11 @@ public class ScenarioRegister implements IRegister {
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     public ListenerManager getScenario() {
-        return scenario;
+        return this.scenario;
     }
 
     public Optional<ItemStack> getItem() {
@@ -56,7 +56,7 @@ public class ScenarioRegister implements IRegister {
     }
 
     public List<? extends String> getIncompatibleScenarios() {
-        return incompatibleScenarios;
+        return this.incompatibleScenarios;
     }
 
     /**
@@ -75,7 +75,7 @@ public class ScenarioRegister implements IRegister {
      * @return l'instance du register
      */
     public ScenarioRegister addIncompatibleScenario(String key) {
-        incompatibleScenarios.add(key);
+        this.incompatibleScenarios.add(key);
         return this;
     }
 

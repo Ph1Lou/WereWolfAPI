@@ -9,6 +9,7 @@ import io.github.ph1lou.werewolfapi.enums.Aura;
 import io.github.ph1lou.werewolfapi.enums.Camp;
 import io.github.ph1lou.werewolfapi.enums.ConfigBase;
 import io.github.ph1lou.werewolfapi.enums.Day;
+import io.github.ph1lou.werewolfapi.enums.Prefix;
 import io.github.ph1lou.werewolfapi.enums.Sound;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
 import io.github.ph1lou.werewolfapi.enums.StatePlayer;
@@ -32,10 +33,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +44,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
+public abstract class Role implements IRole, Cloneable,IDisplay {
     
     protected final WereWolfAPI game;
 
@@ -65,6 +64,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Nullable
     private String deathRole;
     private final List<IAuraModifier> auraModifiers = new ArrayList<>();
+    private boolean abilityEnabled = true;
 
     public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
         this.game = game;
@@ -90,13 +90,13 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
     @Override
     public final @NotNull String getKey() {
-        return key;
+        return this.key;
     }
 
     @NotNull
     @Override
     public final UUID getPlayerUUID(){
-        return uuid;
+        return this.uuid;
     }
 
     @Override
@@ -133,7 +133,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     @EventHandler
-    public void onModeratorScoreBoard(UpdateModeratorNameTagEvent event){
+    public final void onModeratorScoreBoard(UpdateModeratorNameTagEvent event){
 
         StringBuilder sb = new StringBuilder(event.getPrefix());
 
@@ -189,7 +189,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
 
-        this.playerWW.sendMessageWithKey("werewolf.role.werewolf.go_to_the_werewolf_camp");
+        this.playerWW.sendMessageWithKey(Prefix.YELLOW.getKey() , "werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
         this.recoverPotionEffects();
 
@@ -197,7 +197,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
                 .forEach(player1 -> {
-                    player1.sendMessageWithKey("werewolf.role.werewolf.new_werewolf");
+                    player1.sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.role.werewolf.new_werewolf");
                     Sound.WOLF_HOWL.play(player1);
                 });
     }
@@ -208,7 +208,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     @Override
-    public final boolean getInfected() {
+    public final boolean isInfected() {
         return this.infected;
     }
 
@@ -218,7 +218,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     @EventHandler
-    public void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
+    public final void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 
         if(!this.playerWW.equals(event.getPlayerWW())) return;
 
@@ -246,6 +246,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,"werewolf"));
         if(game.isDay(Day.DAY)) return;
+        if(!this.isAbilityEnabled()) return;
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
     }
 
@@ -273,7 +274,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
 
     @EventHandler
-    public void onCountCategories(CountRemainingRolesCategoriesEvent event){
+    public final void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
         if (!this.playerWW.isState(StatePlayer.ALIVE)) return;
 
@@ -295,7 +296,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
+        if(!this.isAbilityEnabled()) return;
 
         if(event.getEntity().getKiller()==null) return;
 
@@ -303,9 +304,8 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         if(!this.uuid.equals(killer.getUniqueId())) return;
 
-        killer.removePotionEffect(PotionEffectType.ABSORPTION);
-        killer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1200, 0, false, false));
-        killer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 0, false, false));
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.SPEED, 1200, 0,"werewolf"));
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.ABSORPTION, 1200, 0,"werewolf"));
     }
 
 
@@ -314,15 +314,16 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     public final void roleAnnouncement(){
 
         Sound.EXPLODE.play(this.getPlayerWW());
-        this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message", Formatter.format("&description&", this.getDescription()));
-        this.getPlayerWW().sendMessageWithKey("werewolf.announcement.review_role");
+        this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message",
+                Formatter.format("&description&", this.getDescription()));
+        this.getPlayerWW().sendMessageWithKey(Prefix.YELLOW.getKey() , "werewolf.announcement.review_role");
 
         this.recoverPotionEffects();
         this.recoverPower();
 
         if(this.game.getConfig().isTrollSV()) return;
 
-        if(!this.game.getStuffs().getStuffRoles().containsKey(getKey())){
+        if(!this.game.getStuffs().getStuffRoles().containsKey(this.getKey())){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
             return;
         }
@@ -340,17 +341,15 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Override
     public final void setPlayerWW(@NotNull IPlayerWW playerWW) {
         this.playerWW = playerWW;
-        this.uuid= playerWW.getUUID();
+        this.uuid = playerWW.getUUID();
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onNightForWereWolf(NightEvent event) {
 
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
-            return;
-        }
-
         if(!this.isWereWolf()) return;
+
+        if(!this.isAbilityEnabled()) return;
 
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
@@ -361,20 +360,16 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     }
 
     protected void openWereWolfChat(){
-        this.getPlayerWW().sendMessageWithKey("werewolf.commands.admin.ww_chat.announce",
-                Utils
-                        .conversion(
-                                this.game.getConfig()
-                                        .getTimerValue(
-                                                TimerBase.WEREWOLF_CHAT_DURATION
-                                                        .getKey())),
-                this.game.getConfig().getWereWolfChatMaxMessage());
+        this.getPlayerWW().sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.commands.admin.ww_chat.announce",
+                Formatter.format("&timer&",Utils.conversion(game.getConfig()
+                        .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey()))),
+                Formatter.format("&number&",game.getConfig().getWereWolfChatMaxMessage()));
 
         BukkitUtils.scheduleSyncDelayedTask(
                 () -> {
                     if(!this.game.isState(StateGame.END)){
                         getPlayerWW()
-                                .sendMessageWithKey("werewolf.commands.admin.ww_chat.disable");
+                                .sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.commands.admin.ww_chat.disable");
                     }
                 },
                 this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
@@ -384,10 +379,6 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     public void onDayForWereWolf(DayEvent event) {
 
         if(!this.isWereWolf()) return;
-
-        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
-            return;
-        }
 
         this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
@@ -416,7 +407,7 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
 
         event.setCancelled(true);
 
-        event.setVictoryTeam(getKey());
+        event.setVictoryTeam(this.getKey());
     }
     @Override
     public String getDeathRole(){
@@ -498,5 +489,30 @@ public abstract class Role implements IRole, Listener,Cloneable,IDisplay {
     @Override
     public List<IAuraModifier> getAuraModifiers() {
         return auraModifiers;
+    }
+
+    @Override
+    public void disableAbilities() {
+        this.abilityEnabled = false;
+
+        if(!this.isWereWolf()) return;
+
+        if(!this.getPlayerWW().isState(StatePlayer.ALIVE)){
+            return;
+        }
+
+        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+    }
+
+    @Override
+    public void enableAbilities() {
+        this.abilityEnabled = true;
+
+        this.recoverPotionEffects();
+    }
+
+    @Override
+    public boolean isAbilityEnabled() {
+        return this.abilityEnabled;
     }
 }

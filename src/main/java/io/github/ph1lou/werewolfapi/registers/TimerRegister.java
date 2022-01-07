@@ -83,7 +83,7 @@ public class TimerRegister implements IRegister {
 
 
     public List<? extends String> getLoreKey() {
-        return loreKey;
+        return this.loreKey;
     }
 
     @Override
@@ -93,14 +93,14 @@ public class TimerRegister implements IRegister {
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     public Predicate<WereWolfAPI> getPredicate() {
-        return predicate;
+        return this.predicate;
     }
 
     public Consumer<WereWolfAPI> getConsumer() {
-        return consumer;
+        return this.consumer;
     }
 }

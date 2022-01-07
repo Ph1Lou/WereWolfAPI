@@ -40,16 +40,16 @@ public class RoleRegister implements IRegister {
     }
 
     public List<? extends String> getLoreKey() {
-        return loreKey;
+        return this.loreKey;
     }
 
     public List<? extends Category> getCategories() {
-        return categories;
+        return this.categories;
     }
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     @Override
@@ -58,11 +58,11 @@ public class RoleRegister implements IRegister {
     }
 
     public Constructor<?> getConstructors() {
-        return constructors;
+        return this.constructors;
     }
 
     public RandomCompositionAttribute getRandomCompositionAttribute() {
-        return randomCompositionAttribute;
+        return this.randomCompositionAttribute;
     }
 
     public Optional<ItemStack> getItem() {
@@ -70,15 +70,15 @@ public class RoleRegister implements IRegister {
     }
 
     public float getWeight() {
-        return weight;
+        return this.weight;
     }
 
     public boolean isRequireDouble() {
-        return requireDouble;
+        return this.requireDouble;
     }
 
     public Optional<String> getRequireRole() {
-        return requireRole.isEmpty()?Optional.empty():Optional.of(requireRole);
+        return this.requireRole.isEmpty()?Optional.empty():Optional.of(this.requireRole);
     }
 
     public List<? extends Function<WereWolfAPI,ClickableItem>> getConfig() {

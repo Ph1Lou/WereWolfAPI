@@ -71,10 +71,18 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
         this.format = format;
     }
 
+    /**
+     * Récuperez le joueur décédé
+     * @return le joueur
+     */
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
+    /**
+     * Recupérez le joueur a qui est adressé l'annonce de mort
+     * @return le joueur
+     */
     public IPlayerWW getTargetPlayer() {
         return this.targetPlayer;
     }

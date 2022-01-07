@@ -1,19 +1,25 @@
-package io.github.ph1lou.werewolfapi.events.random_events;
+package io.github.ph1lou.werewolfapi.events.roles.will_o_the_wisp;
 
+import io.github.ph1lou.werewolfapi.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class PoorlyGroomedBearEvent extends Event implements Cancellable {
+public class WillOTheWispTeleportEvent extends Event implements Cancellable {
 
+
+    private boolean cancel = false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
+    private final IPlayerWW playerWW;
 
-    private final int modification;
 
-    public PoorlyGroomedBearEvent(int modification){
-        this.modification=modification;
+
+    private final int numberUse;
+
+    public WillOTheWispTeleportEvent(IPlayerWW playerWW, int numberUse){
+        this.playerWW=playerWW;
+        this.numberUse=numberUse;
     }
 
     @NotNull
@@ -36,7 +42,11 @@ public class PoorlyGroomedBearEvent extends Event implements Cancellable {
         this.cancel=cancel;
     }
 
-    public int getModification() {
-        return modification;
+    public IPlayerWW getPlayerWW() {
+        return playerWW;
+    }
+
+    public int getNumberUse() {
+        return numberUse;
     }
 }

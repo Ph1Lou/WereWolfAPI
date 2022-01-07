@@ -8,8 +8,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,49 +51,29 @@ public interface IPlayerWW {
      * @param key the key associated to message in language json file
      * @param args for parsing
      */
-    void sendMessageWithKey(String key,Formatter ... args);
+    void sendMessageWithKey(@NotNull String key,Formatter ... args);
 
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
+     * @param prefixKey key of prefix
      * @param key the key associated to message in language json file
      * @param args for parsing
-     * @param sound a sound associated
      */
-    void sendMessageWithKey(String key, Sound sound, Formatter ... args);
+    void sendMessageWithKey(@NotNull String prefixKey, @NotNull String key, Formatter ... args);
+
 
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
      * @param textComponent the message
      */
-    void sendMessage(TextComponent textComponent);
-
-    /**
-     * Send String message to the player (if he was disconnected, he received the message later)
-     * @param textComponent the message
-     * @param sound a sound associated
-     */
-    void sendMessage(TextComponent textComponent, Sound sound);
+    void sendMessage(@NotNull TextComponent textComponent);
 
 
     /**
-     * @deprecated use Formatter instead of Object
-     * Send String message to the player (if he was disconnected, he received the message later)
-     * @param key the key associated to message in language json file
-     * @param args for parsing
+     *
+     * @param sound the sound
      */
-    @Deprecated
-    void sendMessageWithKey(String key,Object ... args);
-
-    /**
-     * @deprecated use Formatter instead of Object
-     * Send String message to the player (if he was disconnected, he received the message later)
-     * @param key the key associated to message in language json file
-     * @param args for parsing
-     * @param sound a sound associated
-     */
-    @Deprecated
-    void sendMessageWithKey(String key, Sound sound, Object ... args);
-
+    void sendSound(@NotNull Sound sound);
 
     /**
      * Add Potion Modifier to add or remove Potion Effect
@@ -158,10 +138,13 @@ public interface IPlayerWW {
     List<? extends IPlayerWW> getPlayersKills();
 
     /**
-     * Get MojangUUID of the Player (if he was crack, it will send back uuid)
+     * Get MojangUUID of the Player
      * @return the uuid
      */
-    UUID getMojangUUID();
+
+    Optional<UUID> getMojangUUID();
+
+    UUID getReviewUUID();
 
     /**
      * Change the rôle of a player
@@ -228,6 +211,8 @@ public interface IPlayerWW {
      * @param ILover the lover object
      */
     void removeLover(ILover ILover);
+
+    void clearLover();
 
     /**
      * Get Last killer

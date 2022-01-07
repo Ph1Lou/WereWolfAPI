@@ -25,7 +25,7 @@ public class PlayerReview implements IPlayerReview {
 
     public PlayerReview(IPlayerWW playerWW) {
 
-        this.uuid = playerWW.getMojangUUID();
+        this.uuid = playerWW.getReviewUUID();
         this.role = playerWW.getRole().getDeathRole();
         for (ILover ILover : playerWW.getLovers()) {
 
@@ -35,18 +35,23 @@ public class PlayerReview implements IPlayerReview {
             if (!lovers.isEmpty()) {
 
                 if (ILover.isKey(LoverType.AMNESIAC_LOVER.getKey())) {
-                    this.amnesiacLover = lovers.get(0).getMojangUUID();
+                    this.amnesiacLover = lovers.get(0).getReviewUUID();
                 } else if (ILover.isKey(LoverType.CURSED_LOVER.getKey())) {
-                    this.cursedLover = lovers.get(0).getMojangUUID();
-                } else this.lovers.addAll(lovers.stream().map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList()));
+                    this.cursedLover = lovers.get(0).getReviewUUID();
+                } else this.lovers.addAll(lovers.stream().map(IPlayerWW::getReviewUUID).collect(Collectors.toList()));
             }
         }
 
         this.deathTime = playerWW.getDeathTime();
-        this.killers = playerWW.getKillers().stream().filter(Objects::nonNull).map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList());
+        this.killers = playerWW.getKillers().stream().map(playerWW1 -> {
+            if(playerWW1 == null){
+                return null;
+            }
+            else return playerWW1.getReviewUUID();
+        }).collect(Collectors.toList());
         this.nbKill = playerWW.getPlayersKills().size();
         this.solitary = playerWW.getRole().isSolitary();
-        this.infected = playerWW.getRole().getInfected();
+        this.infected = playerWW.getRole().isInfected();
         this.name = playerWW.getName();
     }
 

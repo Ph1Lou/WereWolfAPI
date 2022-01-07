@@ -55,12 +55,12 @@ public class AddonRegister implements IRegister {
 
 
     public Plugin getPlugin() {
-        return plugin;
+        return this.plugin;
     }
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
     @Override
@@ -80,26 +80,26 @@ public class AddonRegister implements IRegister {
     }
 
     public String getDefaultLanguage() {
-        return defaultLanguage;
+        return this.defaultLanguage;
     }
 
     public Set<? extends String> getAuthors() {
-        return authors.keySet();
+        return this.authors.keySet();
     }
 
     public Optional<UUID> getAuthorsUUID(String name) {
-        if(authors.containsKey(name)){
+        if(this.authors.containsKey(name)){
             return Optional.empty();
         }
-        return Optional.of(authors.get(name));
+        return Optional.of(this.authors.get(name));
     }
 
     public ItemStack getItem() {
-        return item;
+        return this.item;
     }
 
     public IActionItemAddon getAction() {
-        return action;
+        return this.action;
     }
 
 
@@ -109,7 +109,7 @@ public class AddonRegister implements IRegister {
      * @return l'instance de l'objet
      */
     public AddonRegister setLoreKey(List<String> loreKeys){
-        this.loreKey = loreKey;
+        this.loreKey = loreKeys;
         return this;
     }
 
@@ -124,7 +124,7 @@ public class AddonRegister implements IRegister {
     }
 
     public List<? extends String> getLoreKey() {
-        return loreKey;
+        return this.loreKey;
     }
 
 

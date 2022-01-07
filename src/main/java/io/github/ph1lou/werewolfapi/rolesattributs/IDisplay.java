@@ -6,7 +6,7 @@ public interface IDisplay {
 
     boolean isDisplayCamp(String camp);
 
-    String getDisplayCamp() ;
+    String getDisplayCamp();
 
     String getDisplayRole();
 

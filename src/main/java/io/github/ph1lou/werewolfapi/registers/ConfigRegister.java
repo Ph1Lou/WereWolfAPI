@@ -31,11 +31,11 @@ public class ConfigRegister implements IRegister {
     }
 
     public boolean getDefaultValue(){
-        return defaultValue;
+        return this.defaultValue;
     }
 
     public List<String> getLoreKey() {
-        return loreKey;
+        return this.loreKey;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ConfigRegister implements IRegister {
 
     @Override
     public String getKey() {
-        return key;
+        return this.key;
     }
 
 
@@ -54,15 +54,15 @@ public class ConfigRegister implements IRegister {
     }
 
     public boolean isAppearInMenu() {
-        return appearInMenu;
+        return this.appearInMenu;
     }
 
     public ItemStack getItem() {
-        return item;
+        return this.item;
     }
 
     public List<? extends String> getIncompatibleConfigs() {
-        return incompatibleConfigs;
+        return this.incompatibleConfigs;
     }
 
     public ConfigRegister addConfig(ListenerManager config) {

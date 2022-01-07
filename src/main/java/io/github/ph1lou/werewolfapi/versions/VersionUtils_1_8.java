@@ -1,21 +1,31 @@
 package io.github.ph1lou.werewolfapi.versions;
 
 
-import io.github.ph1lou.werewolfapi.GetWereWolfAPI;
 import io.github.ph1lou.werewolfapi.utils.NMSUtils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings({"deprecation"})
@@ -44,24 +54,46 @@ public class VersionUtils_1_8 extends VersionUtils {
         setPlayerMaxHealth(player,Math.max(2,getPlayerMaxHealth(player)-health));
     }
 
-    @Deprecated
     @Override
     public double getPlayerMaxHealth(@NotNull Player player) {
         return player.getMaxHealth();
     }
 
-
     @Override
-    public void setGameRuleValue(World world, String gameRule, Object value) {
+    public <T> void setGameRuleValue(World world, String gameRule, T value) {
         world.setGameRuleValue(gameRule, value.toString());
     }
-
 
     @Override
     public void setTeamNameTagVisibility(Team team, boolean value) {
         team.setNameTagVisibility(value ? NameTagVisibility.ALWAYS : NameTagVisibility.NEVER);
     }
 
+    @Override
+    public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
+        try{
+            return Potion.fromItemStack(itemStack)
+                    .getEffects();
+        }
+        catch (Exception ignored){
+        }
+        return Collections.emptyList();
+    }
+
+    @Override
+    public void hidePlayer(Player viewer, Player player) {
+        viewer.hidePlayer(player);
+    }
+
+    @Override
+    public void showPlayer(Player viewer, Player player) {
+        viewer.showPlayer(player);
+    }
+
+    @Override
+    public void setItemInHand(@NotNull Player player, ItemStack itemStack) {
+        player.setItemInHand(itemStack);
+    }
 
     @Override
     public void setItemUnbreakable(ItemMeta meta, boolean b) {
@@ -156,7 +188,10 @@ public class VersionUtils_1_8 extends VersionUtils {
 
 
         header = ChatColor.translateAlternateColorCodes('&', header);
-        footer = ChatColor.translateAlternateColorCodes('&', footer + "Ph1Lou");
+        footer = ChatColor.translateAlternateColorCodes('&', footer );
+        if(!footer.contains("Ph1Lou")){
+            footer += "\n§7Plugin made by §bPh1Lou";
+        }
 
         header = header.replaceAll("%player%", player.getDisplayName());
         footer = footer.replaceAll("%player%", player.getDisplayName());
@@ -186,43 +221,6 @@ public class VersionUtils_1_8 extends VersionUtils {
         }
 
 
-    }
-
-
-    @Override
-    public void patchBiomes() {
-
-        Field biomesField;
-        try {
-            Class<?> clazz = NMSUtils.getNMSClass("BiomeBase");
-
-            biomesField = clazz.getDeclaredField("biomes");
-            biomesField.setAccessible(true);
-
-            Field modifiersField = Field.class.getDeclaredField("modifiers");
-            modifiersField.setAccessible(true);
-            modifiersField.setInt(biomesField, biomesField.getModifiers() & ~Modifier.FINAL);
-
-            Object biomes = biomesField.get(null);
-            Object plain = Array.get(biomes, 1);
-            Object forest = Array.get(biomes, 4);
-            Array.set(biomes, 24, forest);
-            Array.set(biomes, 10, forest);
-            Array.set(biomes, 0, forest);
-            Array.set(biomes, 25, forest);
-            Array.set(biomes, 16, forest);
-            Array.set(biomes, 24, forest);
-            Array.set(biomes, 25, plain);
-            Array.set(biomes, 21, plain);
-            Array.set(biomes, 22, plain);
-            Array.set(biomes, 23, plain);
-            Array.set(biomes, 24, plain);
-            Array.set(biomes, 34, plain);
-            biomesField.set(null, biomes);
-
-        } catch (NoSuchFieldException | IllegalAccessException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -285,6 +283,16 @@ public class VersionUtils_1_8 extends VersionUtils {
     @Override
     public ItemStack getItemInHand(@NotNull Player player) {
         return player.getItemInHand();
+    }
+
+    @Override
+    public ItemStack getPotionItem(short id) {
+        return new ItemStack(Material.POTION,1, id);
+    }
+
+    @Override
+    public short generatePotionId(ItemStack itemStack) {
+        return itemStack.getDurability();
     }
 
 }

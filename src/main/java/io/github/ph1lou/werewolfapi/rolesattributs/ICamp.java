@@ -7,7 +7,7 @@ public interface ICamp {
 
     boolean isWereWolf();
 
-    boolean getInfected();
+    boolean isInfected();
 
     boolean isTransformedToNeutral();
 

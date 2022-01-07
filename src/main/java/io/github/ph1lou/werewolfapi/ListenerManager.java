@@ -1,10 +1,8 @@
 package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.utils.BukkitUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 
 public abstract class ListenerManager implements Listener {
 

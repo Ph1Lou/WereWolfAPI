@@ -28,9 +28,9 @@ public class RegisteredAction implements IRegisteredAction {
         this.event = event;
         if (playerWW == null) {
             this.uuid = null;
-        } else this.uuid = playerWW.getMojangUUID();
+        } else this.uuid = playerWW.getReviewUUID();
         if (uuidS != null) {
-            this.uuidS.addAll(uuidS.stream().map(io.github.ph1lou.werewolfapi.IPlayerWW::getMojangUUID).collect(Collectors.toList()));
+            this.uuidS.addAll(uuidS.stream().map(IPlayerWW::getReviewUUID).collect(Collectors.toList()));
         }
         this.timer = timer;
     }

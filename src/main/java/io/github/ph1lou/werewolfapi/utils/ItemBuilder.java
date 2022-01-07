@@ -1,6 +1,7 @@
 package io.github.ph1lou.werewolfapi.utils;
 
 import io.github.ph1lou.werewolfapi.versions.VersionUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -92,11 +93,10 @@ public class ItemBuilder {
 
     public ItemBuilder setDisplayName(String displayname) {
         ItemMeta meta = getItemMeta();
-        meta.setDisplayName(displayname);
+        meta.setDisplayName(ChatColor.WHITE +displayname);
         setItemMeta(meta);
         return this;
     }
-
 
     public ItemBuilder setLore(List<String> lore) {
         ItemMeta meta = getItemMeta();
@@ -134,5 +134,4 @@ public class ItemBuilder {
     public ItemStack build() {
         return stack;
     }
-
 }

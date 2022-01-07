@@ -2,7 +2,6 @@ package io.github.ph1lou.werewolfapi;
 
 import io.github.ph1lou.werewolfapi.enums.Day;
 import io.github.ph1lou.werewolfapi.enums.StateGame;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -57,17 +56,6 @@ public interface WereWolfAPI {
 
     Collection<? extends IPlayerWW> getPlayersWW();
 
-    /**
-     * @deprecated use Formatter
-     * return the text associated with the key
-     * @param key key of the json
-     * @param args parameters to format
-     * @return String
-     */
-    @Deprecated
-    String translate(String key, Object... args);
-
-
 
     /**
      * return the text associated with the key
@@ -77,6 +65,17 @@ public interface WereWolfAPI {
      */
 
     String translate(String key, Formatter... args);
+
+
+    /**
+     * return the text associated with the key
+     * @param prefixKey key of the json
+     * @param key key of the json
+     * @param args parameters to format
+     * @return String
+     */
+
+    String translate(String prefixKey, String key, Formatter... args);
 
     /**
      * launch the win victory check process
@@ -134,6 +133,7 @@ public interface WereWolfAPI {
      * @return a string translated array
      */
     List<String> translateArray(String key, Formatter... args);
+
 
     /**
      * Get Stuff Manager
@@ -215,4 +215,7 @@ public interface WereWolfAPI {
      */
     int getRoleInitialSize();
 
+    void enableWereWolfChat();
+
+    void disableWereWolfChat();
 }
