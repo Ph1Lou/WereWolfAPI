@@ -12,16 +12,14 @@ import java.util.Set;
 public class FruitMerchantRecoverInformationEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
-    private final Set<IPlayerWW> playerWWS;
     private final Map<IPlayerWW,GoldenCount> goldenAppleCount;
     private boolean cancel=false;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public FruitMerchantRecoverInformationEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS,
+    public FruitMerchantRecoverInformationEvent(IPlayerWW playerWW,
                                                 Map<IPlayerWW,GoldenCount> goldenAppleCount){
         this.playerWW = playerWW;
-        this.playerWWS = playerWWS;
         this.goldenAppleCount = goldenAppleCount;
     }
 
@@ -40,7 +38,7 @@ public class FruitMerchantRecoverInformationEvent extends Event implements Cance
     }
 
     public Set<IPlayerWW> getPlayerWWS() {
-        return playerWWS;
+        return this.goldenAppleCount.keySet();
     }
 
     @Override

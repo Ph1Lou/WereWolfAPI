@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 public class FruitMerchantDeathEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final int goldenAppleCount;
+    private final GoldenCount goldenAppleCount;
 
-    public FruitMerchantDeathEvent(IPlayerWW playerWW, IPlayerWW playerWW1, int goldenAppleCount) {
+    public FruitMerchantDeathEvent(IPlayerWW playerWW, IPlayerWW playerWW1, GoldenCount goldenAppleCount) {
         super(playerWW, playerWW1);
         this.goldenAppleCount = goldenAppleCount;
     }
@@ -25,7 +25,7 @@ public class FruitMerchantDeathEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public int getGoldenAppleCount() {
+    public GoldenCount getGoldenAppleCount() {
         return goldenAppleCount;
     }
 }

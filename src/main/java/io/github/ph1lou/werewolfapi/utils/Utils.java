@@ -6,9 +6,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Utils {
 
@@ -112,10 +114,12 @@ public class Utils {
             return 0;
         }
 
-        return (int) Arrays.stream(player.getInventory()
+        return Arrays.stream(player.getInventory()
                 .getContents())
+                .filter(Objects::nonNull)
                 .filter(itemStack -> itemStack.getType() == UniversalMaterial.GOLDEN_APPLE.getType())
-                .count();
+                .mapToInt(ItemStack::getAmount)
+                .sum();
     }
 
 }
