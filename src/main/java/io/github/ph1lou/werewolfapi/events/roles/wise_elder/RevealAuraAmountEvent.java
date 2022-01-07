@@ -1,4 +1,4 @@
-package io.github.ph1lou.werewolfapi.events.roles.wiseelder;
+package io.github.ph1lou.werewolfapi.events.roles.wise_elder;
 
 import io.github.ph1lou.werewolfapi.IPlayerWW;
 import org.bukkit.event.Event;
