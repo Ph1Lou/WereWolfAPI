@@ -54,7 +54,8 @@ public enum RolesBase {
     AVENGER_WEREWOLF("werewolf.role.avenger_werewolf.display"),
     CHARMER("werewolf.role.charmer.display"),
     SHAMAN("werewolf.role.shaman.display"),
-    ALPHA_WEREWOLF("werewolf.role.alpha_werewolf.display");
+    ALPHA_WEREWOLF("werewolf.role.alpha_werewolf.display"),
+    WISE_ELDER("werewolf.role.wise_elder.display");
 
     private final String key;
 
