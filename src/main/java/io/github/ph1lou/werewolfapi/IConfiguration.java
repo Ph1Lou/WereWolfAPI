@@ -116,6 +116,10 @@ public interface IConfiguration {
 
      void setDistanceFlutePlayer(int distanceAmnesiacLovers);
 
+     int getDistanceFruitMerchant();
+
+     void setDistanceFruitMerchant(int distanceFruitMerchant);
+
      int getTimerValue(String key);
 
      boolean isConfigActive(String key);
