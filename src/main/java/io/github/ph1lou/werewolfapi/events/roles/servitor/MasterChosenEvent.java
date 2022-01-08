@@ -9,11 +9,11 @@ import org.jetbrains.annotations.NotNull;
  * @author Héphaïsto
  * Event called when the servitor master is selected
  */
-public class MasterChooseEvent extends SelectionEvent {
+public class MasterChosenEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public MasterChooseEvent(IPlayerWW servitor, IPlayerWW master) {
+    public MasterChosenEvent(IPlayerWW servitor, IPlayerWW master) {
         super(servitor, master);
     }
 
