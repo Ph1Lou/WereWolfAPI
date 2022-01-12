@@ -265,4 +265,7 @@ public interface IConfiguration {
 
      boolean isSweetAngel();
 
+     int getDistanceServitor();
+
+     void setDistanceServitor(int distanceServitor);
 }
