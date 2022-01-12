@@ -265,4 +265,11 @@ public interface IConfiguration {
 
      boolean isSweetAngel();
 
+     int getTenebrousDistance();
+
+     void setTenebrousDistance(int distance);
+
+     int getTenebrousDuration();
+
+     void setTenebrousDuration(int duration);
 }
