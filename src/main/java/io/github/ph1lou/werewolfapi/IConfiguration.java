@@ -273,7 +273,11 @@ public interface IConfiguration {
 
      boolean isSweetAngel();
 
-     int getDistanceServitor();
+     int getDistanceWiseElder();
 
-     void setDistanceServitor(int distanceServitor);
+     void setDistanceWiseElder(int distanceWiseElder);
+  
+    int getDistanceServitor();
+
+    void setDistanceServitor(int distanceServitor);
 }
