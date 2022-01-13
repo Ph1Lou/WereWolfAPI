@@ -277,7 +277,15 @@ public interface IConfiguration {
 
      void setDistanceWiseElder(int distanceWiseElder);
   
-    int getDistanceServitor();
+     int getDistanceServitor();
 
-    void setDistanceServitor(int distanceServitor);
+     void setDistanceServitor(int distanceServitor);
+
+     int getScamDelay();
+
+     void setScamDelay(int scamDelay);
+
+     int getDistanceScammer();
+
+     void setDistanceScammer(int distanceScammer);
 }
