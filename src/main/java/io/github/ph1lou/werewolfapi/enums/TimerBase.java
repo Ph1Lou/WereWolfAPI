@@ -23,7 +23,8 @@ public enum TimerBase {
     WEREWOLF_CHAT_DURATION("werewolf.menu.timers.werewolf_chat_duration"),
     AUTO_RESTART_DURATION("werewolf.menu.timers.auto_restart_duration"),
     SUCCUBUS_DURATION("werewolf.menu.timers.succubus_duration"),
-    CHARMER_COUNTDOWN("werewolf.menu.timers.charmer_countdown");
+    CHARMER_COUNTDOWN("werewolf.menu.timers.charmer_countdown"),
+    FRUIT_MERCHANT_COOL_DOWN("werewolf.menu.timers.fruit_merchant_cooldown");
 
     private final String key;
 
