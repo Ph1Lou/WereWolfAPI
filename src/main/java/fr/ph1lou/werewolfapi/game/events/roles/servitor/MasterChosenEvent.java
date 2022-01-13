@@ -1,7 +1,7 @@
-package io.github.ph1lou.werewolfapi.events.roles.servitor;
+package fr.ph1lou.werewolfapi.game.events.roles.servitor;
 
-import io.github.ph1lou.werewolfapi.IPlayerWW;
-import io.github.ph1lou.werewolfapi.events.roles.SelectionEvent;
+import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 

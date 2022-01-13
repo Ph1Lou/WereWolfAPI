@@ -75,11 +75,6 @@ public class DescriptionBuilder {
         sb.append(this.game.translate("werewolf.description.camp",
                 Formatter.format("&camp&",this.role.getCamp().getChatColor()+this.game.translate(this.role.getCamp().getKey()))));
 
-        sb.append(this.role.isInfected()?
-                this.game.translate("werewolf.description.effect",
-                        Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf")))
-                :"");
-
         sb.append(this.role instanceof ITransformed ?
                 this.game.translate("werewolf.description.transformed",
                         Formatter.format("&on&",this.game.translate(((ITransformed) this.role).isTransformed()?
@@ -87,37 +82,49 @@ public class DescriptionBuilder {
                                 : "werewolf.description.no")))
                 : "");
 
-        if(this.description!=null){
-            sb.append(this.game.translate("werewolf.description.description",
-                    Formatter.format("&text&",this.description)));
+        if(!this.role.isAbilityEnabled()){
+            sb.append(game.translate("werewolf.description.disable"));
+        }
+        else{
+
+            if(this.description!=null){
+                sb.append(this.game.translate("werewolf.description.description",
+                        Formatter.format("&text&",this.description)));
+            }
+
+            sb.append(this.role.isInfected()?
+                    this.game.translate("werewolf.description.effect",
+                            Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf")))
+                    :"");
+
+            if(this.power!=null){
+                sb.append(this.game.translate("werewolf.description.power",
+                        Formatter.format("&on&",this.power)));
+            }
+
+            if(this.effects!=null){
+                sb.append(this.game.translate("werewolf.description.effect",
+                        Formatter.format("&effect&",this.effects)));
+            }
+
+            if(this.items!=null){
+                sb.append(this.game.translate("werewolf.description.item",
+                        Formatter.format("&items&",this.items)));
+            }
+
+            if(this.equipments!=null){
+                sb.append(this.game.translate("werewolf.description.equipment",
+                        Formatter.format("&equipment&",this.equipments)));
+            }
+
+            if(this.command!=null){
+                sb.append(this.game.translate("werewolf.description.command",
+                        Formatter.format("&command&",this.command)));
+            }
+
+            this.extraLines.forEach(sb::append);
         }
 
-        if(this.power!=null){
-            sb.append(this.game.translate("werewolf.description.power",
-                    Formatter.format("&on&",this.power)));
-        }
-
-        if(this.effects!=null){
-            sb.append(this.game.translate("werewolf.description.effect",
-                    Formatter.format("&effect&",this.effects)));
-        }
-
-        if(this.items!=null){
-            sb.append(this.game.translate("werewolf.description.item",
-                    Formatter.format("&items&",this.items)));
-        }
-
-        if(this.equipments!=null){
-            sb.append(this.game.translate("werewolf.description.equipment",
-                    Formatter.format("&equipment&",this.equipments)));
-        }
-
-        if(this.command!=null){
-            sb.append(this.game.translate("werewolf.description.command",
-                    Formatter.format("&command&",this.command)));
-        }
-
-        this.extraLines.forEach(sb::append);
 
         return this.game.translate("werewolf.description._") +
                 sb +

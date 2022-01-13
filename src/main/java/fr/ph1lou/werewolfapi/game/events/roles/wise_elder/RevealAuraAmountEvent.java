@@ -1,6 +1,6 @@
-package io.github.ph1lou.werewolfapi.events.roles.wise_elder;
+package fr.ph1lou.werewolfapi.game.events.roles.wise_elder;
 
-import io.github.ph1lou.werewolfapi.IPlayerWW;
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
