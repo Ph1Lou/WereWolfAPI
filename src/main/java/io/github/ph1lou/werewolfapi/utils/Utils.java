@@ -1,9 +1,16 @@
 package io.github.ph1lou.werewolfapi.utils;
 
+import io.github.ph1lou.werewolfapi.IPlayerWW;
+import io.github.ph1lou.werewolfapi.enums.UniversalMaterial;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Utils {
 
@@ -95,6 +102,24 @@ public class Utils {
         if (sign < 0) value = "-" + value;
 
         return value;
+    }
+
+    /**
+     * Retourne le nombre de pomme d'or du joueur
+     */
+    public static int countGoldenApple(IPlayerWW playerWW){
+        Player player = Bukkit.getPlayer(playerWW.getUUID());
+
+        if(player == null){
+            return 0;
+        }
+
+        return Arrays.stream(player.getInventory()
+                .getContents())
+                .filter(Objects::nonNull)
+                .filter(itemStack -> itemStack.getType() == UniversalMaterial.GOLDEN_APPLE.getType())
+                .mapToInt(ItemStack::getAmount)
+                .sum();
     }
 
 }

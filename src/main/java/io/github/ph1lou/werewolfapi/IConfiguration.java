@@ -76,6 +76,10 @@ public interface IConfiguration {
 
      void setDistanceBearTrainer(int distanceBearTrainer);
 
+     int getDistanceDruid();
+
+     void setDistanceDruid(int distanceDruid);
+
      int getDistanceFox();
 
      void setDistanceFox(int distanceFox);
@@ -115,6 +119,10 @@ public interface IConfiguration {
      int getDistanceFlutePlayer();
 
      void setDistanceFlutePlayer(int distanceAmnesiacLovers);
+
+     int getDistanceFruitMerchant();
+
+     void setDistanceFruitMerchant(int distanceFruitMerchant);
 
      int getTimerValue(String key);
 

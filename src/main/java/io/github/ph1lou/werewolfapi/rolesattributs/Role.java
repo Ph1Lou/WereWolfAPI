@@ -241,19 +241,20 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
     public final void recoverPotionEffects() {
 
         this.recoverPotionEffect();
+        if(!this.isAbilityEnabled()) return;
 
         if(!this.isWereWolf()) return;
 
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,"werewolf"));
         if(game.isDay(Day.DAY)) return;
-        if(!this.isAbilityEnabled()) return;
         this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
     }
 
     @EventHandler
     public void onWWChat(WereWolfChatEvent event){
-        if(event.isCancelled()) return;
 
+        if(event.isCancelled()) return;
+        if(!this.isAbilityEnabled()) return;
         if(!this.getPlayerWW().isState(StatePlayer.ALIVE)) return;
         if(!this.isWereWolf()) return;
 
@@ -262,6 +263,8 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
     @EventHandler
     public void onChatSpeak(WereWolfCanSpeakInChatEvent event){
+
+        if(!this.isAbilityEnabled()) return;
 
         if(!this.playerWW.equals(event.getPlayerWW())) return;
 
@@ -380,7 +383,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf", 0));
 
     }
 
@@ -501,7 +504,7 @@ public abstract class Role implements IRole, Cloneable,IDisplay {
             return;
         }
 
-        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
+        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf", 0));
     }
 
     @Override
