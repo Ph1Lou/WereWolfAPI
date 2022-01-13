@@ -60,6 +60,7 @@ public enum RolesBase {
     HOWLING_WEREWOLF("werewolf.role.howling_werewolf.display"),
     TWIN("werewolf.role.twin.display"),
     ANALYST("werewolf.role.analyst.display"),
+    SERVITOR("werewolf.role.servitor.display"),
     FRUIT_MERCHANT("werewolf.role.fruit_merchant.display"),
     DRUID("werewolf.role.druid.display");
 
