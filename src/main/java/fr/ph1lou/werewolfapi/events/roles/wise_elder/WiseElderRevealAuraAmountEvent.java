@@ -1,19 +1,21 @@
-package fr.ph1lou.werewolfapi.game.events.roles.wise_elder;
+package fr.ph1lou.werewolfapi.events.roles.wise_elder;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class RevealAuraAmountEvent extends Event{
+public class WiseElderRevealAuraAmountEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final int neutral;
     private final int dark;
     private final int light;
+    private boolean cancel = false;
 
-    public RevealAuraAmountEvent(IPlayerWW playerWW, int neutral, int dark, int light) {
+    public WiseElderRevealAuraAmountEvent(IPlayerWW playerWW, int neutral, int dark, int light) {
         this.playerWW = playerWW;
         this.neutral = neutral;
         this.dark = dark;
@@ -44,5 +46,15 @@ public class RevealAuraAmountEvent extends Event{
 
     public int getLight() {
         return light;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return this.cancel;
+    }
+
+    @Override
+    public void setCancelled(boolean cancel) {
+        this.cancel=cancel;
     }
 }

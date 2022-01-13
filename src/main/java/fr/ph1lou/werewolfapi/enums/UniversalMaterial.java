@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
-
+@SuppressWarnings({"unused"})
 public enum UniversalMaterial{
     WHITE_WOOL("WOOL", "WHITE_WOOL", (short) 0),
     ORANGE_WOOL("WOOL", "ORANGE_WOOL", (short) 1),

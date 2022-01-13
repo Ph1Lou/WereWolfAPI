@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 /**
  * Version independent spigot sounds.
  */
-
+@SuppressWarnings({"unused"})
 public enum Sound {
     AMBIENCE_CAVE("AMBIENCE_CAVE", "AMBIENT_CAVE"),
     AMBIENCE_RAIN("AMBIENCE_RAIN", "WEATHER_RAIN"),

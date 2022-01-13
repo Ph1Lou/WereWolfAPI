@@ -1,5 +1,5 @@
 package fr.ph1lou.werewolfapi.enums;
-
+@SuppressWarnings({"unused"})
 public enum VillagerKit {
     MINER("werewolf.role.villager.miner","werewolf.role.villager.miner_desc"),
     BLACK_SMITH("werewolf.role.villager.black_smith","werewolf.role.villager.black_smith_desc"),

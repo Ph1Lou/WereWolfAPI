@@ -1,5 +1,5 @@
 package fr.ph1lou.werewolfapi.enums;
-
+@SuppressWarnings({"unused"})
 public enum RandomEvent {
     EXPOSED("werewolf.random_events.exposed.name"),
     INFECTION("werewolf.random_events.infection.name"),

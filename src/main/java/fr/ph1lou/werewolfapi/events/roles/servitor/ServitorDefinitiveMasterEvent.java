@@ -1,4 +1,4 @@
-package fr.ph1lou.werewolfapi.game.events.roles.servitor;
+package fr.ph1lou.werewolfapi.events.roles.servitor;
 
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 
@@ -10,10 +10,10 @@ import org.jetbrains.annotations.NotNull;
  * @author Héphaïsto
  * Event called when a master kill a servitor for the first time, the master is now definitive
  */
-public class DefinitiveMasterEvent extends SelectionEvent {
+public class ServitorDefinitiveMasterEvent extends SelectionEvent {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public DefinitiveMasterEvent(IPlayerWW servitor, IPlayerWW master) {
+    public ServitorDefinitiveMasterEvent(IPlayerWW servitor, IPlayerWW master) {
         super(servitor, master);
     }
 

@@ -1,5 +1,5 @@
 package fr.ph1lou.werewolfapi.enums;
-
+@SuppressWarnings({"unused"})
 public enum ConfigBase {
 
     VICTORY_LOVERS("werewolf.menu.global.victory_couple"),

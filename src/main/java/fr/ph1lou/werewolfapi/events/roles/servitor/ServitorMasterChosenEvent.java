@@ -1,19 +1,20 @@
+package fr.ph1lou.werewolfapi.events.roles.servitor;
 
-package fr.ph1lou.werewolfapi.events.game.life_cycle;
-
+import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
-
-public class SecondDeathEvent extends FirstDeathEvent {
-
+/**
+ * @author Héphaïsto
+ * Event called when the servitor master is selected
+ */
+public class ServitorMasterChosenEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SecondDeathEvent(IPlayerWW playerWW, Set<IPlayerWW> lastStrikers){
-        super(playerWW, lastStrikers);
+    public ServitorMasterChosenEvent(IPlayerWW servitor, IPlayerWW master) {
+        super(servitor, master);
     }
 
     @NotNull
@@ -25,5 +26,4 @@ public class SecondDeathEvent extends FirstDeathEvent {
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
-
 }

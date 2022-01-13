@@ -1,7 +1,7 @@
 package fr.ph1lou.werewolfapi.enums;
 
 import org.bukkit.potion.PotionEffectType;
-
+@SuppressWarnings({"unused"})
 public enum PotionDurationUtil {
     SPEED(3600, 9600,1800),
     INCREASE_DAMAGE(3600,9600,1800),

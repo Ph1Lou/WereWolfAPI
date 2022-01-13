@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.enums;
 
+@SuppressWarnings({"unused"})
 public enum RolesBase {
 
     CUPID("werewolf.role.cupid.display"),
@@ -63,7 +64,8 @@ public enum RolesBase {
     WISE_ELDER("werewolf.role.wise_elder.display"),
     SERVITOR("werewolf.role.servitor.display"),
     FRUIT_MERCHANT("werewolf.role.fruit_merchant.display"),
-    DRUID("werewolf.role.druid.display");
+    DRUID("werewolf.role.druid.display"),
+    SCAMMER("werewolf.role.scammer.display");
 
     private final String key;
 

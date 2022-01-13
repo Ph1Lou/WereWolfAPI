@@ -1,7 +1,7 @@
 package fr.ph1lou.werewolfapi.enums;
 
 import org.bukkit.potion.PotionEffectType;
-
+@SuppressWarnings({"unused"})
 public enum ComedianMask {
     RESISTANCE("werewolf.role.comedian.1",PotionEffectType.DAMAGE_RESISTANCE),
     SPEED("werewolf.role.comedian.2",PotionEffectType.SPEED),

@@ -1,5 +1,5 @@
 package fr.ph1lou.werewolfapi.enums;
-
+@SuppressWarnings({"unused"})
 public enum TimerBase {
     INVULNERABILITY("werewolf.menu.timers.invulnerability"),
     ROLE_DURATION("werewolf.menu.timers.role_duration"),

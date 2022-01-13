@@ -1,5 +1,5 @@
 package fr.ph1lou.werewolfapi.enums;
-
+@SuppressWarnings({"unused"})
 public enum ScenariosBase {
     VANILLA_PLUS("werewolf.menu.scenarios.vanilla_plus"),
     ROD_LESS("werewolf.menu.scenarios.rod_less"),

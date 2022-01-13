@@ -1,20 +1,16 @@
-package fr.ph1lou.werewolfapi.game.events.roles.servitor;
+package fr.ph1lou.werewolfapi.events.roles.scammer;
 
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * @author Héphaïsto
- * Event called when the servitor master is selected
- */
-public class MasterChosenEvent extends SelectionEvent {
+public class ScamEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public MasterChosenEvent(IPlayerWW servitor, IPlayerWW master) {
-        super(servitor, master);
+    public ScamEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+        super(playerWW, targetWW);
     }
 
     @NotNull

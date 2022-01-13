@@ -1,7 +1,7 @@
 package fr.ph1lou.werewolfapi.enums;
 
 import org.bukkit.ChatColor;
-
+@SuppressWarnings({"unused"})
 public enum LoverType {
 
     LOVER("werewolf.role.lover.display", ChatColor.LIGHT_PURPLE),

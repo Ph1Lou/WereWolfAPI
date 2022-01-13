@@ -1,7 +1,7 @@
 package fr.ph1lou.werewolfapi.enums;
 
 import org.bukkit.ChatColor;
-
+@SuppressWarnings({"unused"})
 public enum Category {
     WEREWOLF("werewolf.categories.werewolf", ChatColor.DARK_RED),
     VILLAGER("werewolf.categories.villager",ChatColor.GREEN),

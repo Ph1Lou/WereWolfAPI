@@ -8,284 +8,284 @@ package fr.ph1lou.werewolfapi.game;
 
 public interface IConfiguration {
 
-     int getDiamondLimit();
+    int getDiamondLimit();
 
-     void setDiamondLimit(int diamond_limit);
+    void setDiamondLimit(int diamond_limit);
 
-     int getStrengthRate();
+    int getStrengthRate();
 
-     void setStrengthRate(int strengthRate);
+    void setStrengthRate(int strengthRate);
 
-     int getPlayerRequiredVoteEnd();
+    int getPlayerRequiredVoteEnd();
 
-     void setPlayerRequiredVoteEnd(int player_required_before_voting_ends);
+    void setPlayerRequiredVoteEnd(int player_required_before_voting_ends);
 
-     int getPearlRate() ;
+    int getPearlRate() ;
 
-     void setPearlRate(int pearlRate);
+    void setPearlRate(int pearlRate);
 
-     int getFlintRate() ;
+    int getFlintRate() ;
 
-     void setFlintRate(int flintRate) ;
+    void setFlintRate(int flintRate) ;
 
-     int getAppleRate() ;
+    int getAppleRate() ;
 
-     void setAppleRate(int appleRate);
+    void setAppleRate(int appleRate);
 
-     int getXpBoost();
+    int getXpBoost();
 
-     void setXpBoost(int xpBoost);
+    void setXpBoost(int xpBoost);
 
-     int getLimitProtectionIron() ;
+    int getLimitProtectionIron() ;
 
-     void setLimitProtectionIron(int limitProtectionIron);
+    void setLimitProtectionIron(int limitProtectionIron);
 
-     int getLimitProtectionDiamond() ;
+    int getLimitProtectionDiamond() ;
 
-     void setLimitProtectionDiamond(int limitProtectionDiamond);
+    void setLimitProtectionDiamond(int limitProtectionDiamond);
 
-     int getLimitSharpnessDiamond();
+    int getLimitSharpnessDiamond();
 
-     void setLimitSharpnessDiamond(int limitSharpnessDiamond) ;
+    void setLimitSharpnessDiamond(int limitSharpnessDiamond) ;
 
-     int getLimitSharpnessIron();
+    int getLimitSharpnessIron();
 
-     void setLimitSharpnessIron(int limitSharpnessIron);
+    void setLimitSharpnessIron(int limitSharpnessIron);
 
-     int getLimitPowerBow() ;
+    int getLimitPowerBow() ;
 
-     void setLimitPowerBow(int limitPowerBow);
+    void setLimitPowerBow(int limitPowerBow);
 
-     int getLimitKnockBack() ;
+    int getLimitKnockBack() ;
 
-     void setLimitKnockBack(int limitKnockBack);
+    void setLimitKnockBack(int limitKnockBack);
 
-     int getLimitPunch() ;
+    int getLimitPunch() ;
 
-     void setLimitPunch(int limitPunch);
+    void setLimitPunch(int limitPunch);
 
-     int getUseOfFlair() ;
+    int getUseOfFlair() ;
 
-     void setUseOfFlair(int useOfFlair);
+    void setUseOfFlair(int useOfFlair);
 
-     int getGoldenAppleParticles() ;
+    int getGoldenAppleParticles() ;
 
-     void setGoldenAppleParticles(int goldenAppleParticles);
+    void setGoldenAppleParticles(int goldenAppleParticles);
 
-     int getDistanceBearTrainer();
+    int getDistanceBearTrainer();
 
-     void setDistanceBearTrainer(int distanceBearTrainer);
+    void setDistanceBearTrainer(int distanceBearTrainer);
 
-     int getDistanceDruid();
+    int getDistanceDruid();
 
-     void setDistanceDruid(int distanceDruid);
+    void setDistanceDruid(int distanceDruid);
 
-     int getDistanceFox();
+    int getDistanceFox();
 
-     void setDistanceFox(int distanceFox);
+    void setDistanceFox(int distanceFox);
 
-     int getDistanceHowlingWerewolf();
+    int getDistanceHowlingWerewolf();
 
-     void setDistanceHowlingWerewolf(int howlerWerewolf);
+    void setDistanceHowlingWerewolf(int howlerWerewolf);
 
-     int getDistanceTwin();
+    int getDistanceTwin();
 
-     void setDistanceTwin(int twin);
+    void setDistanceTwin(int twin);
 
-     int getResistanceRate() ;
+    int getResistanceRate() ;
 
-     void setResistanceRate(int resistanceRate);
+    void setResistanceRate(int resistanceRate);
 
-     boolean isTrollSV();
+    boolean isTrollSV();
 
-     void setTrollSV(boolean trollSV);
+    void setTrollSV(boolean trollSV);
 
-     int getDistanceSuccubus();
+    int getDistanceSuccubus();
 
-     void setDistanceSuccubus(int distanceSuccubus) ;
+    void setDistanceSuccubus(int distanceSuccubus) ;
 
-     int getBorderMax();
+    int getBorderMax();
 
-     void setBorderMax(int borderMax);
+    void setBorderMax(int borderMax);
 
-     int getBorderMin();
+    int getBorderMin();
 
-     void setBorderMin(int borderMin);
+    void setBorderMin(int borderMin);
 
-     int getDistanceAmnesiacLovers();
+    int getDistanceAmnesiacLovers();
 
-     void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
+    void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
 
-     int getDistanceFlutePlayer();
+    int getDistanceFlutePlayer();
 
-     void setDistanceFlutePlayer(int distanceAmnesiacLovers);
+    void setDistanceFlutePlayer(int distanceAmnesiacLovers);
 
-     int getDistanceFruitMerchant();
+    int getDistanceFruitMerchant();
 
-     void setDistanceFruitMerchant(int distanceFruitMerchant);
+    void setDistanceFruitMerchant(int distanceFruitMerchant);
 
-     int getTimerValue(String key);
+    int getTimerValue(String key);
 
-     boolean isConfigActive(String key);
+    boolean isConfigActive(String key);
 
-     int getRoleCount(String key);
+    int getRoleCount(String key);
 
-     int getLoverCount(String key);
+    int getLoverCount(String key);
 
-     void setLoverCount(String key,int value);
+    void setLoverCount(String key,int value);
 
-     void addOneLover(String key);
+    void addOneLover(String key);
 
-     void removeOneLover(String key);
+    void removeOneLover(String key);
 
-     boolean isScenarioActive(String key);
+    boolean isScenarioActive(String key);
 
-     double getBorderSpeed();
+    double getBorderSpeed();
 
-     void setBorderSpeed(double seed);
+    void setBorderSpeed(double seed);
 
-     void switchConfigValue(String key);
+    void switchConfigValue(String key);
 
-     void switchScenarioValue(String key);
+    void switchScenarioValue(String key);
 
-     void removeOneRole(String key);
+    void removeOneRole(String key);
 
-     void addOneRole(String key);
+    void addOneRole(String key);
 
-     void setRole(String key, int value);
+    void setRole(String key, int value);
 
-     void moveTimer(String key, int value);
+    void moveTimer(String key, int value);
 
-     void setConfig(String key,boolean enable);
+    void setConfig(String key,boolean enable);
 
-     void setScenario(String key,boolean enable);
+    void setScenario(String key,boolean enable);
 
-     int getLimitDepthStrider();
+    int getLimitDepthStrider();
 
-     void setTimerValue(String key, int value);
+    void setTimerValue(String key, int value);
 
-     void setLimitDepthStrider(int limitDepthRider);
+    void setLimitDepthStrider(int limitDepthRider);
 
-     /**
-      * return true if the whitelist is on
-      * @return boolean
-      */
+    /**
+     * return true if the whitelist is on
+     * @return boolean
+     */
 
-     boolean isWhiteList();
+    boolean isWhiteList();
 
-     /**
-      * change the status of the whitelist
-      * @param whiteList the desired status
-      */
+    /**
+     * change the status of the whitelist
+     * @param whiteList the desired status
+     */
 
-     void setWhiteList(boolean whiteList);
+    void setWhiteList(boolean whiteList);
 
-     /**
-      * return the maximum of player accepted in the game
-      * @return int
-      */
+    /**
+     * return the maximum of player accepted in the game
+     * @return int
+     */
 
-     int getPlayerMax();
+    int getPlayerMax();
 
-     /**
-      * Set the maximum number of players
-      * @param playerMax maximum number of players
+    /**
+     * Set the maximum number of players
+     * @param playerMax maximum number of players
 
-      */
+     */
 
-     void setPlayerMax(int playerMax);
+    void setPlayerMax(int playerMax);
 
-     /**
-      * return the spectator Mode of the game (0 : disable, 1 : for death players, 2: for all players)
-      * @return int
-      */
+    /**
+     * return the spectator Mode of the game (0 : disable, 1 : for death players, 2: for all players)
+     * @return int
+     */
 
-     int getSpectatorMode();
+    int getSpectatorMode();
 
-     /**
-      * change the status of the Spectator Mode
-      * @param spectatorMode the desired status (0 : disable, 1 : for death players, 2: for all players)
-      */
+    /**
+     * change the status of the Spectator Mode
+     * @param spectatorMode the desired status (0 : disable, 1 : for death players, 2: for all players)
+     */
 
-     void setSpectatorMode(int spectatorMode);
+    void setSpectatorMode(int spectatorMode);
 
-     String getTrollKey();
+    String getTrollKey();
 
-     void setTrollKey(String trollKey);
+    void setTrollKey(String trollKey);
 
-     int getKnockBackMode();
+    int getKnockBackMode();
 
-     int getProbability(String key);
+    int getProbability(String key);
 
-     void setProbability(String key,int probability);
+    void setProbability(String key,int probability);
 
-     void setKnockBackMode(int knockBackMode);
+    void setKnockBackMode(int knockBackMode);
 
-     int getWereWolfChatMaxMessage();
+    int getWereWolfChatMaxMessage();
 
-     void setWereWolfChatMaxMessage(int nbMessage);
+    void setWereWolfChatMaxMessage(int nbMessage);
 
-     int getDistanceSister();
+    int getDistanceSister();
 
-     void setDistanceSister(int distance);
+    void setDistanceSister(int distance);
 
-     int getDistanceFearfulWerewolf();
+    int getDistanceFearfulWerewolf();
 
-     void setDistanceFearfulWerewolf(int distance);
+    void setDistanceFearfulWerewolf(int distance);
 
-     int getDistanceHermit();
+    int getDistanceHermit();
 
-     void setDistanceHermit(int distance);
+    void setDistanceHermit(int distance);
 
-     int getDistanceWillOTheWisp();
+    int getDistanceWillOTheWisp();
 
-     void setDistanceWillOTheWisp(int distance);
+    void setDistanceWillOTheWisp(int distance);
 
-     int getDistancePriestess();
+    int getDistancePriestess();
 
-     void setDistancePriestess(int distance);
+    void setDistancePriestess(int distance);
 
-     int getDistanceAvengerWerewolf();
+    int getDistanceAvengerWerewolf();
 
-     void setDistanceAvengerWerewolf(int distance);
+    void setDistanceAvengerWerewolf(int distance);
 
-     boolean isTrollLover();
+    boolean isTrollLover();
 
-     void setTrollLover(boolean troll);
-     
-     void setWitchAutoResurrection(boolean autoRez);
+    void setTrollLover(boolean troll);
 
-     boolean isWitchAutoResurrection();
+    void setWitchAutoResurrection(boolean autoRez);
 
-     void setSeerEveryOtherDay(boolean everyOtherDay);
+    boolean isWitchAutoResurrection();
 
-     boolean isSeerEveryOtherDay();
+    void setSeerEveryOtherDay(boolean everyOtherDay);
 
-     void setDetectiveEveryOtherDay(boolean everyOtherDay);
+    boolean isSeerEveryOtherDay();
 
-     boolean isDetectiveEveryOtherDay();
+    void setDetectiveEveryOtherDay(boolean everyOtherDay);
 
-     void setOracleEveryOtherDay(boolean everyOtherDay);
+    boolean isDetectiveEveryOtherDay();
 
-     boolean isOracleEveryOtherDay();
+    void setOracleEveryOtherDay(boolean everyOtherDay);
 
-     void setSweetAngel(boolean sweet);
+    boolean isOracleEveryOtherDay();
 
-     boolean isSweetAngel();
+    void setSweetAngel(boolean sweet);
 
-     int getDistanceWiseElder();
+    boolean isSweetAngel();
 
-     void setDistanceWiseElder(int distanceWiseElder);
-  
-     int getDistanceServitor();
+    int getDistanceWiseElder();
 
-     void setDistanceServitor(int distanceServitor);
+    void setDistanceWiseElder(int distanceWiseElder);
 
-     int getScamDelay();
+    int getDistanceServitor();
 
-     void setScamDelay(int scamDelay);
+    void setDistanceServitor(int distanceServitor);
 
-     int getDistanceScammer();
+    int getScamDelay();
 
-     void setDistanceScammer(int distanceScammer);
+    void setScamDelay(int scamDelay);
+
+    int getDistanceScammer();
+
+    void setDistanceScammer(int distanceScammer);
 }
