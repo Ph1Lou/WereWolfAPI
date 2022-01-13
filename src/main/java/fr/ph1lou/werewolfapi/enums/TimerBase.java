@@ -11,7 +11,7 @@ public enum TimerBase {
     LOVER_DURATION("werewolf.menu.timers.lover_duration"),
     MODEL_DURATION("werewolf.menu.timers.model_duration"),
     ANGEL_DURATION("werewolf.menu.timers.angel_duration"),
-    CITIZEN_DURATION("werewolf.menu.timers.citizen_duration"),
+    VOTE_WAITING("werewolf.menu.timers.vote_waiting"),
     DAY_DURATION("werewolf.menu.timers.day_duration"),
     VOTE_DURATION("werewolf.menu.timers.vote_duration"),
     RIVAL_DURATION("werewolf.menu.timers.rival_duration"),

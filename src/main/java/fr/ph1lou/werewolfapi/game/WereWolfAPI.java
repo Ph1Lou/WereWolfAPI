@@ -5,6 +5,7 @@ import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.lovers.ILoverManager;
 import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.vote.IVoteManager;
 
 import java.util.Collection;
 import java.util.List;
@@ -60,7 +61,6 @@ public interface WereWolfAPI {
 
     Collection<? extends IPlayerWW> getPlayersWW();
 
-
     /**
      * return the text associated with the key
      * @param key key of the json
@@ -69,7 +69,6 @@ public interface WereWolfAPI {
      */
 
     String translate(String key, Formatter... args);
-
 
     /**
      * return the text associated with the key
@@ -95,14 +94,12 @@ public interface WereWolfAPI {
     void resurrection(IPlayerWW playerWW);
 
 
-
     /**
      * killed specified player
      * @param playerWW specified player
      */
 
     void death(IPlayerWW playerWW);
-
 
     /**
      * allow to get playerww with uuid
@@ -128,7 +125,7 @@ public interface WereWolfAPI {
      * Get Vote Manager
      * @return Vote Manager
      */
-    IVoteManager getVote();
+    IVoteManager getVoteManager();
 
     /**
      * Translate a key array
@@ -137,7 +134,6 @@ public interface WereWolfAPI {
      * @return a string translated array
      */
     List<String> translateArray(String key, Formatter... args);
-
 
     /**
      * Get Stuff Manager
@@ -213,7 +209,19 @@ public interface WereWolfAPI {
      */
     int getRoleInitialSize();
 
+    /**
+     * Enable Werewolf Chat
+     */
     void enableWereWolfChat();
 
+    /**
+     * Disable WereWolf chat
+     */
     void disableWereWolfChat();
+
+    /**
+     * Set Vote Manager
+     */
+
+    void setVoteManager(IVoteManager voteManager);
 }

@@ -12,7 +12,9 @@ public class VoteResultEvent extends Event implements Cancellable {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-
+    public VoteResultEvent(IPlayerWW playerWW){
+        this.playerWW = playerWW;
+    }
 
     @NotNull
     @Override

@@ -2,19 +2,17 @@
 package fr.ph1lou.werewolfapi.events.game.life_cycle;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class ThirdDeathEvent extends Event implements Cancellable {
+import java.util.Set;
 
-    private final IPlayerWW playerWW;
-    private boolean cancel=false;
+public class ThirdDeathEvent extends FirstDeathEvent {
+
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ThirdDeathEvent(IPlayerWW playerWW){
-        this.playerWW = playerWW;
+    public ThirdDeathEvent(IPlayerWW playerWW, Set<IPlayerWW> lastStrikers){
+        super(playerWW, lastStrikers);
     }
 
     @NotNull
@@ -25,19 +23,5 @@ public class ThirdDeathEvent extends Event implements Cancellable {
 
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
-    }
-
-    public IPlayerWW getPlayerWW() {
-        return playerWW;
-    }
-
-    @Override
-    public boolean isCancelled() {
-        return cancel;
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-        this.cancel=b;
     }
 }

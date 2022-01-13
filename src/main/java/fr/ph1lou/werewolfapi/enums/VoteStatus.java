@@ -4,7 +4,7 @@ public enum VoteStatus {
 
     NOT_BEGIN,
     IN_PROGRESS,
-    WAITING_CITIZEN,
+    WAITING,
     NOT_IN_PROGRESS,
     ENDED
 }

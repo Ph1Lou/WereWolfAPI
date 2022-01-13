@@ -63,13 +63,11 @@ public interface IPlayerWW {
      */
     void sendMessageWithKey(@NotNull String prefixKey, @NotNull String key, Formatter ... args);
 
-
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
      * @param textComponent the message
      */
     void sendMessage(@NotNull TextComponent textComponent);
-
 
     /**
      *
@@ -185,12 +183,6 @@ public interface IPlayerWW {
     List<? extends IPlayerWW> getKillers();
 
     /**
-     * set death time (timer)
-     * @param deathTime the death time
-     */
-    void setDeathTime(int deathTime);
-
-    /**
      * Get Death Time
      * @return the death time
      */
@@ -214,6 +206,9 @@ public interface IPlayerWW {
      */
     void removeLover(ILover ILover);
 
+    /**
+     * Clear Player Lovers
+     */
     void clearLover();
 
     /**
@@ -223,16 +218,16 @@ public interface IPlayerWW {
     Optional<IPlayerWW> getLastKiller();
 
     /**
+     * Get Player who damaged the player during last minutes
+     * @return list of players
+     */
+    List<IPlayerWW> getLastMinutesDamagedPlayer();
+
+    /**
      * Get Player Name
      * @return his name
      */
     String getName() ;
-
-    /**
-     * Change Player Name
-     * @param name the player name
-     */
-    void setName(String name) ;
 
     /**
      * Get Player State
@@ -247,28 +242,10 @@ public interface IPlayerWW {
     int getDisconnectedTime();
 
     /**
-     * Set  Disconnected Time
-     * @param disconnectedTime the disconnected time
-     */
-    void setDisconnectedTime(int disconnectedTime);
-
-    /**
      * Get Player UUID (note is not the Mojang UUID if he was on bungee)
      * @return the uuid
      */
     UUID getUUID();
-
-    /**
-     * Update player's positions, effects, messages
-     * @param player the uuid
-     */
-    void updateAfterReconnect(Player player);
-
-    /**
-     * Set Disconnected Location
-     * @param location the disconnected location
-     */
-    void setDisconnectedLocation(Location location);
 
     /**
      * Give Item to player

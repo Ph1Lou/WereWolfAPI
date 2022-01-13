@@ -7,14 +7,18 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Set;
+
 public class FirstDeathEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
+    private final Set<IPlayerWW> lastStrikers;
     private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public FirstDeathEvent(IPlayerWW playerWW){
+    public FirstDeathEvent(IPlayerWW playerWW, Set<IPlayerWW> lastStrikers){
         this.playerWW = playerWW;
+        this.lastStrikers = lastStrikers;
     }
 
     @NotNull
@@ -28,16 +32,20 @@ public class FirstDeathEvent extends Event implements Cancellable {
     }
 
     public IPlayerWW getPlayerWW() {
-        return playerWW;
+        return this.playerWW;
     }
 
     @Override
     public boolean isCancelled() {
-        return cancel;
+        return this.cancel;
     }
 
     @Override
-    public void setCancelled(boolean b) {
-        this.cancel=b;
+    public void setCancelled(boolean cancel) {
+        this.cancel=cancel;
+    }
+
+    public Set<IPlayerWW> getLastStrikers() {
+        return this.lastStrikers;
     }
 }
