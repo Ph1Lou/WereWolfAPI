@@ -11,7 +11,8 @@ public enum RandomEvent {
     DRUNKEN_WEREWOLF("werewolf.random_events.drunken_werewolf.name"),
     AMNESIC("werewolf.random_events.amnesic.name"),
     DISCORD("werewolf.random_events.discord.name"),
-    LOOT_BOX("werewolf.random_events.loot_box.name");
+    LOOT_BOX("werewolf.random_events.loot_box.name"),
+    SISTER_MISANTHROPE("werewolf.random_events.sister_misanthrope.name");
 
     private final String key;
 
