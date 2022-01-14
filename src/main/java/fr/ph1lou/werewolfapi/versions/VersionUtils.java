@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.versions;
 
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
+import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
@@ -21,7 +22,7 @@ public abstract class VersionUtils {
 
     public static VersionUtils getVersionUtils() {
         if (versionUtils == null) {
-            int version = UniversalMaterial.loadServerVersion();
+            int version = BukkitUtils.loadServerVersion();
             if (version == 8) {
                 versionUtils = new VersionUtils_1_8();
             } else if (version == 9) {

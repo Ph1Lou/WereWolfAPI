@@ -61,4 +61,21 @@ public class BukkitUtils {
         return Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) api,runnable,delay,period);
     }
 
+    public static int loadServerVersion(){
+        String versionString = Bukkit.getBukkitVersion();
+        int version = 0;
+
+        for (int i = 8; i <= 100; i ++){
+            if (versionString.startsWith("1." + i)){
+                version = i;
+            }
+        }
+
+        if (version == 0) {
+            version = 8;
+            Bukkit.getLogger().warning("[WereWolfPlugin] Failed to detect server version! " + versionString + "?");
+        }
+        return version;
+    }
+
 }

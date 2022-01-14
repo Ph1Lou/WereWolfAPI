@@ -13,7 +13,7 @@ public interface IVoteManager {
     Map<IPlayerWW,Integer> getVotes();
     Map<IPlayerWW, IPlayerWW> getPlayerVotes();
     Optional<IPlayerWW> getResult();
-    void showResultVote();
+    void showResultVote(IPlayerWW playerWW);
     boolean isStatus(VoteStatus status);
     void setStatus (VoteStatus status);
 

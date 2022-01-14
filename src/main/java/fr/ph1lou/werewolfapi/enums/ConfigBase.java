@@ -14,7 +14,8 @@ public enum ConfigBase {
     DOUBLE_TROLL("werewolf.menu.global.double_troll"),
     HIDE_EVENTS("werewolf.menu.global.hide_events"),
     HIDE_SCENARIOS("werewolf.menu.global.hide_scenarios"),
-    LONE_WOLF("werewolf.menu.global.lone_wolf");
+    LONE_WOLF("werewolf.menu.global.lone_wolf"),
+    NEW_VOTE("werewolf.menu.global.new_vote");
 
     private final String key;
 

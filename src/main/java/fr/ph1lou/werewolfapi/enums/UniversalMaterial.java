@@ -1,9 +1,10 @@
 package fr.ph1lou.werewolfapi.enums;
 
-import org.bukkit.Bukkit;
+import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
+
 @SuppressWarnings({"unused"})
 public enum UniversalMaterial{
     WHITE_WOOL("WOOL", "WHITE_WOOL", (short) 0),
@@ -212,34 +213,17 @@ public enum UniversalMaterial{
     }
 
     private String getTypeName(){
-        int version = loadServerVersion();
+        int version = BukkitUtils.loadServerVersion();
         return (version < 13) ? name8 : (version > 13) ? name14: name13;
     }
 
     public short getData(){
-        return loadServerVersion() < 13 ? id8 : 0;
+        return BukkitUtils.loadServerVersion() < 13 ? id8 : 0;
     }
 
     @SuppressWarnings("deprecation")
     public ItemStack getStack(int amount){
-        return loadServerVersion() < 13 ?new ItemStack(getType(), amount, getData()):new ItemStack(getType(),amount);
-    }
-
-    public static int loadServerVersion(){
-        String versionString = Bukkit.getBukkitVersion();
-        int version = 0;
-
-        for (int i = 8; i <= 100; i ++){
-            if (versionString.startsWith("1." + i)){
-                version = i;
-            }
-        }
-
-        if (version == 0) {
-            version = 8;
-            Bukkit.getLogger().warning("[WereWolfPlugin] Failed to detect server version! " + versionString + "?");
-        }
-        return version;
+        return BukkitUtils.loadServerVersion() < 13 ?new ItemStack(getType(), amount, getData()):new ItemStack(getType(),amount);
     }
 
     public ItemStack getStack(){
