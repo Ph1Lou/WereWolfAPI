@@ -2,6 +2,7 @@ package fr.ph1lou.werewolfapi.enums;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 /**
@@ -293,18 +294,28 @@ public enum Sound {
         this.play(player, 0.25f, 1f);
     }
 
+
     public void play(IPlayerWW playerWW) {
+        this.play(playerWW, playerWW.getLocation());
+    }
+
+    public void play(IPlayerWW playerWW, Location location) {
 
         Player player = Bukkit.getPlayer(playerWW.getUUID());
 
         if(player==null) return;
 
-        this.play(player, 0.25f, 1f);
+        this.play(location, player, 0.25f, 1f);
+    }
+
+    public void play(Location location, Player player, float volume, float pitch) {
+
+        player.playSound(location, getSound(), volume, pitch);
     }
 
     public void play(Player player, float volume, float pitch) {
 
-        player.playSound(player.getLocation(), getSound(), volume, pitch);
+        this.play(player.getLocation(), player, volume, pitch);
     }
 
     private org.bukkit.Sound getSound() {
