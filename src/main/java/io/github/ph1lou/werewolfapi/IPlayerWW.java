@@ -286,5 +286,14 @@ public interface IPlayerWW {
      */
     @NotNull
     Location getLocation();
-}
 
+    /**
+     * Get Player Wish
+     */
+    String getWish();
+
+    /**
+     * Set Player Wish
+     */
+    void setWish(String wish);
+}
