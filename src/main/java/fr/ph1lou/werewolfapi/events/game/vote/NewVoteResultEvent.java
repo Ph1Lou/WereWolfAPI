@@ -5,15 +5,16 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class NewVoteResultEvent extends Event implements Cancellable {
 
-    private IPlayerWW villagerWW;
-    private IPlayerWW werewolfWW;
+    private @Nullable IPlayerWW villagerWW;
+    private @Nullable IPlayerWW werewolfWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public NewVoteResultEvent(IPlayerWW villagerWW, IPlayerWW werewolfWW){
+    public NewVoteResultEvent(@Nullable IPlayerWW villagerWW,@Nullable IPlayerWW werewolfWW){
         this.villagerWW = villagerWW;
         this.werewolfWW = werewolfWW;
     }
@@ -37,11 +38,11 @@ public class NewVoteResultEvent extends Event implements Cancellable {
         this.werewolfWW = playerWW;
     }
 
-    public IPlayerWW getPlayerVotedByVillagerWW(){
+    public @Nullable IPlayerWW getPlayerVotedByVillagerWW(){
         return this.villagerWW;
     }
 
-    public IPlayerWW getPlayerVotedByWerewolfWW(){
+    public @Nullable IPlayerWW getPlayerVotedByWerewolfWW(){
         return this.werewolfWW;
     }
 

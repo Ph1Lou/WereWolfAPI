@@ -1,4 +1,4 @@
-package fr.ph1lou.werewolfapi.events.game.vote;
+package fr.ph1lou.werewolfapi.events.roles.citizen;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
@@ -6,16 +6,18 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class CancelVoteEvent extends Event implements Cancellable {
+import java.util.Map;
+
+public class CitizenSeeVoteEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
-    private final IPlayerWW voteWW;
+    private final Map<IPlayerWW,Integer> votes;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public CancelVoteEvent(IPlayerWW voterWW, IPlayerWW voteWW){
-        this.playerWW =voterWW;
-        this.voteWW =voteWW;
+    public CitizenSeeVoteEvent(IPlayerWW playerWW, Map<IPlayerWW,Integer> votes){
+        this.playerWW = playerWW;
+        this.votes =votes;
     }
 
     @NotNull
@@ -29,11 +31,11 @@ public class CancelVoteEvent extends Event implements Cancellable {
     }
 
     public IPlayerWW getPlayerWW() {
-        return playerWW;
+        return this.playerWW;
     }
 
-    public IPlayerWW getVoteWW() {
-        return voteWW;
+    public Map<IPlayerWW,Integer> getVotes() {
+        return votes;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class CancelVoteEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-            this.cancel=cancel;
+        this.cancel=cancel;
     }
 }
 
