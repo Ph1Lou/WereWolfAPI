@@ -288,4 +288,12 @@ public interface IConfiguration {
     int getDistanceScammer();
 
     void setDistanceScammer(int distanceScammer);
+
+    int getTenebrousDistance();
+
+    void setTenebrousDistance(int distance);
+
+    int getTenebrousDuration();
+
+    void setTenebrousDuration(int duration);
 }

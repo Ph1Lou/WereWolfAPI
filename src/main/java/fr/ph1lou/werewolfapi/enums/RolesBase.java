@@ -65,7 +65,8 @@ public enum RolesBase {
     SERVITOR("werewolf.role.servitor.display"),
     FRUIT_MERCHANT("werewolf.role.fruit_merchant.display"),
     DRUID("werewolf.role.druid.display"),
-    SCAMMER("werewolf.role.scammer.display");
+    SCAMMER("werewolf.role.scammer.display"),
+    TENEBROUS_WEREWOLF("werewolf.role.tenebrous_werewolf.display");
 
     private final String key;
 
