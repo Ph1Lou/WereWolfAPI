@@ -33,11 +33,6 @@ public interface GetWereWolfAPI {
     Optional<IRegisterManager> getAddonRegisterManager(String addonKey);
 
     /**
-     * Get Language Manager
-     */
-    ILanguageManager getLangManager();
-
-    /**
      * Get SmartInvs Inventory Manager
      */
     InventoryManager getInvManager();

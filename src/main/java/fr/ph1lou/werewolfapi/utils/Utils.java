@@ -14,7 +14,6 @@ import java.util.Objects;
 
 public class Utils {
 
-
     public static int midDistance(Player player) {
 
         World world = player.getWorld();
