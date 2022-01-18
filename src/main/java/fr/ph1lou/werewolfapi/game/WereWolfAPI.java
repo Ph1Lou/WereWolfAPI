@@ -209,15 +209,7 @@ public interface WereWolfAPI {
      */
     int getRoleInitialSize();
 
-    /**
-     * Enable Werewolf Chat
-     */
-    void enableWereWolfChat();
-
-    /**
-     * Disable WereWolf chat
-     */
-    void disableWereWolfChat();
+    IWerewolfChatHandler getWerewolfChatHandler();
 
     /**
      * Set Vote Manager
