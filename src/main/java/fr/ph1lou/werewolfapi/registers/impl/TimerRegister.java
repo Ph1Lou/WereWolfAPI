@@ -2,9 +2,11 @@ package fr.ph1lou.werewolfapi.registers.impl;
 
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -21,6 +23,9 @@ public class TimerRegister implements IRegister {
     private List<String> loreKey =new ArrayList<>();
     private Consumer<WereWolfAPI> consumer = wereWolfAPI -> {};
     private Predicate<WereWolfAPI> predicate=wereWolfAPI -> false;
+
+    @Nullable
+    private String roleKey;
 
     public TimerRegister(String addonKey, String key) {
         this.addonKey=addonKey;
@@ -77,6 +82,16 @@ public class TimerRegister implements IRegister {
         return this;
     }
 
+    /**
+     * Set si le timer est spécifique à un rôle
+     * @param key du role
+     * @return instance du register
+     */
+    public TimerRegister setRoleTimer(String key){
+        this.roleKey = key;
+        return this;
+    }
+
     public int getDefaultValue(){
         return defaultValue;
     }
@@ -103,5 +118,9 @@ public class TimerRegister implements IRegister {
 
     public Consumer<WereWolfAPI> getConsumer() {
         return this.consumer;
+    }
+
+    public Optional<String> getRoleKey() {
+        return Optional.ofNullable(roleKey);
     }
 }
