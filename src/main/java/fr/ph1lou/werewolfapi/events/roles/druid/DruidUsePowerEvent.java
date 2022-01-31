@@ -6,6 +6,8 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class DruidUsePowerEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -13,9 +15,12 @@ public class DruidUsePowerEvent extends Event implements Cancellable {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel=false;
 
-    public DruidUsePowerEvent(IPlayerWW playerWW, int darkAura){
+    private final List<IPlayerWW> playerWWs;
+
+    public DruidUsePowerEvent(IPlayerWW playerWW, int darkAura, List<IPlayerWW> playerWWs){
         this.playerWW = playerWW;
         this.darkAura = darkAura;
+        this.playerWWs = playerWWs;
     }
 
     @NotNull
@@ -44,6 +49,10 @@ public class DruidUsePowerEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean cancel) {
         this.cancel=cancel;
+    }
+
+    public List<IPlayerWW> getPlayerWWs() {
+        return playerWWs;
     }
 }
 

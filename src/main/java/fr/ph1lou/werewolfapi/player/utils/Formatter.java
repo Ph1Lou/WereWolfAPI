@@ -1,5 +1,7 @@
 package fr.ph1lou.werewolfapi.player.utils;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 public class Formatter {
 
     private final String pattern;
@@ -30,7 +32,7 @@ public class Formatter {
     }
 
     public String handle(String message){
-        return message.replaceAll(this.pattern,
+        return message.replaceAll(StringEscapeUtils.escapeJava(this.pattern),
                 String.valueOf(this.supplier));
     }
 }

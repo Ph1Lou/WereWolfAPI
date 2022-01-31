@@ -14,8 +14,10 @@ public class TenebrousEvent extends Event implements Cancellable {
 
     private boolean cancelled = false;
     private final List<IPlayerWW> affectedPlayers;
+    private final IPlayerWW playerWW;
 
-    public TenebrousEvent(List<IPlayerWW> affectedPlayers) {
+    public TenebrousEvent(IPlayerWW playerWW, List<IPlayerWW> affectedPlayers) {
+        this.playerWW = playerWW;
         this.affectedPlayers = affectedPlayers;
     }
 
@@ -45,5 +47,9 @@ public class TenebrousEvent extends Event implements Cancellable {
 
     public void removeAffectedPlayer(IPlayerWW playerWW) {
         affectedPlayers.remove(playerWW);
+    }
+
+    public IPlayerWW getPlayerWW() {
+        return playerWW;
     }
 }
