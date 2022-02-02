@@ -290,7 +290,7 @@ public interface IPlayerWW {
     /**
      * Get Player Wish
      */
-    String getWish();
+    Optional<String> getWish();
 
     /**
      * Set Player Wish
