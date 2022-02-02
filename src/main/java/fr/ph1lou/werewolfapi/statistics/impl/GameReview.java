@@ -28,11 +28,13 @@ public class GameReview implements IGameReview {
     private String name;
     private final Date date = new Date();
     private final UUID serverUUID;
+    private final String pluginVersion;
 
     public GameReview(WereWolfAPI api, UUID serverUUID) {
         this.api = api;
         this.gameUUID = api.getGameUUID();
         this.serverUUID = serverUUID;
+        this.pluginVersion = api.getPluginVersion();
     }
 
     public void end(String winnerCampKey, Set<IPlayerWW> winners) {
