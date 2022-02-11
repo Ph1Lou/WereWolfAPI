@@ -13,7 +13,7 @@ public class TriggerGravediggerClueEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final int clueCount;
-    private final Location location;
+    private Location location;
     private int numNearbyPlayers;
     private List<String> playerNames;
     private final String roleKey;
@@ -41,6 +41,8 @@ public class TriggerGravediggerClueEvent extends Event {
     public int getClueCount() {return clueCount;}
 
     public Location getLocation() {return location;}
+
+    public void setLocation(Location location) {this.location = location;}
 
     public int getNumNearbyPlayers() {return numNearbyPlayers;}
 
