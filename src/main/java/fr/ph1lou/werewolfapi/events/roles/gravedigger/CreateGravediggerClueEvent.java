@@ -1,0 +1,52 @@
+package fr.ph1lou.werewolfapi.events.roles.gravedigger;
+
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import org.bukkit.Location;
+import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
+
+public class CreateGravediggerClueEvent extends Event {
+
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final IPlayerWW playerWW;
+    private final Location location;
+    private Set<IPlayerWW> nearbyPlayers;
+    private String roleKey;
+
+    public CreateGravediggerClueEvent(IPlayerWW playerWW, Location location, Set<IPlayerWW> nearbyPlayers, String roleKey) {
+        this.playerWW = playerWW;
+        this.location = location;
+        this.nearbyPlayers = nearbyPlayers;
+        this.roleKey = roleKey;
+    }
+
+
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
+        return HANDLERS_LIST;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
+
+    public IPlayerWW getPlayerWW() {return playerWW;}
+
+    public Location getDeathLocation() {return location;}
+
+    public Set<IPlayerWW> getNearbyPlayers() {return nearbyPlayers;}
+
+    public void addNearbyPlayer(IPlayerWW p) {nearbyPlayers.add(p);}
+
+    public void removeNearbyPlayer(IPlayerWW p) {nearbyPlayers.remove(p);}
+
+    public void setNearbyPlayers(Set<IPlayerWW> playersWW) {this.nearbyPlayers = playersWW;}
+
+    public String getRoleKey() {return roleKey;}
+
+    public void setRoleKey(String key) {this.roleKey = key;}
+}
