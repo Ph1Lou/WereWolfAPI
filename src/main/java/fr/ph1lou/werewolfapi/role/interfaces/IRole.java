@@ -53,5 +53,9 @@ public interface IRole extends IDisplay, IAura, ICamp, Listener {
 
     void enableAbilities();
 
+    void disableAbilitiesRole();
+
+    void enableAbilitiesRole();
+
     boolean isAbilityEnabled();
 }

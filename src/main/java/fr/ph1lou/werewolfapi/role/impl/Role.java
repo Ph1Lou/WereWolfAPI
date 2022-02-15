@@ -508,7 +508,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
     }
 
     @Override
-    public void disableAbilities() {
+    public final void disableAbilities() {
         this.abilityEnabled = false;
 
         if(!this.isWereWolf()) return;
@@ -519,13 +519,27 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
         this.getPlayerWW()
                 .addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,"werewolf", 0));
+
+        this.disableAbilitiesRole();
     }
 
     @Override
-    public void enableAbilities() {
+    public final void enableAbilities() {
         this.abilityEnabled = true;
 
         this.recoverPotionEffects();
+
+        this.enableAbilitiesRole();
+    }
+
+    @Override
+    public void disableAbilitiesRole() {
+
+    }
+
+    @Override
+    public void enableAbilitiesRole() {
+
     }
 
     @Override
