@@ -289,15 +289,19 @@ public interface IConfiguration {
 
     void setDistanceScammer(int distanceScammer);
 
-    int getTenebrousDistance();
+    int getDistanceTenebrous();
 
-    void setTenebrousDistance(int distance);
+    void setDistanceTenebrous(int distance);
 
     int getTenebrousDuration();
 
     void setTenebrousDuration(int duration);
 
-    int getThugDistance();
+    int getDistanceThug();
 
-    void setThugDistance(int distance);
+    void setDistanceThug(int distance);
+
+    int getDistanceBarbarian();
+
+    void setDistanceBarbarian(int distance);
 }
