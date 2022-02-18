@@ -297,6 +297,10 @@ public interface IConfiguration {
 
     void setTenebrousDuration(int duration);
 
+    void setGravediggerDistance(int distance);
+
+    int getGravediggerDistance();
+
     int getDistanceThug();
 
     void setDistanceThug(int distance);
