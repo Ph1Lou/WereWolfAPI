@@ -274,5 +274,9 @@ public interface IPlayerWW {
      * Set Player Wish
      */
     void setWish(String wish);
+
+    Location getDeathLocation();
+
+    void setDeathLocation(Location location);
 }
 

@@ -289,9 +289,9 @@ public interface IConfiguration {
 
     void setDistanceScammer(int distanceScammer);
 
-    int getTenebrousDistance();
+    int getDistanceTenebrous();
 
-    void setTenebrousDistance(int distance);
+    void setDistanceTenebrous(int distance);
 
     int getTenebrousDuration();
 
@@ -300,4 +300,12 @@ public interface IConfiguration {
     void setGravediggerDistance(int distance);
 
     int getGravediggerDistance();
+
+    int getDistanceThug();
+
+    void setDistanceThug(int distance);
+
+    int getDistanceBarbarian();
+
+    void setDistanceBarbarian(int distance);
 }
