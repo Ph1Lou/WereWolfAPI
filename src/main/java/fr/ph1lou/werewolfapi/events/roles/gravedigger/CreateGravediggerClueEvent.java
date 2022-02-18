@@ -2,19 +2,25 @@ package fr.ph1lou.werewolfapi.events.roles.gravedigger;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.Location;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class CreateGravediggerClueEvent extends Event {
+/**
+ * @author havwila
+ */
+
+public class CreateGravediggerClueEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final Location location;
     private Set<IPlayerWW> nearbyPlayers;
     private String roleKey;
+    private boolean cancelled = false;
 
     public CreateGravediggerClueEvent(IPlayerWW playerWW, Location location, Set<IPlayerWW> nearbyPlayers, String roleKey) {
         this.playerWW = playerWW;
@@ -49,4 +55,14 @@ public class CreateGravediggerClueEvent extends Event {
     public String getRoleKey() {return roleKey;}
 
     public void setRoleKey(String key) {this.roleKey = key;}
+
+    @Override
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    @Override
+    public void setCancelled(boolean b) {
+        cancelled = b;
+    }
 }
