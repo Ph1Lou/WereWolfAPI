@@ -20,11 +20,13 @@ public class TriggerGravediggerClueEvent extends Event implements Cancellable {
     private Location location;
     private int numNearbyPlayers;
     private List<String> playerNames;
+    private final IPlayerWW gravedigger;
     private final String roleKey;
     private final IPlayerWW playerWW;
     private boolean cancelled = false;
 
-    public TriggerGravediggerClueEvent(IPlayerWW playerWW, int clueCount, Location location, int numNearbyPlayers, List<String> playerNames, String roleKey) {
+    public TriggerGravediggerClueEvent(IPlayerWW gravedigger, IPlayerWW playerWW, int clueCount, Location location, int numNearbyPlayers, List<String> playerNames, String roleKey) {
+        this.gravedigger = gravedigger;
         this.clueCount = clueCount;
         this.location = location;
         this.numNearbyPlayers = numNearbyPlayers;
@@ -69,5 +71,9 @@ public class TriggerGravediggerClueEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean b) {
         cancelled = b;
+    }
+
+    public IPlayerWW getGravedigger() {
+        return gravedigger;
     }
 }

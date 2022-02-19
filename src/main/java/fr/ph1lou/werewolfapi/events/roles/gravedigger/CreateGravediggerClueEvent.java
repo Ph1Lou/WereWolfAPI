@@ -17,12 +17,14 @@ public class CreateGravediggerClueEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
+    private final IPlayerWW gravedigger;
     private final Location location;
     private Set<IPlayerWW> nearbyPlayers;
     private String roleKey;
     private boolean cancelled = false;
 
-    public CreateGravediggerClueEvent(IPlayerWW playerWW, Location location, Set<IPlayerWW> nearbyPlayers, String roleKey) {
+    public CreateGravediggerClueEvent(IPlayerWW gravedigger,IPlayerWW playerWW, Location location, Set<IPlayerWW> nearbyPlayers, String roleKey) {
+        this.gravedigger = gravedigger;
         this.playerWW = playerWW;
         this.location = location;
         this.nearbyPlayers = nearbyPlayers;
@@ -64,5 +66,9 @@ public class CreateGravediggerClueEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean b) {
         cancelled = b;
+    }
+
+    public IPlayerWW getGravedigger() {
+        return gravedigger;
     }
 }
