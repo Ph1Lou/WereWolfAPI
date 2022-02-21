@@ -10,11 +10,7 @@ import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.enums.TimerBase;
 import fr.ph1lou.werewolfapi.events.UpdateNameTagEvent;
-import fr.ph1lou.werewolfapi.events.werewolf.AppearInWereWolfListEvent;
-import fr.ph1lou.werewolfapi.events.werewolf.NewWereWolfEvent;
-import fr.ph1lou.werewolfapi.events.werewolf.RequestSeeWereWolfListEvent;
-import fr.ph1lou.werewolfapi.events.werewolf.WereWolfCanSpeakInChatEvent;
-import fr.ph1lou.werewolfapi.events.werewolf.WereWolfChatEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.*;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.impl.PotionModifier;
 import fr.ph1lou.werewolfapi.player.interfaces.IAuraModifier;
@@ -43,6 +39,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -320,6 +317,15 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
         if(!this.uuid.equals(killer.getUniqueId())) return;
 
+        Player victim = event.getEntity().getPlayer();
+        Optional<IPlayerWW> victimWW = game.getPlayerWW(victim.getUniqueId());
+        if (victimWW.isPresent()) {
+            WereWolfKillEvent killEvent = new WereWolfKillEvent(this.getPlayerWW(), victimWW.get());
+            Bukkit.getPluginManager().callEvent(killEvent);
+            if (killEvent.isCancelled()) {
+                return;
+            }
+        }
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.SPEED, 1200, 0,"werewolf"));
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.ABSORPTION, 1200, 0,"werewolf"));
     }
