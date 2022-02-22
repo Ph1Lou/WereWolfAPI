@@ -28,7 +28,7 @@ public class PlayerReview implements IPlayerReview {
     public PlayerReview(IPlayerWW playerWW, boolean winner) {
 
         this.uuid = playerWW.getReviewUUID();
-        this.role = playerWW.getRole().getDeathRole();
+        this.role = playerWW.getDeathRole();
         this.winner = winner;
         for (ILover ILover : playerWW.getLovers()) {
 

@@ -45,10 +45,6 @@ public interface IRole extends IDisplay, IAura, ICamp, Listener {
 
     void setPlayerWW(@NotNull IPlayerWW playerWW);
 
-    String getDeathRole();
-
-    void setDeathRole(String role);
-
     void disableAbilities();
 
     void enableAbilities();

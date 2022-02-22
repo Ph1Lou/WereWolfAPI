@@ -431,18 +431,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
         event.setVictoryTeam(this.getKey());
     }
-    @Override
-    public String getDeathRole(){
-        return this.deathRole==null?this.getKey():this.deathRole;
-    }
-
-
-    @Override
-    public void setDeathRole(@Nullable String role){
-        this.deathRole=role;
-    }
-
-
+    
     @Override
     public void setDisplayCamp(@Nullable String camp) {
         this.displayCamp=camp;

@@ -220,7 +220,7 @@ public interface IPlayerWW {
      * Get Player who damaged the player during last minutes
      * @return list of players
      */
-    List<IPlayerWW> getLastMinutesDamagedPlayer();
+    List<? extends IPlayerWW> getLastMinutesDamagedPlayer();
 
     /**
      * Get Player Name
@@ -278,5 +278,11 @@ public interface IPlayerWW {
     Location getDeathLocation();
 
     void setDeathLocation(Location location);
+
+    List<? extends String> getDeathRoles();
+
+    void addDeathRole(String role);
+
+    String getDeathRole();
 }
 

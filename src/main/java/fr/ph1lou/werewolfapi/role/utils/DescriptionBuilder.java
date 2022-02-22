@@ -66,8 +66,8 @@ public class DescriptionBuilder {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&",this.game.translate(this.role.getDeathRole()) +
-                (!this.role.getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief",
+        sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&",this.game.translate(this.role.getPlayerWW().getDeathRole()) +
+                (!this.role.getPlayerWW().getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief",
                         Formatter.format("&role&",this.game.translate(this.role.getKey()))) : "") +
                 (this.role.isInfected() ? this.game.translate("werewolf.end.infect") : "") +
                 (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));

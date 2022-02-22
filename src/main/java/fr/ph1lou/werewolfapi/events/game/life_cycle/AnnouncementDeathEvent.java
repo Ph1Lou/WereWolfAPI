@@ -32,7 +32,7 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
     public AnnouncementDeathEvent(IPlayerWW playerWW, IPlayerWW targetPlayer, String format){
         this.playerWW = playerWW;
         this.playerName= playerWW.getName();
-        this.role= playerWW.getRole().getDeathRole();
+        this.role= playerWW.getDeathRole();
         this.targetPlayer = targetPlayer;
         this.format=format;
     }
