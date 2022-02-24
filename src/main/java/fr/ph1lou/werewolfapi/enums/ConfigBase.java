@@ -16,7 +16,14 @@ public enum ConfigBase {
     HIDE_SCENARIOS("werewolf.menu.global.hide_scenarios"),
     LONE_WOLF("werewolf.menu.global.lone_wolf"),
     NEW_VOTE("werewolf.menu.global.new_vote"),
-    HUNTER_CAN_SHOOT("werewolf.role.hunter.can_shoot");
+    HUNTER_CAN_SHOOT("werewolf.role.hunter.can_shoot"),
+    HIDDEN_ROLES("werewolf.hidden_roles.display"),
+    RANDOM_CUPID("werewolf.random_cupid.display"),
+    SWEET_ANGEL("werewolf.role.angel.sweet_angel"),
+    ORACLE_EVERY_OTHER_DAY("werewolf.role.oracle.oracle_every_other_day"),
+    DETECTIVE_EVERY_OTHER_DAY("werewolf.role.detective.detective_every_other_day"),
+    SEER_EVERY_OTHER_DAY("werewolf.role.seer.seer_every_other_day"),
+    WITCH_AUTO_RESURRECTION("werewolf.role.witch.auto_rez_witch");
 
     private final String key;
 

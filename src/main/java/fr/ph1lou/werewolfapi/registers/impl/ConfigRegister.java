@@ -3,6 +3,7 @@ package fr.ph1lou.werewolfapi.registers.impl;
 import fr.ph1lou.werewolfapi.listeners.ListenerManager;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,8 @@ public class ConfigRegister implements IRegister {
     private boolean appearInMenu=true;
     private final List<String> incompatibleConfigs =new ArrayList<>();
     private ItemStack item=null;
-
+    @Nullable
+    private String roleKey;
 
     public ConfigRegister(String addonKey, String key) {
         this.addonKey=addonKey;
@@ -100,6 +102,21 @@ public class ConfigRegister implements IRegister {
     public ConfigRegister setLoreKey(String lore){
         this.loreKey.add(lore);
         return this;
+    }
+
+
+    /**
+     * Set si la config est spécifique à un rôle
+     * @param key du role
+     * @return instance du register
+     */
+    public ConfigRegister setRoleConfig(String key){
+        this.roleKey = key;
+        return this;
+    }
+
+    public Optional<String> getRoleKey() {
+        return Optional.ofNullable(roleKey);
     }
 
 }

@@ -71,7 +71,8 @@ public enum RolesBase {
     GRAVEDIGGER("werewolf.role.gravedigger.display"),
     THUG("werewolf.role.thug.display"),
     BARBARIAN("werewolf.role.barbarian.display"),
-    NECROMANCER("werewolf.role.necromancer.display");
+    NECROMANCER("werewolf.role.necromancer.display"),
+    DEVOTED_SERVANT("werewolf.role.devoted_servant.display");
 
     private final String key;
 

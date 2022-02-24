@@ -72,26 +72,6 @@ public interface IConfiguration {
 
     void setGoldenAppleParticles(int goldenAppleParticles);
 
-    int getDistanceBearTrainer();
-
-    void setDistanceBearTrainer(int distanceBearTrainer);
-
-    int getDistanceDruid();
-
-    void setDistanceDruid(int distanceDruid);
-
-    int getDistanceFox();
-
-    void setDistanceFox(int distanceFox);
-
-    int getDistanceHowlingWerewolf();
-
-    void setDistanceHowlingWerewolf(int howlerWerewolf);
-
-    int getDistanceTwin();
-
-    void setDistanceTwin(int twin);
-
     int getResistanceRate() ;
 
     void setResistanceRate(int resistanceRate);
@@ -100,10 +80,6 @@ public interface IConfiguration {
 
     void setTrollSV(boolean trollSV);
 
-    int getDistanceSuccubus();
-
-    void setDistanceSuccubus(int distanceSuccubus) ;
-
     int getBorderMax();
 
     void setBorderMax(int borderMax);
@@ -111,18 +87,6 @@ public interface IConfiguration {
     int getBorderMin();
 
     void setBorderMin(int borderMin);
-
-    int getDistanceAmnesiacLovers();
-
-    void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
-
-    int getDistanceFlutePlayer();
-
-    void setDistanceFlutePlayer(int distanceAmnesiacLovers);
-
-    int getDistanceFruitMerchant();
-
-    void setDistanceFruitMerchant(int distanceFruitMerchant);
 
     int getTimerValue(String key);
 
@@ -215,8 +179,18 @@ public interface IConfiguration {
 
     int getKnockBackMode();
 
+    /**
+     * Get Random Event Probability
+     * @param key of the random event
+     * @return the probability
+     */
     int getProbability(String key);
 
+    /**
+     * Set Probability of the random Event
+     * @param key of the random event
+     * @param probability the probability
+     */
     void setProbability(String key,int probability);
 
     void setKnockBackMode(int knockBackMode);
@@ -224,6 +198,10 @@ public interface IConfiguration {
     int getWereWolfChatMaxMessage();
 
     void setWereWolfChatMaxMessage(int nbMessage);
+
+    boolean isTrollLover();
+
+    void setTrollLover(boolean troll);
 
     int getDistanceSister();
 
@@ -249,30 +227,6 @@ public interface IConfiguration {
 
     void setDistanceAvengerWerewolf(int distance);
 
-    boolean isTrollLover();
-
-    void setTrollLover(boolean troll);
-
-    void setWitchAutoResurrection(boolean autoRez);
-
-    boolean isWitchAutoResurrection();
-
-    void setSeerEveryOtherDay(boolean everyOtherDay);
-
-    boolean isSeerEveryOtherDay();
-
-    void setDetectiveEveryOtherDay(boolean everyOtherDay);
-
-    boolean isDetectiveEveryOtherDay();
-
-    void setOracleEveryOtherDay(boolean everyOtherDay);
-
-    boolean isOracleEveryOtherDay();
-
-    void setSweetAngel(boolean sweet);
-
-    boolean isSweetAngel();
-
     int getDistanceWiseElder();
 
     void setDistanceWiseElder(int distanceWiseElder);
@@ -281,10 +235,6 @@ public interface IConfiguration {
 
     void setDistanceServitor(int distanceServitor);
 
-    int getScamDelay();
-
-    void setScamDelay(int scamDelay);
-
     int getDistanceScammer();
 
     void setDistanceScammer(int distanceScammer);
@@ -292,10 +242,6 @@ public interface IConfiguration {
     int getDistanceTenebrous();
 
     void setDistanceTenebrous(int distance);
-
-    int getTenebrousDuration();
-
-    void setTenebrousDuration(int duration);
 
     void setDistanceGravedigger(int distance);
 
@@ -312,4 +258,41 @@ public interface IConfiguration {
     int getDistanceNecromancer();
 
     void setDistanceNecromancer(int distance);
+
+    int getDistanceSuccubus();
+
+    void setDistanceSuccubus(int distanceSuccubus) ;
+
+    int getDistanceAmnesiacLovers();
+
+    void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
+
+    int getDistanceFlutePlayer();
+
+    void setDistanceFlutePlayer(int distanceAmnesiacLovers);
+
+    int getDistanceFruitMerchant();
+
+    void setDistanceFruitMerchant(int distanceFruitMerchant);
+
+    int getDistanceBearTrainer();
+
+    void setDistanceBearTrainer(int distanceBearTrainer);
+
+    int getDistanceDruid();
+
+    void setDistanceDruid(int distanceDruid);
+
+    int getDistanceFox();
+
+    void setDistanceFox(int distanceFox);
+
+    int getDistanceHowlingWerewolf();
+
+    void setDistanceHowlingWerewolf(int howlerWerewolf);
+
+    int getDistanceTwin();
+
+    void setDistanceTwin(int twin);
+
 }
