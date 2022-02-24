@@ -9,6 +9,7 @@ public enum ScenariosBase {
     DIAMOND_LIMIT("werewolf.menu.scenarios.diamond_limit"),
     FAST_SMELTING("werewolf.menu.scenarios.fast_smelting"),
     HASTEY_BOYS("werewolf.menu.scenarios.hastey_boys"),
+    HASTEY_BABIES("werewolf.menu.scenarios.hastey_babies"),
     NO_FALL("werewolf.menu.scenarios.no_fall"),
     NO_EGG_SNOWBALL("werewolf.menu.scenarios.no_egg_snowball"),
     NO_POISON("werewolf.menu.scenarios.no_poison"),
@@ -23,7 +24,11 @@ public enum ScenariosBase {
     SLOW_BOW("werewolf.menu.scenarios.slow_bow"),
     NO_NETHER("werewolf.menu.scenarios.no_nether"),
     NO_END("werewolf.menu.scenarios.no_end"),
-    DOUBLE_JUMP("werewolf.menu.scenarios.double_jump");
+    DOUBLE_JUMP("werewolf.menu.scenarios.double_jump"),
+    NO_EXTRA_STONES("werewolf.menu.scenarios.no_extra_stones"),
+    BETA_ZOMBIES("werewolf.menu.scenarios.beta_zombies"),
+    FINAL_HEAL("werewolf.menu.scenarios.final_heal"),
+    SAFE_MINER("werewolf.menu.scenarios.safe_miner");
 
     public String getKey() {
         return key;
