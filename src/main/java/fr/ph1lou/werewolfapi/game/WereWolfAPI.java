@@ -218,4 +218,6 @@ public interface WereWolfAPI {
     void setVoteManager(IVoteManager voteManager);
 
     String getPluginVersion();
+
+    String getLanguage();
 }
