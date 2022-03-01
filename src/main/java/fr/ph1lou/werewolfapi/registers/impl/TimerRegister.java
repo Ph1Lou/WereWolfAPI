@@ -27,6 +27,8 @@ public class TimerRegister implements IRegister {
     @Nullable
     private String roleKey;
 
+    private int pitch = 10;
+
     public TimerRegister(String addonKey, String key) {
         this.addonKey=addonKey;
         this.key=key;
@@ -39,6 +41,23 @@ public class TimerRegister implements IRegister {
      */
     public TimerRegister addPredicate(Predicate<WereWolfAPI> predicate){
         this.predicate=predicate;
+        return this;
+    }
+
+    /**
+     * Get Pitch for Role config only
+     * @return le pitch
+     */
+    public int getPitch() {
+        return pitch;
+    }
+
+    /**
+     * Set Pitch for Role config only
+     * @return l'instance du register
+     */
+    public TimerRegister setPitch(int pitch){
+        this.pitch = pitch;
         return this;
     }
 
