@@ -6,6 +6,7 @@ import fr.ph1lou.werewolfapi.enums.RandomCompositionAttribute;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Constructor;
@@ -33,6 +34,7 @@ public class RoleRegister implements IRegister {
     private RandomCompositionAttribute randomCompositionAttribute=RandomCompositionAttribute.VILLAGER;
     private boolean requireDouble=false;
     private String requireRole="";
+    private List<String> incompatibleRoles = new ArrayList<>();
 
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
         this.addonKey=addonKey;
@@ -78,6 +80,11 @@ public class RoleRegister implements IRegister {
         return this.requireDouble;
     }
 
+    public RoleRegister addIncompatibleRole(String key) {
+        incompatibleRoles.add(key);
+        return this;
+    }
+
     public Optional<String> getRequireRole() {
         return this.requireRole.isEmpty()?Optional.empty():Optional.of(this.requireRole);
     }
@@ -94,6 +101,10 @@ public class RoleRegister implements IRegister {
     public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){
         this.randomCompositionAttribute=randomCompositionAttribute;
         return this;
+    }
+
+    public List<? extends String> getIncompatibleRoles() {
+        return this.incompatibleRoles;
     }
 
     /**
