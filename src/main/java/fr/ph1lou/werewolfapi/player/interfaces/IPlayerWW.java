@@ -291,6 +291,24 @@ public interface IPlayerWW {
     void removeHealth(double health);
 
     /**
+     * Get Player Health
+     * @return health
+     */
+    double getHealth();
+
+    /**
+     * Add Player Health
+     * @param health player
+     */
+    void addHealth(double health);
+
+    /**
+     * Remove Player Health
+     * @param health player
+     */
+    void removeHealth(double health);
+
+    /**
      * Get Player Position or if he's disconnected his last position
      * @return the location
      */
