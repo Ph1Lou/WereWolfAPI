@@ -131,7 +131,7 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
     @Override
     public void setItemInHand(@NotNull Player player, ItemStack itemStack) {
-        player.setItemOnCursor(itemStack);
+        player.getInventory().setItemInMainHand(itemStack);
     }
 }
 
