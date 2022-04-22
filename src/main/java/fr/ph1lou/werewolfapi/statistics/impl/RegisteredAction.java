@@ -1,8 +1,8 @@
 package fr.ph1lou.werewolfapi.statistics.impl;
 
 import com.google.common.collect.Sets;
-import fr.ph1lou.werewolfapi.statistics.interfaces.IRegisteredAction;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.statistics.interfaces.IRegisteredAction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,6 +24,7 @@ public class RegisteredAction implements IRegisteredAction {
     private final int timer;
     private String extraInfo;
     private int extraInt;
+    private boolean actionableStory = false;
 
     public RegisteredAction(String event, @Nullable IPlayerWW playerWW, Set<IPlayerWW> uuidS, int timer) {
         this.event = event;
@@ -127,7 +128,16 @@ public class RegisteredAction implements IRegisteredAction {
         return extraInfo;
     }
 
+    public RegisteredAction setActionableStory(boolean actionableStory){
+        this.actionableStory = actionableStory;
+        return this;
+    }
+
     public int getExtraInt() {
         return extraInt;
+    }
+
+    public boolean isActionableStory() {
+        return actionableStory;
     }
 }
