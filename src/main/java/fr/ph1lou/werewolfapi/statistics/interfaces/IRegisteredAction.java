@@ -18,4 +18,6 @@ public interface IRegisteredAction {
     String getExtraInfo();
 
     int getExtraInt();
+
+    UUID getGameUuid();
 }

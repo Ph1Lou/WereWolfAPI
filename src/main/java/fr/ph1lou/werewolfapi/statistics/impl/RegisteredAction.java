@@ -19,7 +19,8 @@ public class RegisteredAction implements IRegisteredAction {
     private final String event;
     @Nullable
     private final UUID uuid;
-
+    @Nullable
+    private final UUID gameUuid;
     private final List<UUID> uuidS = new ArrayList<>();
     private final int timer;
     private String extraInfo;
@@ -30,7 +31,11 @@ public class RegisteredAction implements IRegisteredAction {
         this.event = event;
         if (playerWW == null) {
             this.uuid = null;
-        } else this.uuid = playerWW.getReviewUUID();
+            this.gameUuid = null;
+        } else {
+            this.uuid = playerWW.getReviewUUID();
+            this.gameUuid = playerWW.getUUID();
+        }
         if (uuidS != null) {
             this.uuidS.addAll(uuidS.stream().map(IPlayerWW::getReviewUUID).collect(Collectors.toList()));
         }
@@ -137,7 +142,12 @@ public class RegisteredAction implements IRegisteredAction {
         return extraInt;
     }
 
+    @Override
+    public UUID getGameUuid() {
+        return this.gameUuid;
+    }
+
     public boolean isActionableStory() {
-        return actionableStory;
+        return this.actionableStory;
     }
 }

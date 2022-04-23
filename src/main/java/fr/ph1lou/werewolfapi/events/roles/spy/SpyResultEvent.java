@@ -1,17 +1,19 @@
-package fr.ph1lou.werewolfapi.events.roles.protector;
+package fr.ph1lou.werewolfapi.events.roles.spy;
 
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class ProtectionEvent extends SelectionEvent {
+public class SpyResultEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ProtectionEvent(IPlayerWW playerWW, IPlayerWW target){
-        super(playerWW,target);
+    private final int actions;
 
+    public SpyResultEvent(IPlayerWW playerWW, IPlayerWW target, int actions){
+        super(playerWW,target);
+        this.actions = actions;
     }
 
     @NotNull
@@ -24,5 +26,8 @@ public class ProtectionEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
+    public int getActionsNumber() {
+        return actions;
+    }
 }
 
