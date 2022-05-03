@@ -76,7 +76,9 @@ public enum RolesBase {
     STORY_TELLER("werewolf.role.story_teller.display"),
     SPY("werewolf.role.spy.display"),
     BENEFACTOR("werewolf.role.benefactor.display"),
-    RABBIT("werewolf.role.rabbit.display");
+    RABBIT("werewolf.role.rabbit.display"),
+    INTERPRETER("werewolf.role.interpreter.display"),
+    ILLUSIONIST("werewolf.role.illusionist.display");
 
     private final String key;
 

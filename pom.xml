@@ -6,7 +6,7 @@
 
     <groupId>fr.ph1lou</groupId>
     <artifactId>werewolfapi</artifactId>
-    <version>1.9</version>
+    <version>1.10</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -16,15 +16,15 @@
             <url>https://jitpack.io</url>
         </repository>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>codemc-nms</id>
+            <url>https://repo.codemc.org/repository/nms/</url>
         </repository>
     </repositories>
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.18-R0.1-SNAPSHOT</version>
+            <artifactId>spigot</artifactId>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

@@ -2,17 +2,18 @@ package fr.ph1lou.werewolfapi.registers.impl;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.ph1lou.werewolfapi.enums.Category;
-import fr.ph1lou.werewolfapi.enums.RandomCompositionAttribute;
+import fr.ph1lou.werewolfapi.enums.RoleAttribute;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
-import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 
 /**
@@ -31,10 +32,10 @@ public class RoleRegister implements IRegister {
     private final List<Function<WereWolfAPI,ClickableItem>> config =new ArrayList<>();
     private final Constructor<?> constructors;
 
-    private RandomCompositionAttribute randomCompositionAttribute=RandomCompositionAttribute.VILLAGER;
+    private final Set<RoleAttribute> attributes = new HashSet<>();
     private boolean requireDouble=false;
-    private String requireRole="";
-    private List<String> incompatibleRoles = new ArrayList<>();
+    private final Set<String> requireRoles = new HashSet<>();
+    private final Set<String> incompatibleRoles = new HashSet<>();
 
     public RoleRegister(String addonKey, String key,Class<?> roleClass) throws NoSuchMethodException {
         this.addonKey=addonKey;
@@ -64,8 +65,8 @@ public class RoleRegister implements IRegister {
         return this.constructors;
     }
 
-    public RandomCompositionAttribute getRandomCompositionAttribute() {
-        return this.randomCompositionAttribute;
+    public Set<? extends RoleAttribute> getAttributes() {
+        return this.attributes;
     }
 
     public Optional<ItemStack> getItem() {
@@ -85,8 +86,8 @@ public class RoleRegister implements IRegister {
         return this;
     }
 
-    public Optional<String> getRequireRole() {
-        return this.requireRole.isEmpty()?Optional.empty():Optional.of(this.requireRole);
+    public Set<? extends String> getRequireRoles() {
+        return this.requireRoles;
     }
 
     public List<? extends Function<WereWolfAPI,ClickableItem>> getConfig() {
@@ -95,15 +96,15 @@ public class RoleRegister implements IRegister {
 
     /**
      * Ajoute un attribut au rôle pour la composition automatique
-     * @param randomCompositionAttribute l'attribut
+     * @param roleAttribute l'attribut
      * @return l'instance du register
      */
-    public RoleRegister setRandomCompositionAttribute(RandomCompositionAttribute randomCompositionAttribute){
-        this.randomCompositionAttribute=randomCompositionAttribute;
+    public RoleRegister addAttribute(RoleAttribute roleAttribute){
+        this.attributes.add(roleAttribute);
         return this;
     }
 
-    public List<? extends String> getIncompatibleRoles() {
+    public Set<? extends String> getIncompatibleRoles() {
         return this.incompatibleRoles;
     }
 
@@ -121,8 +122,8 @@ public class RoleRegister implements IRegister {
      * @param key clef du rôle dépendant
      * @return l'instance du register
      */
-    public RoleRegister setRequireAnotherRole(String key){
-        this.requireRole=key;
+    public RoleRegister addRequireAnotherRole(String key){
+        this.requireRoles.add(key);
         return this;
     }
 
@@ -133,16 +134,6 @@ public class RoleRegister implements IRegister {
      */
     public RoleRegister addCategory(Category category){
         this.categories.add(category);
-
-        if(this.randomCompositionAttribute.equals(RandomCompositionAttribute.VILLAGER)){
-            if(category.equals(Category.WEREWOLF)){
-                this.randomCompositionAttribute=RandomCompositionAttribute.WEREWOLF;
-            }
-            else if(category.equals(Category.NEUTRAL)){
-                this.randomCompositionAttribute=RandomCompositionAttribute.NEUTRAL;
-            }
-        }
-
         return this;
     }
 

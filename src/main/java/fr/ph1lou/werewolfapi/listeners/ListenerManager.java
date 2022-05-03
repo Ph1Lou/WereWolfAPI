@@ -28,7 +28,7 @@ public abstract class ListenerManager implements Listener {
 
         if (isActive) {
             if (!this.register) {
-                BukkitUtils.registerEvents(this);
+                BukkitUtils.registerListener(this);
                 this.register = true;
             }
         } else if (this.register) {

@@ -37,7 +37,7 @@ public class BukkitUtils {
      * Register Bukkit Listener
      * @param listener the listener
      */
-    public static void registerEvents(@NotNull Listener listener){
+    public static void registerListener(@NotNull Listener listener){
         GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
         if(api==null){
             throw new RuntimeException("WereWolfPlugin not loaded");
