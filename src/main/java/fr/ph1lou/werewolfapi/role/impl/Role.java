@@ -2,13 +2,13 @@ package fr.ph1lou.werewolfapi.role.impl;
 
 import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Camp;
-import fr.ph1lou.werewolfapi.enums.ConfigBase;
+import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
 import fr.ph1lou.werewolfapi.enums.Day;
-import fr.ph1lou.werewolfapi.enums.Prefix;
+import fr.ph1lou.werewolfapi.basekeys.Prefix;
 import fr.ph1lou.werewolfapi.enums.Sound;
 import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
-import fr.ph1lou.werewolfapi.enums.TimerBase;
+import fr.ph1lou.werewolfapi.basekeys.TimerBase;
 import fr.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import fr.ph1lou.werewolfapi.events.werewolf.*;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
@@ -61,8 +61,6 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
     private String displayRole;
     @Nullable
     private String displayCamp;
-    @Nullable
-    private String deathRole;
     private final List<IAuraModifier> auraModifiers = new ArrayList<>();
     private boolean abilityEnabled = true;
 
@@ -174,7 +172,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
         if(this.playerWW.isState(StatePlayer.DEATH)) return;
 
-        if (this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_LIST.getKey()) <= 0) {
+        if (this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_LIST) <= 0) {
             event.setAccept(isWereWolf());
         }
 
@@ -199,7 +197,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
         Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
 
-        this.playerWW.sendMessageWithKey(Prefix.YELLOW.getKey() , "werewolf.role.werewolf.go_to_the_werewolf_camp");
+        this.playerWW.sendMessageWithKey(Prefix.YELLOW , "werewolf.role.werewolf.go_to_the_werewolf_camp");
         Sound.WOLF_HOWL.play(getPlayerWW());
         this.recoverPotionEffects();
 
@@ -207,7 +205,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
                 .filter(playerWW -> playerWW.isState(StatePlayer.ALIVE))
                 .forEach(player1 -> {
-                    player1.sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.role.werewolf.new_werewolf");
+                    player1.sendMessageWithKey(Prefix.RED ,"werewolf.role.werewolf.new_werewolf");
                     Sound.WOLF_HOWL.play(player1);
                 });
     }
@@ -289,6 +287,9 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
     @EventHandler
     public final void onCountCategories(CountRemainingRolesCategoriesEvent event){
 
+        if(!this.getPlayerWW().getRole().equals(this)){
+            return;
+        }
         if (!this.playerWW.isState(StatePlayer.ALIVE)) return;
 
         if(this.isNeutral()){
@@ -318,6 +319,9 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
         if(!this.uuid.equals(killer.getUniqueId())) return;
 
         Player victim = event.getEntity().getPlayer();
+
+        if(victim == null) return;
+
         Optional<IPlayerWW> victimWW = game.getPlayerWW(victim.getUniqueId());
         if (victimWW.isPresent()) {
             WereWolfKillEvent killEvent = new WereWolfKillEvent(this.getPlayerWW(), victimWW.get());
@@ -338,7 +342,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
         Sound.EXPLODE.play(this.getPlayerWW());
         this.getPlayerWW().sendMessageWithKey("werewolf.description.description_message",
                 Formatter.format("&description&", this.getDescription()));
-        this.getPlayerWW().sendMessageWithKey(Prefix.YELLOW.getKey() , "werewolf.announcement.review_role");
+        this.getPlayerWW().sendMessageWithKey(Prefix.YELLOW , "werewolf.announcement.review_role");
 
         this.recoverPotionEffects();
         this.recoverPower();
@@ -375,26 +379,26 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
         this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,"werewolf"));
 
-        if(!this.game.getConfig().isConfigActive(ConfigBase.WEREWOLF_CHAT.getKey())) return;
+        if(!this.game.getConfig().isConfigActive(ConfigBase.WEREWOLF_CHAT)) return;
 
         openWereWolfChat();
 
     }
 
     protected void openWereWolfChat(){
-        this.getPlayerWW().sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.commands.admin.ww_chat.announce",
+        this.getPlayerWW().sendMessageWithKey(Prefix.RED ,"werewolf.commands.ww_chat.announce",
                 Formatter.format("&timer&", Utils.conversion(game.getConfig()
-                        .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey()))),
+                        .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION))),
                 Formatter.format("&number&",game.getConfig().getWereWolfChatMaxMessage()));
 
         BukkitUtils.scheduleSyncDelayedTask(
                 () -> {
                     if(!this.game.isState(StateGame.END)){
                         getPlayerWW()
-                                .sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.commands.admin.ww_chat.disable");
+                                .sendMessageWithKey(Prefix.RED ,"werewolf.commands.ww_chat.disable");
                     }
                 },
-                this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION.getKey())* 20L);
+                this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION)* 20L);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

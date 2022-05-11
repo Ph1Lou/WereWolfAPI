@@ -1,4 +1,4 @@
-package fr.ph1lou.werewolfapi.listeners;
+package fr.ph1lou.werewolfapi.listeners.impl;
 
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;

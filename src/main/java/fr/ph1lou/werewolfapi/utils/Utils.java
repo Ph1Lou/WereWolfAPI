@@ -1,5 +1,7 @@
 package fr.ph1lou.werewolfapi.utils;
 
+import fr.ph1lou.werewolfapi.enums.StatePlayer;
+import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
 import org.bukkit.Bukkit;
@@ -10,7 +12,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -119,6 +123,28 @@ public class Utils {
                 .filter(itemStack -> itemStack.getType() == UniversalMaterial.GOLDEN_APPLE.getType())
                 .mapToInt(ItemStack::getAmount)
                 .sum();
+    }
+
+
+    /**
+     * Select a random Player who should be alive
+     * @param wereWolfAPI the current game
+     * @param playerWW the requester
+     * @return a random player or the requester if no-player was found
+     */
+    public static IPlayerWW autoSelect(WereWolfAPI wereWolfAPI, IPlayerWW playerWW){
+
+        List<IPlayerWW> players = wereWolfAPI.getPlayersWW()
+                .stream()
+                .filter(playerWW1 -> playerWW1.isState(StatePlayer.ALIVE))
+                .filter(playerWW1 -> !playerWW1.equals(playerWW))
+                .collect(Collectors.toList());
+
+        if (players.isEmpty()) {
+            return playerWW;
+        }
+
+        return players.get((int) Math.floor(wereWolfAPI.getRandom().nextFloat() * players.size()));
     }
 
 }

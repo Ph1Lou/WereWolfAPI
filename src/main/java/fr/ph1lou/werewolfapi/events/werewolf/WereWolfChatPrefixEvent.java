@@ -16,7 +16,7 @@ public class WereWolfChatPrefixEvent extends Event  {
 
     private final List<Formatter> formatters = new ArrayList<>();
 
-    private String prefix= "werewolf.commands.admin.ww_chat.prefix";
+    private String prefix= "werewolf.commands.ww_chat.prefix";
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public WereWolfChatPrefixEvent(IPlayerWW playerWW, IPlayerWW requester){

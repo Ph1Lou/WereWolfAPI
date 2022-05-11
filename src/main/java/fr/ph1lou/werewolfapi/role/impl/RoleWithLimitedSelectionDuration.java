@@ -2,7 +2,7 @@ package fr.ph1lou.werewolfapi.role.impl;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
-import fr.ph1lou.werewolfapi.enums.Prefix;
+import fr.ph1lou.werewolfapi.basekeys.Prefix;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEndEvent;
 import fr.ph1lou.werewolfapi.role.interfaces.IPower;
@@ -26,7 +26,7 @@ public abstract class RoleWithLimitedSelectionDuration extends RoleVillage imple
             return;
         }
 
-        getPlayerWW().sendMessageWithKey(Prefix.RED.getKey() ,"werewolf.check.end_selection");
+        getPlayerWW().sendMessageWithKey(Prefix.RED ,"werewolf.check.end_selection");
     }
 
     @Override

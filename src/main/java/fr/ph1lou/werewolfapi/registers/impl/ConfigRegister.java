@@ -1,6 +1,6 @@
 package fr.ph1lou.werewolfapi.registers.impl;
 
-import fr.ph1lou.werewolfapi.listeners.ListenerManager;
+import fr.ph1lou.werewolfapi.listeners.impl.ListenerManager;
 import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;

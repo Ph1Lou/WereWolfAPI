@@ -115,13 +115,6 @@ public interface WereWolfAPI {
     Random getRandom();
 
     /**
-     * Select a random Player who should be alive
-     * @param playerWW the requester
-     * @return a random player or the requester if no-player was found
-     */
-    IPlayerWW autoSelect(IPlayerWW playerWW);
-
-    /**
      * Get Vote Manager
      * @return Vote Manager
      */

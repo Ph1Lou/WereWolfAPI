@@ -2,8 +2,8 @@ package fr.ph1lou.werewolfapi.registers.impl;
 
 import fr.minuskube.inv.SmartInventory;
 import fr.ph1lou.werewolfapi.enums.Sound;
-import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
+import fr.ph1lou.werewolfapi.registers.interfaces.IRegister;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -21,7 +21,6 @@ import java.util.function.BiConsumer;
  * @author Ph1Lou
  */
 @SuppressWarnings("unused")
-
 public class AddonRegister implements IRegister {
 
     private final String key;
