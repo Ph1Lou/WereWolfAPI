@@ -4,10 +4,10 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.enums.Aura;
 
-public abstract class RoleNeutral extends Role {
+public abstract class RoleNeutral extends RoleImpl {
 
-    public RoleNeutral(WereWolfAPI game, IPlayerWW playerWW, String key){
-        super(game, playerWW,key);
+    public RoleNeutral(WereWolfAPI game, IPlayerWW playerWW){
+        super(game, playerWW);
     }
 
     @Override

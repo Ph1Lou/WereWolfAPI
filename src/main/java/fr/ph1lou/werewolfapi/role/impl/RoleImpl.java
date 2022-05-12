@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.role.impl;
 
+import fr.ph1lou.werewolfapi.annotations.Role;
 import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Camp;
 import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
@@ -43,7 +44,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public abstract class Role implements IRole, Cloneable, IDisplay {
+public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     
     protected final WereWolfAPI game;
 
@@ -55,8 +56,6 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
     private boolean solitary =false;
     @NotNull
     private IPlayerWW playerWW;
-    @NotNull
-    private final String key;
     @Nullable
     private String displayRole;
     @Nullable
@@ -64,11 +63,10 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
     private final List<IAuraModifier> auraModifiers = new ArrayList<>();
     private boolean abilityEnabled = true;
 
-    public Role(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW, @NotNull String key){
+    public RoleImpl(@NotNull WereWolfAPI game, @NotNull IPlayerWW playerWW){
         this.game = game;
         this.uuid= playerWW.getUUID();
         this.playerWW = playerWW;
-        this.key=key;
     }
 
     @Override
@@ -98,7 +96,15 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
 
     @Override
     public final @NotNull String getKey() {
-        return this.key;
+
+        Role role = this.getClass().getAnnotation(Role.class);
+
+        if(role == null){
+            Bukkit.getLogger().warning(String.format("The class %s has not been annotated by the role annotation",
+                    this.getClass().getName()));
+            return this.getClass().getName();
+        }
+        return role.key();
     }
 
     @NotNull
@@ -459,7 +465,7 @@ public abstract class Role implements IRole, Cloneable, IDisplay {
         if(this.displayRole!=null){
             return this.displayRole;
         }
-        return this.key;
+        return this.getKey();
     }
 
     @Override

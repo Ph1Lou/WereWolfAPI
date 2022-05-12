@@ -10,8 +10,8 @@ import org.bukkit.event.EventHandler;
 
 public abstract class RoleWithLimitedSelectionDuration extends RoleVillage implements IPower {
 
-    public RoleWithLimitedSelectionDuration(WereWolfAPI game, IPlayerWW playerWW, String key) {
-        super(game, playerWW,key);
+    public RoleWithLimitedSelectionDuration(WereWolfAPI game, IPlayerWW playerWW) {
+        super(game, playerWW);
     }
     private boolean power=true;
 

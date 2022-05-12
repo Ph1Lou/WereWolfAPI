@@ -4,10 +4,10 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.enums.Aura;
 
-public abstract class RoleVillage extends Role {
+public abstract class RoleVillage extends RoleImpl {
 
-    public RoleVillage(WereWolfAPI game, IPlayerWW playerWW, String key){
-        super(game, playerWW,key);
+    public RoleVillage(WereWolfAPI game, IPlayerWW playerWW){
+        super(game, playerWW);
     }
 
     @Override
