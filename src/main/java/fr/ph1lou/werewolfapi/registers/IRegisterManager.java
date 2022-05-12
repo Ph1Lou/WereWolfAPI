@@ -3,7 +3,7 @@ package fr.ph1lou.werewolfapi.registers;
 
 import fr.ph1lou.werewolfapi.annotations.Addon;
 import fr.ph1lou.werewolfapi.annotations.AdminCommand;
-import fr.ph1lou.werewolfapi.annotations.Command;
+import fr.ph1lou.werewolfapi.annotations.PlayerCommand;
 import fr.ph1lou.werewolfapi.annotations.Configuration;
 import fr.ph1lou.werewolfapi.annotations.Event;
 import fr.ph1lou.werewolfapi.annotations.Role;
@@ -28,7 +28,7 @@ public interface IRegisterManager {
 
     Set<Wrapper<?, Timer>> getTimersRegister();
 
-    Set<Wrapper<ICommand, Command>> getCommandsRegister();
+    Set<Wrapper<ICommand, PlayerCommand>> getPlayerCommandsRegister();
 
     Set<Wrapper<ICommand, RoleCommand>> getRoleCommandsRegister();
 
