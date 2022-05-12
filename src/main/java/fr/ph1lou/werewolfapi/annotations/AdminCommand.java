@@ -1,7 +1,6 @@
 package fr.ph1lou.werewolfapi.annotations;
 
 import fr.ph1lou.werewolfapi.enums.StateGame;
-import fr.ph1lou.werewolfapi.enums.StatePlayer;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,7 +13,6 @@ public @interface AdminCommand {
 
     String key();
     String descriptionKey();
-    StatePlayer[] statePlayer() default {};
     StateGame[] stateGame() default {};
     int[] argNumbers() default {};
     boolean moderatorAccess() default false;

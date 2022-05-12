@@ -16,5 +16,6 @@ public @interface Timer {
     String[] loreKey() default {};
     boolean decrementAfterRole() default false;
     boolean decrement() default false;
+    int step() default 5;
     Class<? extends Event> onZero() default Event.class;
 }
