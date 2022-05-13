@@ -20,7 +20,7 @@ public @interface Role {
     boolean requireDouble() default false;
     String[] requireRoles() default {};
     String[] incompatibleRoles() default {};
-    IntValue[] intValues() default {};
+    IntValue[] configValues() default {};
     Configuration[] configurations() default {};
     Timer[] timers() default {};
 }

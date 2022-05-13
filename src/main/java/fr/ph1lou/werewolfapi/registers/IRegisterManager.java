@@ -1,8 +1,9 @@
 package fr.ph1lou.werewolfapi.registers;
 
 
-import fr.ph1lou.werewolfapi.annotations.Addon;
+import fr.ph1lou.werewolfapi.annotations.ModuleWerewolf;
 import fr.ph1lou.werewolfapi.annotations.AdminCommand;
+import fr.ph1lou.werewolfapi.annotations.Lover;
 import fr.ph1lou.werewolfapi.annotations.PlayerCommand;
 import fr.ph1lou.werewolfapi.annotations.Configuration;
 import fr.ph1lou.werewolfapi.annotations.Event;
@@ -12,15 +13,21 @@ import fr.ph1lou.werewolfapi.annotations.Scenario;
 import fr.ph1lou.werewolfapi.annotations.Timer;
 import fr.ph1lou.werewolfapi.commands.ICommand;
 import fr.ph1lou.werewolfapi.listeners.impl.ListenerManager;
+import fr.ph1lou.werewolfapi.lovers.ILover;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
 import fr.ph1lou.werewolfapi.utils.Wrapper;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Optional;
 import java.util.Set;
 
 public interface IRegisterManager {
 
+    Optional<String> getModuleKey(String key);
+
     Set<Wrapper<IRole, Role>> getRolesRegister();
+
+    Set<Wrapper<ILover, Lover>> getLoversRegister();
 
     Set<Wrapper<ListenerManager, Scenario>> getScenariosRegister();
 
@@ -34,7 +41,7 @@ public interface IRegisterManager {
 
     Set<Wrapper<ICommand, AdminCommand>> getAdminCommandsRegister();
 
-    Set<Wrapper<JavaPlugin, Addon>> getAddonsRegister();
+    Set<Wrapper<JavaPlugin, ModuleWerewolf>> getModulesRegister();
 
     Set<Wrapper<ListenerManager, Event>> getRandomEventsRegister();
 }

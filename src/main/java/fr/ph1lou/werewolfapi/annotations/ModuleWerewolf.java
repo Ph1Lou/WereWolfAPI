@@ -9,11 +9,11 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Addon {
+public @interface ModuleWerewolf {
     String key();
     String[] loreKeys();
     UniversalMaterial item();
     String defaultLanguage();
-    String[] authorsUuid();
+    Author[] authors();
     IntValue[] configValues() default {};
 }

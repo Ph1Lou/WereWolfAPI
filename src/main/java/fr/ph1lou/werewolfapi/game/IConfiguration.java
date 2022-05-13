@@ -6,7 +6,7 @@ package fr.ph1lou.werewolfapi.game;
 
 @SuppressWarnings("unused")
 
-public interface IConfiguration {
+public interface IConfiguration extends IStorageConfiguration {
 
     int getDiamondLimit();
 
@@ -84,45 +84,11 @@ public interface IConfiguration {
 
     void setBorderMin(int borderMin);
 
-    int getTimerValue(String key);
-
-    boolean isConfigActive(String key);
-
-    int getRoleCount(String key);
-
-    int getLoverCount(String key);
-
-    void setLoverCount(String key,int value);
-
-    void addOneLover(String key);
-
-    void removeOneLover(String key);
-
-    boolean isScenarioActive(String key);
-
     double getBorderSpeed();
 
     void setBorderSpeed(double seed);
 
-    void switchConfigValue(String key);
-
-    void switchScenarioValue(String key);
-
-    void removeOneRole(String key);
-
-    void addOneRole(String key);
-
-    void setRole(String key, int value);
-
-    void moveTimer(String key, int value);
-
-    void setConfig(String key,boolean enable);
-
-    void setScenario(String key,boolean enable);
-
     int getLimitDepthStrider();
-
-    void setTimerValue(String key, int value);
 
     void setLimitDepthStrider(int limitDepthRider);
 
@@ -175,20 +141,6 @@ public interface IConfiguration {
 
     int getKnockBackMode();
 
-    /**
-     * Get Random Event Probability
-     * @param key of the random event
-     * @return the probability
-     */
-    int getProbability(String key);
-
-    /**
-     * Set Probability of the random Event
-     * @param key of the random event
-     * @param probability the probability
-     */
-    void setProbability(String key,int probability);
-
     void setKnockBackMode(int knockBackMode);
 
     int getWereWolfChatMaxMessage();
@@ -198,10 +150,6 @@ public interface IConfiguration {
     boolean isTrollLover();
 
     void setTrollLover(boolean troll);
-
-    int getValue(String baseKey, String key);
-
-    void setValue(String baseKey, String key, int value);
 
     boolean isMeetUp();
 

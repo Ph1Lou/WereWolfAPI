@@ -12,7 +12,7 @@ public @interface Lover {
     String[] loreKey() default {};
     String[] requireRoles() default {};
     String[] incompatibleRoles() default {};
-    IntValue[] intValues() default {};
+    IntValue[] configValues() default {};
     Configuration[] configurations() default {};
     Timer[] timers() default {};
 }

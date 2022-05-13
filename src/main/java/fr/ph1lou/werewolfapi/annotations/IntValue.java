@@ -13,6 +13,6 @@ public @interface IntValue {
     String key();
     int defaultValue();
     int meetUpValue();
-    double step();
+    int step();
     UniversalMaterial item();
 }
