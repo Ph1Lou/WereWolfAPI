@@ -13,7 +13,7 @@ public @interface AdminCommand {
 
     String key();
     String descriptionKey();
-    StateGame[] stateGame() default {};
+    StateGame[] statesGame() default {};
     int[] argNumbers() default {};
     boolean moderatorAccess() default false;
     boolean hostAccess() default true;

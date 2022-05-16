@@ -14,8 +14,8 @@ public @interface PlayerCommand {
 
     String key();
     String descriptionKey();
-    StatePlayer[] statePlayer() default {};
-    StateGame[] stateGame() default {};
+    StatePlayer[] statesPlayer() default {};
+    StateGame[] statesGame() default {};
     int[] argNumbers() default {};
     boolean autoCompletion() default true;
 }

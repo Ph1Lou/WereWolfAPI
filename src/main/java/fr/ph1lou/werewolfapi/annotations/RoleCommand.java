@@ -14,8 +14,8 @@ public @interface RoleCommand {
 
     String key();
     String[] roleKeys();
-    StatePlayer[] statePlayer() default StatePlayer.ALIVE;
-    StateGame[] stateGame() default StateGame.GAME;
+    StatePlayer[] statesPlayer() default StatePlayer.ALIVE;
+    StateGame[] statesGame() default StateGame.GAME;
     int[] argNumbers();
     boolean autoCompletion() default true;
     boolean requiredPower() default false;
