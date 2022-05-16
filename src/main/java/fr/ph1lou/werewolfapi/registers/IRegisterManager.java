@@ -12,6 +12,7 @@ import fr.ph1lou.werewolfapi.annotations.RoleCommand;
 import fr.ph1lou.werewolfapi.annotations.Scenario;
 import fr.ph1lou.werewolfapi.annotations.Timer;
 import fr.ph1lou.werewolfapi.commands.ICommand;
+import fr.ph1lou.werewolfapi.commands.ICommandRole;
 import fr.ph1lou.werewolfapi.listeners.impl.ListenerManager;
 import fr.ph1lou.werewolfapi.lovers.ILover;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
@@ -37,7 +38,7 @@ public interface IRegisterManager {
 
     Set<Wrapper<ICommand, PlayerCommand>> getPlayerCommandsRegister();
 
-    Set<Wrapper<ICommand, RoleCommand>> getRoleCommandsRegister();
+    Set<Wrapper<ICommandRole, RoleCommand>> getRoleCommandsRegister();
 
     Set<Wrapper<ICommand, AdminCommand>> getAdminCommandsRegister();
 
