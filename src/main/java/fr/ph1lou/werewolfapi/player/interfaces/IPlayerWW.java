@@ -272,6 +272,9 @@ public interface IPlayerWW {
     @NotNull
     Location getLocation();
 
+    @NotNull
+    Location getEyeLocation();
+
     /**
      * Get Player Wish
      */
