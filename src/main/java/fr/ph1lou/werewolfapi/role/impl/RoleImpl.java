@@ -355,12 +355,12 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
 
         if(this.game.getConfig().isTrollSV()) return;
 
-        if(!this.game.getStuffs().getStuffRoles().containsKey(this.getKey())){
+        if(this.game.getStuffs().getStuffRole(this.getKey()).isEmpty()){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
             return;
         }
 
-        for(ItemStack i:game.getStuffs().getStuffRoles().get(getKey())) {
+        for(ItemStack i:game.getStuffs().getStuffRole(this.getKey())) {
             this.playerWW.addItem(i);
         }
     }
