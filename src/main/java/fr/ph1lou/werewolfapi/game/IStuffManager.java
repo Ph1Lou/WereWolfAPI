@@ -17,7 +17,7 @@ public interface IStuffManager {
     void addStartLoot(ItemStack i);
     List<? extends ItemStack> getStuffRole(String key);
     void setStuffRole(String key, List<ItemStack> items);
-    List<? extends ItemStack> recoverTempStuff(UUID player);
-    void putTempStuff(UUID player, List<ItemStack> items);
+    ItemStack[] recoverTempStuff(UUID player);
+    void putTempStuff(UUID player, ItemStack[] items);
     boolean isInTempStuff(UUID uuid);
 }

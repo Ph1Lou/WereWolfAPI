@@ -100,7 +100,7 @@ public interface IPlayerWW {
      * Set Death Items
      * @param items the death items
      */
-    void setItemDeath(ItemStack[] items);
+    void setItemDeath(List<ItemStack> items);
 
     /**
      * Get Death Items
