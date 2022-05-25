@@ -12,6 +12,7 @@ public @interface Event {
     String key();
     String[] loreKey() default {};
     int defaultValue() default 1;
+    int meetUpValue() default 1;
     IntValue[] configValues() default {};
     Timer[] timers() default {};
     Configuration[] configurations() default {};

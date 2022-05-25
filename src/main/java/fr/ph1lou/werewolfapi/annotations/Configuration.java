@@ -12,6 +12,7 @@ public @interface Configuration {
     String key();
     String[] loreKey() default {};
     boolean defaultValue() default false;
+    boolean meetUpValue() default false;
     boolean appearInMenu() default true;
     String[] incompatibleConfigs() default {};
     IntValue[] configValues() default {};

@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("UnusedReturnValue")
 public class ItemBuilder {
@@ -98,16 +99,19 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setLore(List<String> lore) {
+    public ItemBuilder setLore(List<String> lores) {
         ItemMeta meta = getItemMeta();
-        meta.setLore(lore);
+        meta.setLore(lores
+                .stream()
+                .map(lore -> ChatColor.WHITE+lore)
+                .collect(Collectors.toList()));
         setItemMeta(meta);
         return this;
     }
 
     public ItemBuilder setLore(String lore) {
         ArrayList<String> loreList = new ArrayList<>();
-        loreList.add(lore);
+        loreList.add(ChatColor.WHITE+lore);
         ItemMeta meta = getItemMeta();
         meta.setLore(loreList);
         setItemMeta(meta);

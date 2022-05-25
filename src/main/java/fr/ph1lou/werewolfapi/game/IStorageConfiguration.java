@@ -53,4 +53,6 @@ public interface IStorageConfiguration {
     void addOneLover(String key);
 
     void removeOneLover(String key);
+
+    void resetSwitchMeetUp();
 }
