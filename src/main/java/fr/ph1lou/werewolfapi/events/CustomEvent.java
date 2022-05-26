@@ -141,6 +141,11 @@ public class CustomEvent extends Event implements Cancellable {
         return this;
     }
 
+    public CustomEvent setTarget(IPlayerWW ... playerWW){
+        this.playerWWS = Sets.newHashSet(playerWW);
+        return this;
+    }
+
     public CustomEvent setPlayer(IPlayerWW playerWW){
         this.playerWW = playerWW;
         return this;

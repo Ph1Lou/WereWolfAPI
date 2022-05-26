@@ -1,6 +1,5 @@
 package fr.ph1lou.werewolfapi.versions;
 
-import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;

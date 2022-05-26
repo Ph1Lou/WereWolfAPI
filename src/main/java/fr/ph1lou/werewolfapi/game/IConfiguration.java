@@ -139,9 +139,9 @@ public interface IConfiguration extends IStorageConfiguration {
 
     void setTrollKey(String trollKey);
 
-    int getKnockBackMode();
+    boolean isKnockBackForInvisibleRoleOnly();
 
-    void setKnockBackMode(int knockBackMode);
+    void setKnockBackForInvisibleRoleOnly(boolean knockBackMode);
 
     int getWereWolfChatMaxMessage();
 
