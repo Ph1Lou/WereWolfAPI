@@ -8,10 +8,6 @@ package fr.ph1lou.werewolfapi.game;
 
 public interface IConfiguration extends IStorageConfiguration {
 
-    int getDiamondLimit();
-
-    void setDiamondLimit(int diamond_limit);
-
     int getStrengthRate();
 
     void setStrengthRate(int strengthRate);
@@ -19,22 +15,6 @@ public interface IConfiguration extends IStorageConfiguration {
     int getPlayerRequiredVoteEnd();
 
     void setPlayerRequiredVoteEnd(int player_required_before_voting_ends);
-
-    int getPearlRate() ;
-
-    void setPearlRate(int pearlRate);
-
-    int getFlintRate() ;
-
-    void setFlintRate(int flintRate) ;
-
-    int getAppleRate() ;
-
-    void setAppleRate(int appleRate);
-
-    int getXpBoost();
-
-    void setXpBoost(int xpBoost);
 
     int getLimitProtectionIron() ;
 
