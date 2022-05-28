@@ -14,6 +14,7 @@ public @interface Configuration {
     boolean defaultValue() default false;
     boolean meetUpValue() default false;
     boolean appearInMenu() default true;
+    boolean appearInConfigurationList() default true;
     String[] incompatibleConfigs() default {};
     IntValue[] configValues() default {};
     Timer[] timers() default {};

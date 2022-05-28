@@ -48,10 +48,6 @@ public interface IConfiguration extends IStorageConfiguration {
 
     void setResistanceRate(int resistanceRate);
 
-    boolean isTrollSV();
-
-    void setTrollSV(boolean trollSV);
-
     int getBorderMax();
 
     void setBorderMax(int borderMax);
@@ -118,10 +114,6 @@ public interface IConfiguration extends IStorageConfiguration {
     boolean isKnockBackForInvisibleRoleOnly();
 
     void setKnockBackForInvisibleRoleOnly(boolean knockBackMode);
-
-    boolean isTrollLover();
-
-    void setTrollLover(boolean troll);
 
     boolean isMeetUp();
 

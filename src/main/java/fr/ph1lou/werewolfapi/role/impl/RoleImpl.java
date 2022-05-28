@@ -354,7 +354,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
         this.recoverPotionEffects();
         this.recoverPower();
 
-        if(this.game.getConfig().isTrollSV()) return;
+        if(this.game.getConfig().isConfigActive(ConfigBase.TROLL_ROLE)) return;
 
         if(this.game.getStuffs().getStuffRole(this.getKey()).isEmpty()){
             Bukkit.getConsoleSender().sendMessage("[WereWolfPlugin] invalid addon structure");
