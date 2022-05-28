@@ -85,6 +85,8 @@ public interface IPlayerWW {
      */
     void clearPotionEffects();
 
+    void clearPotionEffects(String key);
+
     /**
      * Get all Potion Modifiers of the player
      */
