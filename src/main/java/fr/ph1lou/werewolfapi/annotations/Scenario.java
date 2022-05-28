@@ -15,5 +15,6 @@ public @interface Scenario {
    boolean meetUpValue() default false;
    String[] incompatibleScenarios() default {};
    IntValue[] configValues() default {};
-
+   Configuration[] configurations() default {};
+   Timer[] timers() default {};
 }

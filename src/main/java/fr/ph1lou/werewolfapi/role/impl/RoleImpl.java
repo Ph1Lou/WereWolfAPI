@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.role.impl;
 
 import fr.ph1lou.werewolfapi.annotations.Role;
+import fr.ph1lou.werewolfapi.basekeys.IntValueBase;
 import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Camp;
 import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
@@ -395,7 +396,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
         this.getPlayerWW().sendMessageWithKey(Prefix.RED ,"werewolf.commands.ww_chat.announce",
                 Formatter.format("&timer&", Utils.conversion(game.getConfig()
                         .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION))),
-                Formatter.format("&number&",game.getConfig().getWereWolfChatMaxMessage()));
+                Formatter.format("&number&",game.getConfig().getValue(IntValueBase.WEREWOLF_CHAT)));
 
         BukkitUtils.scheduleSyncDelayedTask(
                 () -> {

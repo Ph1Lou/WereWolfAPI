@@ -16,4 +16,5 @@ public @interface Configuration {
     boolean appearInMenu() default true;
     String[] incompatibleConfigs() default {};
     IntValue[] configValues() default {};
+    Timer[] timers() default {};
 }

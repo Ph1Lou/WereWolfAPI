@@ -12,10 +12,6 @@ public interface IConfiguration extends IStorageConfiguration {
 
     void setStrengthRate(int strengthRate);
 
-    int getPlayerRequiredVoteEnd();
-
-    void setPlayerRequiredVoteEnd(int player_required_before_voting_ends);
-
     int getLimitProtectionIron() ;
 
     void setLimitProtectionIron(int limitProtectionIron);
@@ -122,10 +118,6 @@ public interface IConfiguration extends IStorageConfiguration {
     boolean isKnockBackForInvisibleRoleOnly();
 
     void setKnockBackForInvisibleRoleOnly(boolean knockBackMode);
-
-    int getWereWolfChatMaxMessage();
-
-    void setWereWolfChatMaxMessage(int nbMessage);
 
     boolean isTrollLover();
 

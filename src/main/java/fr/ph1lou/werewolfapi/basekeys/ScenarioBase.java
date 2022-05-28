@@ -4,12 +4,12 @@ package fr.ph1lou.werewolfapi.basekeys;
 
 public class ScenarioBase {
 
-    public static final String VANILLA_PLUS = "werewolf.menu.scenarios.vanilla_plus";
+    public static final String VANILLA_PLUS = "werewolf.menu.scenarios.vanilla+.name";
     public static final String ROD_LESS = "werewolf.menu.scenarios.rod_less";
     public static final String HORSE_LESS = "werewolf.menu.scenarios.horse_less";
     public static final String FIRE_LESS = "werewolf.menu.scenarios.fire_less";
     public static final String CUT_CLEAN = "werewolf.menu.scenarios.cut_clean";
-    public static final String DIAMOND_LIMIT = "werewolf.menu.scenarios.diamond_limit";
+    public static final String DIAMOND_LIMIT = "werewolf.menu.scenarios.diamond_limit_config.name";
     public static final String FAST_SMELTING = "werewolf.menu.scenarios.fast_smelting";
     public static final String HASTEY_BOYS = "werewolf.menu.scenarios.hastey_boys";
     public static final String HASTEY_BABIES = "werewolf.menu.scenarios.hastey_babies";
@@ -17,7 +17,7 @@ public class ScenarioBase {
     public static final String NO_EGG_SNOWBALL = "werewolf.menu.scenarios.no_egg_snowball";
     public static final String NO_POISON = "werewolf.menu.scenarios.no_poison";
     public static final String COMPASS_MIDDLE = "werewolf.menu.scenarios.compass_middle";
-    public static final String XP_BOOST = "werewolf.menu.scenarios.xp_boost";
+    public static final String XP_BOOST = "werewolf.menu.scenarios.xp_boost_config.name";
     public static final String COMPASS_TARGET_LAST_DEATH = "werewolf.menu.scenarios.compass_target_last_death";
     public static final String NO_CLEAN_UP = "werewolf.menu.scenarios.no_clean_up";
     public static final String NO_NAME_TAG = "werewolf.menu.scenarios.no_name_tag";
