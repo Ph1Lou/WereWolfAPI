@@ -143,7 +143,7 @@ public class RegisteredAction implements IRegisteredAction {
     }
 
     @Override
-    public UUID getGameUuid() {
+    public @Nullable UUID getGameUuid() {
         return this.gameUuid;
     }
 

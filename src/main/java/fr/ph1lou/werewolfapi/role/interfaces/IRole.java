@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
+@SuppressWarnings("EmptyMethod")
 public interface IRole extends IDisplay, IAura, ICamp, Listener {
 
     @NotNull
