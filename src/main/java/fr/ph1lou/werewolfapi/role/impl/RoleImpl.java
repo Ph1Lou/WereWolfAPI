@@ -2,6 +2,7 @@ package fr.ph1lou.werewolfapi.role.impl;
 
 import fr.ph1lou.werewolfapi.annotations.Role;
 import fr.ph1lou.werewolfapi.basekeys.IntValueBase;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Camp;
 import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
@@ -260,9 +261,9 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,this.getKey()));
+        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION,RoleBase.WEREWOLF));
         if(game.isDay(Day.DAY)) return;
-        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,this.getKey()));
+        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,RoleBase.WEREWOLF));
     }
 
     @EventHandler
@@ -337,8 +338,8 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
                 return;
             }
         }
-        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.SPEED, 1200, 0,this.getKey()));
-        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.ABSORPTION, 1200, 0,this.getKey()));
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.SPEED, 1200, 0, RoleBase.WEREWOLF));
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.ABSORPTION, 1200, 0, RoleBase.WEREWOLF));
     }
 
 
@@ -384,7 +385,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
 
         if(!this.isAbilityEnabled()) return;
 
-        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,this.getKey()));
+        this.getPlayerWW().addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE,RoleBase.WEREWOLF));
 
         if(!this.game.getConfig().isConfigActive(ConfigBase.WEREWOLF_CHAT)) return;
 
@@ -413,7 +414,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
 
         if(!this.isWereWolf()) return;
 
-        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,this.getKey(), 0));
+        this.getPlayerWW().addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,RoleBase.WEREWOLF, 0));
 
     }
 
@@ -524,7 +525,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
         }
 
         this.getPlayerWW()
-                .addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,this.getKey(), 0));
+                .addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE,RoleBase.WEREWOLF, 0));
 
         this.disableAbilitiesRole();
     }
