@@ -1,5 +1,7 @@
 package fr.ph1lou.werewolfapi.player.utils;
 
+import fr.ph1lou.werewolfapi.game.WereWolfAPI;
+import fr.ph1lou.werewolfapi.utils.Utils;
 import org.apache.commons.lang.StringEscapeUtils;
 
 public class Formatter {
@@ -22,6 +24,10 @@ public class Formatter {
 
     public static Formatter timer(String timer){
         return format("&timer&",timer);
+    }
+
+    public static Formatter timer(WereWolfAPI game, String timer){
+        return format("&timer&", Utils.conversion(game.getConfig().getTimerValue(timer)));
     }
 
     public static Formatter number(int number){
