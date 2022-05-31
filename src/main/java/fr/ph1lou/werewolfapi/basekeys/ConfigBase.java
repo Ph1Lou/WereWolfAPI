@@ -24,6 +24,7 @@ public class ConfigBase {
     public static final String DETECTIVE_EVERY_OTHER_DAY = "werewolf.roles.detective.configurations.detective_every_other_day";
     public static final String SEER_EVERY_OTHER_DAY = "werewolf.roles.seer.configurations.seer_every_other_day";
     public static final String WITCH_AUTO_RESURRECTION = "werewolf.roles.witch.configurations.auto_rez_witch";
+    public static final String INFECT_AUTO_RESURRECTION = "werewolf.roles.infect_father_of_the_wolves.configurations.auto_rez";
     public static final String THIERCELIEU = "werewolf.configurations.thiercelieu.name";
     public static final String TROLL_ROLE = "werewolf.configurations.troll_role.name";
     public static final String TROLL_LOVER = "werewolf.configurations.troll_lover.name";
