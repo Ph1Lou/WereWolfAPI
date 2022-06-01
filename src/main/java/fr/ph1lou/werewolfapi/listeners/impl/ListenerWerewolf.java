@@ -6,14 +6,14 @@ import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
-public abstract class ListenerManager implements Listener {
+public abstract class ListenerWerewolf implements Listener {
 
-    private final GetWereWolfAPI main;
+    private final WereWolfAPI game;
 
     protected boolean register = false;
 
-    public ListenerManager(GetWereWolfAPI main) {
-        this.main = main;
+    public ListenerWerewolf(WereWolfAPI game) {
+        this.game = game;
     }
 
     public boolean isRegister() {
@@ -21,7 +21,7 @@ public abstract class ListenerManager implements Listener {
     }
 
     public WereWolfAPI getGame(){
-        return this.main.getWereWolfAPI();
+        return this.game;
     }
 
     public void register(boolean isActive) {

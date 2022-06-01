@@ -217,4 +217,6 @@ public interface WereWolfAPI {
     void setLangage(String language);
 
     ILanguageManager getLanguageManager();
+
+    IListenersManager getListenersManager();
 }
