@@ -389,7 +389,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     }
 
     protected void openWereWolfChat(){
-        this.getPlayerWW().sendMessageWithKey(Prefix.RED ,"werewolf.commands.ww_chat.announce",
+        this.getPlayerWW().sendMessageWithKey(Prefix.RED ,"werewolf.commands.player.ww_chat.announce",
                 Formatter.format("&timer&", Utils.conversion(game.getConfig()
                         .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION))),
                 Formatter.format("&number&",game.getConfig().getValue(IntValueBase.WEREWOLF_CHAT)));
@@ -398,7 +398,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
                 () -> {
                     if(!this.game.isState(StateGame.END)){
                         getPlayerWW()
-                                .sendMessageWithKey(Prefix.RED ,"werewolf.commands.ww_chat.disable");
+                                .sendMessageWithKey(Prefix.RED ,"werewolf.commands.player.ww_chat.disable");
                     }
                 },
                 this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION)* 20L);

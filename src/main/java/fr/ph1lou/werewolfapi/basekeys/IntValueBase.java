@@ -1,5 +1,5 @@
 package fr.ph1lou.werewolfapi.basekeys;
-
+@SuppressWarnings({"unused"})
 public class IntValueBase {
     public static final String WEREWOLF_CHAT= "werewolf.configurations.werewolf_chat.configurations.vote_end";
     public static final String VOTE_END = "werewolf.configurations.vote.configurations.vote_end";
