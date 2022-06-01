@@ -213,4 +213,8 @@ public interface WereWolfAPI {
     String getPluginVersion();
 
     String getLanguage();
+
+    void setLangage(String language);
+
+    ILanguageManager getLanguageManager();
 }
