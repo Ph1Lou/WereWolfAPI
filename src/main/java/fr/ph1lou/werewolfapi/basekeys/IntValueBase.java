@@ -2,7 +2,7 @@ package fr.ph1lou.werewolfapi.basekeys;
 
 public class IntValueBase {
     public static final String WEREWOLF_CHAT= "werewolf.configurations.werewolf_chat.configurations.vote_end";
-    public static final String VOTE_END = "werewolf.configurations.werewolf_chat.configurations.vote_end";
+    public static final String VOTE_END = "werewolf.configurations.vote.configurations.vote_end";
     public static final String DIAMOND_LIMIT = "werewolf.scenarios.diamond_limit.configurations.limit";
     public static final String XP_BOOST = "werewolf.scenarios.xp_boost.configurations.xp";
     public static  final String FLINT_RATE = "werewolf.scenarios.vanilla+.configurations.flint_rate";
