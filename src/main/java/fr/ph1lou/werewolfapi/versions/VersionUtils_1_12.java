@@ -3,6 +3,7 @@ package fr.ph1lou.werewolfapi.versions;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -31,5 +32,4 @@ public class VersionUtils_1_12 extends VersionUtils_1_11{
         }
         return new ShapedRecipe(new NamespacedKey((Plugin) api, key), result);
     }
-
 }

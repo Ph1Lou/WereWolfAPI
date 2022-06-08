@@ -95,6 +95,8 @@ public abstract class VersionUtils {
      */
     public abstract void showPlayer(Player viewer, Player player);
 
+    public abstract void setChunkForceLoaded(World world, int x, int z, boolean generation);
+
 
 }
 

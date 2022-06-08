@@ -8,14 +8,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Configuration {
-
-    String key();
-    String[] loreKey() default {};
-    boolean defaultValue() default false;
-    boolean meetUpValue() default false;
-    boolean appearInMenu() default true;
-    boolean appearInConfigurationList() default true;
-    String[] incompatibleConfigs() default {};
+    ConfigurationBasic config();
     IntValue[] configValues() default {};
     Timer[] timers() default {};
+    ConfigurationBasic[] configurations() default {};
 }

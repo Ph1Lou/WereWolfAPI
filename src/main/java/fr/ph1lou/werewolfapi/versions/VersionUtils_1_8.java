@@ -91,6 +91,11 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
+    public void setChunkForceLoaded(World world, int x, int z, boolean generation) {
+        world.loadChunk(x, z, generation);
+    }
+
+    @Override
     public void setItemInHand(@NotNull Player player, ItemStack itemStack) {
         player.setItemInHand(itemStack);
     }

@@ -28,4 +28,5 @@ public class ConfigBase {
     public static final String THIERCELIEU = "werewolf.configurations.thiercelieu.name";
     public static final String TROLL_ROLE = "werewolf.configurations.troll_role.name";
     public static final String TROLL_LOVER = "werewolf.configurations.troll_lover.name";
+    public static final String VOTE_EVERY_OTHER_DAY = "werewolf.configurations.vote.configurations.vote_every_other_day";
 }

@@ -4,6 +4,7 @@ package fr.ph1lou.werewolfapi.versions;
 import fr.ph1lou.werewolfapi.enums.PotionDurationUtil;
 import fr.ph1lou.werewolfapi.enums.PotionUtil;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
