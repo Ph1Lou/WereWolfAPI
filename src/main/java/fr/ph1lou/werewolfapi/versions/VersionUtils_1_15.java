@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.versions;
 
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Biome;

@@ -30,13 +30,11 @@ public interface IMapManager {
 
     void generateMap(int mapRadius);
 
-    void generateMap(CommandSender sender, int mapRadius);
-
     void createMap();
 
     World getWorld();
 
-    void loadMap(@Nullable File map) throws IOException;
+    void loadMap(@Nullable File map);
 
     void loadMap() throws IOException;
 
