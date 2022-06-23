@@ -14,6 +14,7 @@ import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
 public abstract class VersionUtils {
 
@@ -65,7 +66,7 @@ public abstract class VersionUtils {
 
     public abstract void sendTabTitle(@NotNull Player player, @NotNull String header, @NotNull String footer);
 
-    public abstract Location findBiome(World world) throws Exception;
+    public abstract CompletableFuture<Location> findBiome(World world);
 
     public abstract int biomeSize(Location location, World world);
 

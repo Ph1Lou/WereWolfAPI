@@ -129,7 +129,7 @@ public class DescriptionBuilder {
         }
 
 
-        return this.game.translate("werewolf.description._") +
+        return this.game.translate("werewolf.description._") + '\n' +
                 sb +
                 this.game.translate("werewolf.description._");
 

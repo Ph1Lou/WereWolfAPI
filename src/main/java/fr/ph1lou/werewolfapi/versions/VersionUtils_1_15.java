@@ -1,27 +1,39 @@
 package fr.ph1lou.werewolfapi.versions;
 
 
-import org.bukkit.Chunk;
+import fr.ph1lou.werewolfapi.GetWereWolfAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class VersionUtils_1_15 extends VersionUtils_1_14 {
 
-
     @Override
-    public Location findBiome(World world) throws Exception {
-        for (int i = -2000; i < 2000; i += 16) {
-            for (int j = -2000; j < 2000; j += 16) {
-                if (world.getBiome(i, 20, j) == Biome.DARK_FOREST) {
-                    return new Location(world, i, 151, j);
+    public CompletableFuture<Location> findBiome(World world) {
+
+        CompletableFuture<Location> completableFuture = new CompletableFuture<>();
+
+        GetWereWolfAPI getWereWolfAPI = Bukkit.getServicesManager().load(GetWereWolfAPI.class);
+
+        if(getWereWolfAPI != null){
+            Bukkit.getScheduler().runTaskAsynchronously((Plugin) getWereWolfAPI, () -> {
+                for (int i = -2000; i < 2000; i += 16) {
+                    for (int j = -2000; j < 2000; j += 16) {
+                        if (world.getBiome(i, 100, j) == Biome.DARK_FOREST) {
+                            completableFuture.complete(new Location(world, i, 151, j));
+                            return;
+                        }
+                    }
                 }
-            }
+            });
         }
-        throw new Exception("No roofed found");
+        return completableFuture;
     }
 
     @Override

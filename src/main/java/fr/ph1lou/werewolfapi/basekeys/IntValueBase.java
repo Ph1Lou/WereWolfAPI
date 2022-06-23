@@ -5,9 +5,9 @@ public class IntValueBase {
     public static final String VOTE_END = "werewolf.configurations.vote.configurations.vote_end";
     public static final String DIAMOND_LIMIT = "werewolf.scenarios.diamond_limit.configurations.limit";
     public static final String XP_BOOST = "werewolf.scenarios.xp_boost.configurations.xp";
-    public static  final String FLINT_RATE = "werewolf.scenarios.vanilla+.configurations.flint_rate";
-    public static  final String APPLE_RATE = "werewolf.scenarios.vanilla+.configurations.apple_rate";
-    public static  final String PEARL_RATE = "werewolf.scenarios.vanilla+.configurations.ender_pearl_rate";
+    public static final String FLINT_RATE = "werewolf.scenarios.vanilla+.configurations.flint_rate";
+    public static final String APPLE_RATE = "werewolf.scenarios.vanilla+.configurations.apple_rate";
+    public static final String PEARL_RATE = "werewolf.scenarios.vanilla+.configurations.ender_pearl_rate";
     public static final String NECROMANCER_DISTANCE = "werewolf.roles.necromancer.configurations.distance";
     public static final String BARBARIAN_DISTANCE = "werewolf.roles.barbarian.configurations.distance";
     public static final String THUG_DISTANCE = "werewolf.roles.thug.configurations.distance";
