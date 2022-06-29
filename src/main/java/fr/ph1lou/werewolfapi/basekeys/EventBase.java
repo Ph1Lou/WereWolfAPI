@@ -15,4 +15,5 @@ public class EventBase {
     public static final String LOOT_BOX = "werewolf.random_events.loot_box.name";
     public static final String SISTER_MISANTHROPE = "werewolf.random_events.sister_misanthrope.name";
     public static final String RUMORS = "werewolf.random_events.rumors.name";
+    public static final String NOTALLWEREWOLFS = "werewolf.random_events.not_all_werewolfs.name";
 }
