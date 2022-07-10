@@ -78,4 +78,5 @@ public class RoleBase {
     public final static String RABBIT = "werewolf.roles.rabbit.display";
     public final static String INTERPRETER = "werewolf.roles.interpreter.display";
     public final static String ILLUSIONIST = "werewolf.roles.illusionist.display";
+    public final static String MIRE = "werewolf.roles.mire.display";
 }
