@@ -6,12 +6,12 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class OccultistRevealWishes extends Event implements Cancellable {
+public class OccultistRevealWishesEvent extends Event implements Cancellable {
 
     private boolean cancelled = false;
     private final IPlayerWW playerWW;
 
-    public OccultistRevealWishes(IPlayerWW playerWW) {
+    public OccultistRevealWishesEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
     }
 
