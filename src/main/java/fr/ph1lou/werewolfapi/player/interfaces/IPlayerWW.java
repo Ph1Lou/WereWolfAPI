@@ -11,7 +11,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -210,8 +209,6 @@ public interface IPlayerWW {
      */
     void removeLover(ILover ILover);
 
-    void clearLover();
-
     /**
      * Clear Player Lovers
      */
@@ -271,42 +268,6 @@ public interface IPlayerWW {
      * @return health
      */
     double getHealth();
-
-    /**
-     * Get Player Health
-     * @return health
-     */
-    double getHealth();
-
-    /**
-     * Add Player Health
-     * @param health player
-     */
-    void addHealth(double health);
-
-    /**
-     * Remove Player Health
-     * @param health player
-     */
-    void removeHealth(double health);
-
-    /**
-     * Get Player Health
-     * @return health
-     */
-    double getHealth();
-
-    /**
-     * Add Player Health
-     * @param health player
-     */
-    void addHealth(double health);
-
-    /**
-     * Remove Player Health
-     * @param health player
-     */
-    void removeHealth(double health);
 
     /**
      * Get Player Position or if he's disconnected his last position
