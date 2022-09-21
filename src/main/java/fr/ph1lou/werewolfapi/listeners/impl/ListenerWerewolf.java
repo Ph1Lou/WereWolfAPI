@@ -24,6 +24,9 @@ public abstract class ListenerWerewolf implements Listener {
         return this.game;
     }
 
+    public void second() {
+    }
+
     public void register(boolean isActive) {
 
         if (isActive) {
