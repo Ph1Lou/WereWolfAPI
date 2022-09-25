@@ -27,4 +27,7 @@ public class TimerBase {
     public static final String SCAMMER_DELAY = "werewolf.roles.scammer.timers.scammer_delay";
     public static final String WEREWOLF_TENEBROUS_DURATION = "werewolf.roles.tenebrous_werewolf.timers.darkness_duration";
     public static final String FLUTE_PLAYER_PROGRESS = "werewolf.roles.flute_player.timers.progress";
+    public static final String POACHER_PROGRESS = "werewolf.roles.poacher.timers.progress";
+    public static final String LONE_WOLF_DURATION = "werewolf.configurations.lone_wolf.timer";
+
 }

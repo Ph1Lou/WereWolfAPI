@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.utils;
 
+import fr.ph1lou.werewolfapi.enums.Category;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -147,4 +148,8 @@ public class Utils {
         return players.get((int) Math.floor(wereWolfAPI.getRandom().nextFloat() * players.size()));
     }
 
+    public static boolean compareDistance(WereWolfAPI wereWolfAPI, Location location1, Location location2, String distance){
+        return location1.getWorld() == location2.getWorld() &&
+                location1.distance(location2) < wereWolfAPI.getConfig().getValue(distance);
+    }
 }

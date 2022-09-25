@@ -13,6 +13,7 @@ import fr.ph1lou.werewolfapi.annotations.Scenario;
 import fr.ph1lou.werewolfapi.annotations.Timer;
 import fr.ph1lou.werewolfapi.commands.ICommand;
 import fr.ph1lou.werewolfapi.commands.ICommandRole;
+import fr.ph1lou.werewolfapi.enums.Category;
 import fr.ph1lou.werewolfapi.listeners.impl.ListenerWerewolf;
 import fr.ph1lou.werewolfapi.lovers.ILover;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
@@ -47,4 +48,6 @@ public interface IRegisterManager {
     Set<Wrapper<ListenerWerewolf, Event>> getRandomEventsRegister();
 
     Optional<JavaPlugin> getAddon(String key);
+
+    Optional<Category> getCategory(String key);
 }

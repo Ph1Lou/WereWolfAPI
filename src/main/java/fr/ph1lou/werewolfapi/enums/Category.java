@@ -1,6 +1,10 @@
 package fr.ph1lou.werewolfapi.enums;
 
 import org.bukkit.ChatColor;
+
+import java.util.Arrays;
+import java.util.Optional;
+
 @SuppressWarnings({"unused"})
 public enum Category {
     WEREWOLF("werewolf.categories.werewolf", ChatColor.DARK_RED),
@@ -22,5 +26,10 @@ public enum Category {
 
     public String getKey() {
         return key;
+    }
+
+    public static Optional<Category> fromKey(String key){
+        return Arrays.stream(values())
+                .filter(category -> category.getKey().equals(key)).findFirst();
     }
 }
