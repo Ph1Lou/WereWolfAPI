@@ -233,6 +233,11 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
         this.infected = true;
     }
 
+    @Override
+    public final void setInfected(boolean infected){
+        this.infected = infected;
+    }
+
     @EventHandler
     public final void onEndPlayerMessageInfected(EndPlayerMessageEvent event){
 

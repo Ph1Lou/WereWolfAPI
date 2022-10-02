@@ -21,6 +21,9 @@ public interface ICamp {
 
     void setInfected();
 
+    @Deprecated
+    void setInfected(boolean infected);
+
     void setSolitary(boolean solitary);
 
     boolean isSolitary();
