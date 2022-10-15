@@ -55,8 +55,8 @@ public class GameReview implements IGameReview {
 
     public void addRegisteredAction(RegisteredAction registeredAction) {
         this.registeredActions.add(registeredAction);
-        if(registeredAction.isActionableStory()){
-            Bukkit.getPluginManager().callEvent(new ActionableStoryEvent(registeredAction.getGameUuid(), registeredAction.getEvent()));
+        if(registeredAction.isActionableStory() && registeredAction.getUuid() != null){
+            Bukkit.getPluginManager().callEvent(new ActionableStoryEvent(registeredAction.getUuid(), registeredAction.getEvent()));
         }
     }
 
