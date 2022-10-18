@@ -1,19 +1,29 @@
 package fr.ph1lou.werewolfapi.role.impl;
 
 import fr.ph1lou.werewolfapi.annotations.Role;
+import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
 import fr.ph1lou.werewolfapi.basekeys.IntValueBase;
+import fr.ph1lou.werewolfapi.basekeys.Prefix;
 import fr.ph1lou.werewolfapi.basekeys.RoleBase;
+import fr.ph1lou.werewolfapi.basekeys.TimerBase;
 import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Camp;
-import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
 import fr.ph1lou.werewolfapi.enums.Day;
-import fr.ph1lou.werewolfapi.basekeys.Prefix;
 import fr.ph1lou.werewolfapi.enums.Sound;
-import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
-import fr.ph1lou.werewolfapi.basekeys.TimerBase;
 import fr.ph1lou.werewolfapi.events.UpdateNameTagEvent;
-import fr.ph1lou.werewolfapi.events.werewolf.*;
+import fr.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
+import fr.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
+import fr.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTagEvent;
+import fr.ph1lou.werewolfapi.events.game.utils.CountRemainingRolesCategoriesEvent;
+import fr.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
+import fr.ph1lou.werewolfapi.events.game.utils.WinConditionsCheckEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.AppearInWereWolfListEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.NewWereWolfEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.RequestSeeWereWolfListEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.WereWolfCanSpeakInChatEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.WereWolfChatEvent;
+import fr.ph1lou.werewolfapi.events.werewolf.WereWolfKillEvent;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.impl.PotionModifier;
 import fr.ph1lou.werewolfapi.player.interfaces.IAuraModifier;
@@ -23,12 +33,6 @@ import fr.ph1lou.werewolfapi.role.interfaces.IDisplay;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import fr.ph1lou.werewolfapi.utils.Utils;
-import fr.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
-import fr.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
-import fr.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTagEvent;
-import fr.ph1lou.werewolfapi.events.game.utils.CountRemainingRolesCategoriesEvent;
-import fr.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
-import fr.ph1lou.werewolfapi.events.game.utils.WinConditionsCheckEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -394,13 +398,9 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
                         .getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION))),
                 Formatter.format("&number&",game.getConfig().getValue(IntValueBase.WEREWOLF_CHAT)));
 
-        BukkitUtils.scheduleSyncDelayedTask(
-                () -> {
-                    if(!this.game.isState(StateGame.END)){
-                        getPlayerWW()
-                                .sendMessageWithKey(Prefix.RED ,"werewolf.commands.player.ww_chat.disable");
-                    }
-                },
+        BukkitUtils.scheduleSyncDelayedTask(game,
+                () -> getPlayerWW()
+                        .sendMessageWithKey(Prefix.RED ,"werewolf.commands.player.ww_chat.disable"),
                 this.game.getConfig().getTimerValue(TimerBase.WEREWOLF_CHAT_DURATION)* 20L);
     }
 

@@ -3,7 +3,6 @@ package fr.ph1lou.werewolfapi.versions;
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
