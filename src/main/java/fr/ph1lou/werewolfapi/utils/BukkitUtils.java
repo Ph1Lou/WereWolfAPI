@@ -1,10 +1,14 @@
 package fr.ph1lou.werewolfapi.utils;
 
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
+import fr.ph1lou.werewolfapi.enums.StateGame;
+import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BukkitUtils {
 
@@ -15,13 +19,17 @@ public class BukkitUtils {
      * @param delay the delay
      * @return the task id
      */
-    public static int scheduleSyncDelayedTask(@NotNull Runnable runnable, long delay){
+    public static int scheduleSyncDelayedTask(WereWolfAPI game, @NotNull Runnable runnable, long delay){
 
         GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
         if(api==null){
             throw new RuntimeException("WereWolfPlugin not loaded");
         }
-        return Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) api,runnable,delay);
+        return Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) api,() -> {
+            if(!game.isState(StateGame.END)){
+                runnable.run();
+            }
+        },delay);
     }
 
     /**
@@ -29,8 +37,8 @@ public class BukkitUtils {
      * @param runnable the task
      * @return task id
      */
-    public static int scheduleSyncDelayedTask(@NotNull Runnable runnable){
-        return scheduleSyncDelayedTask(runnable,1);
+    public static int scheduleSyncDelayedTask(WereWolfAPI game, @NotNull Runnable runnable){
+        return scheduleSyncDelayedTask(game,runnable,1);
     }
 
     /**
@@ -53,12 +61,21 @@ public class BukkitUtils {
      * @param period the period
      * @return the task id
      */
-    public static int scheduleSyncRepeatingTask(@NotNull Runnable runnable, long delay, long period){
+    public static int scheduleSyncRepeatingTask(WereWolfAPI game, @NotNull Runnable runnable, long delay, long period){
         GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
         if(api==null){
             throw new RuntimeException("WereWolfPlugin not loaded");
         }
-        return Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) api,runnable,delay,period);
+        AtomicInteger schedulerId =  new AtomicInteger();
+        schedulerId.set(Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) api,() -> {
+            if(!game.isState(StateGame.END)){
+                runnable.run();
+            }
+            else{
+                Bukkit.getScheduler().cancelTask(schedulerId.get());
+            }
+        },delay,period));
+        return schedulerId.get();
     }
 
     public static int loadServerVersion(){

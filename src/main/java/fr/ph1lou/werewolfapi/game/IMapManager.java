@@ -2,7 +2,6 @@ package fr.ph1lou.werewolfapi.game;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.World;
-import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;

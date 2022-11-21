@@ -18,5 +18,5 @@ public class EventBase {
     public static final String NOT_ALL_WEREWOLFS = "werewolf.random_events.not_all_werewolfs.name";
     public static final String WOLF_FLEAS = "werewolf.random_events.wolf_fleas.name";
     public static final String VACCINATION = "werewolf.random_events.vaccination.name";
-
+    public static final String INCOMPLETE_LIST = "werewolf.random_events.incomplete_list.name";
 }
