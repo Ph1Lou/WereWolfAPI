@@ -9,7 +9,7 @@ public class InfectionEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    private boolean informInfectionError = true;
+    private boolean informInfectionCancelledMessage = true;
 
 
     public InfectionEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
@@ -26,11 +26,11 @@ public class InfectionEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public boolean isInformInfectionError(){
-        return this.informInfectionError;
+    public boolean isInformInfectionCancelledMessage(){
+        return this.informInfectionCancelledMessage;
     }
 
-    public void setInformInfectionError(boolean b){
-        this.informInfectionError = b;
+    public void setInformInfectionCancelledMessage(boolean b){
+        this.informInfectionCancelledMessage = b;
     }
 }
