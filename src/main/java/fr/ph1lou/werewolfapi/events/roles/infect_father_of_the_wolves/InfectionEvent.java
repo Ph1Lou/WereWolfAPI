@@ -9,6 +9,8 @@ public class InfectionEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
+    private boolean informInfectionError = true;
+
 
     public InfectionEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
         super(playerWW, targetWW);
@@ -24,5 +26,11 @@ public class InfectionEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
+    public boolean isInformInfectionError(){
+        return this.informInfectionError;
+    }
 
+    public void setInformInfectionError(boolean b){
+        this.informInfectionError = b;
+    }
 }

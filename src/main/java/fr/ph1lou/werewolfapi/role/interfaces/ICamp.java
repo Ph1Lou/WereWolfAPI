@@ -21,6 +21,11 @@ public interface ICamp {
 
     void setInfected();
 
+    /**
+    * this method can create errors
+     */
+    void setInfected(boolean infected);
+
     void setSolitary(boolean solitary);
 
     boolean isSolitary();

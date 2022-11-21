@@ -209,9 +209,11 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
 
         Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
 
-        this.playerWW.sendMessageWithKey(Prefix.YELLOW , "werewolf.roles.werewolf.go_to_the_werewolf_camp");
-        Sound.WOLF_HOWL.play(getPlayerWW());
-        this.recoverPotionEffects();
+        if(this.playerWW.getRole().isWereWolf()){ // Envoie le message seulement si vraiment loup
+            this.playerWW.sendMessageWithKey(Prefix.YELLOW , "werewolf.roles.werewolf.go_to_the_werewolf_camp");
+            Sound.WOLF_HOWL.play(getPlayerWW());
+            this.recoverPotionEffects();
+        }
 
         this.game.getPlayersWW().stream()
                 .filter(playerWW -> playerWW.getRole().isWereWolf())
@@ -235,6 +237,11 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setInfected() {
         this.infected = true;
+    }
+
+    @Override
+    public final void setInfected(boolean infected){
+        this.infected = infected;
     }
 
     @EventHandler
