@@ -95,10 +95,10 @@ public class DescriptionBuilder {
                         Formatter.format("&text&",this.description)));
             }
 
-            sb.append(this.role.isInfected()?
-                    this.game.translate("werewolf.description.effect",
-                            Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf")))
-                    :"");
+            if(this.role.isInfected() && !this.effects.equals(this.game.translate("werewolf.description.werewolf"))){
+                sb.append(this.game.translate("werewolf.description.effect",
+                                Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf"))));
+            }
 
             if(this.power!=null){
                 sb.append(this.game.translate("werewolf.description.power",
