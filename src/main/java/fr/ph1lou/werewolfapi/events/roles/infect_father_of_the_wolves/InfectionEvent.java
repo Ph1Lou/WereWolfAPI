@@ -9,6 +9,8 @@ public class InfectionEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
+    private boolean informInfectionCancelledMessage = true;
+
 
     public InfectionEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
         super(playerWW, targetWW);
@@ -24,5 +26,11 @@ public class InfectionEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
+    public boolean isInformInfectionCancelledMessage(){
+        return this.informInfectionCancelledMessage;
+    }
 
+    public void setInformInfectionCancelledMessage(boolean b){
+        this.informInfectionCancelledMessage = b;
+    }
 }

@@ -1,25 +1,23 @@
 package fr.ph1lou.werewolfapi.game;
 
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public interface IStuffManager {
 
-    List<ItemStack> getDeathLoot();
-    Inventory getStartLoot();
+    List<? extends ItemStack> getDeathLoot();
+    List<? extends ItemStack> getStartLoot();
     void clearDeathLoot();
     void clearStartLoot();
+    void clearStuffRoles();
+    void clearTempStuff();
     void addDeathLoot(ItemStack i);
-    void loadStuffChill();
-    void loadAllStuffMeetUP();
-    void loadAllStuffDefault();
-    void load(String configName);
-    void save(String configName);
-    Map<String, List<ItemStack>> getStuffRoles();
-    Map<UUID, Inventory> getTempStuff();
-
+    void addStartLoot(ItemStack i);
+    List<? extends ItemStack> getStuffRole(String key);
+    void setStuffRole(String key, List<ItemStack> items);
+    ItemStack[] recoverTempStuff(UUID player);
+    void putTempStuff(UUID player, ItemStack[] items);
+    boolean isInTempStuff(UUID uuid);
 }

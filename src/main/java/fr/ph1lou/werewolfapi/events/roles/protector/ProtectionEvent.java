@@ -9,8 +9,8 @@ public class ProtectionEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public ProtectionEvent(IPlayerWW playerWW, IPlayerWW targetUUID){
-        super(playerWW,targetUUID);
+    public ProtectionEvent(IPlayerWW playerWW, IPlayerWW target){
+        super(playerWW,target);
 
     }
 

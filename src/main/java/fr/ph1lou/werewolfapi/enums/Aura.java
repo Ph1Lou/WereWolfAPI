@@ -3,9 +3,9 @@ package fr.ph1lou.werewolfapi.enums;
 import org.bukkit.ChatColor;
 @SuppressWarnings({"unused"})
 public enum Aura {
-    LIGHT("werewolf.role.oracle.light", ChatColor.GREEN),
-    NEUTRAL("werewolf.role.oracle.neutral", ChatColor.GRAY),
-    DARK("werewolf.role.oracle.dark", ChatColor.DARK_RED);
+    LIGHT("werewolf.roles.oracle.light", ChatColor.GREEN),
+    NEUTRAL("werewolf.roles.oracle.neutral", ChatColor.GRAY),
+    DARK("werewolf.roles.oracle.dark", ChatColor.DARK_RED);
 
     private final String key;
     private final ChatColor chatColor;

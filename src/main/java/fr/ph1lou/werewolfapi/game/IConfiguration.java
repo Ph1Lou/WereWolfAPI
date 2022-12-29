@@ -6,35 +6,11 @@ package fr.ph1lou.werewolfapi.game;
 
 @SuppressWarnings("unused")
 
-public interface IConfiguration {
-
-    int getDiamondLimit();
-
-    void setDiamondLimit(int diamond_limit);
+public interface IConfiguration extends IStorageConfiguration {
 
     int getStrengthRate();
 
     void setStrengthRate(int strengthRate);
-
-    int getPlayerRequiredVoteEnd();
-
-    void setPlayerRequiredVoteEnd(int player_required_before_voting_ends);
-
-    int getPearlRate() ;
-
-    void setPearlRate(int pearlRate);
-
-    int getFlintRate() ;
-
-    void setFlintRate(int flintRate) ;
-
-    int getAppleRate() ;
-
-    void setAppleRate(int appleRate);
-
-    int getXpBoost();
-
-    void setXpBoost(int xpBoost);
 
     int getLimitProtectionIron() ;
 
@@ -64,10 +40,6 @@ public interface IConfiguration {
 
     void setLimitPunch(int limitPunch);
 
-    int getUseOfFlair() ;
-
-    void setUseOfFlair(int useOfFlair);
-
     int getGoldenAppleParticles() ;
 
     void setGoldenAppleParticles(int goldenAppleParticles);
@@ -75,10 +47,6 @@ public interface IConfiguration {
     int getResistanceRate() ;
 
     void setResistanceRate(int resistanceRate);
-
-    boolean isTrollSV();
-
-    void setTrollSV(boolean trollSV);
 
     int getBorderMax();
 
@@ -88,45 +56,11 @@ public interface IConfiguration {
 
     void setBorderMin(int borderMin);
 
-    int getTimerValue(String key);
-
-    boolean isConfigActive(String key);
-
-    int getRoleCount(String key);
-
-    int getLoverCount(String key);
-
-    void setLoverCount(String key,int value);
-
-    void addOneLover(String key);
-
-    void removeOneLover(String key);
-
-    boolean isScenarioActive(String key);
-
     double getBorderSpeed();
 
     void setBorderSpeed(double seed);
 
-    void switchConfigValue(String key);
-
-    void switchScenarioValue(String key);
-
-    void removeOneRole(String key);
-
-    void addOneRole(String key);
-
-    void setRole(String key, int value);
-
-    void moveTimer(String key, int value);
-
-    void setConfig(String key,boolean enable);
-
-    void setScenario(String key,boolean enable);
-
     int getLimitDepthStrider();
-
-    void setTimerValue(String key, int value);
 
     void setLimitDepthStrider(int limitDepthRider);
 
@@ -177,122 +111,11 @@ public interface IConfiguration {
 
     void setTrollKey(String trollKey);
 
-    int getKnockBackMode();
+    boolean isKnockBackForInvisibleRoleOnly();
 
-    /**
-     * Get Random Event Probability
-     * @param key of the random event
-     * @return the probability
-     */
-    int getProbability(String key);
+    void setKnockBackForInvisibleRoleOnly(boolean knockBackMode);
 
-    /**
-     * Set Probability of the random Event
-     * @param key of the random event
-     * @param probability the probability
-     */
-    void setProbability(String key,int probability);
+    boolean isMeetUp();
 
-    void setKnockBackMode(int knockBackMode);
-
-    int getWereWolfChatMaxMessage();
-
-    void setWereWolfChatMaxMessage(int nbMessage);
-
-    boolean isTrollLover();
-
-    void setTrollLover(boolean troll);
-
-    int getDistanceSister();
-
-    void setDistanceSister(int distance);
-
-    int getDistanceFearfulWerewolf();
-
-    void setDistanceFearfulWerewolf(int distance);
-
-    int getDistanceHermit();
-
-    void setDistanceHermit(int distance);
-
-    int getDistanceWillOTheWisp();
-
-    void setDistanceWillOTheWisp(int distance);
-
-    int getDistancePriestess();
-
-    void setDistancePriestess(int distance);
-
-    int getDistanceAvengerWerewolf();
-
-    void setDistanceAvengerWerewolf(int distance);
-
-    int getDistanceWiseElder();
-
-    void setDistanceWiseElder(int distanceWiseElder);
-
-    int getDistanceServitor();
-
-    void setDistanceServitor(int distanceServitor);
-
-    int getDistanceScammer();
-
-    void setDistanceScammer(int distanceScammer);
-
-    int getDistanceTenebrous();
-
-    void setDistanceTenebrous(int distance);
-
-    void setDistanceGravedigger(int distance);
-
-    int getDistanceGravedigger();
-
-    int getDistanceThug();
-
-    void setDistanceThug(int distance);
-
-    int getDistanceBarbarian();
-
-    void setDistanceBarbarian(int distance);
-
-    int getDistanceNecromancer();
-
-    void setDistanceNecromancer(int distance);
-
-    int getDistanceSuccubus();
-
-    void setDistanceSuccubus(int distanceSuccubus) ;
-
-    int getDistanceAmnesiacLovers();
-
-    void setDistanceAmnesiacLovers(int distanceAmnesiacLovers);
-
-    int getDistanceFlutePlayer();
-
-    void setDistanceFlutePlayer(int distanceAmnesiacLovers);
-
-    int getDistanceFruitMerchant();
-
-    void setDistanceFruitMerchant(int distanceFruitMerchant);
-
-    int getDistanceBearTrainer();
-
-    void setDistanceBearTrainer(int distanceBearTrainer);
-
-    int getDistanceDruid();
-
-    void setDistanceDruid(int distanceDruid);
-
-    int getDistanceFox();
-
-    void setDistanceFox(int distanceFox);
-
-    int getDistanceHowlingWerewolf();
-
-    void setDistanceHowlingWerewolf(int howlerWerewolf);
-
-    int getDistanceTwin();
-
-    void setDistanceTwin(int twin);
-
+    void setMeetUp(boolean meetUp);
 }

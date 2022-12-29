@@ -2,12 +2,8 @@ package fr.ph1lou.werewolfapi.events.roles.citizen;
 
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
 
 public class CitizenSeeWerewolfVoteEvent extends SelectionEvent {
 

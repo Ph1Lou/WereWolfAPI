@@ -46,8 +46,5 @@ public class VersionUtils_1_13 extends VersionUtils_1_12 {
         }
         viewer.showPlayer((Plugin) api, player);
     }
-
-
-
 }
 

@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.versions;
 
 
+import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.utils.NMSUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.NameTagVisibility;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings({"deprecation"})
 public class VersionUtils_1_8 extends VersionUtils {
@@ -88,6 +91,11 @@ public class VersionUtils_1_8 extends VersionUtils {
     @Override
     public void showPlayer(Player viewer, Player player) {
         viewer.showPlayer(player);
+    }
+
+    @Override
+    public void setChunkForceLoaded(World world, int x, int z, boolean generation) {
+        world.loadChunk(x, z, generation);
     }
 
     @Override
@@ -225,16 +233,26 @@ public class VersionUtils_1_8 extends VersionUtils {
 
 
     @Override
-    public Location findBiome(World world) throws Exception {
+    public CompletableFuture<Location> findBiome(World world) {
 
-        for (int i = -2000; i < 2000; i += 16) {
-            for (int j = -2000; j < 2000; j += 16) {
-                if (world.getBiome(i, j) == Biome.valueOf("ROOFED_FOREST")) {
-                    return new Location(world, i, 151, j);
+        CompletableFuture<Location> completableFuture = new CompletableFuture<>();
+
+        GetWereWolfAPI getWereWolfAPI = Bukkit.getServicesManager().load(GetWereWolfAPI.class);
+
+        if(getWereWolfAPI != null){
+            Bukkit.getScheduler().runTaskAsynchronously((Plugin) getWereWolfAPI, () -> {
+
+                for (int i = -2000; i < 2000; i += 16) {
+                    for (int j = -2000; j < 2000; j += 16) {
+                        if (world.getBiome(i, j) == Biome.valueOf("ROOFED_FOREST")) {
+                            completableFuture.complete(new Location(world, i, 151, j));
+                            return;
+                        }
+                    }
                 }
-            }
+            });
         }
-        throw new Exception("No roofed found");
+        return completableFuture;
     }
 
     @Override

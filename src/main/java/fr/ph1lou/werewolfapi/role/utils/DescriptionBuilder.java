@@ -67,7 +67,7 @@ public class DescriptionBuilder {
         StringBuilder sb = new StringBuilder();
 
         sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&",this.game.translate(this.role.getPlayerWW().getDeathRole()) +
-                (!this.role.getPlayerWW().getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.role.thief.thief",
+                (!this.role.getPlayerWW().getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.roles.thief.thief",
                         Formatter.format("&role&",this.game.translate(this.role.getKey()))) : "") +
                 (this.role.isInfected() ? this.game.translate("werewolf.end.infect") : "") +
                 (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));
@@ -95,10 +95,10 @@ public class DescriptionBuilder {
                         Formatter.format("&text&",this.description)));
             }
 
-            sb.append(this.role.isInfected()?
-                    this.game.translate("werewolf.description.effect",
-                            Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf")))
-                    :"");
+            if(this.role.isInfected() && !this.effects.equals(this.game.translate("werewolf.description.werewolf"))){
+                sb.append(this.game.translate("werewolf.description.effect",
+                                Formatter.format("&effect&",this.game.translate("werewolf.description.werewolf"))));
+            }
 
             if(this.power!=null){
                 sb.append(this.game.translate("werewolf.description.power",
@@ -129,7 +129,7 @@ public class DescriptionBuilder {
         }
 
 
-        return this.game.translate("werewolf.description._") +
+        return this.game.translate("werewolf.description._") + '\n' +
                 sb +
                 this.game.translate("werewolf.description._");
 

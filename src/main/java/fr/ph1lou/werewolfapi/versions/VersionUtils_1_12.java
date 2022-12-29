@@ -31,5 +31,4 @@ public class VersionUtils_1_12 extends VersionUtils_1_11{
         }
         return new ShapedRecipe(new NamespacedKey((Plugin) api, key), result);
     }
-
 }

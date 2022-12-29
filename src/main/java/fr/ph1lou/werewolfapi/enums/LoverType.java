@@ -1,13 +1,14 @@
 package fr.ph1lou.werewolfapi.enums;
 
+import fr.ph1lou.werewolfapi.basekeys.LoverBase;
 import org.bukkit.ChatColor;
 @SuppressWarnings({"unused"})
 public enum LoverType {
 
-    LOVER("werewolf.role.lover.display", ChatColor.LIGHT_PURPLE),
-    AMNESIAC_LOVER("werewolf.role.amnesiac_lover.display",ChatColor.DARK_PURPLE),
-    CURSED_LOVER("werewolf.role.cursed_lover.display",ChatColor.BLACK),
-    FAKE_LOVER("werewolf.role.fake_lover.display", ChatColor.GOLD);
+    LOVER(LoverBase.LOVER, ChatColor.LIGHT_PURPLE),
+    AMNESIAC_LOVER(LoverBase.AMNESIAC_LOVER,ChatColor.DARK_PURPLE),
+    CURSED_LOVER(LoverBase.CURSED_LOVER,ChatColor.BLACK),
+    FAKE_LOVER(LoverBase.FAKE_LOVER, ChatColor.GOLD);
 
     private final String key;
     private final ChatColor chatColor;

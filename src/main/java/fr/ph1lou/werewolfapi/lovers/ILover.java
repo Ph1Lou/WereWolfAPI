@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.lovers;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+
 import org.bukkit.event.Listener;
 
 import java.util.List;

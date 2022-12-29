@@ -27,25 +27,25 @@ public interface IPlayerWW {
      * Increase player max health
      * @param health the amount of health
      */
-    void addPlayerMaxHealth(int health);
+    void addPlayerMaxHealth(double health);
 
     /**
      * Decrease player max health (note : player min health is 1)
      * @param health the amount of health
      */
-    void removePlayerMaxHealth(int health);
+    void removePlayerMaxHealth(double health);
 
     /**
      * Increase player health
      * @param health the amount of health
      */
-    void addPlayerHealth(int health);
+    void addPlayerHealth(double health);
 
     /**
      * Decrease player health
      * @param health the amount of health
      */
-    void removePlayerHealth(int health);
+    void removePlayerHealth(double health);
 
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
@@ -85,6 +85,10 @@ public interface IPlayerWW {
      */
     void clearPotionEffects();
 
+    void clearPotionEffects(String key);
+
+    void clearPlayer();
+
     /**
      * Get all Potion Modifiers of the player
      */
@@ -100,7 +104,7 @@ public interface IPlayerWW {
      * Set Death Items
      * @param items the death items
      */
-    void setItemDeath(ItemStack[] items);
+    void setItemDeath(List<ItemStack> items);
 
     /**
      * Get Death Items
@@ -256,7 +260,14 @@ public interface IPlayerWW {
      * Get Player Max Health
      * @return max health
      */
-    int getMaxHealth();
+    double getMaxHealth();
+
+
+    /**
+     * Get Player Health
+     * @return health
+     */
+    double getHealth();
 
     /**
      * Get Player Position or if he's disconnected his last position
@@ -264,6 +275,9 @@ public interface IPlayerWW {
      */
     @NotNull
     Location getLocation();
+
+    @NotNull
+    Location getEyeLocation();
 
     /**
      * Get Player Wish
