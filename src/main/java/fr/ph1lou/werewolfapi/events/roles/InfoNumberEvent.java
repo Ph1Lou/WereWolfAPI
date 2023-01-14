@@ -36,4 +36,12 @@ public class InfoNumberEvent extends Event implements Cancellable {
     public void setCancelled(boolean b) {
         this.cancel = b;
     }
+
+    public IPlayerWW getPlayerWW() {
+        return playerWW;
+    }
+
+    public int getNumber() {
+        return number;
+    }
 }

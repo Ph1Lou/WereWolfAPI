@@ -1,7 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.innkeeper;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
-import fr.ph1lou.werewolfapi.role.interfaces.IRole;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -11,10 +10,10 @@ public class ClientDeathEvent extends Event implements Cancellable {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW host;
     private final IPlayerWW client;
-    private final IRole role;
+    private final String role;
     private boolean cancel = false;
 
-    public ClientDeathEvent(IPlayerWW host, IPlayerWW client, IRole role) {
+    public ClientDeathEvent(IPlayerWW host, IPlayerWW client, String role) {
         this.host = host;
         this.client = client;
         this.role = role;
@@ -38,5 +37,17 @@ public class ClientDeathEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean b) {
         this.cancel = b;
+    }
+
+    public IPlayerWW getClient() {
+        return client;
+    }
+
+    public IPlayerWW getHost() {
+        return host;
+    }
+
+    public String getRole() {
+        return role;
     }
 }
