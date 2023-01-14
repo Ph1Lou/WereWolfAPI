@@ -1,10 +1,13 @@
 package fr.ph1lou.werewolfapi.events.werewolf;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.new_werewolf")
 public class NewWereWolfEvent extends Event {
 
 
@@ -22,6 +25,7 @@ public class NewWereWolfEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return playerWW;
     }

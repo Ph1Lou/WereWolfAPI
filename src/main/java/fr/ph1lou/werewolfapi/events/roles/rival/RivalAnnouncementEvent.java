@@ -1,19 +1,25 @@
 package fr.ph1lou.werewolfapi.events.roles.rival;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@StatisticsEvent(key = "werewolf.rival_announcement")
 public class RivalAnnouncementEvent extends Event implements Cancellable {
 
     private final List<IPlayerWW> playerWWS;
 
     private final IPlayerWW playerWW;
-    private boolean cancel=false;
+    private boolean cancel= false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public RivalAnnouncementEvent(IPlayerWW playerWW, List<IPlayerWW> playerWWS){
@@ -35,6 +41,12 @@ public class RivalAnnouncementEvent extends Event implements Cancellable {
         return playerWWS;
     }
 
+    @StatisticsTargets
+    public Set<IPlayerWW> getTargets() {
+        return new HashSet<>(playerWWS);
+    }
+
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }

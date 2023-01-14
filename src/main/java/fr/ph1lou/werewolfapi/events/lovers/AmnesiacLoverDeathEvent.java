@@ -1,11 +1,16 @@
 
 package fr.ph1lou.werewolfapi.events.lovers;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+
+@StatisticsEvent(key = "werewolf.amnesiac_lover_death")
 public class AmnesiacLoverDeathEvent extends Event {
 
     private final IPlayerWW playerWW1;
@@ -27,10 +32,12 @@ public class AmnesiacLoverDeathEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW1() {
         return playerWW1;
     }
 
+    @StatisticsTarget
     public IPlayerWW getPlayerWW2() {
         return playerWW2;
     }

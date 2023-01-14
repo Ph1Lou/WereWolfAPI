@@ -1,9 +1,12 @@
 package fr.ph1lou.werewolfapi.events.game.day_cycle;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInt;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.day")
 public class DayEvent extends Event {
 
     private final int number;
@@ -23,6 +26,7 @@ public class DayEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @StatisticsExtraInt
     public int getNumber() {
         return number;
     }

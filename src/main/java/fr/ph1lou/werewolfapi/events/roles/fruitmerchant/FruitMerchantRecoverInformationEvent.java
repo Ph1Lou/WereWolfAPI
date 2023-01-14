@@ -1,5 +1,8 @@
 package fr.ph1lou.werewolfapi.events.roles.fruitmerchant;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -9,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 import java.util.Set;
 
+@StatisticsEvent(key = "werewolf.fruit_merchant_recover")
 public class FruitMerchantRecoverInformationEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -33,10 +37,12 @@ public class FruitMerchantRecoverInformationEvent extends Event implements Cance
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
+    @StatisticsTargets
     public Set<IPlayerWW> getPlayerWWS() {
         return this.goldenAppleCount.keySet();
     }

@@ -1,5 +1,8 @@
 package fr.ph1lou.werewolfapi.events.werewolf;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.apache.commons.lang.ArrayUtils;
@@ -9,6 +12,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.werewolf_message")
 public class WereWolfChatEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -41,10 +45,12 @@ public class WereWolfChatEvent extends Event implements Cancellable {
         this.cancel=cancel;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
+    @StatisticsExtraInfo
     public String getMessage() {
         return message;
     }

@@ -1,5 +1,10 @@
 package fr.ph1lou.werewolfapi.events.roles.gravedigger;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInt;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
+import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.Location;
 import org.bukkit.event.Cancellable;
@@ -13,26 +18,24 @@ import java.util.List;
  * @author havwila
  */
 
-public class TriggerGravediggerClueEvent extends Event implements Cancellable {
+@StatisticsEvent(key = "werewolf.gravedigger_event")
+public class TriggerGravediggerClueEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final int clueCount;
     private Location location;
     private int numNearbyPlayers;
     private List<String> playerNames;
-    private final IPlayerWW gravedigger;
     private final String roleKey;
-    private final IPlayerWW playerWW;
     private boolean cancelled = false;
 
     public TriggerGravediggerClueEvent(IPlayerWW gravedigger, IPlayerWW playerWW, int clueCount, Location location, int numNearbyPlayers, List<String> playerNames, String roleKey) {
-        this.gravedigger = gravedigger;
+        super(gravedigger, playerWW);
         this.clueCount = clueCount;
         this.location = location;
         this.numNearbyPlayers = numNearbyPlayers;
         this.playerNames = playerNames;
         this.roleKey = roleKey;
-        this.playerWW = playerWW;
     }
 
     @NotNull
@@ -45,6 +48,7 @@ public class TriggerGravediggerClueEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsExtraInt
     public int getClueCount() {return clueCount;}
 
     public Location getLocation() {return location;}
@@ -61,8 +65,6 @@ public class TriggerGravediggerClueEvent extends Event implements Cancellable {
 
     public void setPlayerNames(List<String> names) {this.playerNames = names;}
 
-    public IPlayerWW getPlayerWW() {return playerWW;}
-
     @Override
     public boolean isCancelled() {
         return cancelled;
@@ -71,9 +73,5 @@ public class TriggerGravediggerClueEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean b) {
         cancelled = b;
-    }
-
-    public IPlayerWW getGravedigger() {
-        return gravedigger;
     }
 }

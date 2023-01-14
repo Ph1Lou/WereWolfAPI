@@ -35,5 +35,7 @@ public class IntValueBase {
     public static final String WISE_ELDER_BEGIN_DAY = "werewolf.roles.wise_elder.configurations.begin_day";
     public static final String MIRE_DISTANCE = "werewolf.roles.mire.configurations.distance";
     public static final String POACHER_DISTANCE = "werewolf.roles.poacher.configurations.distance";
+    public static final String STORY_TELLER_DAY = "werewolf.roles.story_teller.day";
+
 
 }

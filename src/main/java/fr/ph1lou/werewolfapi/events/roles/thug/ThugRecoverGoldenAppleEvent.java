@@ -1,10 +1,13 @@
 package fr.ph1lou.werewolfapi.events.roles.thug;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInt;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.thug_recover_golden_apple")
 public class ThugRecoverGoldenAppleEvent extends SelectionEvent {
 
     private int goldenApple;
@@ -26,6 +29,7 @@ public class ThugRecoverGoldenAppleEvent extends SelectionEvent {
     }
 
 
+    @StatisticsExtraInt
     public int getGoldenApple() {
         return goldenApple;
     }

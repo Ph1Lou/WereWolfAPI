@@ -1,6 +1,7 @@
 
 package fr.ph1lou.werewolfapi.events.game.life_cycle;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

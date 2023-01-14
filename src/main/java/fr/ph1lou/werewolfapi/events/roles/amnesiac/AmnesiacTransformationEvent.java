@@ -1,10 +1,13 @@
 package fr.ph1lou.werewolfapi.events.roles.amnesiac;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
 import fr.ph1lou.werewolfapi.events.roles.TransformationEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.amnesiac_transformation")
 public class AmnesiacTransformationEvent extends TransformationEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
@@ -26,6 +29,7 @@ public class AmnesiacTransformationEvent extends TransformationEvent {
         return HANDLERS_LIST;
     }
 
+    @StatisticsTarget
     public IPlayerWW getVillager() {
         return villager;
     }

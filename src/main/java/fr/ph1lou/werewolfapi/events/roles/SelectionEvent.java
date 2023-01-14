@@ -1,5 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -29,10 +31,12 @@ public class SelectionEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public final IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
+    @StatisticsTarget
     public final IPlayerWW getTargetWW() {
         return targetWW;
     }

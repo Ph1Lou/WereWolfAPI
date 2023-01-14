@@ -1,5 +1,8 @@
 package fr.ph1lou.werewolfapi.events.random_events;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -8,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+@StatisticsEvent(key = "werewolf.trouple_event")
 public class TroupleEvent extends Event implements Cancellable {
 
     private final Set<IPlayerWW> playersUUID;
@@ -31,10 +35,12 @@ public class TroupleEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsTargets
     public Set<IPlayerWW> getPlayerWWs() {
         return playersUUID;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return playerWW;
     }
