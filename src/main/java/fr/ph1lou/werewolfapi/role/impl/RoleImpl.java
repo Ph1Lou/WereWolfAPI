@@ -15,7 +15,6 @@ import fr.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import fr.ph1lou.werewolfapi.events.game.day_cycle.DayEvent;
 import fr.ph1lou.werewolfapi.events.game.day_cycle.NightEvent;
 import fr.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTagEvent;
-import fr.ph1lou.werewolfapi.events.game.utils.CountRemainingRolesCategoriesEvent;
 import fr.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
 import fr.ph1lou.werewolfapi.events.game.utils.WinConditionsCheckEvent;
 import fr.ph1lou.werewolfapi.events.werewolf.AppearInWereWolfListEvent;
@@ -300,28 +299,6 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
         if(!this.isWereWolf()) return;
 
         event.setCanSpeak(true);
-    }
-
-
-    @EventHandler
-    public final void onCountCategories(CountRemainingRolesCategoriesEvent event){
-
-        if(!this.getPlayerWW().getRole().equals(this)){
-            return;
-        }
-        if (!this.playerWW.isState(StatePlayer.ALIVE)) return;
-
-        if(this.isNeutral()){
-            event.addNeutral();
-            return;
-        }
-
-        if(this.isWereWolf()){
-            event.addWerewolf();
-            return;
-        }
-
-        event.addVillager();
     }
 
     @EventHandler
