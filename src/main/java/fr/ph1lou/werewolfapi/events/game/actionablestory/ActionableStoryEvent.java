@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
+
 public class ActionableStoryEvent extends Event implements Cancellable {
 
     private final UUID player;

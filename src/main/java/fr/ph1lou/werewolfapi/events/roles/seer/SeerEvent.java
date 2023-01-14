@@ -9,7 +9,6 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.see")
-@TellableStoryEvent
 public class SeerEvent extends SelectionEvent {
 
     private String camp;

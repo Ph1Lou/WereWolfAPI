@@ -37,4 +37,5 @@ public class IntValueBase {
     public static final String POACHER_DISTANCE = "werewolf.roles.poacher.configurations.distance";
     public static final String INNKEEPER_DETECTION_RADIUS = "werewolf.roles.innkeeper.configurations.detection_radius";
     public static final String STORY_TELLER_DAY = "werewolf.roles.story_teller.day";
+    public static final String SPY_DAY = "werewolf.roles.spy.day";
 }

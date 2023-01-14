@@ -7,8 +7,9 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@TellableStoryEvent
+
 @StatisticsEvent(key = "werewolf.charmed")
+@TellableStoryEvent
 public class CharmEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
