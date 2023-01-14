@@ -1,11 +1,16 @@
 package fr.ph1lou.werewolfapi.events.game.life_cycle;
 
+import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@TellableStoryEvent
+@StatisticsEvent(key = "werewolf.revive")
 public class ResurrectionEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -27,6 +32,7 @@ public class ResurrectionEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public final IPlayerWW getPlayerWW() {
         return playerWW;
     }

@@ -1,11 +1,15 @@
 package fr.ph1lou.werewolfapi.events.roles.occultist;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.commands.player.wish_change")
 public class WishChangeEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -19,10 +23,12 @@ public class WishChangeEvent extends Event implements Cancellable {
         this.wish = wish;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return playerWW;
     }
 
+    @StatisticsExtraInfo
     public String getWish() {
         return wish;
     }

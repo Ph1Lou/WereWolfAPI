@@ -1,11 +1,17 @@
 package fr.ph1lou.werewolfapi.events.roles.will_o_the_wisp;
 
+import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInt;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.will_o_the_wisp_teleport")
+@TellableStoryEvent
 public class WillOTheWispTeleportEvent extends Event implements Cancellable {
 
 
@@ -42,10 +48,12 @@ public class WillOTheWispTeleportEvent extends Event implements Cancellable {
         this.cancel=cancel;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return playerWW;
     }
 
+    @StatisticsExtraInt
     public int getNumberUse() {
         return numberUse;
     }

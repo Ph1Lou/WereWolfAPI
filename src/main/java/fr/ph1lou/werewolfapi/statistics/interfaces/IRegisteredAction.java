@@ -17,7 +17,7 @@ public interface IRegisteredAction {
 
     String getExtraInfo();
 
-    int getExtraInt();
+    Integer getExtraInt();
 
     UUID getGameUuid();
 }

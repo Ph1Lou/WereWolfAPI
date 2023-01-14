@@ -1,9 +1,11 @@
 package fr.ph1lou.werewolfapi.events.game.timers;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.werewolf_list")
 public class WereWolfListEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

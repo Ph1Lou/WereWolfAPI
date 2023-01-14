@@ -1,5 +1,8 @@
 package fr.ph1lou.werewolfapi.events.game.vote;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -7,6 +10,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@StatisticsEvent(key = "werewolf.new_vote")
 public class NewVoteResultEvent extends Event implements Cancellable {
 
     private @Nullable IPlayerWW villagerWW;
@@ -38,10 +42,12 @@ public class NewVoteResultEvent extends Event implements Cancellable {
         this.werewolfWW = playerWW;
     }
 
+    @StatisticsPlayer
     public @Nullable IPlayerWW getPlayerVotedByVillagerWW(){
         return this.villagerWW;
     }
 
+    @StatisticsTarget
     public @Nullable IPlayerWW getPlayerVotedByWerewolfWW(){
         return this.werewolfWW;
     }

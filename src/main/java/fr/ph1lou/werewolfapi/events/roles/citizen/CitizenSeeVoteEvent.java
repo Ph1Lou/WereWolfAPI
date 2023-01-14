@@ -1,5 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.citizen;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -8,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
+@StatisticsEvent(key = "werewolf.see_vote")
 public class CitizenSeeVoteEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -30,6 +33,7 @@ public class CitizenSeeVoteEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }

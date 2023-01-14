@@ -1,10 +1,12 @@
 package fr.ph1lou.werewolfapi.events.roles.trapper;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.track")
 public class TrackEvent extends SelectionEvent {
 
 

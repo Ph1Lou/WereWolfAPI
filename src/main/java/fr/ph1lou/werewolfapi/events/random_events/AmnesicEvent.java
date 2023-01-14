@@ -1,12 +1,14 @@
 package fr.ph1lou.werewolfapi.events.random_events;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-
+@StatisticsEvent(key = "werewolf.amnesic_design")
 public class AmnesicEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
@@ -26,6 +28,7 @@ public class AmnesicEvent extends Event implements Cancellable {
         this.playerWW=playerWW;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return playerWW;
     }

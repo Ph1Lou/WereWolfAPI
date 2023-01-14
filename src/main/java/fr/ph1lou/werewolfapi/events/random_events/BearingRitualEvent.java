@@ -1,10 +1,12 @@
 package fr.ph1lou.werewolfapi.events.random_events;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.bearing_ritual_event")
 public class BearingRitualEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
