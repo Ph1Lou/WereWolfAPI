@@ -1,5 +1,8 @@
 package fr.ph1lou.werewolfapi.events.roles.twin;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -8,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+@StatisticsEvent(key = "werewolf.twin_list")
 public class TwinListEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -32,10 +36,12 @@ public class TwinListEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
+    @StatisticsTargets
     public Set<IPlayerWW> getPlayerWWS() {
         return this.playerWWS;
     }

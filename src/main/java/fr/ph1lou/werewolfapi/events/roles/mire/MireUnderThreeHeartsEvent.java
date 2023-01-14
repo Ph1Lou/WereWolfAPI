@@ -1,11 +1,13 @@
 package fr.ph1lou.werewolfapi.events.roles.mire;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.mire_under_three_hearts")
 public class MireUnderThreeHeartsEvent extends Event implements Cancellable {
 
     private boolean cancelled = false;

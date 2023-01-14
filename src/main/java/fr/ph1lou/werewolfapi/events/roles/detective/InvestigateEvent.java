@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.detective;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.*;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -8,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
+
+@StatisticsEvent(key = "werewolf.enquire")
 public class InvestigateEvent extends Event implements Cancellable {
 
     private final Set<IPlayerWW> playersUUID;
@@ -37,6 +40,7 @@ public class InvestigateEvent extends Event implements Cancellable {
         return sameCamp;
     }
 
+    @StatisticsTargets
     public Set<IPlayerWW> getPlayerWWs() {
         return playersUUID;
     }
@@ -45,6 +49,7 @@ public class InvestigateEvent extends Event implements Cancellable {
         this.sameCamp = sameCamp;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
@@ -57,6 +62,12 @@ public class InvestigateEvent extends Event implements Cancellable {
     @Override
     public void setCancelled(boolean cancel) {
         this.cancel=cancel;
+    }
+
+    @StatisticsExtraInfo
+    public String getExtraInfo(){
+        return isSameCamp() ? "werewolf.roles.detective.same_camp" :
+                          "werewolf.roles.detective.opposing_camp";
     }
 }
 

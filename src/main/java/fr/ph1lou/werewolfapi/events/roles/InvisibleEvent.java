@@ -1,10 +1,15 @@
 package fr.ph1lou.werewolfapi.events.roles;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+
+@StatisticsEvent(key = "werewolf.invisible")
 public class InvisibleEvent extends Event {
 
     private final IPlayerWW playerWW;
@@ -26,11 +31,17 @@ public class InvisibleEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
     public boolean isInvisible() {
         return invisible;
+    }
+
+    @StatisticsExtraInfo
+    public String getExtraInfo(){
+        return isInvisible() ? "invisible" : "visible";
     }
 }

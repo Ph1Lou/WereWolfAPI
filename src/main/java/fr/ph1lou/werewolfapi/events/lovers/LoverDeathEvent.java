@@ -1,13 +1,20 @@
 
 package fr.ph1lou.werewolfapi.events.lovers;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.lovers.ILover;
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class LoverDeathEvent extends Event {
+import java.util.HashSet;
+import java.util.Set;
 
+
+@StatisticsEvent(key = "werewolf.lover_death")
+public class LoverDeathEvent extends Event {
 
     private final ILover lover;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
@@ -30,4 +37,8 @@ public class LoverDeathEvent extends Event {
         return this.lover;
     }
 
+    @StatisticsTargets
+    public Set<IPlayerWW> getTargets(){
+        return new HashSet<>(this.lover.getLovers());
+    }
 }

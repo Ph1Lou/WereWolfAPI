@@ -1,13 +1,17 @@
 package fr.ph1lou.werewolfapi.events.roles.druid;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.*;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@StatisticsEvent(key = "werewolf.druid_power")
 public class DruidUsePowerEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
@@ -33,10 +37,12 @@ public class DruidUsePowerEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
     }
 
+    @StatisticsExtraInt
     public int getDarkAura() {
         return darkAura;
     }
@@ -53,6 +59,11 @@ public class DruidUsePowerEvent extends Event implements Cancellable {
 
     public List<IPlayerWW> getPlayerWWs() {
         return playerWWs;
+    }
+
+    @StatisticsTargets
+    public Set<IPlayerWW> getTargets() {
+        return new HashSet<>(playerWWs);
     }
 }
 

@@ -1,10 +1,12 @@
 package fr.ph1lou.werewolfapi.events.game.vote;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
+@StatisticsEvent(key = "werewolf.vote")
 public class VoteEvent extends SelectionEvent {
 
 
