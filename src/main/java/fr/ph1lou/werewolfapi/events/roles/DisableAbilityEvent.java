@@ -8,20 +8,22 @@ import org.jetbrains.annotations.NotNull;
 
 public class DisableAbilityEvent extends Event implements Cancellable {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW targetWW;
     private final boolean disable;
     private boolean cancelled = false;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-
     /**
-     *
-     * @param targetWW  Affected player
-     * @param disable   True if target's ability is to be disabled, false if it is to be enabled
+     * @param targetWW Affected player
+     * @param disable  True if target's ability is to be disabled, false if it is to be enabled
      */
     public DisableAbilityEvent(IPlayerWW targetWW, boolean disable) {
         this.targetWW = targetWW;
         this.disable = disable;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @Override
@@ -40,16 +42,11 @@ public class DisableAbilityEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     public IPlayerWW getTargetPlayer() {
         return targetWW;
     }
 
     /**
-     *
      * @return True if target's ability is to be disabled, false if it is to be enabled
      */
     public boolean isDisableMode() {

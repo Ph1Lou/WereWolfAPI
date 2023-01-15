@@ -1,4 +1,3 @@
-
 package fr.ph1lou.werewolfapi.events.game.life_cycle;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -12,17 +11,17 @@ public class SecondDeathEvent extends FirstDeathEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public SecondDeathEvent(IPlayerWW playerWW, Set<IPlayerWW> lastStrikers){
+    public SecondDeathEvent(IPlayerWW playerWW, Set<IPlayerWW> lastStrikers) {
         super(playerWW, lastStrikers);
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

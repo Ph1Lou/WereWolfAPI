@@ -15,17 +15,17 @@ public class LibrarianGiveBackEvent extends SelectionEvent {
     private String info;
 
     public LibrarianGiveBackEvent(IPlayerWW playerWW, IPlayerWW targetWW, String info) {
-        super(playerWW,targetWW);
-        this.info=info;
+        super(playerWW, targetWW);
+        this.info = info;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

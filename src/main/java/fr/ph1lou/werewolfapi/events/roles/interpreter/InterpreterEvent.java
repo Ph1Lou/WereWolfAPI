@@ -20,16 +20,16 @@ public class InterpreterEvent extends Event implements Cancellable {
 
     public InterpreterEvent(IPlayerWW playerWW, String roleKey) {
         this.playerWW = playerWW;
-        this.roleKey=roleKey;
+        this.roleKey = roleKey;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -45,7 +45,7 @@ public class InterpreterEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
 

@@ -10,17 +10,17 @@ import org.jetbrains.annotations.NotNull;
 public class VaccinationEvent extends SelectionEvent {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public VaccinationEvent(IPlayerWW infectFatherWW, IPlayerWW vaccinatedPlayerWW){
+    public VaccinationEvent(IPlayerWW infectFatherWW, IPlayerWW vaccinatedPlayerWW) {
         super(infectFatherWW, vaccinatedPlayerWW);
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList(){
         return HANDLERS_LIST;
     }
 }

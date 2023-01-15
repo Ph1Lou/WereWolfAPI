@@ -12,7 +12,7 @@ public class StartEvent extends Event {
 
 
     public StartEvent(WereWolfAPI wereWolfAPI) {
-        this.wereWolfAPI=wereWolfAPI;
+        this.wereWolfAPI = wereWolfAPI;
     }
 
     public static HandlerList getHandlerList() {

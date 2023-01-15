@@ -12,10 +12,16 @@ import java.lang.annotation.Target;
 public @interface AdminCommand {
 
     String key();
+
     String descriptionKey();
+
     StateGame[] statesGame() default {};
+
     int[] argNumbers() default {};
+
     boolean moderatorAccess() default false;
+
     boolean hostAccess() default true;
+
     boolean autoCompletion() default true;
 }

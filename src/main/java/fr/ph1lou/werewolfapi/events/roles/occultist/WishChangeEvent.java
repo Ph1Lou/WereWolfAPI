@@ -12,15 +12,19 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.commands.player.wish_change")
 public class WishChangeEvent extends Event implements Cancellable {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final String wish;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancelled;
 
 
     public WishChangeEvent(IPlayerWW playerWW, String wish) {
         this.playerWW = playerWW;
         this.wish = wish;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @StatisticsPlayer
@@ -36,10 +40,6 @@ public class WishChangeEvent extends Event implements Cancellable {
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

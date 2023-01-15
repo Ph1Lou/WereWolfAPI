@@ -14,18 +14,18 @@ public class AmnesiacTransformationEvent extends TransformationEvent {
 
     private final IPlayerWW villager;
 
-    public AmnesiacTransformationEvent(@NotNull IPlayerWW playerWW, @NotNull IPlayerWW villager){
+    public AmnesiacTransformationEvent(@NotNull IPlayerWW playerWW, @NotNull IPlayerWW villager) {
         super(playerWW);
         this.villager = villager;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

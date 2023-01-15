@@ -3,8 +3,8 @@ package fr.ph1lou.werewolfapi.events.roles.fruitmerchant;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInt;
-import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,13 +20,13 @@ public class FruitMerchantDeathEvent extends SelectionEvent {
         this.goldenAppleCount = goldenAppleCount;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
@@ -35,12 +35,12 @@ public class FruitMerchantDeathEvent extends SelectionEvent {
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return String.valueOf(getGoldenAppleCount().getOldCount());
     }
 
     @StatisticsExtraInt
-    public int getExtraInt(){
+    public int getExtraInt() {
         return getGoldenAppleCount().getNewCount();
     }
 }

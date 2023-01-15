@@ -11,12 +11,16 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.vote_result")
 public class VoteResultEvent extends Event implements Cancellable {
 
-    private IPlayerWW playerWW ;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
+    private IPlayerWW playerWW;
+    private boolean cancel = false;
 
-    public VoteResultEvent(IPlayerWW playerWW){
+    public VoteResultEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -25,18 +29,13 @@ public class VoteResultEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
-
-    public void setPlayerWW(IPlayerWW playerWW){
-        this.playerWW = playerWW;
-    }
-
     @StatisticsPlayer
-    public IPlayerWW getPlayerWW(){
+    public IPlayerWW getPlayerWW() {
         return playerWW;
+    }
+
+    public void setPlayerWW(IPlayerWW playerWW) {
+        this.playerWW = playerWW;
     }
 
     @Override
@@ -46,6 +45,6 @@ public class VoteResultEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 }

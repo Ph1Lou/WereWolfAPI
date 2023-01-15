@@ -16,22 +16,22 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.rival_lover_death")
 public class RivalLoverDeathEvent extends Event {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final List<IPlayerWW> playerWWS;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     public RivalLoverDeathEvent(IPlayerWW playerWW, List<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
         this.playerWWS = playerWWS;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

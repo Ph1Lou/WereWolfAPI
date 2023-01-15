@@ -11,13 +11,14 @@ public class RepartitionEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private boolean cancel = false;
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

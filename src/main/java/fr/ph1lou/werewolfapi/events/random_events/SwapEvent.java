@@ -13,23 +13,23 @@ import org.jetbrains.annotations.NotNull;
 public class SwapEvent extends Event implements Cancellable {
 
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW1;
     private final IPlayerWW playerWW2;
-    private boolean cancel=false;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private boolean cancel = false;
 
-    public SwapEvent(IPlayerWW playerWW1, IPlayerWW playerWW2){
+    public SwapEvent(IPlayerWW playerWW1, IPlayerWW playerWW2) {
         this.playerWW1 = playerWW1;
         this.playerWW2 = playerWW2;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -40,7 +40,7 @@ public class SwapEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     @StatisticsPlayer

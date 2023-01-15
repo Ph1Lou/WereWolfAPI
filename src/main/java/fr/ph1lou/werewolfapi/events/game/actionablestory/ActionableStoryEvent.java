@@ -10,23 +10,23 @@ import java.util.UUID;
 
 public class ActionableStoryEvent extends Event implements Cancellable {
 
-    private final UUID player;
-    private boolean cancel = false;
-    private final String event;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final UUID player;
+    private final String event;
+    private boolean cancel = false;
 
     public ActionableStoryEvent(UUID player, String event) {
         this.player = player;
         this.event = event;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

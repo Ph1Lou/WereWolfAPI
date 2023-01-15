@@ -1,4 +1,3 @@
-
 package fr.ph1lou.werewolfapi.events.game.utils;
 
 import org.bukkit.event.Cancellable;
@@ -8,17 +7,17 @@ import org.jetbrains.annotations.NotNull;
 
 public class WinConditionsCheckEvent extends Event implements Cancellable {
 
-    private boolean cancel=false;
-    private String victoryTeam="";
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private boolean cancel = false;
+    private String victoryTeam = "";
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -29,14 +28,14 @@ public class WinConditionsCheckEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean b) {
-        this.cancel=b;
-    }
-
-    public void setVictoryTeam(String victoryTeam) {
-        this.victoryTeam = victoryTeam;
+        this.cancel = b;
     }
 
     public String getVictoryTeam() {
         return victoryTeam;
+    }
+
+    public void setVictoryTeam(String victoryTeam) {
+        this.victoryTeam = victoryTeam;
     }
 }

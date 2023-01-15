@@ -11,21 +11,21 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.reveal_wishes_occultist")
 public class OccultistRevealWishesEvent extends Event implements Cancellable {
 
-    private boolean cancelled = false;
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
+    private boolean cancelled = false;
 
     public OccultistRevealWishesEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
     }
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

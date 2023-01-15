@@ -24,18 +24,18 @@ public class CharmerGetEffectDeathEvent extends Event implements Cancellable {
 
     private boolean cancel = false;
 
-    public CharmerGetEffectDeathEvent(IPlayerWW playerWW, ILover lover){
-        this.playerWW=playerWW;
-        this.lover=lover;
+    public CharmerGetEffectDeathEvent(IPlayerWW playerWW, ILover lover) {
+        this.playerWW = playerWW;
+        this.lover = lover;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -55,11 +55,11 @@ public class CharmerGetEffectDeathEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     @StatisticsTargets
-    public Set<IPlayerWW> getTargets(){
+    public Set<IPlayerWW> getTargets() {
         return new HashSet<>(this.getLover().getLovers());
     }
 }

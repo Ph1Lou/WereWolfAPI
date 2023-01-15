@@ -11,8 +11,12 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface IntValue {
     String key();
+
     int defaultValue();
+
     int meetUpValue();
+
     int step();
+
     UniversalMaterial item();
 }

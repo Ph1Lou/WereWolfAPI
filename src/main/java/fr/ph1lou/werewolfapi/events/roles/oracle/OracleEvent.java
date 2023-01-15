@@ -11,21 +11,21 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.oracle_see")
 public class OracleEvent extends SelectionEvent {
 
-    private Aura aura;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private Aura aura;
 
     public OracleEvent(IPlayerWW playerWW, IPlayerWW targetWW, Aura aura) {
         super(playerWW, targetWW);
         this.aura = aura;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
@@ -39,7 +39,7 @@ public class OracleEvent extends SelectionEvent {
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return aura.getKey();
     }
 }

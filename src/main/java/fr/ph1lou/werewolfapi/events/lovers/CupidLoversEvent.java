@@ -13,23 +13,22 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.designed_lover")
 public class CupidLoversEvent extends Event {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final Set<IPlayerWW> playerWWS;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-
-    public CupidLoversEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS){
+    public CupidLoversEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
         this.playerWWS = playerWWS;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

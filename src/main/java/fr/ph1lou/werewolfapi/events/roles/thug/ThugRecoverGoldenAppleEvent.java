@@ -10,12 +10,16 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.thug_recover_golden_apple")
 public class ThugRecoverGoldenAppleEvent extends SelectionEvent {
 
-    private int goldenApple;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private int goldenApple;
 
     public ThugRecoverGoldenAppleEvent(IPlayerWW playerWW, IPlayerWW targetWW, int goldenApple) {
         super(playerWW, targetWW);
-        this.goldenApple=goldenApple;
+        this.goldenApple = goldenApple;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -23,11 +27,6 @@ public class ThugRecoverGoldenAppleEvent extends SelectionEvent {
     public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
-
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
 
     @StatisticsExtraInt
     public int getGoldenApple() {

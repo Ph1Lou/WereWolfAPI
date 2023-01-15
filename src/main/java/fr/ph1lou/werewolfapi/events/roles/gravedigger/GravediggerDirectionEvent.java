@@ -13,10 +13,10 @@ import org.jetbrains.annotations.NotNull;
 public class GravediggerDirectionEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancelled;
-    private double angle;
     private final IPlayerWW sourceWW;
     private final IPlayerWW targetWW;
+    private boolean cancelled;
+    private double angle;
 
     public GravediggerDirectionEvent(double angle, IPlayerWW sourceWW, IPlayerWW targetWW) {
         this.angle = angle;
@@ -24,6 +24,9 @@ public class GravediggerDirectionEvent extends Event implements Cancellable {
         this.targetWW = targetWW;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @Override
     public boolean isCancelled() {
@@ -38,10 +41,6 @@ public class GravediggerDirectionEvent extends Event implements Cancellable {
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

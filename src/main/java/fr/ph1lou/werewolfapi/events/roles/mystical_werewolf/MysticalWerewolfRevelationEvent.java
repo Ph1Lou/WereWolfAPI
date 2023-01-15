@@ -8,7 +8,6 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 
-
 @StatisticsEvent(key = "werewolf.mystical_reveal")
 public class MysticalWerewolfRevelationEvent extends SelectionEvent {
 
@@ -19,18 +18,18 @@ public class MysticalWerewolfRevelationEvent extends SelectionEvent {
         super(playerWW, targetWW);
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
+
     @NotNull
     @Override
     public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return getTargetWW().getRole().getKey();
     }
 }

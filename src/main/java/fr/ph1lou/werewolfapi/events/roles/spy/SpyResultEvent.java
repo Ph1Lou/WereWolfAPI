@@ -14,18 +14,18 @@ public class SpyResultEvent extends SelectionEvent {
 
     private final int actions;
 
-    public SpyResultEvent(IPlayerWW playerWW, IPlayerWW target, int actions){
-        super(playerWW,target);
+    public SpyResultEvent(IPlayerWW playerWW, IPlayerWW target, int actions) {
+        super(playerWW, target);
         this.actions = actions;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

@@ -20,19 +20,19 @@ public class ExposedEvent extends Event implements Cancellable {
     private final IPlayerWW playerWW;
     private final List<IPlayerWW> roles;
     private boolean cancel = false;
-    
-    public ExposedEvent(IPlayerWW playerWW, List<IPlayerWW> playerWWS){
+
+    public ExposedEvent(IPlayerWW playerWW, List<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
-        this.roles= playerWWS;
+        this.roles = playerWWS;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -43,7 +43,7 @@ public class ExposedEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancelled) {
-        this.cancel=cancelled;
+        this.cancel = cancelled;
     }
 
     @StatisticsPlayer

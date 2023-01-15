@@ -9,15 +9,18 @@ import org.jetbrains.annotations.NotNull;
 public class WereWolfKillEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel = false;
     private final IPlayerWW werewolfWW;
     private final IPlayerWW victimWW;
+    private boolean cancel = false;
 
     public WereWolfKillEvent(IPlayerWW werewolfWW, IPlayerWW victimWW) {
         this.werewolfWW = werewolfWW;
         this.victimWW = victimWW;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @Override
     public boolean isCancelled() {
@@ -40,10 +43,6 @@ public class WereWolfKillEvent extends Event implements Cancellable {
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 }

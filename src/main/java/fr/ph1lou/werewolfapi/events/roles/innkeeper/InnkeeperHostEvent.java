@@ -15,9 +15,10 @@ public class InnkeeperHostEvent extends SelectionEvent {
         super(playerWW, targetWW);
     }
 
-    public static HandlerList getHandlersList() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
+
     @Override
     public @NotNull HandlerList getHandlers() {
         return HANDLERS_LIST;

@@ -23,7 +23,7 @@ public class CreateGravediggerClueEvent extends Event implements Cancellable {
     private String roleKey;
     private boolean cancelled = false;
 
-    public CreateGravediggerClueEvent(IPlayerWW gravedigger,IPlayerWW playerWW, Location location, Set<IPlayerWW> nearbyPlayers, String roleKey) {
+    public CreateGravediggerClueEvent(IPlayerWW gravedigger, IPlayerWW playerWW, Location location, Set<IPlayerWW> nearbyPlayers, String roleKey) {
         this.gravedigger = gravedigger;
         this.playerWW = playerWW;
         this.location = location;
@@ -31,6 +31,9 @@ public class CreateGravediggerClueEvent extends Event implements Cancellable {
         this.roleKey = roleKey;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
@@ -38,25 +41,37 @@ public class CreateGravediggerClueEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
+    public IPlayerWW getPlayerWW() {
+        return playerWW;
     }
 
-    public IPlayerWW getPlayerWW() {return playerWW;}
+    public Location getDeathLocation() {
+        return location;
+    }
 
-    public Location getDeathLocation() {return location;}
+    public Set<IPlayerWW> getNearbyPlayers() {
+        return nearbyPlayers;
+    }
 
-    public Set<IPlayerWW> getNearbyPlayers() {return nearbyPlayers;}
+    public void setNearbyPlayers(Set<IPlayerWW> playersWW) {
+        this.nearbyPlayers = playersWW;
+    }
 
-    public void addNearbyPlayer(IPlayerWW p) {nearbyPlayers.add(p);}
+    public void addNearbyPlayer(IPlayerWW p) {
+        nearbyPlayers.add(p);
+    }
 
-    public void removeNearbyPlayer(IPlayerWW p) {nearbyPlayers.remove(p);}
+    public void removeNearbyPlayer(IPlayerWW p) {
+        nearbyPlayers.remove(p);
+    }
 
-    public void setNearbyPlayers(Set<IPlayerWW> playersWW) {this.nearbyPlayers = playersWW;}
+    public String getRoleKey() {
+        return roleKey;
+    }
 
-    public String getRoleKey() {return roleKey;}
-
-    public void setRoleKey(String key) {this.roleKey = key;}
+    public void setRoleKey(String key) {
+        this.roleKey = key;
+    }
 
     @Override
     public boolean isCancelled() {

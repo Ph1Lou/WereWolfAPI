@@ -14,17 +14,17 @@ public class PlayerWWDeathEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public PlayerWWDeathEvent(IPlayerWW playerWW,@Nullable IPlayerWW killerWW) {
+    public PlayerWWDeathEvent(IPlayerWW playerWW, @Nullable IPlayerWW killerWW) {
         super(playerWW, killerWW);
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 }

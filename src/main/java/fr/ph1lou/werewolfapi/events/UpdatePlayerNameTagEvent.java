@@ -16,19 +16,19 @@ public class UpdatePlayerNameTagEvent extends Event {
     private String suffix = "";
     private boolean visibility = true;
 
-    public UpdatePlayerNameTagEvent(UUID playerUUID,UUID targetUUID, String prefix){
+    public UpdatePlayerNameTagEvent(UUID playerUUID, UUID targetUUID, String prefix) {
         this.playerUUID = playerUUID;
         this.targetUUID = targetUUID;
         this.prefix = prefix;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
@@ -40,16 +40,16 @@ public class UpdatePlayerNameTagEvent extends Event {
         return prefix;
     }
 
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
     public String getSuffix() {
         return suffix;
     }
 
     public void setSuffix(String suffix) {
         this.suffix = suffix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
     }
 
     public boolean isVisibility() {

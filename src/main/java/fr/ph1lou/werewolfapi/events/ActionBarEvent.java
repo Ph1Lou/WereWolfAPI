@@ -8,21 +8,21 @@ import java.util.UUID;
 
 public class ActionBarEvent extends Event {
 
-    private final UUID playerUUID;
-    private String actionBar="";
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final UUID playerUUID;
+    private String actionBar = "";
 
-    public ActionBarEvent(UUID playerUUID){
+    public ActionBarEvent(UUID playerUUID) {
         this.playerUUID = playerUUID;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

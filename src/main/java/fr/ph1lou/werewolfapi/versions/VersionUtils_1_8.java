@@ -49,12 +49,12 @@ public class VersionUtils_1_8 extends VersionUtils {
 
     @Override
     public void addPlayerMaxHealth(@NotNull Player player, double health) {
-        setPlayerMaxHealth(player,getPlayerMaxHealth(player)+health);
+        setPlayerMaxHealth(player, getPlayerMaxHealth(player) + health);
     }
 
     @Override
     public void removePlayerMaxHealth(@NotNull Player player, double health) {
-        setPlayerMaxHealth(player,Math.max(2,getPlayerMaxHealth(player)-health));
+        setPlayerMaxHealth(player, Math.max(2, getPlayerMaxHealth(player) - health));
     }
 
     @Override
@@ -74,11 +74,10 @@ public class VersionUtils_1_8 extends VersionUtils {
 
     @Override
     public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
-        try{
+        try {
             return Potion.fromItemStack(itemStack)
                     .getEffects();
-        }
-        catch (Exception ignored){
+        } catch (Exception ignored) {
         }
         return Collections.emptyList();
     }
@@ -196,8 +195,8 @@ public class VersionUtils_1_8 extends VersionUtils {
 
 
         header = ChatColor.translateAlternateColorCodes('&', header);
-        footer = ChatColor.translateAlternateColorCodes('&', footer );
-        if(!footer.contains("Ph1Lou")){
+        footer = ChatColor.translateAlternateColorCodes('&', footer);
+        if (!footer.contains("Ph1Lou")) {
             footer += "\n§7Plugin made by §bPh1Lou";
         }
 
@@ -239,7 +238,7 @@ public class VersionUtils_1_8 extends VersionUtils {
 
         GetWereWolfAPI getWereWolfAPI = Bukkit.getServicesManager().load(GetWereWolfAPI.class);
 
-        if(getWereWolfAPI != null){
+        if (getWereWolfAPI != null) {
             Bukkit.getScheduler().runTaskAsynchronously((Plugin) getWereWolfAPI, () -> {
 
                 for (int i = -2000; i < 2000; i += 16) {
@@ -305,7 +304,7 @@ public class VersionUtils_1_8 extends VersionUtils {
 
     @Override
     public ItemStack getPotionItem(short id) {
-        return new ItemStack(Material.POTION,1, id);
+        return new ItemStack(Material.POTION, 1, id);
     }
 
     @Override

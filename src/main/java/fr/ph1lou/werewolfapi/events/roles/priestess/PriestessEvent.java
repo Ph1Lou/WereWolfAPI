@@ -12,21 +12,21 @@ import org.jetbrains.annotations.NotNull;
 @TellableStoryEvent
 public class PriestessEvent extends SelectionEvent {
 
-    private String camp;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private String camp;
 
-    public PriestessEvent(IPlayerWW playerWW, IPlayerWW targetWW, String camp){
-        super(playerWW,targetWW);
-        this.camp=camp;
+    public PriestessEvent(IPlayerWW playerWW, IPlayerWW targetWW, String camp) {
+        super(playerWW, targetWW);
+        this.camp = camp;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

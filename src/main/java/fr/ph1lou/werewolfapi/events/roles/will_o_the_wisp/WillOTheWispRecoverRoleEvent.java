@@ -14,18 +14,18 @@ public class WillOTheWispRecoverRoleEvent extends SelectionEvent {
 
     private String key;
 
-    public WillOTheWispRecoverRoleEvent(IPlayerWW playerWW, IPlayerWW targetWW, String key){
-        super(playerWW,targetWW);
-        this.key=key;
+    public WillOTheWispRecoverRoleEvent(IPlayerWW playerWW, IPlayerWW targetWW, String key) {
+        super(playerWW, targetWW);
+        this.key = key;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

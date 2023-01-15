@@ -45,14 +45,14 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
     @Override
     public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
-        if(itemStack.getItemMeta() instanceof PotionMeta){
+        if (itemStack.getItemMeta() instanceof PotionMeta) {
             PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
             List<PotionEffect> potionEffectList = new ArrayList<>(potionMeta.getCustomEffects());
             PotionData potionData = potionMeta.getBasePotionData();
             PotionEffectType type = potionData.getType().getEffectType();
-            if(type != null){
+            if (type != null) {
                 potionEffectList.add(new PotionEffect(type,
-                        PotionDurationUtil.getDuration(type,potionData.isExtended(),potionData.isUpgraded()),
+                        PotionDurationUtil.getDuration(type, potionData.isExtended(), potionData.isUpgraded()),
                         PotionDurationUtil.getAmplifier(type, potionData.isUpgraded()),
                         false,
                         false));
@@ -65,7 +65,7 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
     @Override
     public short generatePotionId(ItemStack itemStack) {
 
-        if(!(itemStack.getItemMeta() instanceof PotionMeta)){
+        if (!(itemStack.getItemMeta() instanceof PotionMeta)) {
             return 0;
         }
 
@@ -74,20 +74,19 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
         byte data = PotionUtil.getId(potionData.getType());
 
-        if(data == 0){  //POTION > 1.8
+        if (data == 0) {  //POTION > 1.8
             return 0;
         }
         byte data2 = 0;
-        if(potionData.isExtended()){
+        if (potionData.isExtended()) {
             data |= 0b01000000;
         }
-        if(potionData.isUpgraded()){
+        if (potionData.isUpgraded()) {
             data |= 0b00100000;
         }
-        if(itemStack.getType() == Material.SPLASH_POTION){
+        if (itemStack.getType() == Material.SPLASH_POTION) {
             data2 |= 0b01000000;
-        }
-        else{
+        } else {
             data2 |= 0b00100000;
         }
 
@@ -96,12 +95,12 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
     @Override
     public void addPlayerMaxHealth(@NotNull Player player, double health) {
-        setPlayerMaxHealth(player,getPlayerMaxHealth(player)+health);
+        setPlayerMaxHealth(player, getPlayerMaxHealth(player) + health);
     }
 
     @Override
     public void removePlayerMaxHealth(@NotNull Player player, double health) {
-        setPlayerMaxHealth(player,Math.max(2,getPlayerMaxHealth(player)-health));
+        setPlayerMaxHealth(player, Math.max(2, getPlayerMaxHealth(player) - health));
     }
 
     @Override

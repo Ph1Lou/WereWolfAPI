@@ -13,23 +13,22 @@ import org.jetbrains.annotations.NotNull;
 public class LootBoxEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
     private final IPlayerWW playerWW;
-
     private final int chestNumbers;
+    private boolean cancel = false;
 
     public LootBoxEvent(IPlayerWW playerWW, int chestNumbers) {
         this.playerWW = playerWW;
-        this.chestNumbers=chestNumbers;
+        this.chestNumbers = chestNumbers;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -40,7 +39,7 @@ public class LootBoxEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     @StatisticsPlayer

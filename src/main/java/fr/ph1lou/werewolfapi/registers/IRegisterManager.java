@@ -1,11 +1,11 @@
 package fr.ph1lou.werewolfapi.registers;
 
 
-import fr.ph1lou.werewolfapi.annotations.ModuleWerewolf;
 import fr.ph1lou.werewolfapi.annotations.AdminCommand;
-import fr.ph1lou.werewolfapi.annotations.Lover;
-import fr.ph1lou.werewolfapi.annotations.PlayerCommand;
 import fr.ph1lou.werewolfapi.annotations.Configuration;
+import fr.ph1lou.werewolfapi.annotations.Lover;
+import fr.ph1lou.werewolfapi.annotations.ModuleWerewolf;
+import fr.ph1lou.werewolfapi.annotations.PlayerCommand;
 import fr.ph1lou.werewolfapi.annotations.RandomEvent;
 import fr.ph1lou.werewolfapi.annotations.Role;
 import fr.ph1lou.werewolfapi.annotations.RoleCommand;

@@ -12,23 +12,22 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.angel_choice")
 public class AngelChoiceEvent extends Event {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final AngelForm choice;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-
-    public AngelChoiceEvent(IPlayerWW playerWW, AngelForm choice){
+    public AngelChoiceEvent(IPlayerWW playerWW, AngelForm choice) {
         this.playerWW = playerWW;
         this.choice = choice;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -42,7 +41,7 @@ public class AngelChoiceEvent extends Event {
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return choice.toString();
     }
 }

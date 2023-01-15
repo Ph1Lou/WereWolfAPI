@@ -16,24 +16,23 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.rival_announcement")
 public class RivalAnnouncementEvent extends Event implements Cancellable {
 
-    private final List<IPlayerWW> playerWWS;
-
-    private final IPlayerWW playerWW;
-    private boolean cancel= false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final List<IPlayerWW> playerWWS;
+    private final IPlayerWW playerWW;
+    private boolean cancel = false;
 
-    public RivalAnnouncementEvent(IPlayerWW playerWW, List<IPlayerWW> playerWWS){
+    public RivalAnnouncementEvent(IPlayerWW playerWW, List<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
         this.playerWWS = playerWWS;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -58,7 +57,7 @@ public class RivalAnnouncementEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 }
 

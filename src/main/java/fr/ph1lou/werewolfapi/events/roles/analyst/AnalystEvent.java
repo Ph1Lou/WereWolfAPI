@@ -16,18 +16,18 @@ public class AnalystEvent extends SelectionEvent {
 
     private boolean hasEffect;
 
-    public AnalystEvent(IPlayerWW playerWW, IPlayerWW targetUUID, boolean hasEffect){
-        super(playerWW,targetUUID);
-        this.hasEffect=hasEffect;
+    public AnalystEvent(IPlayerWW playerWW, IPlayerWW targetUUID, boolean hasEffect) {
+        super(playerWW, targetUUID);
+        this.hasEffect = hasEffect;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -40,7 +40,7 @@ public class AnalystEvent extends SelectionEvent {
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return hasEffect() ? "werewolf.roles.analyst.has_effects" :
                 "werewolf.roles.analyst.no_effects";
     }

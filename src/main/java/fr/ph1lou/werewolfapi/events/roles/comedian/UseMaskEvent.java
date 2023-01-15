@@ -16,23 +16,23 @@ import org.jetbrains.annotations.NotNull;
 public class UseMaskEvent extends Event implements Cancellable {
 
     private static final String[] masks = {"werewolf.mask_strength", "werewolf.mask_speed", "werewolf.mask_resistance"};
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final int mask;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
+    private boolean cancel = false;
 
-    public UseMaskEvent(IPlayerWW playerWW, int mask){
+    public UseMaskEvent(IPlayerWW playerWW, int mask) {
         this.playerWW = playerWW;
         this.mask = mask;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -52,11 +52,11 @@ public class UseMaskEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return masks[getMask()];
     }
 }

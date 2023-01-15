@@ -12,20 +12,20 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.amnesiac_lover_revelation")
 public class RevealAmnesiacLoversEvent extends Event {
 
-    private final Set<IPlayerWW> playerWWS;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final Set<IPlayerWW> playerWWS;
 
     public RevealAmnesiacLoversEvent(Set<IPlayerWW> playerWWS) {
         this.playerWWS = playerWWS;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

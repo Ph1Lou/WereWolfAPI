@@ -19,9 +19,10 @@ public class InnkeeperSpeedEvent extends Event implements Cancellable {
         this.playerWW = playerWW;
     }
 
-    public static HandlerList getHandlersList() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
+
     @Override
     public @NotNull HandlerList getHandlers() {
         return HANDLERS_LIST;

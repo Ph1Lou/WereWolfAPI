@@ -9,11 +9,16 @@ public interface ICamp {
 
     boolean isInfected();
 
+    /**
+     * this method can create errors
+     */
+    void setInfected(boolean infected);
+
     boolean isTransformedToNeutral();
 
-    boolean isTransformedToVillager();
-
     void setTransformedToNeutral(boolean neutral);
+
+    boolean isTransformedToVillager();
 
     void setTransformedToVillager(boolean villager);
 
@@ -21,12 +26,7 @@ public interface ICamp {
 
     void setInfected();
 
-    /**
-    * this method can create errors
-     */
-    void setInfected(boolean infected);
+    boolean isSolitary();
 
     void setSolitary(boolean solitary);
-
-    boolean isSolitary();
 }

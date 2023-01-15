@@ -14,18 +14,18 @@ public class WildChildTransformationEvent extends TransformationEvent {
 
     private final IPlayerWW model;
 
-    public WildChildTransformationEvent(IPlayerWW playerWW, IPlayerWW model){
+    public WildChildTransformationEvent(IPlayerWW playerWW, IPlayerWW model) {
         super(playerWW);
         this.model = model;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

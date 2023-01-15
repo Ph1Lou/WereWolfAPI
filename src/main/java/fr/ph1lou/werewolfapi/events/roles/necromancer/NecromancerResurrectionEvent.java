@@ -12,21 +12,21 @@ import org.jetbrains.annotations.NotNull;
 @TellableStoryEvent
 public class NecromancerResurrectionEvent extends ResurrectionEvent {
 
-    private final IPlayerWW targetWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final IPlayerWW targetWW;
 
     public NecromancerResurrectionEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
         super(playerWW);
         this.targetWW = targetWW;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

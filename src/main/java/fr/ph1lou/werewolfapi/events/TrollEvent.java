@@ -9,13 +9,16 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.troll")
 public class TrollEvent extends Event {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final String key;
 
-    public TrollEvent(String key){
+    public TrollEvent(String key) {
         this.key = key;
     }
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
@@ -23,12 +26,8 @@ public class TrollEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     @StatisticsExtraInfo
-    public String getTrollKey(){
+    public String getTrollKey() {
         return this.key;
     }
 

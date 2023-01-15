@@ -14,24 +14,23 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.trouple_event")
 public class TroupleEvent extends Event implements Cancellable {
 
-    private final Set<IPlayerWW> playersUUID;
-
-    private final IPlayerWW playerWW;
-    private boolean cancel=false;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final Set<IPlayerWW> playersUUID;
+    private final IPlayerWW playerWW;
+    private boolean cancel = false;
 
-    public TroupleEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS){
+    public TroupleEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
         this.playersUUID = playerWWS;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -52,7 +51,7 @@ public class TroupleEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 }
 

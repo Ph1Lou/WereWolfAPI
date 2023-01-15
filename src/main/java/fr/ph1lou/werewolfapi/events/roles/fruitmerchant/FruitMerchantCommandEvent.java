@@ -16,24 +16,23 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.fruit_merchant_command")
 public class FruitMerchantCommandEvent extends Event implements Cancellable {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final Set<IPlayerWW> playerWWS;
-    private boolean cancel=false;
+    private boolean cancel = false;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-
-    public FruitMerchantCommandEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS){
+    public FruitMerchantCommandEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
         this.playerWWS = playerWWS;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -54,7 +53,7 @@ public class FruitMerchantCommandEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 }
 

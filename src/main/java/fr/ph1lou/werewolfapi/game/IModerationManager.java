@@ -8,29 +8,8 @@ import java.util.UUID;
 public interface IModerationManager {
 
     /**
-     * Set the hosts of the game
-     * @param hostsUUIDs The list of hosts'UUIDs
-     */
-
-    void setHosts(List<UUID> hostsUUIDs);
-
-    /**
-     * Set the moderators of the game
-     * @param moderatorsUUIDs The list of moderators'UUIDs
-     */
-
-    void setModerators( List<UUID> moderatorsUUIDs);
-
-    /**
-     * Set the White Listed Players of the game
-     * @param whiteListedPlayers The list of whitListed players'UUID
-     */
-
-    void setWhiteListedPlayers(List<UUID> whiteListedPlayers);
-
-
-    /**
      * Add a player to the whitelist
+     *
      * @param playerName UUID  of the player
      */
 
@@ -38,6 +17,7 @@ public interface IModerationManager {
 
     /**
      * Remove a player to the whitelist
+     *
      * @param playerName UUID of the player
      */
 
@@ -45,6 +25,7 @@ public interface IModerationManager {
 
     /**
      * Add a host to the game
+     *
      * @param hostUUID UUID of the host
      */
 
@@ -52,6 +33,7 @@ public interface IModerationManager {
 
     /**
      * Remove a host to the game
+     *
      * @param hostUUID UUID of the host
      */
 
@@ -59,6 +41,7 @@ public interface IModerationManager {
 
     /**
      * Add a moderator to the game
+     *
      * @param moderatorUUID UUID of the moderator
      */
 
@@ -66,6 +49,7 @@ public interface IModerationManager {
 
     /**
      * Remove a moderator to the game
+     *
      * @param moderatorUUID UUID of the moderator
      */
 
@@ -73,27 +57,55 @@ public interface IModerationManager {
 
     /**
      * return the UUIDs of whitelistedPlayer
+     *
      * @return List whitelisted players's UUID
      */
 
     List<? extends UUID> getWhiteListedPlayers();
 
     /**
+     * Set the White Listed Players of the game
+     *
+     * @param whiteListedPlayers The list of whitListed players'UUID
+     */
+
+    void setWhiteListedPlayers(List<UUID> whiteListedPlayers);
+
+    /**
      * return the UUIDs of Hosts
+     *
      * @return List hosts's UUID
      */
 
     List<? extends UUID> getHosts();
 
     /**
+     * Set the hosts of the game
+     *
+     * @param hostsUUIDs The list of hosts'UUIDs
+     */
+
+    void setHosts(List<UUID> hostsUUIDs);
+
+    /**
      * return the UUIDs of Moderators
+     *
      * @return List moderators's UUID
      */
 
     List<? extends UUID> getModerators();
 
     /**
+     * Set the moderators of the game
+     *
+     * @param moderatorsUUIDs The list of moderators'UUIDs
+     */
+
+    void setModerators(List<UUID> moderatorsUUIDs);
+
+    /**
      * return the UUIDs of Players in queue
+     *
      * @return List players's UUID
      */
 

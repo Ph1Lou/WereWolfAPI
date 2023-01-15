@@ -10,21 +10,20 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.trouble_maker_death")
 public class TroubleMakerDeathEvent extends Event {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-
-    public TroubleMakerDeathEvent(IPlayerWW playerWW){
+    public TroubleMakerDeathEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

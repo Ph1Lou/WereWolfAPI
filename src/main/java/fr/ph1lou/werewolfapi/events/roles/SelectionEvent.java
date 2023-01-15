@@ -10,24 +10,23 @@ import org.jetbrains.annotations.NotNull;
 
 public class SelectionEvent extends Event implements Cancellable {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final IPlayerWW targetWW;
-    private boolean cancel=false;
+    private boolean cancel = false;
 
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-
-    public SelectionEvent(IPlayerWW playerWW, IPlayerWW targetWW){
+    public SelectionEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
         this.playerWW = playerWW;
-        this.targetWW =targetWW;
+        this.targetWW = targetWW;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -48,7 +47,7 @@ public class SelectionEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean b) {
-        this.cancel=b;
+        this.cancel = b;
     }
 }
 

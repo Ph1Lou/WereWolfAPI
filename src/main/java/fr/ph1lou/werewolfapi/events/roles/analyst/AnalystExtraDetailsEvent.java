@@ -21,9 +21,13 @@ public class AnalystExtraDetailsEvent extends SelectionEvent {
 
     private final Set<PotionEffectType> potions;
 
-    public AnalystExtraDetailsEvent(IPlayerWW playerWW, IPlayerWW targetUUID, Set<PotionEffectType> potions){
-        super(playerWW,targetUUID);
-        this.potions=potions;
+    public AnalystExtraDetailsEvent(IPlayerWW playerWW, IPlayerWW targetUUID, Set<PotionEffectType> potions) {
+        super(playerWW, targetUUID);
+        this.potions = potions;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -32,16 +36,12 @@ public class AnalystExtraDetailsEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     public Set<PotionEffectType> getPotions() {
         return this.potions;
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return getPotions()
                 .stream()
                 .map(PotionEffectType::getName)

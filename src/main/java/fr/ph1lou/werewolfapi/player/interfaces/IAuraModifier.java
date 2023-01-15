@@ -7,7 +7,8 @@ public interface IAuraModifier extends Comparable<IAuraModifier> {
     Aura getAura();
 
     /**
-     *  Highest priority prevails. Behaviour for identical priorities is undefined
+     * Highest priority prevails. Behaviour for identical priorities is undefined
+     *
      * @return The priority of the modifier.
      */
     int getPriority();

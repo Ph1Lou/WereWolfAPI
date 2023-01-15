@@ -15,25 +15,24 @@ import java.util.Set;
 @StatisticsEvent(key = "werewolf.fruit_merchant_recover")
 public class FruitMerchantRecoverInformationEvent extends Event implements Cancellable {
 
-    private final IPlayerWW playerWW;
-    private final Map<IPlayerWW,GoldenCount> goldenAppleCount;
-    private boolean cancel=false;
-
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final IPlayerWW playerWW;
+    private final Map<IPlayerWW, GoldenCount> goldenAppleCount;
+    private boolean cancel = false;
 
     public FruitMerchantRecoverInformationEvent(IPlayerWW playerWW,
-                                                Map<IPlayerWW,GoldenCount> goldenAppleCount){
+                                                Map<IPlayerWW, GoldenCount> goldenAppleCount) {
         this.playerWW = playerWW;
         this.goldenAppleCount = goldenAppleCount;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -54,7 +53,7 @@ public class FruitMerchantRecoverInformationEvent extends Event implements Cance
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     public GoldenCount getGoldenAppleCount(IPlayerWW playerWW) {

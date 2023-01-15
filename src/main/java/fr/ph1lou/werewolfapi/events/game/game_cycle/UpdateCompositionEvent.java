@@ -16,13 +16,13 @@ public class UpdateCompositionEvent extends Event implements Cancellable {
     private final IPlayerWW playerWW;
     private final String key;
     private final int modifier;
-    private boolean cancel=true;
+    private boolean cancel = true;
 
     public UpdateCompositionEvent(IPlayerWW playerWW, String key, UpdateCompositionReason reason, int modifier) {
         this.playerWW = playerWW;
-        this.key=key;
-        this.reason=reason;
-        this.modifier=modifier;
+        this.key = key;
+        this.reason = reason;
+        this.modifier = modifier;
     }
 
     public static HandlerList getHandlerList() {
@@ -46,7 +46,7 @@ public class UpdateCompositionEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     public UpdateCompositionReason getReason() {

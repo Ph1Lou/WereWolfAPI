@@ -13,8 +13,12 @@ public class TwinRoleEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public TwinRoleEvent(IPlayerWW playerWW, IPlayerWW targetWW){
-        super(playerWW,targetWW);
+    public TwinRoleEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+        super(playerWW, targetWW);
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -23,12 +27,8 @@ public class TwinRoleEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return getTargetWW().getRole().getKey();
     }
 }

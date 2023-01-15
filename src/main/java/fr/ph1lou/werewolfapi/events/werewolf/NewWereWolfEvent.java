@@ -15,8 +15,12 @@ public class NewWereWolfEvent extends Event {
 
     private final IPlayerWW playerWW;
 
-    public NewWereWolfEvent(IPlayerWW playerWW){
+    public NewWereWolfEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -28,10 +32,6 @@ public class NewWereWolfEvent extends Event {
     @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return playerWW;
-    }
-
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
     }
 
 }

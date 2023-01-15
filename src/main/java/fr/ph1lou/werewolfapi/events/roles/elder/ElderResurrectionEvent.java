@@ -20,14 +20,13 @@ public class ElderResurrectionEvent extends ResurrectionEvent {
         this.killerIsVillager = killerIsVillager;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -40,7 +39,7 @@ public class ElderResurrectionEvent extends ResurrectionEvent {
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return this.isKillerAVillager() ? "werewolf.elder_kill_by_villager" :
                 "werewolf.elder_not_kill_by_villager";
     }

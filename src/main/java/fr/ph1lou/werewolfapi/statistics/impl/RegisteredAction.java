@@ -61,11 +61,6 @@ public class RegisteredAction implements IRegisteredAction {
         return extraInfo;
     }
 
-    public RegisteredAction setActionableStory(boolean actionableStory){
-        this.actionableStory = actionableStory;
-        return this;
-    }
-
     public Integer getExtraInt() {
         return extraInt;
     }
@@ -77,5 +72,10 @@ public class RegisteredAction implements IRegisteredAction {
 
     public boolean isActionableStory() {
         return this.actionableStory;
+    }
+
+    public RegisteredAction setActionableStory(boolean actionableStory) {
+        this.actionableStory = actionableStory;
+        return this;
     }
 }

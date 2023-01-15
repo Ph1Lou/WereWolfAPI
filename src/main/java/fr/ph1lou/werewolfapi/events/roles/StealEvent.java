@@ -1,4 +1,3 @@
-
 package fr.ph1lou.werewolfapi.events.roles;
 
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
@@ -10,21 +9,21 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.steal")
 public class StealEvent extends SelectionEvent {
 
-    private final String role;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final String role;
 
-    public StealEvent(IPlayerWW thiefWW, IPlayerWW playerWW, String role){
+    public StealEvent(IPlayerWW thiefWW, IPlayerWW playerWW, String role) {
         super(thiefWW, playerWW);
-        this.role=role;
+        this.role = role;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

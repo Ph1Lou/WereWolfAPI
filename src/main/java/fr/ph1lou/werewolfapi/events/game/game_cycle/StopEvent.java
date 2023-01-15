@@ -12,7 +12,7 @@ public class StopEvent extends Event {
 
 
     public StopEvent(WereWolfAPI wereWolfAPI) {
-        this.wereWolfAPI=wereWolfAPI;
+        this.wereWolfAPI = wereWolfAPI;
     }
 
     public static HandlerList getHandlerList() {

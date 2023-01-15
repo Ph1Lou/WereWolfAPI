@@ -26,13 +26,13 @@ public class WiseElderRevealAuraAmountEvent extends Event implements Cancellable
         this.light = light;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
@@ -60,11 +60,11 @@ public class WiseElderRevealAuraAmountEvent extends Event implements Cancellable
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return String.format("Neutral: %s; Dark: %s; Light: %s",
                 getNeutral(), getDark(), getLight());
     }

@@ -19,7 +19,7 @@ public abstract class ListenerWerewolf implements Listener {
         return this.register;
     }
 
-    public WereWolfAPI getGame(){
+    public WereWolfAPI getGame() {
         return this.game;
     }
 

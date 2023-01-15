@@ -12,39 +12,39 @@ public interface IConfiguration extends IStorageConfiguration {
 
     void setStrengthRate(int strengthRate);
 
-    int getLimitProtectionIron() ;
+    int getLimitProtectionIron();
 
     void setLimitProtectionIron(int limitProtectionIron);
 
-    int getLimitProtectionDiamond() ;
+    int getLimitProtectionDiamond();
 
     void setLimitProtectionDiamond(int limitProtectionDiamond);
 
     int getLimitSharpnessDiamond();
 
-    void setLimitSharpnessDiamond(int limitSharpnessDiamond) ;
+    void setLimitSharpnessDiamond(int limitSharpnessDiamond);
 
     int getLimitSharpnessIron();
 
     void setLimitSharpnessIron(int limitSharpnessIron);
 
-    int getLimitPowerBow() ;
+    int getLimitPowerBow();
 
     void setLimitPowerBow(int limitPowerBow);
 
-    int getLimitKnockBack() ;
+    int getLimitKnockBack();
 
     void setLimitKnockBack(int limitKnockBack);
 
-    int getLimitPunch() ;
+    int getLimitPunch();
 
     void setLimitPunch(int limitPunch);
 
-    int getGoldenAppleParticles() ;
+    int getGoldenAppleParticles();
 
     void setGoldenAppleParticles(int goldenAppleParticles);
 
-    int getResistanceRate() ;
+    int getResistanceRate();
 
     void setResistanceRate(int resistanceRate);
 
@@ -66,6 +66,7 @@ public interface IConfiguration extends IStorageConfiguration {
 
     /**
      * return true if the whitelist is on
+     *
      * @return boolean
      */
 
@@ -73,6 +74,7 @@ public interface IConfiguration extends IStorageConfiguration {
 
     /**
      * change the status of the whitelist
+     *
      * @param whiteList the desired status
      */
 
@@ -80,6 +82,7 @@ public interface IConfiguration extends IStorageConfiguration {
 
     /**
      * return the maximum of player accepted in the game
+     *
      * @return int
      */
 
@@ -87,14 +90,15 @@ public interface IConfiguration extends IStorageConfiguration {
 
     /**
      * Set the maximum number of players
+     *
      * @param playerMax maximum number of players
-
      */
 
     void setPlayerMax(int playerMax);
 
     /**
      * return the spectator Mode of the game (0 : disable, 1 : for death players, 2: for all players)
+     *
      * @return int
      */
 
@@ -102,6 +106,7 @@ public interface IConfiguration extends IStorageConfiguration {
 
     /**
      * change the status of the Spectator Mode
+     *
      * @param spectatorMode the desired status (0 : disable, 1 : for death players, 2: for all players)
      */
 

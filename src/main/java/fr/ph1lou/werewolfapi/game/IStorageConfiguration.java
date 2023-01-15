@@ -20,9 +20,9 @@ public interface IStorageConfiguration {
 
     void moveTimer(String key, int value);
 
-    void setConfig(String key,boolean enable);
+    void setConfig(String key, boolean enable);
 
-    void setScenario(String key,boolean enable);
+    void setScenario(String key, boolean enable);
 
     void setTimerValue(String key, int value);
 
@@ -30,6 +30,7 @@ public interface IStorageConfiguration {
 
     /**
      * Get Random Event Probability
+     *
      * @param key of the random event
      * @return the probability
      */
@@ -37,10 +38,11 @@ public interface IStorageConfiguration {
 
     /**
      * Set Probability of the random Event
-     * @param key of the random event
+     *
+     * @param key         of the random event
      * @param probability the probability
      */
-    void setProbability(String key,int probability);
+    void setProbability(String key, int probability);
 
     int getValue(String key);
 
@@ -48,7 +50,7 @@ public interface IStorageConfiguration {
 
     int getLoverCount(String key);
 
-    void setLoverCount(String key,int value);
+    void setLoverCount(String key, int value);
 
     void addOneLover(String key);
 

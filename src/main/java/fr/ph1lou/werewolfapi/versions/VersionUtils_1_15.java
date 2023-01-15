@@ -21,7 +21,7 @@ public class VersionUtils_1_15 extends VersionUtils_1_14 {
 
         GetWereWolfAPI getWereWolfAPI = Bukkit.getServicesManager().load(GetWereWolfAPI.class);
 
-        if(getWereWolfAPI != null){
+        if (getWereWolfAPI != null) {
             Bukkit.getScheduler().runTaskAsynchronously((Plugin) getWereWolfAPI, () -> {
                 for (int i = -2000; i < 2000; i += 16) {
                     for (int j = -2000; j < 2000; j += 16) {

@@ -9,20 +9,20 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.day")
 public class DayEvent extends Event {
 
-    private final int number;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final int number;
 
-    public DayEvent(int number){
+    public DayEvent(int number) {
         this.number = number;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

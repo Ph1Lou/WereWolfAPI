@@ -15,17 +15,17 @@ public class WolfDogChooseWereWolfForm extends Event implements Cancellable {
     private final IPlayerWW playerWW;
     private boolean cancel = false;
 
-    public WolfDogChooseWereWolfForm(IPlayerWW playerWW){
+    public WolfDogChooseWereWolfForm(IPlayerWW playerWW) {
         this.playerWW = playerWW;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -36,7 +36,7 @@ public class WolfDogChooseWereWolfForm extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancelled) {
-        this.cancel=cancelled;
+        this.cancel = cancelled;
     }
 
     @StatisticsPlayer

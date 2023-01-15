@@ -2,8 +2,8 @@ package fr.ph1lou.werewolfapi.events.roles.charmer;
 
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
-import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +17,11 @@ public class CharmedDeathEvent extends SelectionEvent {
 
     public CharmedDeathEvent(IPlayerWW playerWW, IPlayerWW charmerWW, boolean beforeCountDown) {
         super(playerWW, charmerWW);
-        this.beforeCountDown=beforeCountDown;
+        this.beforeCountDown = beforeCountDown;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -26,16 +30,12 @@ public class CharmedDeathEvent extends SelectionEvent {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     public boolean isBeforeCountDown() {
         return this.beforeCountDown;
     }
 
     @StatisticsExtraInfo
-    public String getExtraInfo(){
+    public String getExtraInfo() {
         return isBeforeCountDown() ? "werewolf.before_count_down" :
                 "werewolf.after_count_down";
     }

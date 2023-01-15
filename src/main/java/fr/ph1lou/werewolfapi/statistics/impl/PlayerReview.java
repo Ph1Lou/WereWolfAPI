@@ -1,9 +1,9 @@
 package fr.ph1lou.werewolfapi.statistics.impl;
 
-import fr.ph1lou.werewolfapi.statistics.interfaces.IPlayerReview;
-import fr.ph1lou.werewolfapi.lovers.ILover;
 import fr.ph1lou.werewolfapi.enums.LoverType;
+import fr.ph1lou.werewolfapi.lovers.ILover;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.statistics.interfaces.IPlayerReview;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ public class PlayerReview implements IPlayerReview {
     private final boolean solitary;
     private final String name;
     private final boolean winner;
-    private UUID amnesiacLover = null;
     private final List<UUID> lovers = new ArrayList<>();
+    private UUID amnesiacLover = null;
     private UUID cursedLover = null;
 
     public PlayerReview(IPlayerWW playerWW, boolean winner) {
@@ -47,10 +47,9 @@ public class PlayerReview implements IPlayerReview {
 
         this.deathTime = playerWW.getDeathTime();
         this.killers = playerWW.getKillers().stream().map(playerWW1 -> {
-            if(playerWW1 == null){
+            if (playerWW1 == null) {
                 return null;
-            }
-            else return playerWW1.getReviewUUID();
+            } else return playerWW1.getReviewUUID();
         }).collect(Collectors.toList());
         this.nbKill = playerWW.getPlayersKills().size();
         this.solitary = playerWW.getRole().isSolitary();

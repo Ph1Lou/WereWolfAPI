@@ -20,23 +20,22 @@ import java.util.Set;
 public class TenebrousEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-
-    private boolean cancelled = false;
     private final List<IPlayerWW> affectedPlayers;
     private final IPlayerWW playerWW;
+    private boolean cancelled = false;
 
     public TenebrousEvent(IPlayerWW playerWW, List<IPlayerWW> affectedPlayers) {
         this.playerWW = playerWW;
         this.affectedPlayers = affectedPlayers;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
@@ -55,7 +54,7 @@ public class TenebrousEvent extends Event implements Cancellable {
     }
 
     @StatisticsTargets
-    public Set<IPlayerWW> getTargets(){
+    public Set<IPlayerWW> getTargets() {
         return new HashSet<>(getAffectedPlayers());
     }
 

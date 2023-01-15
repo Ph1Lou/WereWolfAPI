@@ -12,26 +12,26 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.new_display_role")
 public class NewDisplayRole extends Event implements Cancellable {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final String newDisplayRole;
     private final String newDisplayCamp;
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
+    private boolean cancel = false;
 
-    public NewDisplayRole(IPlayerWW playerWW, String newDisplayRole1, String newDisplayCamp){
+    public NewDisplayRole(IPlayerWW playerWW, String newDisplayRole1, String newDisplayCamp) {
         this.playerWW = playerWW;
         this.newDisplayRole = newDisplayRole1;
 
         this.newDisplayCamp = newDisplayCamp;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 
@@ -57,7 +57,7 @@ public class NewDisplayRole extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 }
 

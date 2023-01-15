@@ -13,22 +13,22 @@ import org.jetbrains.annotations.NotNull;
 public class RumorsWriteEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel = false;
     private final IPlayerWW playerWW;
     private final String message;
+    private boolean cancel = false;
 
-    public RumorsWriteEvent(IPlayerWW playerWW, String message){
+    public RumorsWriteEvent(IPlayerWW playerWW, String message) {
         this.playerWW = playerWW;
         this.message = message;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -39,7 +39,7 @@ public class RumorsWriteEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 
     @StatisticsPlayer

@@ -13,22 +13,21 @@ import org.jetbrains.annotations.NotNull;
 @StatisticsEvent(key = "werewolf.revive")
 public class ResurrectionEvent extends Event implements Cancellable {
 
-    private final IPlayerWW playerWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
+    private final IPlayerWW playerWW;
+    private boolean cancel = false;
 
     public ResurrectionEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -44,6 +43,6 @@ public class ResurrectionEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean b) {
-        this.cancel=b;
+        this.cancel = b;
     }
 }

@@ -10,13 +10,15 @@ import org.jetbrains.annotations.NotNull;
 public class ClientKillEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+
     public ClientKillEvent(IPlayerWW host, IPlayerWW client) {
         super(host, client);
     }
 
-    public static HandlerList getHandlersList() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
+
     @Override
     public @NotNull HandlerList getHandlers() {
         return HANDLERS_LIST;

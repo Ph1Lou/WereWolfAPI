@@ -9,23 +9,23 @@ import java.util.UUID;
 
 public interface IGameReview {
 
-     UUID getGameUUID();
+    UUID getGameUUID();
 
-     Set<UUID> getWinners() ;
+    Set<UUID> getWinners();
 
-     String getWinnerCampKey();
+    String getWinnerCampKey();
 
-     List<? extends IPlayerReview> getPlayers();
+    List<? extends IPlayerReview> getPlayers();
 
-     int getDuration();
+    int getDuration();
 
-     WereWolfAPI getApi();
+    WereWolfAPI getApi();
 
-     String getName();
+    String getName();
 
-     List<? extends IRegisteredAction> getRegisteredActions();
+    List<? extends IRegisteredAction> getRegisteredActions();
 
-     int getPlayersCount();
+    int getPlayersCount();
 
-     UUID getServerUUID();
+    UUID getServerUUID();
 }

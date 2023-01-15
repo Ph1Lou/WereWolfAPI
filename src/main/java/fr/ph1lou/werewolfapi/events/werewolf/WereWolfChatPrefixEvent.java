@@ -1,7 +1,7 @@
 package fr.ph1lou.werewolfapi.events.werewolf;
 
-import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
@@ -9,28 +9,26 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WereWolfChatPrefixEvent extends Event  {
+public class WereWolfChatPrefixEvent extends Event {
 
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final IPlayerWW requester;
-
     private final List<Formatter> formatters = new ArrayList<>();
+    private String prefix = "werewolf.commands.player.ww_chat.prefix";
 
-    private String prefix= "werewolf.commands.player.ww_chat.prefix";
-    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    public WereWolfChatPrefixEvent(IPlayerWW playerWW, IPlayerWW requester) {
+        this.playerWW = playerWW;
+        this.requester = requester;
+    }
 
-    public WereWolfChatPrefixEvent(IPlayerWW playerWW, IPlayerWW requester){
-        this.playerWW=playerWW;
-        this.requester=requester;
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -54,7 +52,7 @@ public class WereWolfChatPrefixEvent extends Event  {
         return this.formatters;
     }
 
-    public void addFormatter(Formatter formatter){
+    public void addFormatter(Formatter formatter) {
         this.formatters.add(formatter);
     }
 }

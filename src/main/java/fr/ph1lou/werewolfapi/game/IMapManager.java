@@ -11,8 +11,9 @@ public interface IMapManager {
 
     /**
      * teleport the player around the world
+     *
      * @param playerWW uuid of the player
-     * @param d angle in radian
+     * @param d        angle in radian
      */
 
     void transportation(IPlayerWW playerWW, double d);
@@ -22,8 +23,10 @@ public interface IMapManager {
      */
 
     void deleteMap();
+
     /**
      * Generate the map of the concerned game
+     *
      * @param mapRadius radius of the map to be generated
      */
 

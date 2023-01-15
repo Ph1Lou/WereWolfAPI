@@ -16,25 +16,27 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     private final IPlayerWW playerWW;
     private final IPlayerWW targetPlayer;
+    private final List<Formatter> formatters = new ArrayList<>();
     private String playerName;
     private String role;
     private String format;
-
-    private final List<Formatter> formatters = new ArrayList<>();
     private boolean cancel = false;
 
     /**
-     *
-     * @param playerWW the player dead
+     * @param playerWW     the player dead
      * @param targetPlayer the player who will show the message
-     * @param format the message
+     * @param format       the message
      */
-    public AnnouncementDeathEvent(IPlayerWW playerWW, IPlayerWW targetPlayer, String format){
+    public AnnouncementDeathEvent(IPlayerWW playerWW, IPlayerWW targetPlayer, String format) {
         this.playerWW = playerWW;
-        this.playerName= playerWW.getName();
-        this.role= playerWW.getDeathRole();
+        this.playerName = playerWW.getName();
+        this.role = playerWW.getDeathRole();
         this.targetPlayer = targetPlayer;
-        this.format=format;
+        this.format = format;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -43,28 +45,24 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     public String getPlayerName() {
         return playerName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public String getFormat() {
-        return format;
     }
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getFormat() {
+        return format;
     }
 
     public void setFormat(String format) {
@@ -73,6 +71,7 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     /**
      * Récuperez le joueur décédé
+     *
      * @return le joueur
      */
     public IPlayerWW getPlayerWW() {
@@ -81,6 +80,7 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
 
     /**
      * Recupérez le joueur a qui est adressé l'annonce de mort
+     *
      * @return le joueur
      */
     public IPlayerWW getTargetPlayer() {
@@ -91,7 +91,7 @@ public class AnnouncementDeathEvent extends Event implements Cancellable {
         return formatters;
     }
 
-    public void addFormatter(Formatter formatter){
+    public void addFormatter(Formatter formatter) {
         this.formatters.add(formatter);
     }
 

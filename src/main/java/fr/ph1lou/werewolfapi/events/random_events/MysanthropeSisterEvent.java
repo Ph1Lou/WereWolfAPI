@@ -12,20 +12,21 @@ import org.jetbrains.annotations.NotNull;
 public class MysanthropeSisterEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private boolean cancel=false;
     private final IPlayerWW playerWW;
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLERS_LIST;
+    private boolean cancel = false;
+
+    public MysanthropeSisterEvent(IPlayerWW playerWW) {
+        this.playerWW = playerWW;
     }
 
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public MysanthropeSisterEvent(IPlayerWW playerWW){
-        this.playerWW=playerWW;
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
+        return HANDLERS_LIST;
     }
 
     @StatisticsPlayer
@@ -40,6 +41,6 @@ public class MysanthropeSisterEvent extends Event implements Cancellable {
 
     @Override
     public void setCancelled(boolean cancel) {
-        this.cancel=cancel;
+        this.cancel = cancel;
     }
 }

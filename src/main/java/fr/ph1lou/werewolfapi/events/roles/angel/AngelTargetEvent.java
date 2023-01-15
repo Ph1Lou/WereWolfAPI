@@ -12,17 +12,17 @@ public class AngelTargetEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public AngelTargetEvent(IPlayerWW playerWW, IPlayerWW targetWW){
+    public AngelTargetEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
         super(playerWW, targetWW);
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

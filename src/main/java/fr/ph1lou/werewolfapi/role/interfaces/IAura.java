@@ -1,7 +1,7 @@
 package fr.ph1lou.werewolfapi.role.interfaces;
 
-import fr.ph1lou.werewolfapi.player.interfaces.IAuraModifier;
 import fr.ph1lou.werewolfapi.enums.Aura;
+import fr.ph1lou.werewolfapi.player.interfaces.IAuraModifier;
 
 import java.util.List;
 

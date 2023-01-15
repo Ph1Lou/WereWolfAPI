@@ -94,7 +94,7 @@ public class ItemBuilder {
 
     public ItemBuilder setDisplayName(String displayname) {
         ItemMeta meta = getItemMeta();
-        meta.setDisplayName(ChatColor.WHITE +displayname);
+        meta.setDisplayName(ChatColor.WHITE + displayname);
         setItemMeta(meta);
         return this;
     }
@@ -103,7 +103,7 @@ public class ItemBuilder {
         ItemMeta meta = getItemMeta();
         meta.setLore(lores
                 .stream()
-                .map(lore -> ChatColor.WHITE+lore)
+                .map(lore -> ChatColor.WHITE + lore)
                 .collect(Collectors.toList()));
         setItemMeta(meta);
         return this;
@@ -111,7 +111,7 @@ public class ItemBuilder {
 
     public ItemBuilder setLore(String lore) {
         ArrayList<String> loreList = new ArrayList<>();
-        loreList.add(ChatColor.WHITE+lore);
+        loreList.add(ChatColor.WHITE + lore);
         ItemMeta meta = getItemMeta();
         meta.setLore(loreList);
         setItemMeta(meta);
@@ -120,10 +120,9 @@ public class ItemBuilder {
 
     public ItemBuilder addEnchant(Enchantment enchantment, int level) {
         ItemMeta meta = getItemMeta();
-        if(meta instanceof EnchantmentStorageMeta){
-            ((EnchantmentStorageMeta)meta).addStoredEnchant(enchantment,level,true);
-        }
-        else meta.addEnchant(enchantment, level, true);
+        if (meta instanceof EnchantmentStorageMeta) {
+            ((EnchantmentStorageMeta) meta).addStoredEnchant(enchantment, level, true);
+        } else meta.addEnchant(enchantment, level, true);
         setItemMeta(meta);
         return this;
     }
