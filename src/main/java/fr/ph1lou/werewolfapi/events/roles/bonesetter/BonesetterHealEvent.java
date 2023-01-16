@@ -8,7 +8,6 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.bonesetter_heal")
-@TellableStoryEvent
 public class BonesetterHealEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

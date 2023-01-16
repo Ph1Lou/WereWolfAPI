@@ -10,12 +10,12 @@ import org.jetbrains.annotations.Nullable;
 
 @StatisticsEvent(key = "werewolf.kill")
 @TellableStoryEvent
-public class PlayerWWDeathEvent extends SelectionEvent {
+public class PlayerWWKillEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public PlayerWWDeathEvent(IPlayerWW playerWW, @Nullable IPlayerWW killerWW) {
-        super(playerWW, killerWW);
+    public PlayerWWKillEvent(@Nullable IPlayerWW killerWW, IPlayerWW playerWW) {
+        super(killerWW, playerWW);
     }
 
     public static HandlerList getHandlerList() {
