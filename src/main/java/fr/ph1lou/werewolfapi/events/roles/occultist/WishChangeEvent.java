@@ -9,7 +9,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@StatisticsEvent(key = "werewolf.commands.player.wish_change")
+@StatisticsEvent(key = "werewolf.wish_change")
 public class WishChangeEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
