@@ -1,6 +1,8 @@
-package fr.ph1lou.werewolfapi.events.game.life_cycle;
+package fr.ph1lou.werewolfapi.events.roles.croupier;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -9,16 +11,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class FirstDeathEvent extends Event implements Cancellable {
+@StatisticsEvent(key = "werewolf.croupier_event")
+public class CroupierEvent extends Event  {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
-    private final Set<IPlayerWW> lastStrikers;
-    private boolean cancel = false;
+    private final Set<IPlayerWW> playerWWS;
 
-    public FirstDeathEvent(IPlayerWW playerWW, Set<IPlayerWW> lastStrikers) {
+    public CroupierEvent(IPlayerWW playerWW, Set<IPlayerWW> playerWWS) {
         this.playerWW = playerWW;
-        this.lastStrikers = lastStrikers;
+        this.playerWWS = playerWWS;
     }
 
     public static HandlerList getHandlerList() {
@@ -36,17 +38,9 @@ public class FirstDeathEvent extends Event implements Cancellable {
         return this.playerWW;
     }
 
-    @Override
-    public boolean isCancelled() {
-        return this.cancel;
-    }
-
-    @Override
-    public void setCancelled(boolean cancel) {
-        this.cancel = cancel;
-    }
-
-    public Set<IPlayerWW> getLastStrikers() {
-        return this.lastStrikers;
+    @StatisticsTargets
+    public Set<IPlayerWW> getPlayerWWS() {
+        return playerWWS;
     }
 }
+

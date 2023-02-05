@@ -82,4 +82,11 @@ public class RoleBase {
     public final static String POACHER = "werewolf.roles.poacher.display";
     public final static String BONESETTER = "werewolf.roles.bonesetter.display";
     public final static String INNKEEPER = "werewolf.roles.innkeeper.display";
+    public final static String ROMULUS_REMUS = "werewolf.roles.romulus_remus.display";
+    public final static String SILENCER_WEREWOLF = "werewolf.roles.silencer_werewolf.display";
+    public final static String MASTERMIND = "werewolf.roles.mastermind.display";
+    public final static String AURAMANCER = "werewolf.roles.auramancer.display";
+    public final static String INQUISITOR = "werewolf.roles.inquisitor.display";
+    public final static String WITNESS = "werewolf.roles.witness.display";
+    public final static String CROUPIER = "werewolf.roles.croupier.display";
 }

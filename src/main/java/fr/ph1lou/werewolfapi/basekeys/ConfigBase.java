@@ -31,4 +31,5 @@ public class ConfigBase {
     public static final String TROLL_LOVER = "werewolf.configurations.troll_lover.name";
     public static final String VOTE_EVERY_OTHER_DAY = "werewolf.configurations.vote.configurations.vote_every_other_day";
     public static final String ELECTIONS = "werewolf.elections.election.name";
+    public static final String CROUPIER_EVERY_OTHER_DAY = "werewolf.roles.croupier.configurations.croupier_every_other_day";
 }
