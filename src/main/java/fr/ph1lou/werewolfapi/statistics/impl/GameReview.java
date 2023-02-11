@@ -20,7 +20,7 @@ public class GameReview implements IGameReview {
 
     private final UUID gameUUID;
     private final List<PlayerReview> players = new ArrayList<>();
-    private final transient WereWolfAPI api;
+
     private final List<RegisteredAction> registeredActions = new ArrayList<>();
     private final Date date = new Date();
     private final UUID serverUUID;
@@ -33,14 +33,13 @@ public class GameReview implements IGameReview {
     private String name;
 
     public GameReview(WereWolfAPI api, UUID serverUUID) {
-        this.api = api;
         this.gameUUID = api.getGameUUID();
         this.serverUUID = serverUUID;
         this.pluginVersion = api.getPluginVersion();
         this.language = api.getLanguage();
     }
 
-    public void end(String winnerCampKey, Set<IPlayerWW> winners) {
+    public void end(WereWolfAPI api, String winnerCampKey, Set<IPlayerWW> winners) {
         this.winnerCampKey = winnerCampKey;
         this.winners = winners.stream().map(IPlayerWW::getReviewUUID).collect(Collectors.toSet());
         this.name = api.getGameName();
@@ -79,9 +78,6 @@ public class GameReview implements IGameReview {
         return duration;
     }
 
-    public WereWolfAPI getApi() {
-        return api;
-    }
 
     public String getName() {
         return name;

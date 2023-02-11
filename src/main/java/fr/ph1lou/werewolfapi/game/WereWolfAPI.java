@@ -243,4 +243,6 @@ public interface WereWolfAPI {
     ILanguageManager getLanguageManager();
 
     IListenersManager getListenersManager();
+
+    void addScheduleId(int idSchedule);
 }

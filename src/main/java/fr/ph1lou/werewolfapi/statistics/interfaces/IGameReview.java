@@ -19,8 +19,6 @@ public interface IGameReview {
 
     int getDuration();
 
-    WereWolfAPI getApi();
-
     String getName();
 
     List<? extends IRegisteredAction> getRegisteredActions();

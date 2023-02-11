@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@StatisticsEvent(key = "werewolf.kill")
+@StatisticsEvent(key = "werewolf.kill_event")
 @TellableStoryEvent
 public class PlayerWWKillEvent extends SelectionEvent {
 

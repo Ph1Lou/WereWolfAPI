@@ -26,11 +26,11 @@ public class BukkitUtils {
         if (api == null) {
             throw new RuntimeException("WereWolfPlugin not loaded");
         }
-        return Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) api, () -> {
-            if (!game.isState(StateGame.END)) {
-                runnable.run();
-            }
-        }, delay);
+
+        int idSchedule = Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) api, runnable, delay);
+
+        game.addScheduleId(idSchedule);
+        return idSchedule;
     }
 
     /**
@@ -70,15 +70,9 @@ public class BukkitUtils {
         if (api == null) {
             throw new RuntimeException("WereWolfPlugin not loaded");
         }
-        AtomicInteger schedulerId = new AtomicInteger();
-        schedulerId.set(Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) api, () -> {
-            if (!game.isState(StateGame.END)) {
-                runnable.run();
-            } else {
-                Bukkit.getScheduler().cancelTask(schedulerId.get());
-            }
-        }, delay, period));
-        return schedulerId.get();
+        int schedulerId = Bukkit.getScheduler().scheduleSyncRepeatingTask((Plugin) api, runnable, delay, period);
+        game.addScheduleId(schedulerId);
+        return schedulerId;
     }
 
     public static int loadServerVersion() {
