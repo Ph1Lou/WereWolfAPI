@@ -31,6 +31,8 @@ public class VersionUtils_1_15 extends VersionUtils_1_14 {
                         }
                     }
                 }
+                Bukkit.getLogger().warning("Roofed not found");
+                completableFuture.complete(world.getSpawnLocation());
             });
         }
         return completableFuture;

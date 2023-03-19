@@ -93,7 +93,7 @@ public class DescriptionBuilder {
                         Formatter.format("&text&", this.description)));
             }
 
-            if (this.role.isInfected() && !this.effects.equals(this.game.translate("werewolf.description.werewolf"))) {
+            if (this.role.isInfected() && this.effects != null && !this.effects.equals(this.game.translate("werewolf.description.werewolf"))) {
                 sb.append(this.game.translate("werewolf.description.effect",
                         Formatter.format("&effect&", this.game.translate("werewolf.description.werewolf"))));
             }

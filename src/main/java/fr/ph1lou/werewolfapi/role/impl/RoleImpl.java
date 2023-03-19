@@ -493,6 +493,8 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     public final void disableAbilities() {
         this.abilityEnabled = false;
 
+        this.disableAbilitiesRole();
+
         if (!this.isWereWolf()) return;
 
         if (!this.getPlayerWW().isState(StatePlayer.ALIVE)) {
@@ -501,8 +503,6 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
 
         this.getPlayerWW()
                 .addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE, RoleBase.WEREWOLF, 0));
-
-        this.disableAbilitiesRole();
     }
 
     @Override
