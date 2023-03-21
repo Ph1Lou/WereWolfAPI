@@ -35,5 +35,10 @@ public class IntValueBase {
     public static final String WISE_ELDER_BEGIN_DAY = "werewolf.roles.wise_elder.configurations.begin_day";
     public static final String MIRE_DISTANCE = "werewolf.roles.mire.configurations.distance";
     public static final String POACHER_DISTANCE = "werewolf.roles.poacher.configurations.distance";
+    public static final String BLOODTHIRSTY_SPEED = "werewolf.roles.bloodthirsty_werewolf.configurations.speed";
+    public static final String BLOODTHIRSTY_MAX_LIFE_DETECT = "werewolf.roles.bloodthirsty_werewolf.configurations.max_life";
+    public static final String BLOODTHIRSTY_MAX_LIFE_DETECT_DAY = "werewolf.roles.bloodthirsty_werewolf.configurations.life_detect_day";
+    public static final String BLOODTHIRSTY_TAKE_DAMAGE_DAY = "werewolf.roles.bloodthirsty_werewolf.configurations.take_damage_day";
+
 
 }
