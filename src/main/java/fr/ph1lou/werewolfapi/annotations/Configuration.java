@@ -9,7 +9,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Configuration {
     ConfigurationBasic config();
+
     IntValue[] configValues() default {};
+
     Timer[] timers() default {};
+
     ConfigurationBasic[] configurations() default {};
 }

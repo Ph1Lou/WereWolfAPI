@@ -19,19 +19,19 @@ public class DeathItemsEvent extends Event implements Cancellable {
     private Location location;
     private boolean cancel = false;
 
-    public DeathItemsEvent(IPlayerWW playerWW, List<ItemStack> items, Location location){
-        this.playerWW=playerWW;
-        this.items=items;
-        this.location=location;
+    public DeathItemsEvent(IPlayerWW playerWW, List<ItemStack> items, Location location) {
+        this.playerWW = playerWW;
+        this.items = items;
+        this.location = location;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -52,6 +52,7 @@ public class DeathItemsEvent extends Event implements Cancellable {
     public List<ItemStack> getItems() {
         return items;
     }
+
     public Location getLocation() {
         return location;
     }

@@ -8,23 +8,22 @@ import java.util.UUID;
 
 public class HostEvent extends Event {
 
-    private final UUID playerUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final UUID playerUUID;
     private boolean isHost;
 
     public HostEvent(UUID playerUUID, boolean isHost) {
         this.playerUUID = playerUUID;
-        this.isHost=isHost;
+        this.isHost = isHost;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
@@ -39,6 +38,6 @@ public class HostEvent extends Event {
 
 
     public void setHost(boolean b) {
-        this.isHost =b;
+        this.isHost = b;
     }
 }

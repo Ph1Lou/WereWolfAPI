@@ -12,7 +12,7 @@ public class LoadEvent extends Event {
 
 
     public LoadEvent(WereWolfAPI wereWolfAPI) {
-        this.wereWolfAPI=wereWolfAPI;
+        this.wereWolfAPI = wereWolfAPI;
     }
 
     public static HandlerList getHandlerList() {

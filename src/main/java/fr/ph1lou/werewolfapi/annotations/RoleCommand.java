@@ -13,11 +13,18 @@ import java.lang.annotation.Target;
 public @interface RoleCommand {
 
     String key();
+
     String[] roleKeys();
+
     StatePlayer[] statesPlayer() default StatePlayer.ALIVE;
+
     StateGame[] statesGame() default StateGame.GAME;
+
     int[] argNumbers();
+
     boolean autoCompletion() default true;
+
     boolean requiredPower() default false;
+
     boolean requiredAbilityEnabled() default true;
 }

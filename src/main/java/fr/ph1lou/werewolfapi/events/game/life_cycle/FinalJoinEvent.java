@@ -7,20 +7,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class FinalJoinEvent extends Event {
 
-    private final IPlayerWW playerWW;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final IPlayerWW playerWW;
 
     public FinalJoinEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
     }
 
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
+    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
 

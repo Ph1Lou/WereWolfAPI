@@ -9,11 +9,15 @@ import java.util.Set;
 
 public class AroundLoverEvent extends Event {
 
-    private final Set<IPlayerWW> playerWWS;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final Set<IPlayerWW> playerWWS;
 
-    public AroundLoverEvent(Set<IPlayerWW> playerWWS){
-       this.playerWWS = playerWWS;
+    public AroundLoverEvent(Set<IPlayerWW> playerWWS) {
+        this.playerWWS = playerWWS;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -22,16 +26,11 @@ public class AroundLoverEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
-
     public Set<? extends IPlayerWW> getPlayerWWS() {
         return playerWWS;
     }
 
-    public void addPlayer(IPlayerWW playerWW){
+    public void addPlayer(IPlayerWW playerWW) {
         this.playerWWS.add(playerWW);
     }
 

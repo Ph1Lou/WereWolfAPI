@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public class ModeratorEvent extends Event {
 
-    private final UUID playerUUID;
     private static final HandlerList HANDLERS_LIST = new HandlerList();
+    private final UUID playerUUID;
     private boolean isModerator;
 
     public ModeratorEvent(UUID playerUUID, boolean isModerator) {
@@ -17,6 +17,9 @@ public class ModeratorEvent extends Event {
         this.isModerator = isModerator;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
@@ -24,21 +27,17 @@ public class ModeratorEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
     public UUID getPlayerUUID() {
         return playerUUID;
     }
 
-   
+
     public boolean isModerator() {
         return isModerator;
     }
 
-    
+
     public void setModerator(boolean b) {
-        this.isModerator =b;
+        this.isModerator = b;
     }
 }

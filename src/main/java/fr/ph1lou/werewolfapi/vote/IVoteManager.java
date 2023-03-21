@@ -10,8 +10,9 @@ public interface IVoteManager {
 
     /**
      * Add a vote to voteWW by voterWW
+     *
      * @param voterWW the voter
-     * @param voteWW the player who received vote
+     * @param voteWW  the player who received vote
      */
     void setOneVote(IPlayerWW voterWW, IPlayerWW voteWW);
 
@@ -22,18 +23,21 @@ public interface IVoteManager {
 
     /**
      * Get Players Vote
+     *
      * @return vote count for each player (in new vote system return only villager vote)
      */
-    Map<IPlayerWW,Integer> getVotes();
+    Map<IPlayerWW, Integer> getVotes();
 
     /**
      * Get Players Vote
+     *
      * @return vote for each player
      */
     Map<IPlayerWW, IPlayerWW> getPlayerVotes();
 
     /**
      * Get Player who have the largest amount of vote
+     *
      * @return PlayerWW (if new vote return player most voted by villager)
      */
     Optional<IPlayerWW> getResult();
@@ -47,6 +51,6 @@ public interface IVoteManager {
     /**
      * Set Vote Status
      */
-    void setStatus (VoteStatus status);
+    void setStatus(VoteStatus status);
 
 }

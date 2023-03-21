@@ -9,12 +9,19 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Scenario {
 
-   String key();
-   String[] loreKey() default {};
-   boolean defaultValue() default false;
-   boolean meetUpValue() default false;
-   String[] incompatibleScenarios() default {};
-   IntValue[] configValues() default {};
-   Configuration[] configurations() default {};
-   Timer[] timers() default {};
+    String key();
+
+    String[] loreKey() default {};
+
+    boolean defaultValue() default false;
+
+    boolean meetUpValue() default false;
+
+    String[] incompatibleScenarios() default {};
+
+    IntValue[] configValues() default {};
+
+    Configuration[] configurations() default {};
+
+    Timer[] timers() default {};
 }

@@ -1,20 +1,23 @@
 package fr.ph1lou.werewolfapi.events.roles.angel;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class AngelTargetEvent extends Event {
+@StatisticsEvent(key = "werewolf.angel_target")
+public class AngelTargetEvent extends SelectionEvent {
 
-    private final IPlayerWW playerWW;
-    private final IPlayerWW targetWW;
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public AngelTargetEvent(IPlayerWW playerWW, IPlayerWW targetWW){
-        this.playerWW = playerWW;
-        this.targetWW = targetWW;
+    public AngelTargetEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+        super(playerWW, targetWW);
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
@@ -23,16 +26,5 @@ public class AngelTargetEvent extends Event {
         return HANDLERS_LIST;
     }
 
-    public static HandlerList getHandlerList() {
-        return HANDLERS_LIST;
-    }
-
-    public IPlayerWW getPlayerWW() {
-        return this.playerWW;
-    }
-
-    public IPlayerWW getTargetWW() {
-        return targetWW;
-    }
 }
 

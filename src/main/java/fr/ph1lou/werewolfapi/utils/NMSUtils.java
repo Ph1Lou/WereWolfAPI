@@ -8,8 +8,6 @@ import java.util.Arrays;
 
 public class NMSUtils {
 
-    private static final String version = getVersion();
-
     public static String getVersion() {
         if (version != null) {
             return version;
@@ -17,7 +15,7 @@ public class NMSUtils {
             String name = Bukkit.getServer().getClass().getPackage().getName();
             return name.substring(name.lastIndexOf(46) + 1) + ".";
         }
-    }
+    }    private static final String version = getVersion();
 
     public static Method getMethod(Class<?> c, String name) throws ReflectiveOperationException {
         return getMethod(c, name, -1);
@@ -60,8 +58,6 @@ public class NMSUtils {
         throw new ReflectiveOperationException("Method " + name + " not found in " + c.getName());
     }
 
-
-
     public static void sendPacket(Player player, Object packet) {
         try {
             Object handle = player.getClass().getMethod("getHandle").invoke(player);
@@ -71,7 +67,6 @@ public class NMSUtils {
             e.printStackTrace();
         }
     }
-
 
     public static Class<?> getNMSClass(String name) throws ClassNotFoundException {
         try {
@@ -92,5 +87,7 @@ public class NMSUtils {
         String classname = "org.bukkit.craftbukkit." + getVersion() + name;
         return Class.forName(classname);
     }
+
+
 
 }

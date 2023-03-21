@@ -7,13 +7,19 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Event {
+public @interface RandomEvent {
 
     String key();
+
     String[] loreKey() default {};
+
     int defaultValue() default 1;
+
     int meetUpValue() default 1;
+
     IntValue[] configValues() default {};
+
     Timer[] timers() default {};
+
     Configuration[] configurations() default {};
 }

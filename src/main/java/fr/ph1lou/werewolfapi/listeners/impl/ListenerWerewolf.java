@@ -1,6 +1,5 @@
 package fr.ph1lou.werewolfapi.listeners.impl;
 
-import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import org.bukkit.event.HandlerList;
@@ -20,7 +19,7 @@ public abstract class ListenerWerewolf implements Listener {
         return this.register;
     }
 
-    public WereWolfAPI getGame(){
+    public WereWolfAPI getGame() {
         return this.game;
     }
 

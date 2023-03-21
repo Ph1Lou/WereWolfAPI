@@ -2,7 +2,7 @@ package fr.ph1lou.werewolfapi.role.interfaces;
 
 public interface IProgress {
 
-    float getProgress() ;
+    float getProgress();
 
-    void setProgress(float progress) ;
+    void setProgress(float progress);
 }

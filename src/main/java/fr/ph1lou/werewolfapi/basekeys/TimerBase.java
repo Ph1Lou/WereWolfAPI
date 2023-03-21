@@ -1,4 +1,5 @@
 package fr.ph1lou.werewolfapi.basekeys;
+
 @SuppressWarnings({"unused"})
 public class TimerBase {
     public static final String INVULNERABILITY = "werewolf.timers.invulnerability.name";
@@ -30,4 +31,7 @@ public class TimerBase {
     public static final String POACHER_PROGRESS = "werewolf.roles.poacher.timers.progress";
     public static final String LONE_WOLF_DURATION = "werewolf.configurations.lone_wolf.timer";
     public static final String BLOODTHIRSTY_COOL_DOWN = "werewolf.roles.bloodthirsty_werewolf.timers.cooldown";
+    public static final String ELECTIONS_BEGIN = "werewolf.elections.election.timer";
+    public static final String ELECTIONS_DURATION_APPLICATION = "werewolf.elections.election.timer_application";
+    public static final String ELECTIONS_DURATION_CHOICE = "werewolf.elections.election.timer_vote_mayor";
 }

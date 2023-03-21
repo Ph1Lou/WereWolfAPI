@@ -25,57 +25,64 @@ public interface IPlayerWW {
 
     /**
      * Increase player max health
+     *
      * @param health the amount of health
      */
     void addPlayerMaxHealth(double health);
 
     /**
      * Decrease player max health (note : player min health is 1)
+     *
      * @param health the amount of health
      */
     void removePlayerMaxHealth(double health);
 
     /**
      * Increase player health
+     *
      * @param health the amount of health
      */
     void addPlayerHealth(double health);
 
     /**
      * Decrease player health
+     *
      * @param health the amount of health
      */
     void removePlayerHealth(double health);
 
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
-     * @param key the key associated to message in language json file
+     *
+     * @param key  the key associated to message in language json file
      * @param args for parsing
      */
     void sendMessageWithKey(@NotNull String key, Formatter... args);
 
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
+     *
      * @param prefixKey key of prefix
-     * @param key the key associated to message in language json file
-     * @param args for parsing
+     * @param key       the key associated to message in language json file
+     * @param args      for parsing
      */
-    void sendMessageWithKey(@NotNull String prefixKey, @NotNull String key, Formatter ... args);
+    void sendMessageWithKey(@NotNull String prefixKey, @NotNull String key, Formatter... args);
 
     /**
      * Send String message to the player (if he was disconnected, he received the message later)
+     *
      * @param textComponent the message
      */
     void sendMessage(@NotNull TextComponent textComponent);
 
     /**
-     *
      * @param sound the sound
      */
     void sendSound(@NotNull Sound sound);
 
     /**
      * Add Potion Modifier to add or remove Potion Effect
+     *
      * @param potionModifier the potion modifier
      */
     void addPotionModifier(PotionModifier potionModifier);
@@ -96,15 +103,10 @@ public interface IPlayerWW {
 
     /**
      * Teleport player to a location even if it is disconnected
+     *
      * @param location the target location
      */
     void teleport(Location location);
-
-    /**
-     * Set Death Items
-     * @param items the death items
-     */
-    void setItemDeath(List<ItemStack> items);
 
     /**
      * Get Death Items
@@ -112,18 +114,20 @@ public interface IPlayerWW {
     List<? extends ItemStack> getItemDeath();
 
     /**
+     * Set Death Items
+     *
+     * @param items the death items
+     */
+    void setItemDeath(List<ItemStack> items);
+
+    /**
      * Clear Death Items
      */
     void clearItemDeath();
 
     /**
-     * Change Player State
-     * @param statePlayer the state set
-     */
-    void setState(StatePlayer statePlayer) ;
-
-    /**
      * Check if player is in a certain state
+     *
      * @param statePlayer the state check
      * @return a boolean
      */
@@ -131,9 +135,10 @@ public interface IPlayerWW {
 
     /**
      * add a player in the list of killed players
+     *
      * @param playerWW the killed player
      */
-    void addOneKill(IPlayerWW playerWW) ;
+    void addOneKill(IPlayerWW playerWW);
 
     /**
      * get the list of killed players
@@ -142,6 +147,7 @@ public interface IPlayerWW {
 
     /**
      * Get MojangUUID of the Player
+     *
      * @return the uuid
      */
 
@@ -150,61 +156,71 @@ public interface IPlayerWW {
     UUID getReviewUUID();
 
     /**
-     * Change the rôle of a player
-     * @param role the role
-     */
-    void setRole(IRole role);
-
-    /**
      * Get the player's role
+     *
      * @return his role
      */
     IRole getRole();
 
     /**
-     * Change player spawn
-     * @param spawn the spawn's location
+     * Change the rôle of a player
+     *
+     * @param role the role
      */
-    void setSpawn(Location spawn);
+    void setRole(IRole role);
 
     /**
      * Get Player Spawn
+     *
      * @return the spawn's location
      */
     Location getSpawn();
 
     /**
+     * Change player spawn
+     *
+     * @param spawn the spawn's location
+     */
+    void setSpawn(Location spawn);
+
+    /**
      * Add a killer to this player
+     *
      * @param playerWW his killer
      */
     void addKiller(IPlayerWW playerWW);
 
     /**
      * Get the killers
+     *
      * @return the killers
      */
     List<? extends IPlayerWW> getKillers();
 
     /**
      * Get Death Time
+     *
      * @return the death time
      */
     int getDeathTime();
 
     /**
      * Get Lovers
+     *
      * @return lovers
      */
     List<? extends ILover> getLovers();
 
     /**
      * Add Lover
+     *
      * @param ILover the lover object
      */
     void addLover(ILover ILover);
 
     /**
      * Remove Lover
+     *
      * @param ILover the lover object
      */
     void removeLover(ILover ILover);
@@ -216,48 +232,63 @@ public interface IPlayerWW {
 
     /**
      * Get Last killer
+     *
      * @return the last killer if he exists
      */
     Optional<IPlayerWW> getLastKiller();
 
     /**
      * Get Player who damaged the player during last minutes
+     *
      * @return list of players
      */
     List<? extends IPlayerWW> getLastMinutesDamagedPlayer();
 
     /**
      * Get Player Name
+     *
      * @return his name
      */
-    String getName() ;
+    String getName();
 
     /**
      * Get Player State
+     *
      * @return the player's state
      */
     StatePlayer getState();
 
     /**
+     * Change Player State
+     *
+     * @param statePlayer the state set
+     */
+    void setState(StatePlayer statePlayer);
+
+    /**
      * Get Disconnected Time (Timer time)
+     *
      * @return the disconnected time
      */
     int getDisconnectedTime();
 
     /**
      * Get Player UUID (note is not the Mojang UUID if he was on bungee)
+     *
      * @return the uuid
      */
     UUID getUUID();
 
     /**
      * Give Item to player
+     *
      * @param item the item give
      */
     void addItem(ItemStack item);
 
     /**
      * Get Player Max Health
+     *
      * @return max health
      */
     double getMaxHealth();
@@ -265,12 +296,14 @@ public interface IPlayerWW {
 
     /**
      * Get Player Health
+     *
      * @return health
      */
     double getHealth();
 
     /**
      * Get Player Position or if he's disconnected his last position
+     *
      * @return the location
      */
     @NotNull

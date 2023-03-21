@@ -9,10 +9,16 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Lover {
     String key();
+
     String[] loreKey() default {};
+
     String[] requireRoles() default {};
+
     String[] incompatibleRoles() default {};
+
     IntValue[] configValues() default {};
+
     Configuration[] configurations() default {};
+
     Timer[] timers() default {};
 }

@@ -3,8 +3,8 @@ package fr.ph1lou.werewolfapi.game;
 import fr.ph1lou.werewolfapi.enums.Day;
 import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.lovers.ILoverManager;
-import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.vote.IVoteManager;
 
 import java.util.Collection;
@@ -26,6 +26,7 @@ public interface WereWolfAPI {
 
     /**
      * Get the game configuration
+     *
      * @return ConfigWereWolfAPI
      */
 
@@ -34,6 +35,7 @@ public interface WereWolfAPI {
 
     /**
      * return true if the state of the game equal the input state
+     *
      * @param state state of the game
      * @return boolean
      */
@@ -42,6 +44,7 @@ public interface WereWolfAPI {
 
     /**
      * return true if the day's game equal the input' game
+     *
      * @param day moment of the day's game
      * @return boolean
      */
@@ -50,6 +53,7 @@ public interface WereWolfAPI {
 
     /**
      * return the UUIDs of the game
+     *
      * @return UUID
      */
 
@@ -63,7 +67,8 @@ public interface WereWolfAPI {
 
     /**
      * return the text associated with the key
-     * @param key key of the json
+     *
+     * @param key  key of the json
      * @param args parameters to format
      * @return String
      */
@@ -72,9 +77,10 @@ public interface WereWolfAPI {
 
     /**
      * return the text associated with the key
+     *
      * @param prefixKey key of the json
-     * @param key key of the json
-     * @param args parameters to format
+     * @param key       key of the json
+     * @param args      parameters to format
      * @return String
      */
 
@@ -88,6 +94,7 @@ public interface WereWolfAPI {
 
     /**
      * resurrects the player specified
+     *
      * @param playerWW the specified player
      */
 
@@ -96,6 +103,7 @@ public interface WereWolfAPI {
 
     /**
      * killed specified player
+     *
      * @param playerWW specified player
      */
 
@@ -103,6 +111,7 @@ public interface WereWolfAPI {
 
     /**
      * allow to get playerww with uuid
+     *
      * @param uuid uuid of the player
      * @return the instance of playerWW
      */
@@ -110,19 +119,28 @@ public interface WereWolfAPI {
 
     /**
      * Get Random Generator of the game
+     *
      * @return the random generator
      */
     Random getRandom();
 
     /**
      * Get Vote Manager
+     *
      * @return Vote Manager
      */
     IVoteManager getVoteManager();
 
     /**
+     * Set Vote Manager
+     */
+
+    void setVoteManager(IVoteManager voteManager);
+
+    /**
      * Translate a key array
-     * @param key associated with json
+     *
+     * @param key  associated with json
      * @param args the formatters
      * @return a string translated array
      */
@@ -130,24 +148,28 @@ public interface WereWolfAPI {
 
     /**
      * Get Stuff Manager
+     *
      * @return Stuff Manager
      */
     IStuffManager getStuffs();
 
     /**
      * Get Map Manager
+     *
      * @return the Map Manager
      */
     IMapManager getMapManager();
 
     /**
      * Get Moderation Manager
+     *
      * @return the Moderation Manager
      */
     IModerationManager getModerationManager();
 
     /**
      * return the Name of the Game
+     *
      * @return String
      */
 
@@ -155,6 +177,7 @@ public interface WereWolfAPI {
 
     /**
      * Set the name of the game
+     *
      * @param name Name of the game
      */
 
@@ -162,53 +185,54 @@ public interface WereWolfAPI {
 
     /**
      * Get the game's state
+     *
      * @return game'state
      */
     StateGame getState();
 
     /**
      * Get Lover Manager
+     *
      * @return Lover Manager
      */
     ILoverManager getLoversManager();
 
     /**
      * Get Alive Player Count
+     *
      * @return player's alive count
      */
     int getPlayersCount();
 
     /**
      * Get Group SIze
+     *
      * @return the size
      */
     int getGroup();
 
     /**
      * Change Group Size
+     *
      * @param group the size
      */
     void setGroup(int group);
 
     /**
      * Get Timer
+     *
      * @return the timer
      */
     int getTimer();
 
     /**
      * Get Role initial size
+     *
      * @return the role initial size
      */
     int getRoleInitialSize();
 
     IWerewolfChatHandler getWerewolfChatHandler();
-
-    /**
-     * Set Vote Manager
-     */
-
-    void setVoteManager(IVoteManager voteManager);
 
     String getPluginVersion();
 
@@ -219,4 +243,6 @@ public interface WereWolfAPI {
     ILanguageManager getLanguageManager();
 
     IListenersManager getListenersManager();
+
+    void addScheduleId(int idSchedule);
 }

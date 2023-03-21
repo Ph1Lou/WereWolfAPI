@@ -15,8 +15,8 @@ public class EnchantmentEvent extends Event {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
     private final ItemStack item;
-    private final Map<Enchantment,Integer> enchants;
-    private final Map<Enchantment,Integer> finalEnchants;
+    private final Map<Enchantment, Integer> enchants;
+    private final Map<Enchantment, Integer> finalEnchants;
 
     public EnchantmentEvent(IPlayerWW playerWW, ItemStack item, Map<Enchantment, Integer> enchants, Map<Enchantment, Integer> finalEnchants) {
         this.playerWW = playerWW;
@@ -25,14 +25,13 @@ public class EnchantmentEvent extends Event {
         this.finalEnchants = finalEnchants;
     }
 
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
+    }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

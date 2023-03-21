@@ -1,4 +1,5 @@
 package fr.ph1lou.werewolfapi.basekeys;
+
 @SuppressWarnings({"unused"})
 public class Prefix {
     public static final String YELLOW = "werewolf.prefix.yellow";

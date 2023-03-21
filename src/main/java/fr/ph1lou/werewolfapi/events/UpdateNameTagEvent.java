@@ -13,25 +13,26 @@ public class UpdateNameTagEvent extends Event {
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID uuid;
 
-    public UpdateNameTagEvent(IPlayerWW playerWW){
-        this.uuid= playerWW.getUUID();
+    public UpdateNameTagEvent(IPlayerWW playerWW) {
+        this.uuid = playerWW.getUUID();
     }
 
 
-    public UpdateNameTagEvent(Player player){
+    public UpdateNameTagEvent(Player player) {
         this.uuid = player.getUniqueId();
-    }
-    @NotNull
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLERS_LIST;
     }
 
     public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 
-    public UUID getUUID(){
+    @NotNull
+    @Override
+    public HandlerList getHandlers() {
+        return HANDLERS_LIST;
+    }
+
+    public UUID getUUID() {
         return this.uuid;
     }
 

@@ -32,7 +32,7 @@ public class VersionUtils_1_13 extends VersionUtils_1_12 {
     @Override
     public void hidePlayer(Player viewer, Player player) {
         GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
-        if(api==null){
+        if (api == null) {
             throw new RuntimeException("WereWolfPlugin not loaded");
         }
         viewer.hidePlayer((Plugin) api, player);
@@ -41,7 +41,7 @@ public class VersionUtils_1_13 extends VersionUtils_1_12 {
     @Override
     public void showPlayer(Player viewer, Player player) {
         GetWereWolfAPI api = Bukkit.getServer().getServicesManager().load(GetWereWolfAPI.class);
-        if(api==null){
+        if (api == null) {
             throw new RuntimeException("WereWolfPlugin not loaded");
         }
         viewer.showPlayer((Plugin) api, player);

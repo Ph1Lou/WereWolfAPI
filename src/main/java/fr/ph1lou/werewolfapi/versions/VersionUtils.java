@@ -84,6 +84,7 @@ public abstract class VersionUtils {
 
     /**
      * Hide a player in tab and in game for a player
+     *
      * @param viewer the player
      * @param player the player hides
      */
@@ -91,6 +92,7 @@ public abstract class VersionUtils {
 
     /**
      * Show a player in tab and in game for a player
+     *
      * @param viewer the player
      * @param player the player shows
      */

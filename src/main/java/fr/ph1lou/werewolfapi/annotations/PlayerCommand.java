@@ -13,9 +13,14 @@ import java.lang.annotation.Target;
 public @interface PlayerCommand {
 
     String key();
+
     String descriptionKey();
+
     StatePlayer[] statesPlayer() default {};
+
     StateGame[] statesGame() default {};
+
     int[] argNumbers() default {};
+
     boolean autoCompletion() default true;
 }

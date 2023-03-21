@@ -12,20 +12,20 @@ public class AppearInWereWolfListEvent extends Event {
     private final UUID playerUUID;
 
     private final UUID requesterUUID;
-    private boolean appear =false;
+    private boolean appear = false;
 
-    public AppearInWereWolfListEvent(UUID playerUUID, UUID requester){
+    public AppearInWereWolfListEvent(UUID playerUUID, UUID requester) {
         this.playerUUID = playerUUID;
         this.requesterUUID = requester;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

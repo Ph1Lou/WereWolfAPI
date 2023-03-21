@@ -1,7 +1,5 @@
 package fr.ph1lou.werewolfapi.utils;
 
-import org.jetbrains.annotations.Nullable;
-
 public class Wrapper<T, U> {
 
     private final Class<T> clazz;

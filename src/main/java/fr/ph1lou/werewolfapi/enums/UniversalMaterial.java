@@ -6,7 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 @SuppressWarnings({"unused"})
-public enum UniversalMaterial{
+public enum UniversalMaterial {
     WHITE_WOOL("WOOL", "WHITE_WOOL", (short) 0),
     ORANGE_WOOL("WOOL", "ORANGE_WOOL", (short) 1),
     MAGENTA_WOOL("WOOL", "MAGENTA_WOOL", (short) 2),
@@ -29,34 +29,34 @@ public enum UniversalMaterial{
     SUGAR_CANE_BLOCK("SUGAR_CANE_BLOCK", "SUGAR_CANE"),
     CAVE_AIR("CAVE_AIR", "CAVE_AIR"),
 
-    SKELETON_SKULL("SKULL_ITEM","SKELETON_SKULL", (short) 0),
-    WITHER_SKELETON_SKULL("SKULL_ITEM","WITHER_SKELETON_SKULL", (short) 1),
-    ZOMBIE_HEAD("SKULL_ITEM","ZOMBIE_HEAD", (short) 2),
-    PLAYER_HEAD("SKULL_ITEM","PLAYER_HEAD", (short) 3),
-    PLAYER_HEAD_BLOCK("SKULL","PLAYER_HEAD", (short) 3),
+    SKELETON_SKULL("SKULL_ITEM", "SKELETON_SKULL", (short) 0),
+    WITHER_SKELETON_SKULL("SKULL_ITEM", "WITHER_SKELETON_SKULL", (short) 1),
+    ZOMBIE_HEAD("SKULL_ITEM", "ZOMBIE_HEAD", (short) 2),
+    PLAYER_HEAD("SKULL_ITEM", "PLAYER_HEAD", (short) 3),
+    PLAYER_HEAD_BLOCK("SKULL", "PLAYER_HEAD", (short) 3),
     CREEPER_HEAD("SKULL_ITEM", "CREEPER_HEAD", (short) 4),
     DRAGON_HEAD("SKULL_ITEM", "DRAGON_HEAD", (short) 5),
-    GREEN_TERRACOTTA("STAINED_CLAY","GREEN_TERRACOTTA",(short)5),
-    RED_TERRACOTTA("STAINED_CLAY","RED_TERRACOTTA",(short)6),
-    WOODEN_AXE("WOOD_AXE","WOODEN_AXE"),
+    GREEN_TERRACOTTA("STAINED_CLAY", "GREEN_TERRACOTTA", (short) 5),
+    RED_TERRACOTTA("STAINED_CLAY", "RED_TERRACOTTA", (short) 6),
+    WOODEN_AXE("WOOD_AXE", "WOODEN_AXE"),
     OAK_FENCE("FENCE", "OAK_FENCE"),
-    GOLDEN_AXE("GOLD_AXE","GOLDEN_AXE"),
-    ENCHANTED_GOLDEN_APPLE("GOLDEN_APPLE","ENCHANTED_GOLDEN_APPLE",(short)1),
-    GOLDEN_APPLE("GOLDEN_APPLE","GOLDEN_APPLE"),
-    STRING("STRING","STRING"),
+    GOLDEN_AXE("GOLD_AXE", "GOLDEN_AXE"),
+    ENCHANTED_GOLDEN_APPLE("GOLDEN_APPLE", "ENCHANTED_GOLDEN_APPLE", (short) 1),
+    GOLDEN_APPLE("GOLDEN_APPLE", "GOLDEN_APPLE"),
+    STRING("STRING", "STRING"),
     PUFFERFISH("RAW_FISH", "PUFFERFISH", (short) 3),
     APPLE,
     STONE,
-    GRANITE("STONE","GRANITE", (short)1),
-    POLISHED_GRANITE("STONE","POLISHED_GRANITE", (short)2),
-    DIORITE("STONE", "DIORITE",(short)3),
-    POLISHED_DIORITE("STONE", "POLISHED_DIORITE", (short)4),
-    ANDESITE("STONE", "ANDESITE", (short)5),
-    POLISHED_ANDESITE("STONE", "POLISHED_ANDESITE",(short) 6),
+    GRANITE("STONE", "GRANITE", (short) 1),
+    POLISHED_GRANITE("STONE", "POLISHED_GRANITE", (short) 2),
+    DIORITE("STONE", "DIORITE", (short) 3),
+    POLISHED_DIORITE("STONE", "POLISHED_DIORITE", (short) 4),
+    ANDESITE("STONE", "ANDESITE", (short) 5),
+    POLISHED_ANDESITE("STONE", "POLISHED_ANDESITE", (short) 6),
     GRASS,
     DIRT,
-    COARSE_DIRT("DIRT", "COARSE_DIRT",(short)1),
-    PODZOL("DIRT","PODZOL", (short)2),
+    COARSE_DIRT("DIRT", "COARSE_DIRT", (short) 1),
+    PODZOL("DIRT", "PODZOL", (short) 2),
     COBBLESTONE,
 
     WHITE_STAINED_GLASS_PANE("STAINED_GLASS_PANE", "WHITE_STAINED_GLASS_PANE", (short) 0),
@@ -116,7 +116,7 @@ public enum UniversalMaterial{
     IRON_DOOR,
     LIGHT_GRAY_STAINED_GLASS_PANE("STAINED_GLASS_PANE", "LIGHT_GRAY_STAINED_GLASS_PANE", (short) 8),
     ANVIL,
-    MAP("EMPTY_MAP","MAP"),
+    MAP("EMPTY_MAP", "MAP"),
 
     // Flowers
     POPPY("RED_ROSE", "POPPY", (short) 0),
@@ -135,9 +135,9 @@ public enum UniversalMaterial{
     ROSE_BUSH("DOUBLE_PLANT", "ROSE_BUSH", (short) 4),
     PEONY("DOUBLE_PLANT", "PEONY", (short) 5),
     DEAD_BUSH,
-    CARROT("CARROT_ITEM","CARROT"),
-    SIGN("SIGN","SIGN","OAK_SIGN"),
-    WALL_SIGN("SIGN_POST","WALL_SIGN","OAK_WALL_SIGN"),
+    CARROT("CARROT_ITEM", "CARROT"),
+    SIGN("SIGN", "SIGN", "OAK_SIGN"),
+    WALL_SIGN("SIGN_POST", "WALL_SIGN", "OAK_WALL_SIGN"),
 
     WOODEN_PICKAXE("WOOD_PICKAXE", "WOODEN_PICKAXE"),
     GOLDEN_PICKAXE("GOLD_PICKAXE", "GOLDEN_PICKAXE"),
@@ -149,21 +149,21 @@ public enum UniversalMaterial{
     IRON_SHOVEL("IRON_SPADE", "IRON_SHOVEL"),
     GOLDEN_SHOVEL("GOLD_SPADE", "GOLDEN_SHOVEL"),
     DIAMOND_SHOVEL("DIAMOND_SPADE", "DIAMOND_SHOVEL"),
-    LEAD("LEASH","LEAD"),
+    LEAD("LEASH", "LEAD"),
     OAK_LEAVES("LEAVES", "OAK_LEAVES", (short) 0),
     SPRUCE_LEAVES("LEAVES", "SPRUCE_LEAVES", (short) 1),
     BIRCH_LEAVES("LEAVES", "BIRCH_LEAVES", (short) 2),
     JUNGLE_LEAVES("LEAVES", "JUNGLE_LEAVES", (short) 3),
     ACACIA_LEAVES("LEAVES_2", "ACACIA_LEAVES", (short) 0),
     DARK_OAK_LEAVES("LEAVES_2", "DARK_OAK_LEAVES", (short) 1),
-    COMPARATOR("REDSTONE_COMPARATOR","COMPARATOR"),
+    COMPARATOR("REDSTONE_COMPARATOR", "COMPARATOR"),
     OAK_LOG("LOG", "OAK_LOG", (short) 0),
     SPRUCE_LOG("LOG", "SPRUCE_LOG", (short) 1),
     BIRCH_LOG("LOG", "BIRCH_LOG", (short) 2),
     JUNGLE_LOG("LOG", "JUNGLE_LOG", (short) 3),
     ACACIA_LOG("LOG_2", "ACACIA_LOG", (short) 0),
     DARK_OAK_LOG("LOG_2", "DARK_OAK_LOG", (short) 1),
-    OAK_BOAT("BOAT","OAK_BOAT"),
+    OAK_BOAT("BOAT", "OAK_BOAT"),
     COOKED_BEEF("COOKED_BEEF", "COOKED_BEEF"),
     COOKED_CHICKEN("COOKED_CHICKEN", "COOKED_CHICKEN"),
     COOKED_MUTTON("COOKED_MUTTON", "COOKED_MUTTON"),
@@ -183,23 +183,23 @@ public enum UniversalMaterial{
     private boolean loaded;
     private Material material;
 
-    UniversalMaterial(String name8, String name13, short id8){
+    UniversalMaterial(String name8, String name13, short id8) {
         this.name8 = name8;
         this.name13 = name13;
-        this.name14= name13;
+        this.name14 = name13;
         this.id8 = id8;
         loaded = false;
     }
 
-    UniversalMaterial(String name8, String name13){
+    UniversalMaterial(String name8, String name13) {
         this.name8 = name8;
         this.name13 = name13;
-        this.name14= name13;
+        this.name14 = name13;
         id8 = 0;
         loaded = false;
     }
 
-    UniversalMaterial(String name8, String name13, String name14){
+    UniversalMaterial(String name8, String name13, String name14) {
         this.name8 = name8;
         this.name13 = name13;
         this.name14 = name14;
@@ -207,54 +207,24 @@ public enum UniversalMaterial{
         loaded = false;
     }
 
-    UniversalMaterial(){
+    UniversalMaterial() {
         this.name8 = name();
         this.name13 = name();
-        this.name14= name();
+        this.name14 = name();
         id8 = 0;
         loaded = false;
     }
 
-    public Material getType(){
-        if (!loaded){
-            try {
-                material = Material.valueOf(getTypeName());
-            }catch (IllegalArgumentException ex){
-                material = null;
-            }
-            loaded = true;
-        }
-        return material;
-    }
-
-    private String getTypeName(){
-        int version = BukkitUtils.loadServerVersion();
-        return (version < 13) ? name8 : (version > 13) ? name14: name13;
-    }
-
-    public short getData(){
-        return BukkitUtils.loadServerVersion() < 13 ? id8 : 0;
-    }
-
-    @SuppressWarnings("deprecation")
-    public ItemStack getStack(int amount){
-        return BukkitUtils.loadServerVersion() < 13 ?new ItemStack(getType(), amount, getData()):new ItemStack(getType(),amount);
-    }
-
-    public ItemStack getStack(){
-        return getStack(1);
-    }
-
-    public static UniversalMaterial ofType(Material material){
-        for (UniversalMaterial universalMaterial : values()){
-            if (universalMaterial.getType() == material){
+    public static UniversalMaterial ofType(Material material) {
+        for (UniversalMaterial universalMaterial : values()) {
+            if (universalMaterial.getType() == material) {
                 return universalMaterial;
             }
         }
         return null;
     }
 
-    public static boolean isLog(Material material){
+    public static boolean isLog(Material material) {
         return (
                 material.equals(UniversalMaterial.ACACIA_LOG.getType()) ||
                         material.equals(UniversalMaterial.BIRCH_LOG.getType()) ||
@@ -265,7 +235,7 @@ public enum UniversalMaterial{
         );
     }
 
-    public static boolean isLeaves(Material material){
+    public static boolean isLeaves(Material material) {
         return (
                 material.equals(UniversalMaterial.ACACIA_LEAVES.getType()) ||
                         material.equals(UniversalMaterial.BIRCH_LEAVES.getType()) ||
@@ -276,8 +246,8 @@ public enum UniversalMaterial{
         );
     }
 
-    public static boolean isCorrectTool(Material block, Material tool){
-        switch (block){
+    public static boolean isCorrectTool(Material block, Material tool) {
+        switch (block) {
             case DIAMOND_ORE:
             case EMERALD_ORE:
             case GOLD_ORE:
@@ -308,8 +278,38 @@ public enum UniversalMaterial{
         return false;
     }
 
+    public Material getType() {
+        if (!loaded) {
+            try {
+                material = Material.valueOf(getTypeName());
+            } catch (IllegalArgumentException ex) {
+                material = null;
+            }
+            loaded = true;
+        }
+        return material;
+    }
+
+    private String getTypeName() {
+        int version = BukkitUtils.loadServerVersion();
+        return (version < 13) ? name8 : (version > 13) ? name14 : name13;
+    }
+
+    public short getData() {
+        return BukkitUtils.loadServerVersion() < 13 ? id8 : 0;
+    }
+
     @SuppressWarnings("deprecation")
-    public boolean equals(Block block){
+    public ItemStack getStack(int amount) {
+        return BukkitUtils.loadServerVersion() < 13 ? new ItemStack(getType(), amount, getData()) : new ItemStack(getType(), amount);
+    }
+
+    public ItemStack getStack() {
+        return getStack(1);
+    }
+
+    @SuppressWarnings("deprecation")
+    public boolean equals(Block block) {
         return block.getType() == getType() && block.getData() == id8;
     }
 

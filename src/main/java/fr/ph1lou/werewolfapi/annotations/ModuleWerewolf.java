@@ -11,9 +11,14 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface ModuleWerewolf {
     String key();
+
     String[] loreKeys();
+
     UniversalMaterial item();
+
     String defaultLanguage();
+
     Author[] authors();
+
     IntValue[] configValues() default {};
 }

@@ -3,6 +3,7 @@ package fr.ph1lou.werewolfapi.enums;
 import org.bukkit.potion.PotionType;
 
 import java.util.Arrays;
+
 @SuppressWarnings({"unused"})
 public enum PotionUtil {
 

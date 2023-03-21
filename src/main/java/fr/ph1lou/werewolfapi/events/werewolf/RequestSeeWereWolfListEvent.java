@@ -10,19 +10,19 @@ public class RequestSeeWereWolfListEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
-    private boolean accept =false;
+    private boolean accept = false;
 
-    public RequestSeeWereWolfListEvent(UUID playerUUID){
+    public RequestSeeWereWolfListEvent(UUID playerUUID) {
         this.playerUUID = playerUUID;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @NotNull
     @Override
     public HandlerList getHandlers() {
-        return HANDLERS_LIST;
-    }
-
-    public static HandlerList getHandlerList() {
         return HANDLERS_LIST;
     }
 

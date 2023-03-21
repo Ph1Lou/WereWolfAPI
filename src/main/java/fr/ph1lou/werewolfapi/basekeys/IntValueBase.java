@@ -1,7 +1,8 @@
 package fr.ph1lou.werewolfapi.basekeys;
+
 @SuppressWarnings({"unused"})
 public class IntValueBase {
-    public static final String WEREWOLF_CHAT= "werewolf.configurations.werewolf_chat.configurations.vote_end";
+    public static final String WEREWOLF_CHAT = "werewolf.configurations.werewolf_chat.configurations.vote_end";
     public static final String VOTE_END = "werewolf.configurations.vote.configurations.vote_end";
     public static final String DIAMOND_LIMIT = "werewolf.scenarios.diamond_limit.configurations.limit";
     public static final String XP_BOOST = "werewolf.scenarios.xp_boost.configurations.xp";
@@ -39,6 +40,9 @@ public class IntValueBase {
     public static final String BLOODTHIRSTY_MAX_LIFE_DETECT = "werewolf.roles.bloodthirsty_werewolf.configurations.max_life";
     public static final String BLOODTHIRSTY_MAX_LIFE_DETECT_DAY = "werewolf.roles.bloodthirsty_werewolf.configurations.life_detect_day";
     public static final String BLOODTHIRSTY_TAKE_DAMAGE_DAY = "werewolf.roles.bloodthirsty_werewolf.configurations.take_damage_day";
-
-
+    public static final String INNKEEPER_DETECTION_RADIUS = "werewolf.roles.innkeeper.configurations.detection_radius";
+    public static final String STORY_TELLER_DAY = "werewolf.roles.story_teller.day";
+    public static final String SPY_DAY = "werewolf.roles.spy.day";
+    public static final String AURAMANCER_DISTANCE = "werewolf.roles.auramancer.configurations.distance";
+    public static final String ROMULUS_REMUS_DISTANCE_BROTHER = "werewolf.roles.romulus_remus.configuration.distance_brother";
 }

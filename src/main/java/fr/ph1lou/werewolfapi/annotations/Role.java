@@ -13,14 +13,24 @@ import java.lang.annotation.Target;
 public @interface Role {
 
     String key();
+
     String[] loreKey() default {};
+
     Category category();
+
     RoleAttribute[] attributes();
+
     float weight() default 1;
+
     boolean requireDouble() default false;
+
     String[] requireRoles() default {};
+
     String[] incompatibleRoles() default {};
+
     IntValue[] configValues() default {};
+
     Configuration[] configurations() default {};
+
     Timer[] timers() default {};
 }
