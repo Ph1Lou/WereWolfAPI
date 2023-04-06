@@ -6,13 +6,13 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@StatisticsEvent(key = "werewolf.see_werewolf.vote")
-public class CitizenSeeWerewolfVoteEvent extends SelectionEvent {
+@StatisticsEvent(key = "werewolf.citizen_change_vote")
+public class CitizenChangeVoteEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public CitizenSeeWerewolfVoteEvent(IPlayerWW playerWW, IPlayerWW voteWerewolf) {
-        super(playerWW, voteWerewolf);
+    public CitizenChangeVoteEvent(IPlayerWW playerWW, IPlayerWW charmerWW) {
+        super(playerWW, charmerWW);
     }
 
     public static HandlerList getHandlerList() {
@@ -24,5 +24,5 @@ public class CitizenSeeWerewolfVoteEvent extends SelectionEvent {
     public HandlerList getHandlers() {
         return HANDLERS_LIST;
     }
-}
 
+}

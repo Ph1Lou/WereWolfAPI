@@ -16,7 +16,6 @@ public class ConfigBase {
     public static final String HIDE_EVENTS = "werewolf.configurations.hide_events.name";
     public static final String HIDE_SCENARIOS = "werewolf.configurations.hide_scenarios.name";
     public static final String LONE_WOLF = "werewolf.configurations.lone_wolf.name";
-    public static final String NEW_VOTE = "werewolf.configurations.new_vote.name";
     public static final String HUNTER_CAN_SHOOT = "werewolf.roles.hunter.configurations.can_shoot";
     public static final String HIDDEN_ROLES = "werewolf.configurations.hidden_roles.name";
     public static final String RANDOM_CUPID = "werewolf.roles.cupid.configurations.random_cupid";

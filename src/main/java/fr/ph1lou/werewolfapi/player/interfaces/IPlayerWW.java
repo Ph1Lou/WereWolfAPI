@@ -8,6 +8,7 @@ import fr.ph1lou.werewolfapi.player.impl.PotionModifier;
 import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -331,5 +332,17 @@ public interface IPlayerWW {
     void addDeathRole(String role);
 
     String getDeathRole();
+
+    ChatColor getColor(IPlayerWW playerWW);
+
+    void setColor(IPlayerWW playerWW, ChatColor chatColor);
+
+    Set<IPlayerWW> getPlayersMet();
+
+    void addMetPlayer(IPlayerWW playerWW);
+
+    void removeMetPlayer(IPlayerWW playerWW);
+
+    void second();
 }
 

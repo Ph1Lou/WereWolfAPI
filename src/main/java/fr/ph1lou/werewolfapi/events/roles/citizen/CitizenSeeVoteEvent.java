@@ -8,19 +8,15 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
-
 @StatisticsEvent(key = "werewolf.see_vote")
 public class CitizenSeeVoteEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
-    private final Map<IPlayerWW, Integer> votes;
     private boolean cancel = false;
 
-    public CitizenSeeVoteEvent(IPlayerWW playerWW, Map<IPlayerWW, Integer> votes) {
+    public CitizenSeeVoteEvent(IPlayerWW playerWW) {
         this.playerWW = playerWW;
-        this.votes = votes;
     }
 
     public static HandlerList getHandlerList() {
@@ -36,10 +32,6 @@ public class CitizenSeeVoteEvent extends Event implements Cancellable {
     @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
         return this.playerWW;
-    }
-
-    public Map<IPlayerWW, Integer> getVotes() {
-        return votes;
     }
 
     @Override

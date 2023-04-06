@@ -3,8 +3,8 @@ package fr.ph1lou.werewolfapi.vote;
 import fr.ph1lou.werewolfapi.enums.VoteStatus;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 
-import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 public interface IVoteManager {
 
@@ -26,14 +26,18 @@ public interface IVoteManager {
      *
      * @return vote count for each player (in new vote system return only villager vote)
      */
-    Map<IPlayerWW, Integer> getVotes();
+    int getVotes(IPlayerWW playerWW);
+
+    void setVotes(IPlayerWW playerWW, int value);
 
     /**
      * Get Players Vote
      *
      * @return vote for each player
      */
-    Map<IPlayerWW, IPlayerWW> getPlayerVotes();
+    Optional<IPlayerWW> getPlayerVote(IPlayerWW playerWW);
+
+    void setPlayerVote(IPlayerWW voterWW, IPlayerWW playerWW);
 
     /**
      * Get Player who have the largest amount of vote
@@ -42,6 +46,12 @@ public interface IVoteManager {
      */
     Optional<IPlayerWW> getResult();
 
+
+    Set<? extends IPlayerWW> getAlreadyVotedPlayers();
+
+    Set<? extends IPlayerWW> getVotedPlayers();
+
+    Set<? extends IPlayerWW> getVoters();
 
     /**
      * Check Vote Status
