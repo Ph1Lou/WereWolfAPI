@@ -245,4 +245,6 @@ public interface WereWolfAPI {
     IListenersManager getListenersManager();
 
     void addScheduleId(int idSchedule);
+
+    IScoreboard getScoreboard();
 }

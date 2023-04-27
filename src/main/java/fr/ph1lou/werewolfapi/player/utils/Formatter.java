@@ -4,12 +4,19 @@ import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.utils.Utils;
 import org.apache.commons.lang.StringEscapeUtils;
 
+import java.util.function.Function;
+
 public class Formatter {
 
     private final String pattern;
-    private final Object supplier;
+    private final Function<WereWolfAPI, String> supplier;
 
     private Formatter(String pattern, Object supplier) {
+        this.pattern = pattern;
+        this.supplier = wereWolfAPI -> supplier.toString();
+    }
+
+    private Formatter(String pattern, Function<WereWolfAPI, String> supplier) {
         this.pattern = pattern;
         this.supplier = supplier;
     }
@@ -17,6 +24,11 @@ public class Formatter {
     public static Formatter format(String pattern, Object supplier) {
         return new Formatter(pattern, supplier);
     }
+
+    public static Formatter format(String pattern, Function<WereWolfAPI, String> supplier) {
+        return new Formatter(pattern, supplier);
+    }
+
 
     public static Formatter player(String player) {
         return format("&player&", player);
@@ -38,8 +50,8 @@ public class Formatter {
         return format("&role&", role);
     }
 
-    public String handle(String message) {
+    public String handle(WereWolfAPI wereWolfAPI, String message) {
         return message.replaceAll(StringEscapeUtils.escapeJava(this.pattern),
-                String.valueOf(this.supplier));
+                String.valueOf(this.supplier.apply(wereWolfAPI)));
     }
 }

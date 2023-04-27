@@ -196,7 +196,7 @@ public class VersionUtils_1_8 extends VersionUtils {
 
         header = ChatColor.translateAlternateColorCodes('&', header);
         footer = ChatColor.translateAlternateColorCodes('&', footer);
-        if (!footer.contains("Ph1Lou")) {
+        if (!footer.contains("Ph1Lou") && !header.contains("Ph1Lou")) {
             footer += "\n§7Plugin made by §bPh1Lou";
         }
 
