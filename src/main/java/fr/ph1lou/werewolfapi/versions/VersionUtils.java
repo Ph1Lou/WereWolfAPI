@@ -18,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 public abstract class VersionUtils {
 
+    protected static final CharSequence CREATOR = "Ph1Lou";
     private static VersionUtils versionUtils = null;
 
     public static VersionUtils getVersionUtils() {
