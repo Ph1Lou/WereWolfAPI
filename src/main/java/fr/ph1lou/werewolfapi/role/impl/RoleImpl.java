@@ -46,6 +46,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -71,6 +72,11 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
         this.game = game;
         this.uuid = playerWW.getUUID();
         this.playerWW = playerWW;
+    }
+
+    @Override
+    public Set<IPlayerWW> getPlayersMet() {
+        return this.getPlayerWW().getPlayersMet();
     }
 
     @Override

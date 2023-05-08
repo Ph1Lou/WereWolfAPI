@@ -34,4 +34,8 @@ public class TimerBase {
     public static final String ELECTIONS_BEGIN = "werewolf.elections.election.timer";
     public static final String ELECTIONS_DURATION_APPLICATION = "werewolf.elections.election.timer_application";
     public static final String ELECTIONS_DURATION_CHOICE = "werewolf.elections.election.timer_vote_mayor";
+    public static final String WILL_O_THE_WISP_COOLDOWN_TP = "werewolf.roles.will_o_the_wisp.configurations.cooldown_tp";
+    public static final String WILL_O_THE_WISP_COOLDOWN_INCENDIARY_MADNESS = "werewolf.roles.will_o_the_wisp.configurations.cooldown_madness";
+    public static final String WILL_O_THE_WISP_DURATION_INCENDIARY_MADNESS = "werewolf.roles.will_o_the_wisp.configurations.duration_madness";
+
 }

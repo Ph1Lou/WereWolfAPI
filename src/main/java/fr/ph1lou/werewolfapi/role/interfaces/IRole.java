@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Set;
 import java.util.UUID;
 
 @SuppressWarnings("EmptyMethod")
@@ -55,4 +56,6 @@ public interface IRole extends IDisplay, IAura, ICamp, Listener {
     void enableAbilitiesRole();
 
     boolean isAbilityEnabled();
+
+    Set<IPlayerWW> getPlayersMet();
 }

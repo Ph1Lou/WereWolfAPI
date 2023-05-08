@@ -1,6 +1,8 @@
 package fr.ph1lou.werewolfapi.events.roles.bloodthirsty_werewolf;
 
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -30,10 +32,12 @@ public class BloodthirstyWereWolfLowLifeListDisplayEvent extends Event {
         this.playersWW = playersWW;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW(){
         return this.playerWW;
     }
 
+    @StatisticsTargets
     public Set<IPlayerWW> getPlayersWWSet(){
         return this.playersWW;
     }
