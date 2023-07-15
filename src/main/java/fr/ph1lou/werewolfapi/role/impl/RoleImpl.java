@@ -90,8 +90,9 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     }
 
     @Override
-    public void setTransformedToVillager(boolean villager) {
+    public final void setTransformedToVillager(boolean villager) {
         this.transformedToVillager = villager;
+        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
     }
 
     @Override
@@ -102,6 +103,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setTransformedToNeutral(boolean neutral) {
         this.transformedToNeutral = neutral;
+        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
     }
 
     @Override
@@ -239,11 +241,12 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setInfected(boolean infected) {
         this.infected = infected;
+        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
     }
 
     @Override
     public final void setInfected() {
-        this.infected = true;
+        this.setInfected(true);
     }
 
     @EventHandler
@@ -405,8 +408,9 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     }
 
     @Override
-    public void setSolitary(boolean solitary) {
+    public final void setSolitary(boolean solitary) {
         this.solitary = solitary;
+        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
     }
 
     @EventHandler
