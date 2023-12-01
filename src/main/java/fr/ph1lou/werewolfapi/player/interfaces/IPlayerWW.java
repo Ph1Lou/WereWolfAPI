@@ -335,7 +335,7 @@ public interface IPlayerWW {
 
     String getDeathRole();
 
-    ChatColor getColor(IPlayerWW playerWW);
+    String getColor(IPlayerWW playerWW);
 
     void setColor(IPlayerWW playerWW, ChatColor chatColor);
 
