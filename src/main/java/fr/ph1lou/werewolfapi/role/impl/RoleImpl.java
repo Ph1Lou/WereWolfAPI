@@ -92,7 +92,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setTransformedToVillager(boolean villager) {
         this.transformedToVillager = villager;
-        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
+        Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
     }
 
     @Override
@@ -103,7 +103,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setTransformedToNeutral(boolean neutral) {
         this.transformedToNeutral = neutral;
-        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
+        Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
     }
 
     @Override
@@ -241,7 +241,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setInfected(boolean infected) {
         this.infected = infected;
-        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
+        Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
     }
 
     @Override
@@ -410,7 +410,7 @@ public abstract class RoleImpl implements IRole, Cloneable, IDisplay {
     @Override
     public final void setSolitary(boolean solitary) {
         this.solitary = solitary;
-        Bukkit.getPluginManager().callEvent(new UpdateModeratorNameTagEvent(this.getPlayerUUID()));
+        Bukkit.getPluginManager().callEvent(new UpdateNameTagEvent(this.getPlayerWW()));
     }
 
     @EventHandler
