@@ -1,6 +1,5 @@
 package fr.ph1lou.werewolfapi.events.roles.croupier;
 
-import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;

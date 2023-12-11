@@ -1,8 +1,6 @@
 package fr.ph1lou.werewolfapi.statistics.interfaces;
 
 
-import fr.ph1lou.werewolfapi.game.WereWolfAPI;
-
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;

@@ -38,7 +38,7 @@ public interface IMapManager {
 
     void loadMap(@Nullable File map);
 
-    void loadMap() throws IOException;
+    void loadMap();
 
     void changeBorder(int mapRadius);
 
