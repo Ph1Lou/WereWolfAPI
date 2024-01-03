@@ -1,18 +1,23 @@
 package fr.ph1lou.werewolfapi.events.werewolf;
 
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
+import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class RequestSeeWereWolfListEvent extends Event {
+@StatisticsEvent(key = "werewolf.werewolf_message")
+public class WereWolfSiteChatEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;
-    private boolean accept = false;
+    private final String message;
 
-    public RequestSeeWereWolfListEvent(IPlayerWW playerWW) {
+    public WereWolfSiteChatEvent(IPlayerWW playerWW, String message) {
         this.playerWW = playerWW;
+        this.message = message;
     }
 
     public static HandlerList getHandlerList() {
@@ -25,15 +30,13 @@ public class RequestSeeWereWolfListEvent extends Event {
         return HANDLERS_LIST;
     }
 
+    @StatisticsPlayer
     public IPlayerWW getPlayerWW() {
-        return playerWW;
+        return this.playerWW;
     }
 
-    public boolean isAccept() {
-        return accept;
-    }
-
-    public void setAccept(boolean accept) {
-        this.accept = accept;
+    @StatisticsExtraInfo
+    public String getMessage() {
+        return message;
     }
 }

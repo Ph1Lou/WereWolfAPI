@@ -33,14 +33,10 @@ public interface IRole extends IDisplay, IAura, ICamp, Listener {
 
     void recoverPower();
 
-    void recoverPotionEffect();
-
     void recoverPotionEffects();
 
     @Nullable
     IRole publicClone();
-
-    void roleAnnouncement();
 
     @NotNull
     IPlayerWW getPlayerWW();
@@ -50,10 +46,6 @@ public interface IRole extends IDisplay, IAura, ICamp, Listener {
     void disableAbilities();
 
     void enableAbilities();
-
-    void disableAbilitiesRole();
-
-    void enableAbilitiesRole();
 
     boolean isAbilityEnabled();
 
