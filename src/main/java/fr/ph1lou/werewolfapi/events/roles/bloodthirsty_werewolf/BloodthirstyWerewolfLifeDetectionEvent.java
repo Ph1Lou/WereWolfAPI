@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class BloodthirstyWerewolfLifeDetectionEvent extends SelectionEvent {
-    public static HandlerList HANDLERS_LIST = new HandlerList();
+    public static final HandlerList HANDLERS_LIST = new HandlerList();
 
     @NotNull
     @Override

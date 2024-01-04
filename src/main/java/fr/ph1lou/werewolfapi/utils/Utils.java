@@ -1,9 +1,13 @@
 package fr.ph1lou.werewolfapi.utils;
 
+import fr.ph1lou.werewolfapi.basekeys.Prefix;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.versions.VersionUtils;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -153,5 +157,14 @@ public class Utils {
     public static boolean compareDistance(WereWolfAPI wereWolfAPI, Location location1, Location location2, String distance) {
         return location1.getWorld() == location2.getWorld() &&
                 location1.distance(location2) < wereWolfAPI.getConfig().getValue(distance);
+    }
+
+    public static TextComponent getDiscord(WereWolfAPI api){
+        return VersionUtils.getVersionUtils().createClickableText(
+                api.translate("werewolf.utils.bar") + "\n" +
+                api.translate(Prefix.YELLOW, "werewolf.bug") + "\n" +
+                api.translate("werewolf.utils.bar"),
+                "https://discord.gg/GXXCVUA",
+                ClickEvent.Action.OPEN_URL);
     }
 }

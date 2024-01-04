@@ -2,11 +2,8 @@ package fr.ph1lou.werewolfapi.events.werewolf;
 
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.UUID;
 
 public class AppearInWereWolfListEvent extends SelectionEvent {
 

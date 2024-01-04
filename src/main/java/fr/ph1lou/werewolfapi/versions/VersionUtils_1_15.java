@@ -74,7 +74,5 @@ public class VersionUtils_1_15 extends VersionUtils_1_14 {
 
         return i;
     }
-
-
 }
 

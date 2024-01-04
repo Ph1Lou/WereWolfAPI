@@ -5,7 +5,6 @@ import org.bukkit.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.io.IOException;
 
 public interface IMapManager {
 

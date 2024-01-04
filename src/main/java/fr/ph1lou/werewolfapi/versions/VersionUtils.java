@@ -1,6 +1,8 @@
 package fr.ph1lou.werewolfapi.versions;
 
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
@@ -12,6 +14,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
@@ -38,8 +41,10 @@ public abstract class VersionUtils {
                 versionUtils = new VersionUtils_1_13();
             } else if (version == 14) {
                 versionUtils = new VersionUtils_1_14();
-            } else if (version >= 15) {
+            } else if (version == 15) {
                 versionUtils = new VersionUtils_1_15();
+            } else if (version >= 16) {
+                versionUtils = new VersionUtils_1_16();
             }
         }
         return versionUtils;
@@ -101,6 +106,8 @@ public abstract class VersionUtils {
 
     public abstract void setChunkForceLoaded(World world, int x, int z, boolean generation);
 
+    public abstract TextComponent createClickableText(String text, String command, ClickEvent.Action action, @Nullable String hover);
 
+    public abstract TextComponent createClickableText(String text, String command, ClickEvent.Action action);
 }
 

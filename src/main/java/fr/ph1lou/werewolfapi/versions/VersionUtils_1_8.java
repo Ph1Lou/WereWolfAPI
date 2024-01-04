@@ -3,6 +3,10 @@ package fr.ph1lou.werewolfapi.versions;
 
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.utils.NMSUtils;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -21,6 +25,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -95,6 +100,25 @@ public class VersionUtils_1_8 extends VersionUtils {
     @Override
     public void setChunkForceLoaded(World world, int x, int z, boolean generation) {
         world.loadChunk(x, z, generation);
+    }
+
+    @Override
+    public TextComponent createClickableText(String text, String command, ClickEvent.Action action, @Nullable String hover) {
+        TextComponent textComponent = new TextComponent(text);
+        textComponent.setClickEvent(new ClickEvent(action, command));
+        if(hover != null){
+            textComponent.setHoverEvent(
+                    new HoverEvent(
+                            HoverEvent.Action.SHOW_TEXT,
+                            new ComponentBuilder(hover)
+                                    .create()));
+        }
+        return textComponent;
+    }
+
+    @Override
+    public TextComponent createClickableText(String text, String command, ClickEvent.Action action) {
+        return this.createClickableText(text, command, action, null);
     }
 
     @Override
