@@ -7,7 +7,6 @@ import fr.ph1lou.werewolfapi.enums.Camp;
 import fr.ph1lou.werewolfapi.enums.Day;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.events.UpdateNameTagEvent;
-import fr.ph1lou.werewolfapi.events.game.permissions.UpdateModeratorNameTagEvent;
 import fr.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.impl.PotionModifier;
@@ -17,7 +16,6 @@ import fr.ph1lou.werewolfapi.role.interfaces.IDisplay;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
 import fr.ph1lou.werewolfapi.role.interfaces.IRoleExtended;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
@@ -91,7 +89,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
         Role role = this.getClass().getAnnotation(Role.class);
 
         if (role == null) {
-            Bukkit.getLogger().warning(String.format("The class %s has not been annotated by the role annotation",
+            Bukkit.getLogger().severe(String.format("The class %s has not been annotated by the role annotation",
                     this.getClass().getName()));
             return this.getClass().getName();
         }
@@ -135,25 +133,6 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
             e.printStackTrace();
         }
         return null;
-    }
-
-    @EventHandler
-    public final void onModeratorScoreBoard(UpdateModeratorNameTagEvent event) {
-
-        StringBuilder sb = new StringBuilder(event.getPrefix());
-
-        if (!this.uuid.equals(event.getPlayerUUID())) return;
-
-        if (this.playerWW.isState(StatePlayer.DEATH)) return;
-
-        if (this.isNeutral()) {
-            sb.append(ChatColor.GOLD);
-        } else if (this.isWereWolf()) {
-            sb.append(ChatColor.DARK_RED);
-        } else sb.append(ChatColor.GREEN);
-
-        event.setPrefix(sb.toString());
-        event.setSuffix(sb.toString());
     }
 
     @Override
@@ -278,6 +257,18 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
     public void clearDisplay() {
         this.displayCamp = null;
         this.displayRole = null;
+    }
+
+    @Override
+    public final Aura getDefaultAura() {
+        Role role = this.getClass().getAnnotation(Role.class);
+
+        if (role == null) {
+            Bukkit.getLogger().severe(String.format("The class %s has not been annotated by the role annotation",
+                    this.getClass().getName()));
+            return Aura.LIGHT;
+        }
+        return role.defaultAura();
     }
 
     @Override

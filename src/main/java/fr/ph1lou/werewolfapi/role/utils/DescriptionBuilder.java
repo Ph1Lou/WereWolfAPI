@@ -82,7 +82,7 @@ public class DescriptionBuilder {
                 : "");
 
         sb.append(this.game.translate("werewolf.description.aura", Formatter.format("&aura&",
-                game.translate(this.role.getAura().getKey()))));
+                this.role.getAura().getChatColor() + game.translate(this.role.getAura().getKey()))));
 
         if (!this.role.isAbilityEnabled()) {
             sb.append(game.translate("werewolf.description.disable"));

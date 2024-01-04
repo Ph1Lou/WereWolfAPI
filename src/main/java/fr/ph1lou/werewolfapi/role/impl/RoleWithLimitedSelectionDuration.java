@@ -8,7 +8,7 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.role.interfaces.IPower;
 import org.bukkit.event.EventHandler;
 
-public abstract class RoleWithLimitedSelectionDuration extends RoleVillage implements IPower {
+public abstract class RoleWithLimitedSelectionDuration extends RoleImpl implements IPower {
 
     private boolean power = true;
 

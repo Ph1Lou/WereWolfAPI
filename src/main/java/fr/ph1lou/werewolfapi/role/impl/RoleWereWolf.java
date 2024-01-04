@@ -1,6 +1,5 @@
 package fr.ph1lou.werewolfapi.role.impl;
 
-import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 
@@ -16,10 +15,4 @@ public abstract class RoleWereWolf extends RoleImpl {
     public boolean isWereWolf() {
         return true;
     }
-
-    @Override
-    public Aura getDefaultAura() {
-        return Aura.DARK;
-    }
-
 }

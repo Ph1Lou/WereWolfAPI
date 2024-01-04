@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.annotations;
 
+import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Category;
 import fr.ph1lou.werewolfapi.enums.RoleAttribute;
 
@@ -33,4 +34,8 @@ public @interface Role {
     Configuration[] configurations() default {};
 
     Timer[] timers() default {};
+
+    String auraDescriptionSpecialUseCase() default "";
+
+    Aura defaultAura() default Aura.LIGHT;
 }
