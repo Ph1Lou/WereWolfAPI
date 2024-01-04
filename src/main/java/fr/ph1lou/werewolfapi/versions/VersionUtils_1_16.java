@@ -7,7 +7,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.jetbrains.annotations.Nullable;
 
-public class VersionUtils_1_16 extends VersionUtils_1_14 {
+public class VersionUtils_1_16 extends VersionUtils_1_15 {
 
     @Override
     public TextComponent createClickableText(String text, String command, ClickEvent.Action action, @Nullable String hover) {
