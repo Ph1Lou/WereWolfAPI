@@ -10,6 +10,8 @@ import java.lang.annotation.Target;
 public @interface Lover {
     String key();
 
+    String color();
+
     String[] loreKey() default {};
 
     String[] requireRoles() default {};

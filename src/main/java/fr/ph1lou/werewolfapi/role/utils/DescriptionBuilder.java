@@ -72,7 +72,7 @@ public class DescriptionBuilder {
                 (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));
 
         sb.append(this.game.translate("werewolf.description.camp",
-                Formatter.format("&camp&", this.role.getCamp().getChatColor() + this.game.translate(this.role.getCamp().getKey()))));
+                Formatter.format("&camp&", this.game.translate(this.role.getCamp().getKey()))));
 
         sb.append(this.role instanceof ITransformed ?
                 this.game.translate("werewolf.description.transformed",
@@ -82,7 +82,7 @@ public class DescriptionBuilder {
                 : "");
 
         sb.append(this.game.translate("werewolf.description.aura", Formatter.format("&aura&",
-                this.role.getAura().getChatColor() + game.translate(this.role.getAura().getKey()))));
+                game.translate(this.role.getAura().getKey()))));
 
         if (!this.role.isAbilityEnabled()) {
             sb.append(game.translate("werewolf.description.disable"));

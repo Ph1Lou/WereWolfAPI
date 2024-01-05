@@ -37,6 +37,6 @@ public abstract class RoleWithLimitedSelectionDuration extends RoleImpl implemen
 
     @Override
     public final boolean hasPower() {
-        return (this.power);
+        return this.power;
     }
 }

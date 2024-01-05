@@ -1,6 +1,6 @@
 package fr.ph1lou.werewolfapi.statistics.impl;
 
-import fr.ph1lou.werewolfapi.enums.LoverType;
+import fr.ph1lou.werewolfapi.basekeys.LoverBase;
 import fr.ph1lou.werewolfapi.lovers.ILover;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.statistics.interfaces.IPlayerReview;
@@ -37,9 +37,9 @@ public class PlayerReview implements IPlayerReview {
 
             if (!lovers.isEmpty()) {
 
-                if (ILover.isKey(LoverType.AMNESIAC_LOVER.getKey())) {
+                if (ILover.isKey(LoverBase.AMNESIAC_LOVER)) {
                     this.amnesiacLover = lovers.get(0).getReviewUUID();
-                } else if (ILover.isKey(LoverType.CURSED_LOVER.getKey())) {
+                } else if (ILover.isKey(LoverBase.CURSED_LOVER)) {
                     this.cursedLover = lovers.get(0).getReviewUUID();
                 } else this.lovers.addAll(lovers.stream().map(IPlayerWW::getReviewUUID).collect(Collectors.toList()));
             }

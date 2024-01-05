@@ -22,6 +22,9 @@ public class ConfigBase {
     public static final String SWEET_ANGEL = "werewolf.roles.angel.configurations.sweet_angel";
     public static final String ORACLE_EVERY_OTHER_DAY = "werewolf.roles.oracle.configurations.oracle_every_other_day";
     public static final String DETECTIVE_EVERY_OTHER_DAY = "werewolf.roles.detective.configurations.detective_every_other_day";
+
+    public static final String BEAR_TRAINER_EVERY_OTHER_DAY = "werewolf.roles.bear_trainer.configurations.bear_trainer_every_other_day";
+
     public static final String SEER_EVERY_OTHER_DAY = "werewolf.roles.seer.configurations.seer_every_other_day";
     public static final String WITCH_AUTO_RESURRECTION = "werewolf.roles.witch.configurations.auto_rez_witch";
     public static final String INFECT_AUTO_RESURRECTION = "werewolf.roles.infect_father_of_the_wolves.configurations.auto_rez";

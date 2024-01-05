@@ -19,7 +19,7 @@ public @interface Role {
 
     Category category();
 
-    RoleAttribute[] attributes();
+    RoleAttribute attribute();
 
     float weight() default 1;
 

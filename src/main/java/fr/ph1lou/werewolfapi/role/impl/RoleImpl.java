@@ -62,7 +62,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
     }
 
     @Override
-    public boolean isTransformedToVillager() {
+    public final boolean isTransformedToVillager() {
         return this.transformedToVillager;
     }
 
@@ -207,7 +207,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
 
 
     @Override
-    public boolean isSolitary() {
+    public final boolean isSolitary() {
         return solitary;
     }
 
@@ -231,7 +231,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
     }
 
     @Override
-    public void setDisplayCamp(@Nullable String camp) {
+    public final void setDisplayCamp(@Nullable String camp) {
         this.displayCamp = camp;
     }
 
@@ -244,7 +244,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
     }
 
     @Override
-    public void setDisplayRole(@Nullable String key) {
+    public final void setDisplayRole(@Nullable String key) {
         this.displayRole = key;
     }
 
@@ -254,7 +254,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
     }
 
     @Override
-    public void clearDisplay() {
+    public final void clearDisplay() {
         this.displayCamp = null;
         this.displayRole = null;
     }

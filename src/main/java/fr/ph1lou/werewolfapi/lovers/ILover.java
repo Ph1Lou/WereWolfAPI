@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 
 import java.util.List;
 
-public interface ILover extends Listener {
+public interface ILover extends ILoverBase {
 
     /**
      * Get Lover Members
@@ -14,20 +14,6 @@ public interface ILover extends Listener {
      */
     List<? extends IPlayerWW> getLovers();
 
-    /**
-     * Check if the lover type key match with parameter
-     *
-     * @param key string key
-     * @return if keys match
-     */
-    boolean isKey(String key);
-
-    /**
-     * Get the lover type key
-     *
-     * @return the string key
-     */
-    String getKey();
 
     /**
      * @return if this lover is alive

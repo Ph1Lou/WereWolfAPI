@@ -1,21 +1,18 @@
 package fr.ph1lou.werewolfapi.enums;
 
-import org.bukkit.ChatColor;
-
 import java.util.Arrays;
 import java.util.Optional;
 
 @SuppressWarnings({"unused"})
 public enum Category {
-    WEREWOLF("werewolf.categories.werewolf", ChatColor.DARK_RED),
-    VILLAGER("werewolf.categories.villager", ChatColor.GREEN),
-    NEUTRAL("werewolf.categories.neutral", ChatColor.GRAY),
-    ADDONS("werewolf.categories.addons", ChatColor.GOLD);
+    WEREWOLF("werewolf.categories.werewolf", "werewolf.categories.colors.werewolf"),
+    VILLAGER("werewolf.categories.villager", "werewolf.categories.colors.villager"),
+    NEUTRAL("werewolf.categories.neutral", "werewolf.categories.colors.neutral");
 
     private final String key;
-    private final ChatColor chatColor;
+    private final String chatColor;
 
-    Category(String key, ChatColor chatColor) {
+    Category(String key, String chatColor) {
         this.key = key;
         this.chatColor = chatColor;
     }
@@ -25,7 +22,7 @@ public enum Category {
                 .filter(category -> category.getKey().equals(key)).findFirst();
     }
 
-    public ChatColor getChatColor() {
+    public String getChatColor() {
         return chatColor;
     }
 
