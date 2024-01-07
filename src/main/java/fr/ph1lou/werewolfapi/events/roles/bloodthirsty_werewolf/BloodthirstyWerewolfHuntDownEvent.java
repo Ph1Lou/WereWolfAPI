@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 @TellableStoryEvent
 @StatisticsEvent(key = "werewolf.bloodthirsty_werewolf_hunt_down_event")
 public class BloodthirstyWerewolfHuntDownEvent extends SelectionEvent {
-    public static final HandlerList HANDLERS_LIST = new HandlerList();
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     @NotNull
     @Override

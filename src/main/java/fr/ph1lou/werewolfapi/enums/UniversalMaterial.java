@@ -53,7 +53,7 @@ public enum UniversalMaterial {
     POLISHED_DIORITE("STONE", "POLISHED_DIORITE", (short) 4),
     ANDESITE("STONE", "ANDESITE", (short) 5),
     POLISHED_ANDESITE("STONE", "POLISHED_ANDESITE", (short) 6),
-    GRASS,
+    GRASS /*todo SHORT_GRASS in 1.20.4*/,
     DIRT,
     COARSE_DIRT("DIRT", "COARSE_DIRT", (short) 1),
     PODZOL("DIRT", "PODZOL", (short) 2),

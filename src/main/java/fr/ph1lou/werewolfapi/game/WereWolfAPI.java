@@ -230,7 +230,9 @@ public interface WereWolfAPI {
      *
      * @return the role initial size
      */
-    int getRoleInitialSize();
+    int getTotalRoles();
+
+    void setTotalRoles(int roleInitialSize);
 
     IWerewolfChatHandler getWerewolfChatHandler();
 

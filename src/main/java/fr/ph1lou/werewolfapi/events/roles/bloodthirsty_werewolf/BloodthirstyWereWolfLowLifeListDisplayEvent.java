@@ -12,7 +12,7 @@ import java.util.Set;
 
 @StatisticsEvent(key = "werewolf.bloodthirsty_werewolf_low_life_list_display")
 public class BloodthirstyWereWolfLowLifeListDisplayEvent extends Event {
-    public static final HandlerList HANDLERS_LIST = new HandlerList();
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
 
     @NotNull
     @Override
