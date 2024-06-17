@@ -141,6 +141,7 @@ public enum UniversalMaterial {
 
     WOODEN_PICKAXE("WOOD_PICKAXE", "WOODEN_PICKAXE"),
     GOLDEN_PICKAXE("GOLD_PICKAXE", "GOLDEN_PICKAXE"),
+    NETHERITE_PICKAXE,
     GOLDEN_SWORD("GOLD_SWORD", "GOLDEN_SWORD"),
     IRON_PICKAXE,
     FLINT,
@@ -149,6 +150,8 @@ public enum UniversalMaterial {
     IRON_SHOVEL("IRON_SPADE", "IRON_SHOVEL"),
     GOLDEN_SHOVEL("GOLD_SPADE", "GOLDEN_SHOVEL"),
     DIAMOND_SHOVEL("DIAMOND_SPADE", "DIAMOND_SHOVEL"),
+    NETHERITE_SHOVEL,
+
     LEAD("LEASH", "LEAD"),
     OAK_LEAVES("LEAVES", "OAK_LEAVES", (short) 0),
     SPRUCE_LEAVES("LEAVES", "SPRUCE_LEAVES", (short) 1),
@@ -235,6 +238,34 @@ public enum UniversalMaterial {
         );
     }
 
+    public static boolean isDiamondOre(Material material) {
+        return material.name().contains("DIAMOND_ORE");
+    }
+
+    public static boolean isIronOre(Material material) {
+        return material.name().contains("IRON_ORE");
+    }
+
+    public static boolean isGoldOre(Material material) {
+        return material.name().contains("GOLD_ORE");
+    }
+
+    public static boolean isCoalOre(Material material) {
+        return material.name().contains("COAL_ORE");
+    }
+
+    public static boolean isEmeraldOre(Material material) {
+        return material.name().contains("EMERALD_ORE");
+    }
+
+    public static boolean isLapisOre(Material material) {
+        return material.name().contains("LAPIS_ORE");
+    }
+
+    public static boolean isRedstoneOre(Material material) {
+        return material.name().contains("REDSTONE_ORE");
+    }
+
     public static boolean isLeaves(Material material) {
         return (
                 material.equals(UniversalMaterial.ACACIA_LEAVES.getType()) ||
@@ -254,25 +285,29 @@ public enum UniversalMaterial {
             case REDSTONE_ORE:
                 return tool == Material.DIAMOND_PICKAXE ||
                         tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
-                        tool == Material.IRON_PICKAXE;
+                        tool == Material.IRON_PICKAXE ||
+                       tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
             case IRON_ORE:
                 return tool == Material.DIAMOND_PICKAXE ||
                         tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
                         tool == Material.IRON_PICKAXE ||
-                        tool == Material.STONE_PICKAXE;
+                        tool == Material.STONE_PICKAXE ||
+                       tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
             case COAL_ORE:
                 return tool == Material.DIAMOND_PICKAXE ||
                         tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
                         tool == Material.IRON_PICKAXE ||
                         tool == Material.STONE_PICKAXE ||
-                        tool == UniversalMaterial.WOODEN_PICKAXE.getType();
+                        tool == UniversalMaterial.WOODEN_PICKAXE.getType() ||
+                       tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
             case SAND:
             case GRAVEL:
                 return tool == UniversalMaterial.WOODEN_SHOVEL.getType() ||
                         tool == UniversalMaterial.STONE_SHOVEL.getType() ||
                         tool == UniversalMaterial.IRON_SHOVEL.getType() ||
                         tool == UniversalMaterial.GOLDEN_SHOVEL.getType() ||
-                        tool == UniversalMaterial.DIAMOND_SHOVEL.getType();
+                        tool == UniversalMaterial.DIAMOND_SHOVEL.getType() ||
+                       tool == UniversalMaterial.NETHERITE_SHOVEL.getType();
         }
 
         return false;
