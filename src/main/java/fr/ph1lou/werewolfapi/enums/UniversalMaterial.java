@@ -278,38 +278,37 @@ public enum UniversalMaterial {
     }
 
     public static boolean isCorrectTool(Material block, Material tool) {
-        switch (block) {
-            case DIAMOND_ORE:
-            case EMERALD_ORE:
-            case GOLD_ORE:
-            case REDSTONE_ORE:
-                return tool == Material.DIAMOND_PICKAXE ||
-                        tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
-                        tool == Material.IRON_PICKAXE ||
-                       tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
-            case IRON_ORE:
-                return tool == Material.DIAMOND_PICKAXE ||
-                        tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
-                        tool == Material.IRON_PICKAXE ||
-                        tool == Material.STONE_PICKAXE ||
-                       tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
-            case COAL_ORE:
-                return tool == Material.DIAMOND_PICKAXE ||
-                        tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
-                        tool == Material.IRON_PICKAXE ||
-                        tool == Material.STONE_PICKAXE ||
-                        tool == UniversalMaterial.WOODEN_PICKAXE.getType() ||
-                       tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
-            case SAND:
-            case GRAVEL:
-                return tool == UniversalMaterial.WOODEN_SHOVEL.getType() ||
-                        tool == UniversalMaterial.STONE_SHOVEL.getType() ||
-                        tool == UniversalMaterial.IRON_SHOVEL.getType() ||
-                        tool == UniversalMaterial.GOLDEN_SHOVEL.getType() ||
-                        tool == UniversalMaterial.DIAMOND_SHOVEL.getType() ||
-                       tool == UniversalMaterial.NETHERITE_SHOVEL.getType();
-        }
 
+
+        if(isDiamondOre(block) || isEmeraldOre(block) || isGoldOre(block) || isRedstoneOre(block)){
+            return tool == Material.DIAMOND_PICKAXE ||
+                   tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
+                   tool == Material.IRON_PICKAXE ||
+                   tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
+        }
+        if(isCoalOre(block)){
+            return tool == Material.DIAMOND_PICKAXE ||
+                   tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
+                   tool == Material.IRON_PICKAXE ||
+                   tool == Material.STONE_PICKAXE ||
+                   tool == UniversalMaterial.WOODEN_PICKAXE.getType() ||
+                   tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
+        }
+        if(isIronOre(block)){
+            return tool == Material.DIAMOND_PICKAXE ||
+                   tool == UniversalMaterial.GOLDEN_PICKAXE.getType() ||
+                   tool == Material.IRON_PICKAXE ||
+                   tool == Material.STONE_PICKAXE ||
+                   tool == UniversalMaterial.NETHERITE_PICKAXE.getType();
+        }
+        if(block == Material.SAND ||block == Material.GRAVEL){
+            return tool == UniversalMaterial.WOODEN_SHOVEL.getType() ||
+                   tool == UniversalMaterial.STONE_SHOVEL.getType() ||
+                   tool == UniversalMaterial.IRON_SHOVEL.getType() ||
+                   tool == UniversalMaterial.GOLDEN_SHOVEL.getType() ||
+                   tool == UniversalMaterial.DIAMOND_SHOVEL.getType() ||
+                   tool == UniversalMaterial.NETHERITE_SHOVEL.getType();
+        }
         return false;
     }
 
