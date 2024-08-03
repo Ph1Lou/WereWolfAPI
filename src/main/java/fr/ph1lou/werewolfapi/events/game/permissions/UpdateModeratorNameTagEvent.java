@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.game.permissions;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +11,7 @@ public class UpdateModeratorNameTagEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
-    private String prefix = "";
+    private ChatColor prefix = ChatColor.WHITE;
     private String suffix = "";
 
     public UpdateModeratorNameTagEvent(UUID playerUUID) {
@@ -31,11 +32,11 @@ public class UpdateModeratorNameTagEvent extends Event {
         return playerUUID;
     }
 
-    public String getPrefix() {
+    public ChatColor getPrefix() {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
+    public void setPrefix(ChatColor prefix) {
         this.prefix = prefix;
     }
 

@@ -3,6 +3,7 @@ package fr.ph1lou.werewolfapi.versions;
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
@@ -109,5 +110,7 @@ public abstract class VersionUtils {
     public abstract TextComponent createClickableText(String text, String command, ClickEvent.Action action, @Nullable String hover);
 
     public abstract TextComponent createClickableText(String text, String command, ClickEvent.Action action);
+
+    public abstract void setPrefixAndColor(Team team, String prefix, ChatColor chatColor);
 }
 

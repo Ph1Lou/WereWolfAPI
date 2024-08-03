@@ -338,4 +338,9 @@ public class VersionUtils_1_8 extends VersionUtils {
         return itemStack.getDurability();
     }
 
+    @Override
+    public void setPrefixAndColor(Team team, String prefix, ChatColor chatColor) {
+        prefix += chatColor;
+        team.setPrefix(prefix.substring(Math.max(prefix.length() - 16, 0)));
+    }
 }

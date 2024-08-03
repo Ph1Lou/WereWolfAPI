@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +13,7 @@ public class UpdatePlayerNameTagEvent extends Event {
     private final UUID playerUUID;
     private final UUID targetUUID;
     private boolean tabVisibility = true;
+    private ChatColor chatColor = ChatColor.WHITE;
     private String prefix;
     private String suffix = "";
     private boolean visibility = true;
@@ -70,6 +72,14 @@ public class UpdatePlayerNameTagEvent extends Event {
 
     public UUID getTargetUUID() {
         return targetUUID;
+    }
+
+    public ChatColor getChatColor() {
+        return chatColor;
+    }
+
+    public void setChatColor(ChatColor chatColor) {
+        this.chatColor = chatColor;
     }
 }
 
