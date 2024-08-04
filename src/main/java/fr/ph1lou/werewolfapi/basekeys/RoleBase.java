@@ -15,7 +15,6 @@ public class RoleBase {
     public final static String PROTECTOR = "werewolf.roles.protector.display";
     public final static String FOX = "werewolf.roles.fox.display";
     public final static String BEAR_TRAINER = "werewolf.roles.bear_trainer.display";
-    public final static String CHATTY_SEER = "werewolf.roles.chatty_seer.display";
     public final static String SEER = "werewolf.roles.seer.display";
     public final static String TROUBLEMAKER = "werewolf.roles.troublemaker.display";
     public final static String SISTER = "werewolf.roles.sister.display";
