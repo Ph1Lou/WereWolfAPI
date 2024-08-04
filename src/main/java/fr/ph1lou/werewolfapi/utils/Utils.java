@@ -1,14 +1,17 @@
 package fr.ph1lou.werewolfapi.utils;
 
 import fr.ph1lou.werewolfapi.basekeys.Prefix;
+import fr.ph1lou.werewolfapi.enums.Camp;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
+import fr.ph1lou.werewolfapi.events.roles.gravedigger.GravediggerDirectionEvent;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import fr.ph1lou.werewolfapi.versions.VersionUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -166,5 +169,25 @@ public class Utils {
                 api.translate("werewolf.utils.bar"),
                 "https://discord.gg/GXXCVUA",
                 ClickEvent.Action.OPEN_URL);
+    }
+
+    public static double getAngle(Location player, Location target){
+        double diffX = target.getX() - player.getX();
+        double diffZ = target.getZ() - player.getZ();
+        return Math.atan2(diffZ, diffX);
+    }
+
+    public static void sendParticleArrow(Player player, double angle){
+
+        double baseX = Math.cos(angle);
+        double baseZ = Math.sin(angle);
+        Location playerLocation = player.getLocation();
+
+        for (int i = 0; i < 20; i++) {
+            Location effectLoc = new Location(playerLocation.getWorld(),
+                    playerLocation.getX() + i * baseX, playerLocation.getY()
+                    , playerLocation.getZ() + i * baseZ);
+            player.playEffect(effectLoc, Effect.MOBSPAWNER_FLAMES, null);
+        }
     }
 }

@@ -13,5 +13,4 @@ public interface IAffectedPlayers {
     void clearAffectedPlayer();
 
     List<? extends IPlayerWW> getAffectedPlayers();
-
 }
