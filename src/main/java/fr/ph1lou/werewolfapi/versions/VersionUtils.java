@@ -44,7 +44,11 @@ public abstract class VersionUtils {
                 versionUtils = new VersionUtils_1_14();
             } else if (version == 15) {
                 versionUtils = new VersionUtils_1_15();
-            } else if (version >= 16) {
+            }
+            else if(version >= 20){
+                versionUtils = new VersionUtils_1_20();
+            }
+            else if (version >= 16) {
                 versionUtils = new VersionUtils_1_16();
             }
         }

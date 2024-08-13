@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.enums;
 
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
+import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -271,7 +272,7 @@ public enum Sound {
     private final String sound8;
     private final String sound912;
     private final String sound13;
-    private final String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3].replace("v", "").replace("R", "").replace("_", ".");
+    private final int version = BukkitUtils.loadServerVersion();
     private org.bukkit.Sound cachedSound = null;
 
 
@@ -323,9 +324,9 @@ public enum Sound {
         if (cachedSound != null) {
             return cachedSound;
         }
-        if (version.contains("1.8")) {
+        if (version == 8) {
             return cachedSound = sound8 == null ? org.bukkit.Sound.valueOf("IRONGOLEM_DEATH") : org.bukkit.Sound.valueOf(sound8);
-        } else if (version.contains("1.9") || version.contains("1.10") || version.contains("1.11") || version.contains("1.12")) {
+        } else if (version == 9 || version == 10 || version == 11 || version == 12) {
             return cachedSound = sound912 == null ? org.bukkit.Sound.valueOf("ENTITY_IRONGOLEM_DEATH") : org.bukkit.Sound.valueOf(sound912);
         } else {
             return cachedSound = sound13 == null ? org.bukkit.Sound.valueOf("ENTITY_IRON_GOLEM_DEATH") : org.bukkit.Sound.valueOf(sound13);

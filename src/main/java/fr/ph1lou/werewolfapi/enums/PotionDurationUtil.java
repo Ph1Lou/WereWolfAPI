@@ -64,7 +64,7 @@ public enum PotionDurationUtil {
     public static int getAmplifier(PotionEffectType type, boolean upgraded) {
 
         if (upgraded) {
-            if (type == PotionEffectType.SLOW) {
+            if (type == UniversalPotionEffectType.SLOWNESS.getPotionEffectType()) {
                 return 3;
             }
             return 1;

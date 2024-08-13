@@ -6,6 +6,7 @@ import fr.ph1lou.werewolfapi.enums.Aura;
 import fr.ph1lou.werewolfapi.enums.Camp;
 import fr.ph1lou.werewolfapi.enums.Day;
 import fr.ph1lou.werewolfapi.enums.StatePlayer;
+import fr.ph1lou.werewolfapi.enums.UniversalPotionEffectType;
 import fr.ph1lou.werewolfapi.events.UpdateNameTagEvent;
 import fr.ph1lou.werewolfapi.events.game.utils.EndPlayerMessageEvent;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
@@ -17,7 +18,6 @@ import fr.ph1lou.werewolfapi.role.interfaces.IRole;
 import fr.ph1lou.werewolfapi.role.interfaces.IRoleExtended;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
-import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -189,9 +189,9 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
 
         if (!this.isWereWolf()) return;
 
-        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.NIGHT_VISION, RoleBase.WEREWOLF));
+        this.playerWW.addPotionModifier(PotionModifier.add(UniversalPotionEffectType.NIGHT_VISION, RoleBase.WEREWOLF));
         if (game.isDay(Day.DAY)) return;
-        this.playerWW.addPotionModifier(PotionModifier.add(PotionEffectType.INCREASE_DAMAGE, RoleBase.WEREWOLF));
+        this.playerWW.addPotionModifier(PotionModifier.add(UniversalPotionEffectType.STRENGTH, RoleBase.WEREWOLF));
     }
 
     @Override
@@ -312,7 +312,7 @@ public abstract class RoleImpl implements IRole, IRoleExtended, Cloneable, IDisp
         }
 
         this.getPlayerWW()
-                .addPotionModifier(PotionModifier.remove(PotionEffectType.INCREASE_DAMAGE, RoleBase.WEREWOLF, 0));
+                .addPotionModifier(PotionModifier.remove(UniversalPotionEffectType.STRENGTH, RoleBase.WEREWOLF, 0));
     }
 
     @Override

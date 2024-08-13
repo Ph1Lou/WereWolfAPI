@@ -20,7 +20,6 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
@@ -80,8 +79,11 @@ public class VersionUtils_1_8 extends VersionUtils {
     @Override
     public Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack) {
         try {
-            return Potion.fromItemStack(itemStack)
-                    .getEffects();
+
+            Object potion = Class.forName("org.bukkit.potion.Potion").getMethod("fromItemStack")
+                    .invoke(null, itemStack);
+
+            return (Collection<PotionEffect>) potion.getClass().getMethod("getEffects").invoke(potion);
         } catch (Exception ignored) {
         }
         return Collections.emptyList();

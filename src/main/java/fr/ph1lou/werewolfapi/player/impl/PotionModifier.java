@@ -1,10 +1,10 @@
 package fr.ph1lou.werewolfapi.player.impl;
 
-import org.bukkit.potion.PotionEffectType;
+import fr.ph1lou.werewolfapi.enums.UniversalPotionEffectType;
 
 public class PotionModifier {
 
-    private final PotionEffectType potionEffectType;
+    private final UniversalPotionEffectType potionEffectType;
 
     private final int amplifier;
 
@@ -16,9 +16,9 @@ public class PotionModifier {
 
     private int timer = Integer.MAX_VALUE;
 
-    private PotionModifier(PotionEffectType potionEffectType, int duration, int amplifier, String identifier, boolean add) {
+    private PotionModifier(UniversalPotionEffectType potionEffectType, int duration, int amplifier, String identifier, boolean add) {
 
-        if (potionEffectType.equals(PotionEffectType.INCREASE_DAMAGE)) {
+        if (potionEffectType.equals(UniversalPotionEffectType.STRENGTH)) {
             this.amplifier = -1;
         } else {
             this.amplifier = amplifier;
@@ -33,20 +33,20 @@ public class PotionModifier {
         this.identifier = identifier;
     }
 
-    public static PotionModifier add(PotionEffectType potionEffectType, int duration, int amplifier, String identifier) {
+    public static PotionModifier add(UniversalPotionEffectType potionEffectType, int duration, int amplifier, String identifier) {
         return new PotionModifier(potionEffectType, duration, amplifier, identifier, true);
     }
 
-    public static PotionModifier add(PotionEffectType potionEffectType, String identifier) {
+    public static PotionModifier add(UniversalPotionEffectType potionEffectType, String identifier) {
         return new PotionModifier(potionEffectType, Integer.MAX_VALUE, 0, identifier, true);
     }
 
     @Deprecated
-    public static PotionModifier remove(PotionEffectType potionEffectType, String identifier) {
+    public static PotionModifier remove(UniversalPotionEffectType potionEffectType, String identifier) {
         return new PotionModifier(potionEffectType, 0, 0, identifier, false);
     }
 
-    public static PotionModifier remove(PotionEffectType potionEffectType, String identifier, int amplifier) {
+    public static PotionModifier remove(UniversalPotionEffectType potionEffectType, String identifier, int amplifier) {
         return new PotionModifier(potionEffectType, 0, amplifier, identifier, false);
     }
 
@@ -54,7 +54,7 @@ public class PotionModifier {
         return this.add;
     }
 
-    public PotionEffectType getPotionEffectType() {
+    public UniversalPotionEffectType getPotionEffectType() {
         return this.potionEffectType;
     }
 

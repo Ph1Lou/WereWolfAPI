@@ -1,17 +1,15 @@
 package fr.ph1lou.werewolfapi.enums;
 
-import org.bukkit.potion.PotionEffectType;
-
 @SuppressWarnings({"unused"})
 public enum ComedianMask {
-    RESISTANCE("werewolf.roles.comedian.1", PotionEffectType.DAMAGE_RESISTANCE),
-    SPEED("werewolf.roles.comedian.2", PotionEffectType.SPEED),
-    STRENGTH("werewolf.roles.comedian.3", PotionEffectType.INCREASE_DAMAGE);
+    RESISTANCE("werewolf.roles.comedian.1", UniversalPotionEffectType.RESISTANCE),
+    SPEED("werewolf.roles.comedian.2", UniversalPotionEffectType.SPEED),
+    STRENGTH("werewolf.roles.comedian.3", UniversalPotionEffectType.STRENGTH);
 
     private final String key;
-    private final PotionEffectType potionEffectType;
+    private final UniversalPotionEffectType potionEffectType;
 
-    ComedianMask(String key, PotionEffectType potionEffectType) {
+    ComedianMask(String key, UniversalPotionEffectType potionEffectType) {
         this.key = key;
         this.potionEffectType = potionEffectType;
     }
@@ -20,7 +18,7 @@ public enum ComedianMask {
         return this.key;
     }
 
-    public PotionEffectType getPotionEffectType() {
+    public UniversalPotionEffectType getPotionEffectType() {
         return potionEffectType;
     }
 }

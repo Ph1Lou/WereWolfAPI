@@ -5,8 +5,6 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
-import org.bukkit.ChatColor;
-import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.Nullable;
 
 public class VersionUtils_1_16 extends VersionUtils_1_15 {

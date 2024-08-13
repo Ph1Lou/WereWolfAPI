@@ -9,13 +9,12 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
-
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -27,17 +26,29 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
     public ItemStack getPotionItem(short id) {
         byte data = (byte) id;
         byte data2 = (byte) (id >> 8);
-        PotionType type = PotionUtil.getPotion((byte) (data & 0b00011111));
-        PotionData potionData = new PotionData(type,
-                ((data & 0b01000000) == 0b01000000) && type.isExtendable(),
-                ((data & 0b00100000) == 0b00100000) && type.isUpgradeable());
+        PotionType type = PotionType.valueOf(PotionUtil.getPotion((byte) (data & 0b00011111)));
         ItemStack item = new ItemStack((data2 & 0b01000000) == 0b01000000 ?
                 Material.SPLASH_POTION :
                 Material.POTION);
         PotionMeta potionMeta = (PotionMeta) item.getItemMeta();
-        if (potionMeta != null) {
-            potionMeta.setBasePotionData(potionData);
+
+
+        try {
+            Class<?> potionDataClass = Class.forName("org.bukkit.potion.PotionData");
+            Object potionData = potionDataClass.getConstructor(PotionType.class, boolean.class, boolean.class)
+                    .newInstance(type,
+                            ((data & 0b01000000) == 0b01000000) && type.isExtendable(),
+                            ((data & 0b00100000) == 0b00100000) && type.isUpgradeable());
+
+            if (potionMeta != null) {
+                PotionMeta.class.getMethod("setBasePotionData", potionDataClass).invoke(potionMeta, potionData);
+            }
+
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                 InvocationTargetException e) {
+            throw new RuntimeException(e);
         }
+
         item.setItemMeta(potionMeta);
         return item;
     }
@@ -48,14 +59,24 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
         if (itemStack.getItemMeta() instanceof PotionMeta) {
             PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
             List<PotionEffect> potionEffectList = new ArrayList<>(potionMeta.getCustomEffects());
-            PotionData potionData = potionMeta.getBasePotionData();
-            PotionEffectType type = potionData.getType().getEffectType();
-            if (type != null) {
-                potionEffectList.add(new PotionEffect(type,
-                        PotionDurationUtil.getDuration(type, potionData.isExtended(), potionData.isUpgraded()),
-                        PotionDurationUtil.getAmplifier(type, potionData.isUpgraded()),
-                        false,
-                        false));
+
+            try {
+                Object potionData = PotionMeta.class.getMethod("getBasePotionData").invoke(potionMeta);
+                PotionType type = (PotionType) potionData.getClass().getMethod("getType").invoke(potionData);
+                PotionEffectType potionEffectType = (PotionEffectType) type.getClass().getMethod("getEffectType").invoke(type);
+
+                if (potionEffectType != null) {
+                    boolean isUpgraded = (boolean) potionData.getClass().getMethod("isUpgraded").invoke(potionData);
+                    boolean isExtended = (boolean) potionData.getClass().getMethod("isExtended").invoke(potionData);
+
+                    potionEffectList.add(new PotionEffect(potionEffectType,
+                            PotionDurationUtil.getDuration(potionEffectType, isExtended, isUpgraded),
+                            PotionDurationUtil.getAmplifier(potionEffectType, isUpgraded),
+                            false,
+                            false));
+                }
+            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
             return potionEffectList;
         }
@@ -70,27 +91,37 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
         }
 
         PotionMeta potionMeta = (PotionMeta) itemStack.getItemMeta();
-        PotionData potionData = potionMeta.getBasePotionData();
 
-        byte data = PotionUtil.getId(potionData.getType());
+        try {
+            Object potionData = PotionMeta.class.getMethod("getBasePotionData").invoke(potionMeta);
+            boolean isUpgraded = (boolean) potionData.getClass().getMethod("isUpgraded").invoke(potionData);
+            boolean isExtended = (boolean) potionData.getClass().getMethod("isExtended").invoke(potionData);
+            PotionType type = (PotionType) potionData.getClass().getMethod("getType").invoke(potionData);
 
-        if (data == 0) {  //POTION > 1.8
-            return 0;
-        }
-        byte data2 = 0;
-        if (potionData.isExtended()) {
-            data |= 0b01000000;
-        }
-        if (potionData.isUpgraded()) {
-            data |= 0b00100000;
-        }
-        if (itemStack.getType() == Material.SPLASH_POTION) {
-            data2 |= 0b01000000;
-        } else {
-            data2 |= 0b00100000;
+            byte data = PotionUtil.getId(type.name());
+
+            if (data == 0) {  //POTION > 1.8
+                return 0;
+            }
+            byte data2 = 0;
+            if (isExtended) {
+                data |= 0b01000000;
+            }
+            if (isUpgraded) {
+                data |= 0b00100000;
+            }
+            if (itemStack.getType() == Material.SPLASH_POTION) {
+                data2 |= 0b01000000;
+            } else {
+                data2 |= 0b00100000;
+            }
+
+            return (short) (data2 << 8 | data);
+
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
 
-        return (short) (data2 << 8 | data);
     }
 
     @Override
