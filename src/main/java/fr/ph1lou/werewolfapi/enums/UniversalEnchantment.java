@@ -74,9 +74,9 @@ public enum UniversalEnchantment {
         try{
             int version = BukkitUtils.loadServerVersion();
             if(version < this.version){
-                return (Enchantment) PotionEffectType.class.getDeclaredField(this.oldName).get(null);
+                return (Enchantment) Enchantment.class.getDeclaredField(this.oldName).get(null);
             }
-            return (Enchantment) PotionEffectType.class.getDeclaredField(this.name()).get(null);
+            return (Enchantment) Enchantment.class.getDeclaredField(this.name()).get(null);
         }
         catch (NoSuchFieldException | IllegalAccessException e){
             throw new RuntimeException(e);
