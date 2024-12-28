@@ -39,13 +39,7 @@ public interface IVoteManager {
 
     void setPlayerVote(IPlayerWW voterWW, IPlayerWW playerWW);
 
-    /**
-     * Get Player who have the largest amount of vote
-     *
-     * @return PlayerWW (if new vote return player most voted by villager)
-     */
-    Optional<IPlayerWW> getResult();
-
+    void triggerResult();
 
     Set<? extends IPlayerWW> getAlreadyVotedPlayers();
 

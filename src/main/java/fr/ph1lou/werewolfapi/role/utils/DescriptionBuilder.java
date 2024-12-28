@@ -7,6 +7,7 @@ import fr.ph1lou.werewolfapi.role.interfaces.ITransformed;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
 public class DescriptionBuilder {
@@ -51,6 +52,13 @@ public class DescriptionBuilder {
         return this;
     }
 
+    public DescriptionBuilder addExtraLines(Supplier<String> supplier, boolean condition) {
+        if (condition) {
+            this.extraLines.add(supplier.get());
+        }
+        return this;
+    }
+
     public DescriptionBuilder setEffects(String key) {
         this.effects = key;
         return this;
@@ -66,10 +74,10 @@ public class DescriptionBuilder {
         StringBuilder sb = new StringBuilder();
 
         sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&", this.game.translate(this.role.getPlayerWW().getDeathRole()) +
-                (!this.role.getPlayerWW().getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.roles.thief.thief",
-                        Formatter.format("&role&", this.game.translate(this.role.getKey()))) : "") +
-                (this.role.isInfected() ? this.game.translate("werewolf.end.infect") : "") +
-                (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));
+                                                                                              (!this.role.getPlayerWW().getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.roles.thief.thief",
+                                                                                                      Formatter.format("&role&", this.game.translate(this.role.getKey()))) : "") +
+                                                                                              (this.role.isInfected() ? this.game.translate("werewolf.end.infect") : "") +
+                                                                                              (this.role.isSolitary() ? this.game.translate("werewolf.end.solitary") : ""))));
 
         sb.append(this.game.translate("werewolf.description.camp",
                 Formatter.format("&camp&", this.game.translate(this.role.getCamp().getKey()))));
@@ -123,13 +131,13 @@ public class DescriptionBuilder {
                         Formatter.format("&command&", this.command)));
             }
 
-            this.extraLines.forEach(sb::append);
+            this.extraLines.forEach(s -> sb.append(s).append("\n"));
         }
 
 
         return this.game.translate("werewolf.description._") + '\n' +
-                sb +
-                this.game.translate("werewolf.description._");
+               sb +
+               this.game.translate("werewolf.description._");
 
     }
 }
