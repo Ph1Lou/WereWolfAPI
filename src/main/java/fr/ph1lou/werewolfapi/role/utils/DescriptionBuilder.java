@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.role.utils;
 
+import fr.ph1lou.werewolfapi.annotations.Role;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
@@ -19,7 +20,6 @@ public class DescriptionBuilder {
     private String power;
     private String items;
     private String effects;
-    private String equipments;
     private String command;
 
     public DescriptionBuilder(WereWolfAPI game, IRole role) {
@@ -64,14 +64,11 @@ public class DescriptionBuilder {
         return this;
     }
 
-    public DescriptionBuilder setEquipments(String key) {
-        this.equipments = key;
-        return this;
-    }
-
     public String build() {
 
         StringBuilder sb = new StringBuilder();
+
+        Role roleClass = role.getClass().getAnnotation(Role.class);
 
         sb.append(this.game.translate("werewolf.description.role", Formatter.format("&role&", this.game.translate(this.role.getPlayerWW().getDeathRole()) +
                                                                                               (!this.role.getPlayerWW().getDeathRole().equals(this.role.getKey()) ? this.game.translate("werewolf.roles.thief.thief",
@@ -121,16 +118,45 @@ public class DescriptionBuilder {
                         Formatter.format("&items&", this.items)));
             }
 
-            if (this.equipments != null) {
-                sb.append(this.game.translate("werewolf.description.equipment",
-                        Formatter.format("&equipment&", this.equipments)));
-            }
-
             if (this.command != null) {
                 sb.append(this.game.translate("werewolf.description.command",
                         Formatter.format("&command&", this.command)));
             }
 
+            StringBuilder equipments = new StringBuilder();
+            if (roleClass.powerModifier() != 0) {
+                equipments.append(game.translate("werewolf.description.equipments_attribut.power",
+                                Formatter.number(roleClass.powerModifier())))
+                        .append("\n");
+
+            }
+            if (roleClass.sharpnessIronModifier() != 0) {
+                equipments.append(game.translate("werewolf.description.equipments_attribut.sharpness_iron",
+                                Formatter.number(roleClass.sharpnessIronModifier())))
+                        .append("\n");
+            }
+
+            if (roleClass.sharpnessDiamondModifier() != 0) {
+                equipments.append(game.translate("werewolf.description.equipments_attribut.sharpness_diamond",
+                                Formatter.number(roleClass.sharpnessDiamondModifier())))
+                        .append("\n");
+            }
+            if (roleClass.protectionIronModifier() != 0) {
+                equipments.append(game.translate("werewolf.description.equipments_attribut.protection_iron",
+                                Formatter.number(roleClass.protectionIronModifier())))
+                        .append("\n");
+            }
+            if (roleClass.protectionDiamondModifier() != 0) {
+                equipments.append(game.translate("werewolf.description.equipments_attribut.protection_diamond",
+                                Formatter.number(roleClass.protectionDiamondModifier())))
+                        .append("\n");
+            }
+
+            if (equipments.length() > 0) {
+                sb.append(this.game.translate("werewolf.description.equipment",
+                        Formatter.format("&equipment&", equipments.toString())));
+            }
+            
             this.extraLines.forEach(s -> sb.append(s).append("\n"));
         }
 

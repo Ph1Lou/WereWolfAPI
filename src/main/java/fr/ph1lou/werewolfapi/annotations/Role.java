@@ -38,4 +38,14 @@ public @interface Role {
     String auraDescriptionSpecialUseCase() default "";
 
     Aura defaultAura() default Aura.LIGHT;
+
+    int powerModifier() default 0;
+
+    int sharpnessIronModifier() default 0;
+
+    int sharpnessDiamondModifier() default 0;
+
+    int protectionIronModifier() default 0;
+
+    int protectionDiamondModifier() default 0;
 }

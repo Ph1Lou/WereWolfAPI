@@ -157,10 +157,10 @@ public class Utils {
 
     public static boolean compareDistance(WereWolfAPI wereWolfAPI, Location location1, Location location2, String distance) {
         return location1.getWorld() == location2.getWorld() &&
-                location1.distance(location2) < wereWolfAPI.getConfig().getValue(distance);
+               location1.distance(location2) < wereWolfAPI.getConfig().getValue(distance);
     }
 
-    public static TextComponent getDiscord(WereWolfAPI api){
+    public static TextComponent getDiscord(WereWolfAPI api) {
         return VersionUtils.getVersionUtils().createClickableText(
                 api.translate("werewolf.utils.bar") + "\n" +
                 api.translate(Prefix.YELLOW, "werewolf.bug") + "\n" +
@@ -169,22 +169,21 @@ public class Utils {
                 ClickEvent.Action.OPEN_URL);
     }
 
-    public static double getAngle(Location player, Location target){
+    public static double getAngle(Location player, Location target) {
         double diffX = target.getX() - player.getX();
         double diffZ = target.getZ() - player.getZ();
         return Math.atan2(diffZ, diffX);
     }
 
-    public static void sendParticleArrow(Player player, double angle){
+    public static void sendParticleArrow(Location initial, Player player, double angle, int length) {
 
         double baseX = Math.cos(angle);
         double baseZ = Math.sin(angle);
-        Location playerLocation = player.getLocation();
 
-        for (int i = 0; i < 20; i++) {
-            Location effectLoc = new Location(playerLocation.getWorld(),
-                    playerLocation.getX() + i * baseX, playerLocation.getY()
-                    , playerLocation.getZ() + i * baseZ);
+        for (int i = 0; i < length; i++) {
+            Location effectLoc = new Location(initial.getWorld(),
+                    initial.getX() + i * baseX, initial.getY()
+                    , initial.getZ() + i * baseZ);
             player.playEffect(effectLoc, Effect.MOBSPAWNER_FLAMES, null);
         }
     }

@@ -28,6 +28,7 @@ public class RoleBase {
     public final static String COMEDIAN = "werewolf.roles.comedian.display";
     public final static String IMITATOR = "werewolf.roles.imitator.display";
     public final static String TRAPPER = "werewolf.roles.trapper.display";
+    public final static String ASTRONOMER = "werewolf.roles.astronomer.display";
     public final static String ANGEL = "werewolf.roles.angel.display";
     public final static String GUARDIAN_ANGEL = "werewolf.roles.guardian_angel.display";
     public final static String FALLEN_ANGEL = "werewolf.roles.fallen_angel.display";

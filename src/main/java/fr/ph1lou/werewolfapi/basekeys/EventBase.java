@@ -1,6 +1,6 @@
 package fr.ph1lou.werewolfapi.basekeys;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({ "unused" })
 public class EventBase {
 
     public static final String EXPOSED = "werewolf.random_events.exposed.name";
@@ -20,4 +20,6 @@ public class EventBase {
     public static final String WOLF_FLEAS = "werewolf.random_events.wolf_fleas.name";
     public static final String VACCINATION = "werewolf.random_events.vaccination.name";
     public static final String INCOMPLETE_LIST = "werewolf.random_events.incomplete_list.name";
+    public static final String LOVE_AT_FIRST_SIGHT = "werewolf.random_events.love_at_first_sight.name";
+    public static final String CUPID_INDECISIVE = "werewolf.random_events.cupid_indecisive.name";
 }

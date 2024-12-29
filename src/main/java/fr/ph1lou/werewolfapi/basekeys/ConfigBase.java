@@ -1,6 +1,6 @@
 package fr.ph1lou.werewolfapi.basekeys;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({ "unused" })
 public class ConfigBase {
 
     public static final String VICTORY_LOVERS = "werewolf.configurations.victory_lovers.name";
@@ -36,4 +36,5 @@ public class ConfigBase {
     public static final String ELECTIONS = "werewolf.elections.election.name";
     public static final String CROUPIER_EVERY_OTHER_DAY = "werewolf.roles.croupier.configurations.croupier_every_other_day";
     public static final String GROUPALGO = "werewolf.configurations.group_algo.name";
+    public static final String AMNESIAC_LOVERS = "werewolf.roles.cupid.configurations.amnesiac_lovers";
 }

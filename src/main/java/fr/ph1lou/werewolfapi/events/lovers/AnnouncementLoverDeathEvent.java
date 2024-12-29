@@ -12,7 +12,7 @@ public class AnnouncementLoverDeathEvent extends AnnouncementDeathEvent {
      * @param targetPlayer the player who will show the message
      * @param format       the message
      */
-    private ILover lover;
+    private final ILover lover;
 
     public AnnouncementLoverDeathEvent(ILover lover, IPlayerWW playerWW, IPlayerWW targetPlayer, String format) {
         super(playerWW, targetPlayer, format);

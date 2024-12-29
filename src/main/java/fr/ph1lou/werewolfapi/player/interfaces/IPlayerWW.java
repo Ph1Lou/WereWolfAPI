@@ -346,5 +346,7 @@ public interface IPlayerWW {
     void removeMetPlayer(IPlayerWW playerWW);
 
     void second();
+
+    double distance(IPlayerWW playerWW);
 }
 
