@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.fox;
 
+import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
@@ -9,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 @StatisticsEvent(key = "werewolf.sniff")
+@SpyEvent
 public class SniffEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

@@ -17,11 +17,6 @@ public interface IVoteManager {
     void setOneVote(IPlayerWW voterWW, IPlayerWW voteWW);
 
     /**
-     * Reset Vote
-     */
-    void resetVote();
-
-    /**
      * Get Players Vote
      *
      * @return vote count for each player (in new vote system return only villager vote)

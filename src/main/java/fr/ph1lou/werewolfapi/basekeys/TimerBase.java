@@ -1,12 +1,12 @@
 package fr.ph1lou.werewolfapi.basekeys;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({ "unused" })
 public class TimerBase {
     public static final String INVULNERABILITY = "werewolf.timers.invulnerability.name";
     public static final String ROLE_DURATION = "werewolf.timers.role_duration.name";
     public static final String WEREWOLF_LIST = "werewolf.timers.werewolf_list.name";
     public static final String PVP = "werewolf.timers.pvp.name";
-    public static final String VOTE_BEGIN = "werewolf.configurations.vote.timers.vote_begin.name";
+    public static final String VOTE_START = "werewolf.configurations.vote.timers.vote_begin.name";
     public static final String BORDER_BEGIN = "werewolf.timers.border_begin.name";
     public static final String DIGGING = "werewolf.timers.digging_end.name";
     public static final String LOVER_DURATION = "werewolf.timers.lover_duration.name";

@@ -14,6 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -136,14 +137,14 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
     @Override
     public void setPlayerMaxHealth(@NotNull Player player, double maxHealth) {
-        AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attribute = player.getAttribute(Attribute.valueOf("GENERIC_MAX_HEALTH"));
         if (attribute == null) return;
         attribute.setBaseValue(maxHealth);
     }
 
     @Override
     public double getPlayerMaxHealth(@NotNull Player player) {
-        AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attribute = player.getAttribute(Attribute.valueOf("GENERIC_MAX_HEALTH"));
         if (attribute == null) return 20;
         return attribute.getBaseValue();
     }

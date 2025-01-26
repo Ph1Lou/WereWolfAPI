@@ -1,21 +1,20 @@
 package fr.ph1lou.werewolfapi.events.game.actionablestory;
 
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.UUID;
-
 
 public class ActionableStoryEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private final UUID player;
+    private final IPlayerWW player;
     private final String event;
     private boolean cancel = false;
 
-    public ActionableStoryEvent(UUID player, String event) {
+    public ActionableStoryEvent(IPlayerWW player, String event) {
         this.player = player;
         this.event = event;
     }
@@ -30,7 +29,7 @@ public class ActionableStoryEvent extends Event implements Cancellable {
         return HANDLERS_LIST;
     }
 
-    public UUID getPlayer() {
+    public IPlayerWW getPlayer() {
         return player;
     }
 

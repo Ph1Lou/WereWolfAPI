@@ -23,6 +23,7 @@ public class RegisteredAction implements IRegisteredAction {
     private final String extraInfo;
     private final Integer extraInt;
     private boolean actionableStory = false;
+    private boolean spyEvent = false;
 
     public RegisteredAction(String event, @Nullable IPlayerWW playerWW, @Nullable Set<IPlayerWW> uuidS, int timer, @Nullable String extraInfo, @Nullable Integer extraInt) {
         this.event = event;
@@ -76,6 +77,11 @@ public class RegisteredAction implements IRegisteredAction {
 
     public RegisteredAction setActionableStory(boolean actionableStory) {
         this.actionableStory = actionableStory;
+        return this;
+    }
+
+    public RegisteredAction setSpyEvent(boolean spyEvent) {
+        this.spyEvent = spyEvent;
         return this;
     }
 }

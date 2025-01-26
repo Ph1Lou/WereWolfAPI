@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.mystical_werewolf;
 
+import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
@@ -9,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 @StatisticsEvent(key = "werewolf.mystical_reveal")
+@SpyEvent
 public class MysticalWerewolfRevelationEvent extends SelectionEvent {
 
 
@@ -30,7 +32,7 @@ public class MysticalWerewolfRevelationEvent extends SelectionEvent {
 
     @StatisticsExtraInfo
     public String getExtraInfo() {
-        return getTargetWW().getRole().getKey();
+        return getTargetWW().getRole().getDisplayRole();
     }
 }
 

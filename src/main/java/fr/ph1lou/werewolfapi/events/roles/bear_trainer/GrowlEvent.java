@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.bear_trainer;
 
+import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 @StatisticsEvent(key = "werewolf.growl")
+@SpyEvent
 public class GrowlEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

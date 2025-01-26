@@ -31,6 +31,7 @@ public interface IPlayerWW {
      */
     void addPlayerMaxHealth(double health);
 
+
     /**
      * Decrease player max health (note : player min health is 1)
      *
@@ -44,6 +45,8 @@ public interface IPlayerWW {
      * @param health the amount of health
      */
     void addPlayerHealth(double health);
+
+    void addPlayerAbsorptionHealth(double health);
 
     /**
      * Decrease player health
@@ -348,5 +351,9 @@ public interface IPlayerWW {
     void second();
 
     double distance(IPlayerWW playerWW);
+
+    int getHonor();
+
+    void modifyHonor(int honorModifier);
 }
 

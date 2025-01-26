@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -73,6 +74,11 @@ public class VersionUtils_1_15 extends VersionUtils_1_14 {
         }
 
         return i;
+    }
+
+    @Override
+    public void addPlayerAbsorptionHealth(Player player, double health) {
+        player.setAbsorptionAmount(health);
     }
 }
 

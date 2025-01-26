@@ -28,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,7 +36,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@SuppressWarnings({"deprecation"})
+@SuppressWarnings({ "deprecation" })
 public class VersionUtils_1_8 extends VersionUtils {
 
 
@@ -108,7 +109,7 @@ public class VersionUtils_1_8 extends VersionUtils {
     public TextComponent createClickableText(String text, String command, ClickEvent.Action action, @Nullable String hover) {
         TextComponent textComponent = new TextComponent(text);
         textComponent.setClickEvent(new ClickEvent(action, command));
-        if(hover != null){
+        if (hover != null) {
             textComponent.setHoverEvent(
                     new HoverEvent(
                             HoverEvent.Action.SHOW_TEXT,
@@ -185,7 +186,7 @@ public class VersionUtils_1_8 extends VersionUtils {
                 Class<?> iChatBaseComponentClass = NMSUtils.getNMSClass("IChatBaseComponent");
                 Method m3 = chatSerializerClass.getDeclaredMethod("a", String.class);
                 Object cbc = iChatBaseComponentClass.cast(m3.invoke(chatSerializerClass, "{\"text\": \"" + message + "\"}"));
-                packet = packetPlayOutChatClass.getConstructor(new Class<?>[]{iChatBaseComponentClass, byte.class}).newInstance(cbc, (byte) 2);
+                packet = packetPlayOutChatClass.getConstructor(new Class<?>[] { iChatBaseComponentClass, byte.class }).newInstance(cbc, (byte) 2);
             } else {
                 Class<?> chatComponentTextClass = NMSUtils.getNMSClass("ChatComponentText");
                 Class<?> iChatBaseComponentClass = NMSUtils.getNMSClass("IChatBaseComponent");
@@ -198,11 +199,11 @@ public class VersionUtils_1_8 extends VersionUtils {
                             chatMessageType = obj;
                         }
                     }
-                    Object chatCompontentText = chatComponentTextClass.getConstructor(new Class<?>[]{String.class}).newInstance(message);
-                    packet = packetPlayOutChatClass.getConstructor(new Class<?>[]{iChatBaseComponentClass, chatMessageTypeClass}).newInstance(chatCompontentText, chatMessageType);
+                    Object chatCompontentText = chatComponentTextClass.getConstructor(new Class<?>[] { String.class }).newInstance(message);
+                    packet = packetPlayOutChatClass.getConstructor(new Class<?>[] { iChatBaseComponentClass, chatMessageTypeClass }).newInstance(chatCompontentText, chatMessageType);
                 } catch (ClassNotFoundException cnfe) {
-                    Object chatCompontentText = chatComponentTextClass.getConstructor(new Class<?>[]{String.class}).newInstance(message);
-                    packet = packetPlayOutChatClass.getConstructor(new Class<?>[]{iChatBaseComponentClass, byte.class}).newInstance(chatCompontentText, (byte) 2);
+                    Object chatCompontentText = chatComponentTextClass.getConstructor(new Class<?>[] { String.class }).newInstance(message);
+                    packet = packetPlayOutChatClass.getConstructor(new Class<?>[] { iChatBaseComponentClass, byte.class }).newInstance(chatCompontentText, (byte) 2);
                 }
             }
             Method craftPlayerHandleMethod = craftPlayerClass.getDeclaredMethod("getHandle");
@@ -344,5 +345,15 @@ public class VersionUtils_1_8 extends VersionUtils {
     public void setPrefixAndColor(Team team, String prefix, ChatColor chatColor) {
         prefix += chatColor;
         team.setPrefix(prefix.substring(Math.max(prefix.length() - 16, 0)));
+    }
+
+    @Override
+    public void addPlayerAbsorptionHealth(Player player, double health) {
+        try {
+            Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
+            entityPlayer.getClass().getMethod("setAbsorptionHearts", float.class).invoke(entityPlayer, (float) health);
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

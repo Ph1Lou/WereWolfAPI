@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.croupier;
 
+import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
@@ -11,7 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 @StatisticsEvent(key = "werewolf.croupier_event")
-public class CroupierEvent extends Event  {
+@SpyEvent
+public class CroupierEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final IPlayerWW playerWW;

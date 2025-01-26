@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.seer;
 
+import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
@@ -8,6 +9,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.see")
+@SpyEvent
 public class SeerEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

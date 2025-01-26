@@ -37,4 +37,6 @@ public class ConfigBase {
     public static final String CROUPIER_EVERY_OTHER_DAY = "werewolf.roles.croupier.configurations.croupier_every_other_day";
     public static final String GROUPALGO = "werewolf.configurations.group_algo.name";
     public static final String AMNESIAC_LOVERS = "werewolf.roles.cupid.configurations.amnesiac_lovers";
+    public static final String HONOR = "werewolf.configurations.honor.name";
+
 }

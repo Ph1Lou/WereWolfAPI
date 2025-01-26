@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.events.roles.detective;
 
+import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
@@ -14,6 +15,7 @@ import java.util.Set;
 
 
 @StatisticsEvent(key = "werewolf.enquire")
+@SpyEvent
 public class InvestigateEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
