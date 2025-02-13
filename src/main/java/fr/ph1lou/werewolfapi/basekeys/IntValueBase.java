@@ -1,6 +1,6 @@
 package fr.ph1lou.werewolfapi.basekeys;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({ "unused" })
 public class IntValueBase {
     public static final String WEREWOLF_CHAT = "werewolf.configurations.werewolf_chat.configurations.vote_end";
     public static final String VOTE_END = "werewolf.configurations.vote.configurations.vote_end";
@@ -19,7 +19,6 @@ public class IntValueBase {
     public static final String SCAMMER_DISTANCE = "werewolf.roles.scammer.configurations.distance";
     public static final String SERVITOR_DISTANCE = "werewolf.roles.servitor.configurations.distance";
     public static final String TWIN_DISTANCE = "werewolf.roles.twin.configurations.distance";
-    public static final String HOWLING_WEREWOLF_DISTANCE = "werewolf.roles.howling_werewolf.configurations.distance";
     public static final String WILL_O_THE_WISP_DISTANCE = "werewolf.roles.will_o_the_wisp.configurations.distance";
     public static final String HERMIT_DISTANCE = "werewolf.roles.hermit.configurations.distance";
     public static final String FEARFUL_WEREWOLF_DISTANCE = "werewolf.roles.fearful_werewolf.configurations.distance";

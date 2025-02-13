@@ -22,4 +22,5 @@ public class EventBase {
     public static final String INCOMPLETE_LIST = "werewolf.random_events.incomplete_list.name";
     public static final String LOVE_AT_FIRST_SIGHT = "werewolf.random_events.love_at_first_sight.name";
     public static final String CUPID_INDECISIVE = "werewolf.random_events.cupid_indecisive.name";
+    public static final String BLOOD_MOON = "werewolf.random_events.blood_moon.name";
 }

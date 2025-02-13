@@ -39,7 +39,6 @@ import java.util.concurrent.CompletableFuture;
 @SuppressWarnings({ "deprecation" })
 public class VersionUtils_1_8 extends VersionUtils {
 
-
     @Override
     public void setSkullOwner(SkullMeta skull, OfflinePlayer player, String name) {
         if (name != null) {
@@ -266,13 +265,19 @@ public class VersionUtils_1_8 extends VersionUtils {
         GetWereWolfAPI getWereWolfAPI = Bukkit.getServicesManager().load(GetWereWolfAPI.class);
 
         if (getWereWolfAPI != null) {
+
             Bukkit.getScheduler().runTaskAsynchronously((Plugin) getWereWolfAPI, () -> {
 
                 for (int i = -2000; i < 2000; i += 16) {
                     for (int j = -2000; j < 2000; j += 16) {
-                        if (world.getBiome(i, j) == Biome.valueOf("ROOFED_FOREST")) {
-                            completableFuture.complete(new Location(world, i, 151, j));
-                            return;
+                        try {
+                            if (World.class.getMethod("getBiome", int.class, int.class).invoke(world, i, j) ==
+                                Biome.class.getMethod("valueOf", String.class).invoke(null, "ROOFED_FOREST")) {
+                                completableFuture.complete(new Location(world, i, 151, j));
+                                return;
+                            }
+                        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                            throw new RuntimeException(e);
                         }
                     }
                 }

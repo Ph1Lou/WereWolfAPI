@@ -6,10 +6,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Version independent spigot sounds.
  */
-@SuppressWarnings({"unused"})
+@SuppressWarnings({ "unused" })
 public enum Sound {
     AMBIENCE_CAVE("AMBIENCE_CAVE", "AMBIENT_CAVE"),
     AMBIENCE_RAIN("AMBIENCE_RAIN", "WEATHER_RAIN"),
@@ -325,11 +327,19 @@ public enum Sound {
             return cachedSound;
         }
         if (version == 8) {
-            return cachedSound = sound8 == null ? org.bukkit.Sound.valueOf("IRONGOLEM_DEATH") : org.bukkit.Sound.valueOf(sound8);
+            return cachedSound = sound8 == null ? getSound("IRONGOLEM_DEATH") : getSound(sound8);
         } else if (version == 9 || version == 10 || version == 11 || version == 12) {
-            return cachedSound = sound912 == null ? org.bukkit.Sound.valueOf("ENTITY_IRONGOLEM_DEATH") : org.bukkit.Sound.valueOf(sound912);
+            return cachedSound = sound912 == null ? getSound("ENTITY_IRONGOLEM_DEATH") : getSound(sound912);
         } else {
-            return cachedSound = sound13 == null ? org.bukkit.Sound.valueOf("ENTITY_IRON_GOLEM_DEATH") : org.bukkit.Sound.valueOf(sound13);
+            return cachedSound = sound13 == null ? getSound("ENTITY_IRON_GOLEM_DEATH") : getSound(sound13);
+        }
+    }
+
+    private org.bukkit.Sound getSound(String name) {
+        try {
+            return (org.bukkit.Sound) org.bukkit.Sound.class.getMethod("valueOf", String.class).invoke(null, name);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
         }
     }
 }

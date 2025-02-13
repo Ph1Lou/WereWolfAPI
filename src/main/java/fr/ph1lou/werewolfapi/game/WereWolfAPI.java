@@ -65,6 +65,9 @@ public interface WereWolfAPI {
 
     Collection<? extends IPlayerWW> getPlayersWW();
 
+    Collection<? extends IPlayerWW> getAlivePlayersWW();
+
+
     /**
      * return the text associated with the key
      *

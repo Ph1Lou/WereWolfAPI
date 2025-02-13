@@ -1,7 +1,6 @@
 package fr.ph1lou.werewolfapi.utils;
 
 import fr.ph1lou.werewolfapi.basekeys.Prefix;
-import fr.ph1lou.werewolfapi.enums.StatePlayer;
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -50,15 +49,21 @@ public class Utils {
     public static String updateArrow(Player player, Location target) {
 
         Location location = player.getLocation();
-        String arrow;
         location.setY(target.getY());
-        Vector dirToMiddle = target.toVector().subtract(player.getEyeLocation().toVector()).normalize();
 
         int distance = 0;
         try {
             distance = (int) Math.round(target.distance(location));
         } catch (Exception ignored) {
         }
+
+
+        return distance + " §l" + getArrow(player, target);
+    }
+
+    public static String getArrow(Player player, Location target) {
+
+        Vector dirToMiddle = target.toVector().subtract(player.getEyeLocation().toVector()).normalize();
 
         Vector playerDirection = player.getEyeLocation().getDirection();
         double angle = dirToMiddle.angle(playerDirection);
@@ -67,22 +72,27 @@ public class Utils {
         angle = angle * Math.signum(det);
 
         if (angle > -Math.PI / 8 && angle < Math.PI / 8) {
-            arrow = "↑";
-        } else if (angle > -3 * Math.PI / 8 && angle < -Math.PI / 8) {
-            arrow = "↗";
-        } else if (angle < 3 * Math.PI / 8 && angle > Math.PI / 8) {
-            arrow = "↖";
-        } else if (angle > 3 * Math.PI / 8 && angle < 5 * Math.PI / 8) {
-            arrow = "←";
-        } else if (angle < -3 * Math.PI / 8 && angle > -5 * Math.PI / 8) {
-            arrow = "→";
-        } else if (angle < -5 * Math.PI / 8 && angle > -7 * Math.PI / 8) {
-            arrow = "↘";
-        } else if (angle > 5 * Math.PI / 8 && angle < 7 * Math.PI / 8) {
-            arrow = "↙";
-        } else arrow = "↓";
-
-        return distance + " §l" + arrow;
+            return "↑";
+        }
+        if (angle > -3 * Math.PI / 8 && angle < -Math.PI / 8) {
+            return "↗";
+        }
+        if (angle < 3 * Math.PI / 8 && angle > Math.PI / 8) {
+            return "↖";
+        }
+        if (angle > 3 * Math.PI / 8 && angle < 5 * Math.PI / 8) {
+            return "←";
+        }
+        if (angle < -3 * Math.PI / 8 && angle > -5 * Math.PI / 8) {
+            return "→";
+        }
+        if (angle < -5 * Math.PI / 8 && angle > -7 * Math.PI / 8) {
+            return "↘";
+        }
+        if (angle > 5 * Math.PI / 8 && angle < 7 * Math.PI / 8) {
+            return "↙";
+        }
+        return "↓";
     }
 
     /**
@@ -142,9 +152,8 @@ public class Utils {
      */
     public static IPlayerWW autoSelect(WereWolfAPI wereWolfAPI, IPlayerWW playerWW) {
 
-        List<IPlayerWW> players = wereWolfAPI.getPlayersWW()
+        List<IPlayerWW> players = wereWolfAPI.getAlivePlayersWW()
                 .stream()
-                .filter(playerWW1 -> playerWW1.isState(StatePlayer.ALIVE))
                 .filter(playerWW1 -> !playerWW1.equals(playerWW))
                 .collect(Collectors.toList());
 

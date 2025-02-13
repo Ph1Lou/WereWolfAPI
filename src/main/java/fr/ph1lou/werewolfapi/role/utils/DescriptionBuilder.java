@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.role.utils;
 
 import fr.ph1lou.werewolfapi.annotations.Role;
+import fr.ph1lou.werewolfapi.basekeys.ConfigBase;
 import fr.ph1lou.werewolfapi.game.WereWolfAPI;
 import fr.ph1lou.werewolfapi.player.utils.Formatter;
 import fr.ph1lou.werewolfapi.role.interfaces.IRole;
@@ -156,10 +157,13 @@ public class DescriptionBuilder {
                 sb.append(this.game.translate("werewolf.description.equipment",
                         Formatter.format("&equipment&", equipments.toString())));
             }
-            
+
             this.extraLines.forEach(s -> sb.append(s).append("\n"));
         }
 
+        if (game.getConfig().isConfigActive(ConfigBase.WEREWOLF_HOWLING) && this.role.isWereWolf()) {
+            sb.append(game.translate("werewolf.configurations.werewolf_howling.can_use")).append("\n");
+        }
 
         return this.game.translate("werewolf.description._") + '\n' +
                sb +

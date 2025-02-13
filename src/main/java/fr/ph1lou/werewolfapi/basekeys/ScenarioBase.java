@@ -1,6 +1,6 @@
 package fr.ph1lou.werewolfapi.basekeys;
 
-@SuppressWarnings({"unused"})
+@SuppressWarnings({ "unused" })
 
 public class ScenarioBase {
 
@@ -32,4 +32,5 @@ public class ScenarioBase {
     public static final String BETA_ZOMBIES = "werewolf.scenarios.beta_zombies.name";
     public static final String FINAL_HEAL = "werewolf.scenarios.final_heal.name";
     public static final String SAFE_MINER = "werewolf.scenarios.safe_miner.name";
+    public static final String AUTO_BREAK = "werewolf.scenarios.auto_break.name";
 }

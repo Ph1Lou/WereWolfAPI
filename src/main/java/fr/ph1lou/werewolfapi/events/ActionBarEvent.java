@@ -10,7 +10,7 @@ public class ActionBarEvent extends Event {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
     private final UUID playerUUID;
-    private String actionBar = "";
+    private final StringBuilder actionBar = new StringBuilder();
 
     public ActionBarEvent(UUID playerUUID) {
         this.playerUUID = playerUUID;
@@ -30,12 +30,8 @@ public class ActionBarEvent extends Event {
         return playerUUID;
     }
 
-    public String getActionBar() {
+    public StringBuilder getActionBar() {
         return actionBar;
-    }
-
-    public void setActionBar(String actionBar) {
-        this.actionBar = actionBar;
     }
 }
 
