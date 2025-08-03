@@ -137,18 +137,30 @@ public class VersionUtils_1_9 extends VersionUtils_1_8 {
 
     @Override
     public void setPlayerMaxHealth(@NotNull Player player, double maxHealth) {
-        AttributeInstance attribute = player.getAttribute(Attribute.valueOf("GENERIC_MAX_HEALTH"));
-        if (attribute == null) return;
-        attribute.setBaseValue(maxHealth);
+
+        try {
+            AttributeInstance attribute = player.getAttribute((Attribute) Attribute.class.getMethod("valueOf", String.class).invoke(null, "GENERIC_MAX_HEALTH"));
+
+            if (attribute == null) return;
+            attribute.setBaseValue(maxHealth);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ignored) {
+        }
+
     }
 
     @Override
     public double getPlayerMaxHealth(@NotNull Player player) {
-        AttributeInstance attribute = player.getAttribute(Attribute.valueOf("GENERIC_MAX_HEALTH"));
-        if (attribute == null) return 20;
-        return attribute.getBaseValue();
-    }
 
+        try {
+            AttributeInstance attribute = player.getAttribute((Attribute) Attribute.class.getMethod("valueOf", String.class).invoke(null, "GENERIC_MAX_HEALTH"));
+
+            if (attribute == null) return 20;
+
+            return attribute.getBaseValue();
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            return 20;
+        }
+    }
 
     @Override
     public void setTeamNameTagVisibility(Team team, boolean value) {
