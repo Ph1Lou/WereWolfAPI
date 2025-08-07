@@ -16,11 +16,15 @@ public class VersionUtils_1_13 extends VersionUtils_1_12 {
     @Override
     public void setSkullOwner(SkullMeta skull, OfflinePlayer player, String name) {
         if (skull != null) {
-            skull.setOwningPlayer(player);
+            try {
+                skull.setOwningPlayer(player);
+            } catch (Exception e) {
+                skull.setOwner(name);
+            }
         }
     }
 
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({ "unchecked" })
     @Override
     public <T> void setGameRuleValue(World world, String name, T value) {
         GameRule<T> gameRule = (GameRule<T>) GameRule.getByName(name);
