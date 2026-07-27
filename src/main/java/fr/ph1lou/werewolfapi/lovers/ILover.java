@@ -32,4 +32,13 @@ public interface ILover extends ILoverBase {
      * method call each second
      */
     void second();
+
+    /**
+     * Dissoud le couple : annule la mort liée (marque le couple comme mort),
+     * désenregistre le listener et détache tous les membres. Les membres
+     * continuent alors de jouer seuls (victoire solo). No-op par défaut ; les
+     * couples concrets surchargent cette méthode.
+     */
+    default void dissolve() {
+    }
 }

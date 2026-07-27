@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 
 public interface ICommand {
 
+    @Deprecated
     void execute(WereWolfAPI game, Player player, String[] args);
 
 }

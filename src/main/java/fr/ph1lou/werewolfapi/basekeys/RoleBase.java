@@ -6,6 +6,8 @@ public class RoleBase {
     public final static String WEREWOLF = "werewolf.roles.werewolf.display";
     public final static String INFECT = "werewolf.roles.infect_father_of_the_wolves.display";
     public final static String FALSIFIER_WEREWOLF = "werewolf.roles.falsifier_werewolf.display";
+    public final static String COUNTERFEITER_WEREWOLF = "werewolf.roles.counterfeiter_werewolf.display";
+    public final static String VAUDOUISTE = "werewolf.roles.vaudouiste.display";
     public final static String MISCHIEVOUS_WEREWOLF = "werewolf.roles.mischievous_werewolf.display";
     public final static String NAUGHTY_LITTLE_WOLF = "werewolf.roles.naughty_little_wolf.display";
     public final static String THIEF = "werewolf.roles.thief.display";

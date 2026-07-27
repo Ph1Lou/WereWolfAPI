@@ -5,6 +5,7 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 
 public interface ICommandRole {
 
+    @Deprecated
     void execute(WereWolfAPI game, IPlayerWW player, String[] args);
 
 }
