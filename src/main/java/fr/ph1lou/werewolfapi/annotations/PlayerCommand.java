@@ -23,4 +23,7 @@ public @interface PlayerCommand {
     int[] argNumbers() default {};
 
     boolean autoCompletion() default true;
+
+    /** Descripteurs des paramètres d'entrée (résolus/validés par le dispatcher). */
+    Params args() default @Params;
 }

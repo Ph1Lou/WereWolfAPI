@@ -24,4 +24,7 @@ public @interface AdminCommand {
     boolean hostAccess() default true;
 
     boolean autoCompletion() default true;
+
+    /** Descripteurs des paramètres d'entrée (résolus/validés par le dispatcher). */
+    Params args() default @Params;
 }

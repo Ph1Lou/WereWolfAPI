@@ -27,4 +27,10 @@ public @interface RoleCommand {
     boolean requiredPower() default false;
 
     boolean requiredAbilityEnabled() default true;
+
+    /** Si {@code >= 0}, requiert que le rôle ({@code ILimitedUse}) n'ait pas atteint ce nombre d'utilisations. */
+    int requiredLimitedUse() default -1;
+
+    /** Descripteurs des paramètres d'entrée (résolus/validés par le dispatcher). */
+    Params args() default @Params;
 }
