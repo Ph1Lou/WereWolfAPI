@@ -93,4 +93,6 @@ public class RoleBase {
     public final static String WITNESS = "werewolf.roles.witness.display";
     public final static String CROUPIER = "werewolf.roles.croupier.display";
     public static final String SCAPE_GOAT = "werewolf.roles.scape_goat.display";
+    public final static String BOHEMIAN = "werewolf.roles.bohemian.display";
+    public final static String DISLOYAL_WEREWOLF = "werewolf.roles.disloyal_werewolf.display";
 }
