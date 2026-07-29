@@ -39,4 +39,8 @@ public class ConfigBase {
     public static final String AMNESIAC_LOVERS = "werewolf.roles.cupid.configurations.amnesiac_lovers";
     public static final String HONOR = "werewolf.configurations.honor.name";
     public static final String WEREWOLF_HOWLING = "werewolf.configurations.werewolf_howling.name";
+    public static final String BUILDINGS = "werewolf.configurations.buildings.name";
+    public static final String URN_VOTE = "werewolf.configurations.urn_vote.name";
+    public static final String BUILDING_COUNCIL_CHAMBER = "werewolf.configurations.buildings.configurations.council_chamber";
+    public static final String BUILDING_SANCTUARY = "werewolf.configurations.buildings.configurations.sanctuary";
 }

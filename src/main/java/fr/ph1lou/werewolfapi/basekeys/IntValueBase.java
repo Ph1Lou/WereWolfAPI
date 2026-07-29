@@ -49,4 +49,11 @@ public class IntValueBase {
 
     public static final String CITIZEN_SEE_VOTE_NUMBER = "werewolf.roles.citizen.configurations.vote_see_number";
 
+    public static final String BUILDINGS_RADIUS = "werewolf.configurations.buildings.configurations.radius";
+    public static final String BUILDINGS_VOTE_OFFICE_COUNT = "werewolf.configurations.buildings.configurations.vote_office_count";
+    public static final String BUILDINGS_COUNCIL_CHAMBER_COUNT = "werewolf.configurations.buildings.configurations.council_chamber_count";
+    public static final String BUILDINGS_DECORATIVE_COUNT = "werewolf.configurations.buildings.configurations.decorative_count";
+    public static final String BUILDINGS_SANCTUARY_COUNT = "werewolf.configurations.buildings.configurations.sanctuary_count";
+    public static final String URN_CAPACITY = "werewolf.configurations.buildings.configurations.urn_capacity";
+
 }

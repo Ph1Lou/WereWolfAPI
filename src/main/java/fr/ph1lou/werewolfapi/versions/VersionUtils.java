@@ -1,12 +1,19 @@
 package fr.ph1lou.werewolfapi.versions;
 
+import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.DyeColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
+import org.bukkit.block.Banner;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -18,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class VersionUtils {
@@ -118,5 +126,82 @@ public abstract class VersionUtils {
     public abstract void setPrefixAndColor(Team team, String prefix, ChatColor chatColor);
 
     public abstract void addPlayerAbsorptionHealth(Player player, double health);
+
+    /**
+     * Pose un bloc de laine colorée (cross-version).
+     * 1.13+ : matériau coloré dédié. 1.8-1.12 : WOOL + data value.
+     */
+    public void setColoredWool(Block block, DyeColor color) {
+        DyeColor base = color == null ? DyeColor.WHITE : color;
+        Material modern = Material.matchMaterial(base.name() + "_WOOL");
+        if (modern != null) {
+            block.setType(modern, false);
+            return;
+        }
+        Material wool = Material.matchMaterial("WOOL");
+        if (wool == null) {
+            return;
+        }
+        block.setType(wool, false);
+        try {
+            Block.class.getMethod("setData", byte.class).invoke(block, woolData(base));
+        } catch (Throwable ignored) {
+        }
+    }
+
+    /**
+     * Pose une bannière colorée (cross-version). En cas d'échec, pose une laine colorée en secours.
+     */
+    public void placeColoredBanner(Block block, DyeColor color) {
+        DyeColor base = color == null ? DyeColor.WHITE : color;
+        Material banner = UniversalMaterial.WHITE_BANNER.getType();
+        if (banner != null) {
+            // applyPhysics=true pour forcer la création de la tile-entity Banner (notamment 1.8).
+            block.setType(banner, true);
+            try {
+                BlockState state = block.getState();
+                if (state instanceof Banner) {
+                    ((Banner) state).setBaseColor(base);
+                    state.update(true);
+                    return;
+                }
+            } catch (Throwable ignored) {
+            }
+        }
+        setColoredWool(block, base);
+    }
+
+    /**
+     * Envoie une particule colorée à un joueur.
+     * 1.8-1.12 : paquet NMS SPELL_MOB coloré. 1.13+ : spawnParticle + DustOptions.
+     */
+    public abstract void spawnColoredParticle(Player player, Location location, Color color);
+
+    /**
+     * Pose un bloc (avec orientation si states non vide).
+     * 1.8-1.12 : setType + setData (byte legacy, escaliers). 1.13+ : setBlockData.
+     */
+    public abstract void setBlock(Block block, Material material, Map<String, String> states);
+
+    private static byte woolData(DyeColor color) {
+        switch (color) {
+            case ORANGE: return 1;
+            case MAGENTA: return 2;
+            case LIGHT_BLUE: return 3;
+            case YELLOW: return 4;
+            case LIME: return 5;
+            case PINK: return 6;
+            case GRAY: return 7;
+            case LIGHT_GRAY: return 8;
+            case CYAN: return 9;
+            case PURPLE: return 10;
+            case BLUE: return 11;
+            case BROWN: return 12;
+            case GREEN: return 13;
+            case RED: return 14;
+            case BLACK: return 15;
+            default: return 0;
+        }
+    }
 }
 

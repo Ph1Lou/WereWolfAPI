@@ -9,11 +9,13 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -34,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings({ "deprecation" })
@@ -359,6 +362,67 @@ public class VersionUtils_1_8 extends VersionUtils {
             entityPlayer.getClass().getMethod("setAbsorptionHearts", float.class).invoke(entityPlayer, (float) health);
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void spawnColoredParticle(Player player, Location location, Color color) {
+        try {
+            Class<?> enumParticle = NMSUtils.getNMSClass("EnumParticle");
+            Object particle = enumParticle.getField("SPELL_MOB").get(null);
+            Class<?> packetClass = NMSUtils.getNMSClass("PacketPlayOutWorldParticles");
+            Constructor<?> ctor = packetClass.getConstructor(
+                    enumParticle, boolean.class,
+                    float.class, float.class, float.class,
+                    float.class, float.class, float.class,
+                    float.class, int.class, int[].class);
+            float r = color.getRed() / 255f;
+            float g = color.getGreen() / 255f;
+            float b = color.getBlue() / 255f;
+            Object packet = ctor.newInstance(
+                    particle, true,
+                    (float) location.getX(), (float) location.getY(), (float) location.getZ(),
+                    r, g, b, 1f, 0, new int[0]);
+            NMSUtils.sendPacket(player, packet);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    @Override
+    public void setBlock(Block block, Material material, Map<String, String> states) {
+        block.setType(material, false);
+        if (states == null || states.isEmpty()) {
+            return;
+        }
+        if (!material.name().contains("STAIRS")) {
+            return;
+        }
+        byte data = 0;
+        String facing = states.get("facing");
+        if (facing != null) {
+            switch (facing.toUpperCase()) {
+                case "EAST":
+                    data = 0;
+                    break;
+                case "WEST":
+                    data = 1;
+                    break;
+                case "SOUTH":
+                    data = 2;
+                    break;
+                case "NORTH":
+                    data = 3;
+                    break;
+                default:
+                    break;
+            }
+        }
+        if ("TOP".equalsIgnoreCase(states.get("half"))) {
+            data |= 4;
+        }
+        try {
+            Block.class.getMethod("setData", byte.class).invoke(block, data);
+        } catch (Throwable ignored) {
         }
     }
 }
