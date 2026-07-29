@@ -394,7 +394,96 @@ public class VersionUtils_1_8 extends VersionUtils {
         if (states == null || states.isEmpty()) {
             return;
         }
-        if (!material.name().contains("STAIRS")) {
+        String name = material.name();
+        if (name.contains("TRAPDOOR")) {
+            byte data = 0;
+            String f = states.get("facing");
+            if (f != null) {
+                switch (f.toUpperCase()) {
+                    case "NORTH":
+                        data = 0;
+                        break;
+                    case "SOUTH":
+                        data = 1;
+                        break;
+                    case "WEST":
+                        data = 2;
+                        break;
+                    case "EAST":
+                        data = 3;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if ("TRUE".equalsIgnoreCase(states.get("open"))) {
+                data |= 4;
+            }
+            if ("TOP".equalsIgnoreCase(states.get("half"))) {
+                data |= 8;
+            }
+            setData(block, data);
+            return;
+        }
+        if (name.equals("TORCH")) {
+            byte data;
+            String f = states.get("facing");
+            if (f == null) {
+                data = 5;
+            } else {
+                switch (f.toUpperCase()) {
+                    case "EAST":
+                        data = 1;
+                        break;
+                    case "WEST":
+                        data = 2;
+                        break;
+                    case "SOUTH":
+                        data = 3;
+                        break;
+                    case "NORTH":
+                        data = 4;
+                        break;
+                    default:
+                        data = 5;
+                        break;
+                }
+            }
+            setData(block, data);
+            return;
+        }
+        if (name.contains("DOOR")) {
+            byte data = 0;
+            if ("UPPER".equalsIgnoreCase(states.get("half"))) {
+                data = 8;
+                if ("RIGHT".equalsIgnoreCase(states.get("hinge"))) {
+                    data |= 1;
+                }
+            } else {
+                String f = states.get("facing");
+                if (f != null) {
+                    switch (f.toUpperCase()) {
+                        case "EAST":
+                            data = 0;
+                            break;
+                        case "SOUTH":
+                            data = 1;
+                            break;
+                        case "WEST":
+                            data = 2;
+                            break;
+                        case "NORTH":
+                            data = 3;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            setData(block, data);
+            return;
+        }
+        if (!name.contains("STAIRS")) {
             return;
         }
         byte data = 0;
@@ -420,6 +509,10 @@ public class VersionUtils_1_8 extends VersionUtils {
         if ("TOP".equalsIgnoreCase(states.get("half"))) {
             data |= 4;
         }
+        setData(block, data);
+    }
+
+    private void setData(Block block, byte data) {
         try {
             Block.class.getMethod("setData", byte.class).invoke(block, data);
         } catch (Throwable ignored) {

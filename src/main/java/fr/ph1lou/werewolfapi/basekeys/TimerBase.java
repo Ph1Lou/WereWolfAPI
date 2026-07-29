@@ -37,6 +37,7 @@ public class TimerBase {
     public static final String WILL_O_THE_WISP_COOLDOWN_TP = "werewolf.roles.will_o_the_wisp.configurations.cooldown_tp";
     public static final String WILL_O_THE_WISP_COOLDOWN_INCENDIARY_MADNESS = "werewolf.roles.will_o_the_wisp.configurations.cooldown_madness";
     public static final String WILL_O_THE_WISP_DURATION_INCENDIARY_MADNESS = "werewolf.roles.will_o_the_wisp.configurations.duration_madness";
+    public static final String RENEGADE_DISCOVERY = "werewolf.roles.renegade.timers.discovery";
 
     public static final String URN_VOTE_1_START = "werewolf.configurations.buildings.timers.urn_vote_1_start.name";
     public static final String URN_VOTE_2_START = "werewolf.configurations.buildings.timers.urn_vote_2_start.name";

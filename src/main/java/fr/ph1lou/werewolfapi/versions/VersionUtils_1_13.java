@@ -17,8 +17,10 @@ import org.bukkit.block.data.Bisected;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.Orientable;
+import org.bukkit.block.data.type.Door;
 import org.bukkit.block.data.type.Slab;
 import org.bukkit.block.data.type.Stairs;
+import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
@@ -112,6 +114,23 @@ public class VersionUtils_1_13 extends VersionUtils_1_12 {
                 try {
                     ((Orientable) data).setAxis(Axis.valueOf(axis.toUpperCase()));
                 } catch (IllegalArgumentException ignored) {
+                }
+            }
+            if (data instanceof Door) {
+                Door door = (Door) data;
+                String hinge = states.get("hinge");
+                if (hinge != null) {
+                    try {
+                        door.setHinge(Door.Hinge.valueOf(hinge.toUpperCase()));
+                    } catch (IllegalArgumentException ignored) {
+                    }
+                }
+                door.setOpen(false);
+            }
+            if (data instanceof TrapDoor) {
+                String open = states.get("open");
+                if (open != null) {
+                    ((TrapDoor) data).setOpen(Boolean.parseBoolean(open));
                 }
             }
             block.setBlockData(data, false);

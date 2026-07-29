@@ -97,6 +97,26 @@ public class StructurePaster {
                 return Material.matchMaterial("SMOOTH_STAIRS");
             case "OAK_STAIRS":
                 return Material.matchMaterial("WOOD_STAIRS");
+            case "OAK_DOOR":
+                return Material.matchMaterial("WOODEN_DOOR");
+            case "OAK_TRAPDOOR":
+                return Material.matchMaterial("TRAPDOOR");
+            case "OAK_FENCE":
+                return Material.matchMaterial("FENCE");
+            case "WALL_TORCH":
+                return Material.matchMaterial("TORCH");
+            case "COBWEB":
+                return Material.matchMaterial("WEB");
+            case "WHITE_CARPET":
+                return Material.matchMaterial("CARPET");
+            case "BRICKS":
+                return Material.matchMaterial("BRICK");
+            case "SPRUCE_STAIRS":
+                return Material.matchMaterial("SPRUCE_WOOD_STAIRS");
+            case "BIRCH_STAIRS":
+                return Material.matchMaterial("BIRCH_WOOD_STAIRS");
+            case "JUNGLE_STAIRS":
+                return Material.matchMaterial("JUNGLE_WOOD_STAIRS");
             default:
                 return null;
         }

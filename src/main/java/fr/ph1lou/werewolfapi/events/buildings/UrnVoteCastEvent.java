@@ -3,6 +3,7 @@ package fr.ph1lou.werewolfapi.events.buildings;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
+import fr.ph1lou.werewolfapi.buildings.IVoteOffice;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -19,13 +20,16 @@ public class UrnVoteCastEvent extends Event implements Cancellable {
     private final IPlayerWW target;
     private final boolean blank;
     private final int session;
+    @Nullable
+    private final IVoteOffice office;
     private boolean cancel = false;
 
-    public UrnVoteCastEvent(IPlayerWW voter, @Nullable IPlayerWW target, boolean blank, int session) {
+    public UrnVoteCastEvent(IPlayerWW voter, @Nullable IPlayerWW target, boolean blank, int session, @Nullable IVoteOffice office) {
         this.voter = voter;
         this.target = target;
         this.blank = blank;
         this.session = session;
+        this.office = office;
     }
 
     public static HandlerList getHandlerList() {
@@ -54,6 +58,11 @@ public class UrnVoteCastEvent extends Event implements Cancellable {
 
     public int getSession() {
         return session;
+    }
+
+    @Nullable
+    public IVoteOffice getOffice() {
+        return office;
     }
 
     @Override

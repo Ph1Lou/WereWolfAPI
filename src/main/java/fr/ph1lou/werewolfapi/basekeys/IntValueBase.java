@@ -44,6 +44,7 @@ public class IntValueBase {
     public static final String SPY_DAY = "werewolf.roles.spy.day";
     public static final String AURAMANCER_DISTANCE = "werewolf.roles.auramancer.configurations.distance";
     public static final String ROMULUS_REMUS_DISTANCE_BROTHER = "werewolf.roles.romulus_remus.configuration.distance_brother";
+    public static final String RENEGADE_DISTANCE = "werewolf.roles.renegade.configurations.distance";
 
     public static final String VOTE_DISTANCE = "werewolf.configurations.vote.configurations.distance";
 

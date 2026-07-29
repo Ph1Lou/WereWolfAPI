@@ -1,5 +1,6 @@
 package fr.ph1lou.werewolfapi.game;
 
+import fr.ph1lou.werewolfapi.buildings.IBuildingsManager;
 import fr.ph1lou.werewolfapi.enums.Day;
 import fr.ph1lou.werewolfapi.enums.StateGame;
 import fr.ph1lou.werewolfapi.lovers.ILoverManager;
@@ -252,4 +253,6 @@ public interface WereWolfAPI {
     void addScheduleId(int idSchedule);
 
     IScoreboard getScoreboard();
+
+    IBuildingsManager getBuildingsManager();
 }
