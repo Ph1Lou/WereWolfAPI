@@ -101,6 +101,13 @@ public interface IPlayerWW {
     void clearPlayer();
 
     /**
+     * Set player walk speed (no effect if player is disconnected)
+     *
+     * @param walkSpeed the walk speed
+     */
+    void setWalkSpeed(float walkSpeed);
+
+    /**
      * Get all Potion Modifiers of the player
      */
     Set<? extends PotionModifier> getPotionModifiers();
@@ -341,6 +348,12 @@ public interface IPlayerWW {
     ChatColor getColor(IPlayerWW playerWW);
 
     void setColor(IPlayerWW playerWW, ChatColor chatColor);
+
+    ChatColor getPastilleColor(IPlayerWW playerWW);
+
+    void setPastilleColor(IPlayerWW playerWW, ChatColor chatColor);
+
+    void removePastille(IPlayerWW playerWW);
 
     Set<IPlayerWW> getPlayersMet();
 

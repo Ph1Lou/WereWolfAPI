@@ -1,30 +1,31 @@
-package fr.ph1lou.werewolfapi.events.roles.disloyal_werewolf;
+package fr.ph1lou.werewolfapi.events.buildings;
 
-import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
-import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Set;
+import java.util.Map;
 
-@StatisticsEvent(key = "werewolf.disloyal_harm")
-@TellableStoryEvent
-public class DisloyalHarmEvent extends Event implements Cancellable {
+@StatisticsEvent(key = "werewolf.urn_vote_result")
+public class UrnVoteResultEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    private final IPlayerWW playerWW;
-    private final Set<IPlayerWW> targets;
+    private IPlayerWW playerWW;
+    private int votes;
+    private int session;
+    private final Map<IPlayerWW, Integer> totals;
     private boolean cancel = false;
 
-    public DisloyalHarmEvent(IPlayerWW playerWW, Set<IPlayerWW> targets) {
+    public UrnVoteResultEvent(IPlayerWW playerWW, int votes, int session, Map<IPlayerWW, Integer> totals) {
         this.playerWW = playerWW;
-        this.targets = targets;
+        this.votes = votes;
+        this.session = session;
+        this.totals = totals;
     }
 
     public static HandlerList getHandlerList() {
@@ -42,9 +43,24 @@ public class DisloyalHarmEvent extends Event implements Cancellable {
         return playerWW;
     }
 
-    @StatisticsTargets
-    public Set<IPlayerWW> getTargets() {
-        return targets;
+    public void setPlayerWW(IPlayerWW playerWW) {
+        this.playerWW = playerWW;
+    }
+
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
+    public int getSession() {
+        return session;
+    }
+
+    public Map<IPlayerWW, Integer> getTotals() {
+        return totals;
     }
 
     @Override

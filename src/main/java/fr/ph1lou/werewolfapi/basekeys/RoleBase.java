@@ -95,9 +95,11 @@ public class RoleBase {
     public static final String SCAPE_GOAT = "werewolf.roles.scape_goat.display";
     public final static String BOHEMIAN = "werewolf.roles.bohemian.display";
     public final static String DISLOYAL_WEREWOLF = "werewolf.roles.disloyal_werewolf.display";
+    public final static String MESQUIN_WEREWOLF = "werewolf.roles.mesquin_werewolf.display";
     public final static String AVOCAT = "werewolf.roles.avocat.display";
     public final static String PROPHETESS = "werewolf.roles.prophetess.display";
     public final static String RENEGADE = "werewolf.roles.renegade.display";
     public final static String RONIN = "werewolf.roles.ronin.display";
     public final static String PYROMANE = "werewolf.roles.pyromane.display";
+    public final static String ALERTER_WEREWOLF = "werewolf.roles.alerter_werewolf.display";
 }

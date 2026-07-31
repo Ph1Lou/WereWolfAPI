@@ -23,4 +23,7 @@ public class EventBase {
     public static final String LOVE_AT_FIRST_SIGHT = "werewolf.random_events.love_at_first_sight.name";
     public static final String CUPID_INDECISIVE = "werewolf.random_events.cupid_indecisive.name";
     public static final String BLOOD_MOON = "werewolf.random_events.blood_moon.name";
+    public static final String CUPID_RANCUNIER = "werewolf.random_events.cupid_rancunier.name";
+    public static final String NIGHT_ASSEMBLY = "werewolf.random_events.night_assembly.name";
+    public static final String GRI_GRI_IMMUNITY = "werewolf.random_events.gri_gri_immunity.name";
 }

@@ -44,4 +44,6 @@ public class TimerBase {
     public static final String URN_VOTE_3_START = "werewolf.configurations.buildings.timers.urn_vote_3_start.name";
     public static final String URN_VOTE_DURATION = "werewolf.configurations.buildings.timers.urn_vote_duration.name";
 
+    public static final String GRI_GRI_SPAWN = "werewolf.random_events.gri_gri_immunity.timers.spawn.name";
+
 }
