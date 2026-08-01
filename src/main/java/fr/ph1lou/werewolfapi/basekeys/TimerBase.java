@@ -37,6 +37,26 @@ public class TimerBase {
     public static final String WILL_O_THE_WISP_COOLDOWN_INCENDIARY_MADNESS = "werewolf.roles.will_o_the_wisp.configurations.cooldown_madness";
     public static final String WILL_O_THE_WISP_DURATION_INCENDIARY_MADNESS = "werewolf.roles.will_o_the_wisp.configurations.duration_madness";
     public static final String RENEGADE_DISCOVERY = "werewolf.roles.renegade.timers.discovery";
+    public static final String BOHEMIAN_COOLDOWN = "werewolf.roles.bohemian.timers.cooldown";
+    public static final String VAUDOUISTE_DOLL_DURATION = "werewolf.roles.vaudouiste.timers.doll_duration";
+    public static final String ALPHA_ABSORPTION_DURATION = "werewolf.roles.alpha_werewolf.timers.absorption_duration";
+    public static final String AMNESIAC_WEREWOLF_REVEAL_MIN = "werewolf.roles.amnesiac_werewolf.timers.reveal_min";
+    public static final String AMNESIAC_WEREWOLF_REVEAL_MAX = "werewolf.roles.amnesiac_werewolf.timers.reveal_max";
+    public static final String BENEFACTOR_COOLDOWN = "werewolf.roles.benefactor.timers.cooldown";
+    public static final String BENEFACTOR_REGEN_INTERVAL = "werewolf.roles.benefactor.timers.regen_interval";
+    public static final String HUNTER_SHOOT_WINDOW = "werewolf.roles.hunter.timers.shoot_window";
+    public static final String POACHER_CARCASS_DURATION = "werewolf.roles.poacher.timers.carcass_duration";
+    public static final String CITIZEN_REDIRECT_WINDOW = "werewolf.roles.citizen.timers.redirect_window";
+    public static final String RIVAL_ANALYSE_COOLDOWN = "werewolf.roles.rival.timers.analyse_cooldown";
+    public static final String RIVAL_DEVINER_COOLDOWN = "werewolf.roles.rival.timers.deviner_cooldown";
+    public static final String RIVAL_ISOLATE_DURATION = "werewolf.roles.rival.timers.isolate_duration";
+    public static final String RIVAL_REGEN_INTERVAL = "werewolf.roles.rival.timers.regen_interval";
+    public static final String PYROMANE_COVER_COOLDOWN = "werewolf.roles.pyromane.timers.cover_cooldown";
+    public static final String PYROMANE_HEART_LOSS_DURATION = "werewolf.roles.pyromane.timers.heart_loss_duration";
+    public static final String PYROMANE_FIRE_DURATION = "werewolf.roles.pyromane.timers.fire_duration";
+    public static final String PYROMANE_IGNITION_DELAY_MIN = "werewolf.roles.pyromane.timers.ignition_delay_min";
+    public static final String PYROMANE_IGNITION_DELAY_MAX = "werewolf.roles.pyromane.timers.ignition_delay_max";
+    public static final String RONIN_HEMORRHAGE_DELAY = "werewolf.roles.ronin.timers.hemorrhage_delay";
 
     public static final String URN_VOTE_1_START = "werewolf.configurations.buildings.timers.urn_vote_1_start.name";
     public static final String URN_VOTE_2_START = "werewolf.configurations.buildings.timers.urn_vote_2_start.name";
