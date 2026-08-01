@@ -349,6 +349,8 @@ public interface IPlayerWW {
 
     void setColor(IPlayerWW playerWW, ChatColor chatColor);
 
+    boolean hasColor(IPlayerWW playerWW);
+
     ChatColor getPastilleColor(IPlayerWW playerWW);
 
     void setPastilleColor(IPlayerWW playerWW, ChatColor chatColor);
@@ -368,5 +370,9 @@ public interface IPlayerWW {
     int getHonor();
 
     void modifyHonor(int honorModifier);
+
+    void modifyHonorTowardZero();
+
+    void modifyHonorAwayFromZero();
 }
 

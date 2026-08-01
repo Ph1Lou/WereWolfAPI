@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.disloyal_werewolf;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 
 @StatisticsEvent(key = "werewolf.disloyal_harm")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.DISLOYAL_WEREWOLF, key = "werewolf.tellable_story.disloyal_harm")
 public class DisloyalHarmEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

@@ -80,5 +80,10 @@ public class VersionUtils_1_15 extends VersionUtils_1_14 {
     public void addPlayerAbsorptionHealth(Player player, double health) {
         player.setAbsorptionAmount(health);
     }
+
+    @Override
+    public void removePlayerAbsorptionHealth(Player player, double health) {
+        player.setAbsorptionAmount(Math.max(0, player.getAbsorptionAmount() - health));
+    }
 }
 

@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.comedian;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 @StatisticsEvent(key = "werewolf.mask")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.COMEDIAN, key = "werewolf.tellable_story.use_mask")
 public class UseMaskEvent extends Event implements Cancellable {
 
     private static final String[] masks = {"werewolf.mask_strength", "werewolf.mask_speed", "werewolf.mask_resistance"};

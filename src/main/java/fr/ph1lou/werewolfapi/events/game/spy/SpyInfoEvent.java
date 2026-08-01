@@ -6,7 +6,7 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@TellableStoryEvent
+@TellableStoryEvent(key = "werewolf.tellable_story.spy_info")
 public class SpyInfoEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

@@ -1,13 +1,14 @@
 package fr.ph1lou.werewolfapi.events.roles.benefactor;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.BENEFACTOR, key = "werewolf.tellable_story.benefactor_give_heart")
 @StatisticsEvent(key = "werewolf.benefactor_give_heart_event")
 public class BenefactorGiveHeartEvent extends SelectionEvent {
 

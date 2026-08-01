@@ -1,4 +1,4 @@
-package fr.ph1lou.werewolfapi.events.roles.flute_player;
+package fr.ph1lou.werewolfapi.events.roles.infect_father_of_the_wolves;
 
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
@@ -6,11 +6,12 @@ import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@StatisticsEvent(key = "werewolf.find_flute")
-public class FindFluteEvent extends SelectionEvent {
+@StatisticsEvent(key = "werewolf.corruption_complete")
+public class CorruptionCompleteEvent extends SelectionEvent {
+
     private static final HandlerList HANDLERS_LIST = new HandlerList();
 
-    public FindFluteEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
+    public CorruptionCompleteEvent(IPlayerWW playerWW, IPlayerWW targetWW) {
         super(playerWW, targetWW);
     }
 

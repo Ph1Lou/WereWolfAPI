@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.necromancer;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTarget;
 import fr.ph1lou.werewolfapi.events.game.life_cycle.ResurrectionEvent;
@@ -9,7 +10,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.necromancer_event")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.NECROMANCER, key = "werewolf.tellable_story.necromancer_resurrection")
 public class NecromancerResurrectionEvent extends ResurrectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.counterfeiter_werewolf;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.enums.Aura;
@@ -10,7 +11,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.counterfeiter_falsify_event")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.COUNTERFEITER_WEREWOLF, key = "werewolf.tellable_story.counterfeiter_falsify")
 public class CounterfeiterFalsifyEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

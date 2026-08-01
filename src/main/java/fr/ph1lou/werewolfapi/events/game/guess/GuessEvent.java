@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.guess_event")
-@TellableStoryEvent
+@TellableStoryEvent(key = "werewolf.tellable_story.guess")
 public class GuessEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

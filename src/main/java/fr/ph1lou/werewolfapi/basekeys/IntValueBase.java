@@ -46,6 +46,7 @@ public class IntValueBase {
     public static final String ROMULUS_REMUS_DISTANCE_BROTHER = "werewolf.roles.romulus_remus.configuration.distance_brother";
     public static final String RENEGADE_DISTANCE = "werewolf.roles.renegade.configurations.distance";
     public static final String ALERTER_DISTANCE = "werewolf.roles.alerter_werewolf.distance";
+    public static final String INFECT_CORRUPTION_TIME = "werewolf.roles.infect_father_of_the_wolves.configurations.corruption_time";
 
     public static final String VOTE_DISTANCE = "werewolf.configurations.vote.configurations.distance";
 

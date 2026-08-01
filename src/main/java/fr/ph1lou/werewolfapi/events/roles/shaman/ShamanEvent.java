@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.shaman;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -8,7 +9,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.shaman")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.SHAMAN, key = "werewolf.tellable_story.shaman")
 public class ShamanEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

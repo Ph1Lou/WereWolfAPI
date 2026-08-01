@@ -2,6 +2,7 @@ package fr.ph1lou.werewolfapi.events.roles.priestess;
 
 import fr.ph1lou.werewolfapi.annotations.SpyEvent;
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsExtraInfo;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
@@ -10,7 +11,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.priestess_spec")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.PRIESTESS, key = "werewolf.tellable_story.priestess")
 @SpyEvent
 public class PriestessEvent extends SelectionEvent {
 

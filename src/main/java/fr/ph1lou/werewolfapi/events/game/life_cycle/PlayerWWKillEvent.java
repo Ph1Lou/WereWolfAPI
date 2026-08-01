@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @StatisticsEvent(key = "werewolf.kill_event")
-@TellableStoryEvent
+@TellableStoryEvent(key = "werewolf.tellable_story.player_kill")
 public class PlayerWWKillEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

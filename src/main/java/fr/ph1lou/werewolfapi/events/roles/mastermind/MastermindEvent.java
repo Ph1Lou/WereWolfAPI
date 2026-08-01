@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.mastermind;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -9,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 
 @StatisticsEvent(key = "werewolf.mastermind_event")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.MASTERMIND, key = "werewolf.tellable_story.mastermind")
 public class MastermindEvent extends SelectionEvent {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

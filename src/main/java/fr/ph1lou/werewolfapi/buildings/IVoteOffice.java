@@ -1,13 +1,15 @@
 package fr.ph1lou.werewolfapi.buildings;
 
+import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.Location;
 
 import java.util.Map;
-import java.util.UUID;
 
 public interface IVoteOffice extends IBuilding {
 
     Location getUrnLocation();
+
+    Location getChestLocation();
 
     int getBaseCapacity();
 
@@ -21,7 +23,13 @@ public interface IVoteOffice extends IBuilding {
 
     void reduceCapacity(int amount);
 
-    Map<UUID, Integer> getVotesAgainst();
+    boolean hasBlankVoted(IPlayerWW player);
+
+    void recordVoteAgainst(IPlayerWW target);
+
+    void recordBlank(IPlayerWW player);
+
+    Map<IPlayerWW, Integer> getVotesAgainst();
 
     int getBlankVotes();
 

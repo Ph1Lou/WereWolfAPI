@@ -5,6 +5,7 @@ import fr.ph1lou.werewolfapi.utils.Utils;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import java.util.function.Function;
+import java.util.regex.Matcher;
 
 public class Formatter {
 
@@ -52,6 +53,6 @@ public class Formatter {
 
     public String handle(WereWolfAPI wereWolfAPI, String message) {
         return message.replaceAll(StringEscapeUtils.escapeJava(this.pattern),
-                String.valueOf(this.supplier.apply(wereWolfAPI)));
+                Matcher.quoteReplacement(String.valueOf(this.supplier.apply(wereWolfAPI))));
     }
 }

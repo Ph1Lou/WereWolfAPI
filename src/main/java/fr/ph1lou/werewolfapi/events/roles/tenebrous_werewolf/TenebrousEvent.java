@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.tenebrous_werewolf;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsTargets;
@@ -16,7 +17,7 @@ import java.util.Set;
 
 
 @StatisticsEvent(key = "werewolf.tenebrous")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.TENEBROUS_WEREWOLF, key = "werewolf.tellable_story.tenebrous_blind")
 public class TenebrousEvent extends Event implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();

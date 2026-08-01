@@ -9,7 +9,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@TellableStoryEvent
+@TellableStoryEvent(key = "werewolf.tellable_story.player_resurrection")
 @StatisticsEvent(key = "werewolf.revive")
 public class ResurrectionEvent extends Event implements Cancellable {
 

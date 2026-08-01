@@ -166,15 +166,15 @@ public class Utils {
 
     public static boolean compareDistance(WereWolfAPI wereWolfAPI, Location location1, Location location2, String distance) {
         return location1.getWorld() == location2.getWorld() &&
-               location1.distance(location2) < wereWolfAPI.getConfig().getValue(distance);
+                location1.distance(location2) < wereWolfAPI.getConfig().getValue(distance);
     }
 
     public static TextComponent getDiscord(WereWolfAPI api) {
         return VersionUtils.getVersionUtils().createClickableText(
                 api.translate("werewolf.utils.bar") + "\n" +
-                api.translate(Prefix.YELLOW, "werewolf.bug") + "\n" +
-                api.translate("werewolf.utils.bar"),
-                "https://discord.gg/GXXCVUA",
+                        api.translate(Prefix.YELLOW, "werewolf.bug") + "\n" +
+                        api.translate("werewolf.utils.bar"),
+                "https://discord.gg/cUPvgEXuh5",
                 ClickEvent.Action.OPEN_URL);
     }
 

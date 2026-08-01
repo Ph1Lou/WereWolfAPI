@@ -1,13 +1,14 @@
 package fr.ph1lou.werewolfapi.events.roles.bloodthirsty_werewolf;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.events.roles.SelectionEvent;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.BLOODTHIRSTY_WEREWOLF, key = "werewolf.tellable_story.bloodthirsty_hunt")
 @StatisticsEvent(key = "werewolf.bloodthirsty_werewolf_hunt_down_event")
 public class BloodthirstyWerewolfHuntDownEvent extends SelectionEvent {
     private static final HandlerList HANDLERS_LIST = new HandlerList();

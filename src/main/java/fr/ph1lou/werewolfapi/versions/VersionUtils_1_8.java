@@ -3,8 +3,8 @@ package fr.ph1lou.werewolfapi.versions;
 
 import fr.ph1lou.werewolfapi.GetWereWolfAPI;
 import fr.ph1lou.werewolfapi.utils.NMSUtils;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -23,6 +23,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
@@ -93,6 +94,22 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
+    public void addPotionEffect(Player player, PotionEffectType type, int duration, int amplifier, boolean ambient, boolean particles, boolean icon) {
+        try {
+            Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
+            Class<?> mobEffectClass = NMSUtils.getNMSClass("MobEffect");
+            boolean showParticles = particles && icon;
+            Object mobEffect = mobEffectClass
+                    .getConstructor(int.class, int.class, int.class, boolean.class, boolean.class)
+                    .newInstance(type.getId(), duration, amplifier, ambient, showParticles);
+            NMSUtils.getMethod(entityPlayer.getClass(), "addEffect", mobEffectClass).invoke(entityPlayer, mobEffect);
+        } catch (Exception e) {
+            e.printStackTrace();
+            player.addPotionEffect(new PotionEffect(type, duration, amplifier, ambient, particles));
+        }
+    }
+
+    @Override
     public void hidePlayer(Player viewer, Player player) {
         viewer.hidePlayer(player);
     }
@@ -112,11 +129,12 @@ public class VersionUtils_1_8 extends VersionUtils {
         TextComponent textComponent = new TextComponent(text);
         textComponent.setClickEvent(new ClickEvent(action, command));
         if (hover != null) {
+            TextComponent hoverComponent = new TextComponent(hover);
+            hoverComponent.setColor(net.md_5.bungee.api.ChatColor.WHITE);
             textComponent.setHoverEvent(
                     new HoverEvent(
                             HoverEvent.Action.SHOW_TEXT,
-                            new ComponentBuilder(hover)
-                                    .create()));
+                            new BaseComponent[]{hoverComponent}));
         }
         return textComponent;
     }
@@ -146,10 +164,80 @@ public class VersionUtils_1_8 extends VersionUtils {
     }
 
     @Override
+    public void sendEndMessage(@NotNull Player player, @NotNull String message,
+                               @NotNull String playerName, @Nullable String hover) {
+        int idx = message.indexOf(playerName);
+        StringBuilder json = new StringBuilder();
+
+        if (idx < 0) {
+            json.append("{\"text\":\"").append(escapeJsonString(message)).append("\"}");
+        } else {
+            int afterIdx = idx + playerName.length();
+            String beforeText = message.substring(0, idx);
+            String afterText = afterIdx < message.length() ? message.substring(afterIdx) : "";
+            String restoreCodes = extractActiveColorCodes(beforeText);
+
+            json.append("{\"text\":\"\",\"extra\":[");
+            boolean needComma = false;
+            if (!beforeText.isEmpty()) {
+                json.append("{\"text\":\"").append(escapeJsonString(beforeText)).append("\"}");
+                needComma = true;
+            }
+            if (needComma) json.append(",");
+            json.append("{\"text\":\"").append(escapeJsonString("§b§n" + playerName)).append("\"");
+            if (hover != null && !hover.isEmpty()) {
+                json.append(",\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"")
+                    .append(escapeJsonString(hover)).append("\"}}");
+            }
+            json.append("}");
+            if (!afterText.isEmpty()) {
+                json.append(",{\"text\":\"").append(escapeJsonString("§r" + restoreCodes + afterText)).append("\"}");
+            }
+            json.append("]}");
+        }
+
+        try {
+            Object chatComponent = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0]
+                    .getMethod("a", String.class).invoke(null, json.toString());
+            Class<?> packetPlayOutChatClass = NMSUtils.getNMSClass("PacketPlayOutChat");
+            Class<?> iChatBaseComponentClass = NMSUtils.getNMSClass("IChatBaseComponent");
+            Object packet = packetPlayOutChatClass
+                    .getConstructor(iChatBaseComponentClass, byte.class)
+                    .newInstance(chatComponent, (byte) 0);
+            NMSUtils.sendPacket(player, packet);
+        } catch (Exception e) {
+            e.printStackTrace();
+            player.sendMessage(message);
+        }
+    }
+
+    protected static String escapeJsonString(String s) {
+        if (s == null) return "";
+        StringBuilder sb = new StringBuilder(s.length() + 2);
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            switch (c) {
+                case '"':  sb.append("\\\""); break;
+                case '\\': sb.append("\\\\"); break;
+                case '\n': sb.append("\\n"); break;
+                case '\r': sb.append("\\r"); break;
+                case '\t': sb.append("\\t"); break;
+                default:
+                    if (c < 0x20) {
+                        sb.append(String.format("\\u%04x", (int) c));
+                    } else {
+                        sb.append(c);
+                    }
+            }
+        }
+        return sb.toString();
+    }
+
+    @Override
     public void sendTitle(@NotNull Player player, String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime) {
         try {
             Object chatTitle = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class)
-                    .invoke(null, "{\"text\": \"" + title + "\"}");
+                    .invoke(null, "{\"text\": \"" + escapeJsonString(title) + "\"}");
             Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutTitle").getConstructor(
                     NMSUtils.getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], NMSUtils.getNMSClass("IChatBaseComponent"),
                     int.class, int.class, int.class);
@@ -158,7 +246,7 @@ public class VersionUtils_1_8 extends VersionUtils {
                     fadeInTime, showTime, fadeOutTime);
 
             Object chatsTitle = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class)
-                    .invoke(null, "{\"text\": \"" + subtitle + "\"}");
+                    .invoke(null, "{\"text\": \"" + escapeJsonString(subtitle) + "\"}");
             Constructor<?> timingTitleConstructor = NMSUtils.getNMSClass("PacketPlayOutTitle").getConstructor(
                     NMSUtils.getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], NMSUtils.getNMSClass("IChatBaseComponent"),
                     int.class, int.class, int.class);
@@ -187,7 +275,7 @@ public class VersionUtils_1_8 extends VersionUtils {
                 Class<?> chatSerializerClass = NMSUtils.getNMSClass("ChatSerializer");
                 Class<?> iChatBaseComponentClass = NMSUtils.getNMSClass("IChatBaseComponent");
                 Method m3 = chatSerializerClass.getDeclaredMethod("a", String.class);
-                Object cbc = iChatBaseComponentClass.cast(m3.invoke(chatSerializerClass, "{\"text\": \"" + message + "\"}"));
+                Object cbc = iChatBaseComponentClass.cast(m3.invoke(chatSerializerClass, "{\"text\": \"" + escapeJsonString(message) + "\"}"));
                 packet = packetPlayOutChatClass.getConstructor(new Class<?>[] { iChatBaseComponentClass, byte.class }).newInstance(cbc, (byte) 2);
             } else {
                 Class<?> chatComponentTextClass = NMSUtils.getNMSClass("ChatComponentText");
@@ -229,11 +317,11 @@ public class VersionUtils_1_8 extends VersionUtils {
             footer += "\n§7Plugin made by §bPh1Lou";
         }
 
-        header = header.replaceAll("%player%", player.getDisplayName());
-        footer = footer.replaceAll("%player%", player.getDisplayName());
+        header = header.replace("%player%", player.getDisplayName());
+        footer = footer.replace("%player%", player.getDisplayName());
         try {
-            Object tabHeader = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + header + "\"}");
-            Object tabFooter = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + footer + "\"}");
+            Object tabHeader = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + escapeJsonString(header) + "\"}");
+            Object tabFooter = NMSUtils.getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + escapeJsonString(footer) + "\"}");
             Constructor<?> titleConstructor = NMSUtils.getNMSClass("PacketPlayOutPlayerListHeaderFooter").getConstructor();
             Object packet = titleConstructor.newInstance();
             try {
@@ -360,6 +448,19 @@ public class VersionUtils_1_8 extends VersionUtils {
         try {
             Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
             entityPlayer.getClass().getMethod("setAbsorptionHearts", float.class).invoke(entityPlayer, (float) health);
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void removePlayerAbsorptionHealth(Player player, double health) {
+        try {
+            Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
+            Method getter = entityPlayer.getClass().getMethod("getAbsorptionHearts");
+            float current = (float) getter.invoke(entityPlayer);
+            entityPlayer.getClass().getMethod("setAbsorptionHearts", float.class)
+                    .invoke(entityPlayer, Math.max(0f, current - (float) health));
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }

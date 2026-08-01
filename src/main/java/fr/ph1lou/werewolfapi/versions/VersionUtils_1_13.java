@@ -24,11 +24,18 @@ import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Map;
 
 public class VersionUtils_1_13 extends VersionUtils_1_12 {
 
+
+    @Override
+    public void addPotionEffect(Player player, PotionEffectType type, int duration, int amplifier, boolean ambient, boolean particles, boolean icon) {
+        player.addPotionEffect(new PotionEffect(type, duration, amplifier, ambient, particles, icon));
+    }
 
     @Override
     public void setSkullOwner(SkullMeta skull, OfflinePlayer player, String name) {

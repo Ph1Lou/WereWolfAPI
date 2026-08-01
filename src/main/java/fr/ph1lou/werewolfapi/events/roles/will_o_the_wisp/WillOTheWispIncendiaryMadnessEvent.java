@@ -1,6 +1,7 @@
 package fr.ph1lou.werewolfapi.events.roles.will_o_the_wisp;
 
 import fr.ph1lou.werewolfapi.annotations.TellableStoryEvent;
+import fr.ph1lou.werewolfapi.basekeys.RoleBase;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsEvent;
 import fr.ph1lou.werewolfapi.annotations.statistics.StatisticsPlayer;
 import fr.ph1lou.werewolfapi.player.interfaces.IPlayerWW;
@@ -10,7 +11,7 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 @StatisticsEvent(key = "werewolf.will_o_the_wisp_incendiary_madness")
-@TellableStoryEvent
+@TellableStoryEvent(roleKey = RoleBase.WILL_O_THE_WISP, key = "werewolf.tellable_story.will_o_the_wisp_incendiary")
 public class WillOTheWispIncendiaryMadnessEvent extends Event implements Cancellable {
 
 

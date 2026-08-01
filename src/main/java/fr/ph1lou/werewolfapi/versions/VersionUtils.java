@@ -2,7 +2,9 @@ package fr.ph1lou.werewolfapi.versions;
 
 import fr.ph1lou.werewolfapi.enums.UniversalMaterial;
 import fr.ph1lou.werewolfapi.utils.BukkitUtils;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -20,6 +22,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -101,6 +104,8 @@ public abstract class VersionUtils {
 
     public abstract Collection<PotionEffect> getPotionEffect(@NotNull ItemStack itemStack);
 
+    public abstract void addPotionEffect(Player player, PotionEffectType type, int duration, int amplifier, boolean ambient, boolean particles, boolean icon);
+
     /**
      * Hide a player in tab and in game for a player
      *
@@ -126,6 +131,8 @@ public abstract class VersionUtils {
     public abstract void setPrefixAndColor(Team team, String prefix, ChatColor chatColor);
 
     public abstract void addPlayerAbsorptionHealth(Player player, double health);
+
+    public abstract void removePlayerAbsorptionHealth(Player player, double health);
 
     /**
      * Pose un bloc de laine colorée (cross-version).
@@ -182,6 +189,62 @@ public abstract class VersionUtils {
      * 1.8-1.12 : setType + setData (byte legacy, escaliers). 1.13+ : setBlockData.
      */
     public abstract void setBlock(Block block, Material material, Map<String, String> states);
+
+    public void sendEndMessage(@NotNull Player player, @NotNull String message,
+                               @NotNull String playerName, @Nullable String hover) {
+        int idx = message.indexOf(playerName);
+        if (idx < 0) {
+            player.sendMessage(message);
+            return;
+        }
+        int afterIdx = idx + playerName.length();
+        String beforeText = message.substring(0, idx);
+        String afterText = afterIdx < message.length() ? message.substring(afterIdx) : "";
+        String restoreCodes = extractActiveColorCodes(beforeText);
+
+        TextComponent component = new TextComponent();
+        if (!beforeText.isEmpty()) {
+            component.addExtra(new TextComponent(beforeText));
+        }
+        TextComponent nameComponent = new TextComponent("§b§n" + playerName);
+        if (hover != null && !hover.isEmpty()) {
+            TextComponent hoverComponent = new TextComponent(hover);
+            hoverComponent.setColor(net.md_5.bungee.api.ChatColor.WHITE);
+            nameComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                    new BaseComponent[]{hoverComponent}));
+        }
+        component.addExtra(nameComponent);
+        if (!afterText.isEmpty()) {
+            component.addExtra(new TextComponent("§r" + restoreCodes + afterText));
+        }
+        player.spigot().sendMessage(component);
+    }
+
+    protected static String extractActiveColorCodes(String text) {
+        String color = "";
+        StringBuilder formatting = new StringBuilder();
+        int i = 0;
+        while (i < text.length() - 1) {
+            if (text.charAt(i) == '§') {
+                char code = text.charAt(i + 1);
+                if (code == 'r') {
+                    color = "";
+                    formatting.setLength(0);
+                } else if ("0123456789abcdef".indexOf(code) >= 0) {
+                    color = "§" + code;
+                } else if ("klmno".indexOf(code) >= 0) {
+                    String codeStr = "§" + code;
+                    if (formatting.indexOf(codeStr) < 0) {
+                        formatting.append(codeStr);
+                    }
+                }
+                i += 2;
+            } else {
+                i++;
+            }
+        }
+        return color + formatting.toString();
+    }
 
     private static byte woolData(DyeColor color) {
         switch (color) {
