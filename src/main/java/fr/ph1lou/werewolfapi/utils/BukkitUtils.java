@@ -18,11 +18,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 public class BukkitUtils {
 
@@ -82,7 +77,7 @@ public class BukkitUtils {
 
         boolean isRole = listener instanceof IRole;
         boolean isPower = listener instanceof IPower;
-        Collection<Method> methods = getListenerMethods(listener.getClass());
+        Method[] methods = listener.getClass().getMethods();
         boolean hasGuards = false;
 
         for (Method method : methods) {
@@ -134,7 +129,6 @@ public class BukkitUtils {
                 executor = new GuardedEventExecutor(method);
             } else {
                 final Method m = method;
-                m.setAccessible(true);
                 executor = (listenerRef, event) -> {
                     try {
                         m.invoke(listenerRef, event);
@@ -151,16 +145,6 @@ public class BukkitUtils {
         }
     }
 
-
-    // Bukkit's regular registerEvents also discovers private event handlers.
-    // Include inherited methods and non-public declared methods when using guards.
-    static Collection<Method> getListenerMethods(Class<?> listenerClass) {
-        Set<Method> methods = new LinkedHashSet<>(Arrays.asList(listenerClass.getMethods()));
-        for (Class<?> type = listenerClass; type != null && type != Object.class; type = type.getSuperclass()) {
-            methods.addAll(Arrays.asList(type.getDeclaredMethods()));
-        }
-        return new ArrayList<>(methods);
-    }
 
     /**
      * Schedule Sync Repeating Task
