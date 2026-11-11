@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 public class ItemBuilder {
 
     private final ItemStack stack;
+    // Track only the synthetic enchantment created by this builder.
+    private boolean glowEnchantmentAdded;
 
     public ItemBuilder(Material mat) {
         stack = new ItemStack(mat);
@@ -50,22 +52,29 @@ public class ItemBuilder {
     }
 
     public ItemBuilder setGlow(boolean glow) {
+        ItemMeta meta = getItemMeta();
         if (glow) {
-            addEnchant(Enchantment.KNOCKBACK, 1);
-            addItemFlag(ItemFlag.HIDE_ENCHANTS);
-        } else {
-            ItemMeta meta = getItemMeta();
-            for (Enchantment enchantment : meta.getEnchants().keySet()) {
-                meta.removeEnchant(enchantment);
+            if (!meta.hasEnchants()) {
+                meta.addEnchant(Enchantment.KNOCKBACK, 1, true);
+                this.glowEnchantmentAdded = true;
             }
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        } else {
+            // Do not erase genuine enchantments when removing the visual effect.
+            if (this.glowEnchantmentAdded) {
+                meta.removeEnchant(Enchantment.KNOCKBACK);
+                this.glowEnchantmentAdded = false;
+            }
+            meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
+        setItemMeta(meta);
         return this;
     }
 
     public ItemBuilder setUnbreakable(boolean unbreakable) {
         ItemMeta meta = stack.getItemMeta();
         assert meta != null;
-        VersionUtils.getVersionUtils().setItemUnbreakable(meta, true);
+        VersionUtils.getVersionUtils().setItemUnbreakable(meta, unbreakable);
         stack.setItemMeta(meta);
         return this;
     }
